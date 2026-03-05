@@ -153,7 +153,15 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
           <p className="text-xs text-white/30">
             &copy; {new Date().getFullYear()} Traiteur Montpellier. Tous droits
-            réservés.
+            réservés. Site créé par{" "}
+            <a
+              href="https://webomax.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 transition-colors hover:text-purple-light"
+            >
+              Webomax
+            </a>
           </p>
           <div className="flex gap-6">
             <Link

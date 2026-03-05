@@ -162,10 +162,7 @@ export default function Header() {
                   >
                     {link.label}
                     {pathname === link.href && (
-                      <motion.div
-                        layoutId="mobileActive"
-                        className="absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 bg-white"
-                      />
+                      <div className="absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 bg-white" />
                     )}
                   </Link>
                 </motion.div>

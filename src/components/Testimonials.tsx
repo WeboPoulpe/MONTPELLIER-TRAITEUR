@@ -134,11 +134,11 @@ export default function Testimonials() {
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === current
-                        ? "w-8 bg-purple"
-                        : "w-2 bg-white/20 hover:bg-white/40"
-                    }`}
+                    className="h-2 w-8 rounded-full bg-purple transition-[transform,opacity] duration-300 will-change-transform"
+                    style={{
+                      transform: i === current ? "scaleX(1)" : "scaleX(0.25)",
+                      opacity: i === current ? 1 : 0.3,
+                    }}
                     aria-label={`Témoignage ${i + 1}`}
                   />
                 ))}

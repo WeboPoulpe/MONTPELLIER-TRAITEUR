@@ -84,16 +84,15 @@ export default function Carousel({ slides, autoplayDelay = 4000 }: CarouselProps
       {/* Progress bar */}
       <div className="mt-4 flex items-center justify-center gap-1.5">
         {slides.map((_, i) => (
-          <motion.button
+          <button
             key={i}
             onClick={() => emblaApi?.scrollTo(i)}
-            className={`h-1 rounded-full transition-all duration-300 ${
-              i === selectedIndex
-                ? "w-8 bg-purple"
-                : "w-2 bg-neutral-300 hover:bg-neutral-400"
-            }`}
+            className="h-1 w-8 rounded-full bg-purple transition-[transform,opacity] duration-300 will-change-transform"
+            style={{
+              transform: i === selectedIndex ? "scaleX(1)" : "scaleX(0.25)",
+              opacity: i === selectedIndex ? 1 : 0.3,
+            }}
             aria-label={`Diapositive ${i + 1}`}
-            layout="position"
           />
         ))}
       </div>
