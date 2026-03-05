@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Building2, PartyPopper, UtensilsCrossed, GlassWater, Cake, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
@@ -12,8 +13,7 @@ const services = [
     subtitle: "Seminaires & Conferences",
     description:
       "Organisez vos evenements d'entreprise avec l'assurance d'une prestation culinaire soignee et sur mesure. Traiteur Montpellier accompagne vos seminaires, repas d'affaires, conferences et lancements en apportant une attention toute particuliere aux details et a l'experience gustative. Faites de chaque rencontre professionnelle un moment memorable, empreint de saveurs raffinees et d'elegance naturelle.",
-    image:
-      "https://images.unsplash.com/photo-1530062845289-9109b2c9c868?q=80&w=2072&auto=format&fit=crop",
+    image: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg",
     features: ["Cocktails VIP", "Plateaux dejeuners", "Pack cafe & the"],
     href: "/entreprises",
   },
@@ -23,8 +23,7 @@ const services = [
     subtitle: "Stands & Expositions",
     description:
       "Confiez a Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits dejeuners, grazing tables, plateaux sales chauds ou froids, mignardises, boissons softs bio et vins de region. Packs cafe, location de materiel et cocktails VIP pour vos evenements prestigieux.",
-    image:
-      "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop",
+    image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg",
     features: ["Paniers repas staff", "Grazing tables", "Logistique complete"],
     href: "/entreprises",
   },
@@ -34,8 +33,7 @@ const services = [
     subtitle: "Celebrations & Receptions",
     description:
       "Celebrez vos moments precieux avec une cuisine qui conjugue generosite, authenticite et delicatesse. Traiteur Montpellier imagine pour vos evenements prives des prestations personnalisees, ou chaque detail est pense pour refleter votre sens de l'accueil et votre gout de l'excellence discrete. Creez des souvenirs gourmands, portes par une approche sincere et soignee.",
-    image:
-      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop",
+    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg",
     features: ["Menu sur mesure", "Decoration culinaire", "Service complet"],
     href: "/entreprises",
   },
@@ -56,9 +54,9 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5 }}
           className="text-center"
         >
           <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
@@ -83,21 +81,24 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               className="group relative overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple/10 hover:ring-1 hover:ring-purple/10"
             >
-              {/* Image */}
+              {/* Image - using next/image instead of backgroundImage */}
               <div className="relative h-64 overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url('${service.image}')` }}
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                       <service.icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -121,7 +122,6 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                {/* Features */}
                 <div className="mt-6 flex flex-wrap gap-2">
                   {service.features.map((feature) => (
                     <span
@@ -133,7 +133,6 @@ export default function Services() {
                   ))}
                 </div>
 
-                {/* Link */}
                 <Link
                   href={service.href}
                   className="mt-6 inline-flex items-center text-sm font-semibold text-purple transition-colors hover:text-purple-dark"
@@ -150,9 +149,9 @@ export default function Services() {
 
         {/* Additional offerings */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-8 lg:gap-16"
         >
           {offerings.map((item) => (

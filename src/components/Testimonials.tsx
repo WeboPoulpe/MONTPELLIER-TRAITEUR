@@ -46,8 +46,8 @@ export default function Testimonials() {
       className="relative overflow-hidden bg-black py-28 lg:py-36"
       ref={ref}
     >
-      {/* Background accent */}
-      <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple/5 blur-[150px]" />
+      {/* Background accent - hidden on mobile for perf */}
+      <div className="absolute top-1/2 left-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple/5 blur-[150px] md:block" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}

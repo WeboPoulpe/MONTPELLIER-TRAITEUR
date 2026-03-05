@@ -41,8 +41,8 @@ export default function Header() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
         scrolled
-          ? "border-purple-light/20 bg-purple-dark/95 backdrop-blur-md shadow-lg shadow-black/10"
-          : "border-purple-light/10 bg-purple-dark/90 backdrop-blur-md"
+          ? "border-purple-light/20 bg-purple-dark shadow-lg shadow-black/10"
+          : "border-purple-light/10 bg-purple-dark/95"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
@@ -91,7 +91,7 @@ export default function Header() {
           </a>
           <Link
             href="/a-propos#devis"
-            className="group relative overflow-hidden rounded-full border border-white/30 bg-white/10 px-7 py-2.5 text-sm font-semibold tracking-wide text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
+            className="group relative overflow-hidden rounded-full border border-white/30 bg-white/10 px-7 py-2.5 text-sm font-semibold tracking-wide text-white uppercase  transition-all duration-300 hover:border-white/50 hover:bg-white/20"
           >
             <span className="relative z-10">Obtenir un devis</span>
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -203,7 +203,7 @@ export default function Header() {
               >
                 <Link
                   href="/a-propos#devis"
-                  className="group inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold tracking-widest text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
+                  className="group inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold tracking-widest text-white uppercase  transition-all duration-300 hover:border-white/50 hover:bg-white/20"
                 >
                   Obtenir un devis
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

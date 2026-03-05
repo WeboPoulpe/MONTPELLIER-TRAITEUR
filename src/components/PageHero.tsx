@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 interface PageHeroProps {
   subtitle: string;
@@ -24,22 +25,25 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-black">
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${image}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-      </div>
+      <Image
+        src={image}
+        alt={`${title} ${titleAccent}`}
+        fill
+        className="object-cover"
+        sizes="100vw"
+        priority
+        quality={75}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
-      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-purple/10 blur-[120px]" />
-      <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-purple/8 blur-[150px]" />
+      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-purple/10 blur-[120px] will-change-transform" />
+      <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-purple/8 blur-[150px] will-change-transform" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 pt-24 pb-16 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           <span className="inline-block border border-white/20 px-6 py-2 text-xs font-semibold tracking-[0.3em] text-white/70 uppercase">
             {subtitle}
@@ -47,9 +51,9 @@ export default function PageHero({
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-8 text-4xl leading-tight font-bold tracking-tight text-white md:text-6xl lg:text-7xl"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
@@ -61,18 +65,18 @@ export default function PageHero({
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70"
         >
           {description}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-10"
         >
           <Link

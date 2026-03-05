@@ -94,7 +94,7 @@ export default function QuoteForm() {
 
   return (
     <section id="devis" className="relative bg-white py-28 lg:py-36" ref={ref}>
-      <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-purple-muted blur-[150px]" />
+      <div className="absolute top-0 left-0 hidden h-96 w-96 rounded-full bg-purple-muted blur-[150px] md:block" />
 
       <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
         {/* Header */}

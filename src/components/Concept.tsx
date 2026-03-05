@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Leaf, MapPin, Heart } from "lucide-react";
+import Image from "next/image";
 
 const values = [
   {
@@ -32,16 +32,15 @@ export default function Concept() {
 
   return (
     <section id="concept" className="relative overflow-hidden bg-white py-28 lg:py-36" ref={ref}>
-      {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-purple-muted blur-[120px]" />
+      <div className="absolute top-0 right-0 hidden h-96 w-96 rounded-full bg-purple-muted blur-[120px] md:block" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Left: Text */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
             <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
               Notre engagement
@@ -71,9 +70,9 @@ export default function Concept() {
               {values.map((value, index) => (
                 <motion.div
                   key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
                   className="flex gap-5"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-purple/5">
@@ -94,18 +93,18 @@ export default function Concept() {
 
           {/* Right: Image */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="relative"
           >
-            <div className="relative overflow-hidden rounded-2xl">
-              <div
-                className="aspect-[4/5] bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop')",
-                }}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <Image
+                src="/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg"
+                alt="Plat gastronomique Traiteur Montpellier"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
@@ -118,7 +117,6 @@ export default function Concept() {
                 Annees d&apos;excellence
               </p>
             </div>
-            {/* Decorative border */}
             <div className="absolute -top-4 -right-4 -z-10 h-full w-full rounded-2xl border-2 border-purple/20" />
           </motion.div>
         </div>

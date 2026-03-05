@@ -68,14 +68,14 @@ export default function Carousel({ slides, autoplayDelay = 4000 }: CarouselProps
       {/* Arrows */}
       <button
         onClick={scrollPrev}
-        className="absolute top-1/2 left-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white/80 opacity-0 backdrop-blur-sm transition-all duration-300 hover:bg-black/50 hover:text-white group-hover/carousel:opacity-100"
+        className="absolute top-1/2 left-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white/80 opacity-0 transition-all duration-300 hover:bg-black/50 hover:text-white group-hover/carousel:opacity-100"
         aria-label="Precedent"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute top-1/2 right-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white/80 opacity-0 backdrop-blur-sm transition-all duration-300 hover:bg-black/50 hover:text-white group-hover/carousel:opacity-100"
+        className="absolute top-1/2 right-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white/80 opacity-0 transition-all duration-300 hover:bg-black/50 hover:text-white group-hover/carousel:opacity-100"
         aria-label="Suivant"
       >
         <ChevronRight className="h-5 w-5" />
@@ -93,7 +93,7 @@ export default function Carousel({ slides, autoplayDelay = 4000 }: CarouselProps
                 : "w-2 bg-neutral-300 hover:bg-neutral-400"
             }`}
             aria-label={`Diapositive ${i + 1}`}
-            layout
+            layout="position"
           />
         ))}
       </div>

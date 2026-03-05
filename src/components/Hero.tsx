@@ -3,44 +3,43 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black">
-      {/* Background image with overlay */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-      </div>
+      {/* Background image with next/image */}
+      <Image
+        src="/photos site/cocktail-service-traiteur-montpellier-150x150.jpg"
+        alt="Traiteur Montpellier - Gastronomie sur mesure"
+        fill
+        className="object-cover"
+        sizes="100vw"
+        priority
+        quality={75}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-purple/10 blur-[120px]" />
-      <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-purple/8 blur-[150px]" />
+      {/* Static decorative blurs (no animation, pre-rendered) */}
+      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-purple/10 blur-[120px] will-change-transform" />
+      <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-purple/8 blur-[150px] will-change-transform" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        {/* Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           <span className="inline-block border border-white/20 px-6 py-2 text-xs font-semibold tracking-[0.3em] text-white/70 uppercase">
             Depuis 2008 &mdash; Montpellier
           </span>
         </motion.div>
 
-        {/* Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-8 text-5xl leading-tight font-bold tracking-tight text-white md:text-7xl lg:text-8xl"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
@@ -55,25 +54,23 @@ export default function Hero() {
           </span>
         </motion.h1>
 
-        {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
-          Inspirés par les grandes traditions méditerranéennes, enrichies de
-          touches caribéennes, nous imaginons des expériences culinaires alliant{" "}
-          <span className="text-white">authenticité</span>,{" "}
-          <span className="text-white">créativité</span> et{" "}
-          <span className="text-white">engagement écoresponsable</span>.
+          Inspires par les grandes traditions mediterraneennes, enrichies de
+          touches caribeennes, nous imaginons des experiences culinaires alliant{" "}
+          <span className="text-white">authenticite</span>,{" "}
+          <span className="text-white">creativite</span> et{" "}
+          <span className="text-white">engagement ecoresponsable</span>.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
         >
           <Link
@@ -92,24 +89,19 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
+      {/* Scroll indicator - hidden on mobile for perf */}
+      <div className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 md:block">
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
           <span className="text-xs tracking-widest text-white/40 uppercase">
-            Découvrir
+            Decouvrir
           </span>
           <ArrowDown className="h-4 w-4 text-white/40" />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
