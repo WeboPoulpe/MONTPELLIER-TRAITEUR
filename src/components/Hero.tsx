@@ -26,20 +26,13 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
+        <div>
           <span className="inline-block border border-white/20 px-6 py-2 text-xs font-semibold tracking-[0.3em] text-white/70 uppercase">
             Depuis 2008 &mdash; Montpellier
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <h1
           className="mt-8 text-5xl leading-tight font-bold tracking-tight text-white md:text-7xl lg:text-8xl"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
@@ -52,12 +45,12 @@ export default function Hero() {
           <span className="text-4xl font-light italic md:text-5xl lg:text-6xl">
             sur mesure
           </span>
-        </motion.h1>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
           Inspires par les grandes traditions mediterraneennes, enrichies de
@@ -70,7 +63,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
         >
           <Link

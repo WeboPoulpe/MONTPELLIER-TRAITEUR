@@ -5,7 +5,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 interface CarouselSlide {
   src: string;
@@ -54,6 +53,7 @@ export default function Carousel({ slides, autoplayDelay = 4000 }: CarouselProps
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 1280px"
                   priority={i === 0}
+                  quality={60}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
