@@ -2,20 +2,21 @@ import type { Metadata } from "next";
 import AProposContent from "./AProposContent";
 
 export const metadata: Metadata = {
-  title: "À Propos & Contact | Traiteur Montpellier",
+  title: "A Propos & Contact - Notre Histoire",
   description:
-    "Découvrez l'histoire de Traiteur Montpellier, notre engagement écoresponsable et notre passion pour la cuisine méditerranéenne. Contactez-nous pour un devis personnalisé.",
+    "Decouvrez l'histoire de Traiteur Montpellier depuis 2008, notre engagement ecoresponsable et notre passion pour la cuisine mediterraneenne. Contactez-nous pour un devis personnalise gratuit.",
   keywords: [
     "traiteur montpellier contact",
-    "à propos traiteur montpellier",
+    "a propos traiteur montpellier",
     "devis traiteur montpellier",
-    "traiteur écoresponsable montpellier",
-    "traiteur méditerranéen contact",
+    "traiteur ecoresponsable montpellier",
+    "traiteur mediterraneen montpellier",
+    "histoire traiteur montpellier",
   ],
   openGraph: {
-    title: "À Propos & Contact | Traiteur Montpellier",
+    title: "A Propos & Contact | Traiteur Montpellier",
     description:
-      "Notre histoire, nos valeurs et notre passion pour une gastronomie engagée à Montpellier.",
+      "Notre histoire, nos valeurs et notre passion pour une gastronomie engagee a Montpellier depuis 2008.",
     url: "https://traiteurmontpellier.com/a-propos",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",

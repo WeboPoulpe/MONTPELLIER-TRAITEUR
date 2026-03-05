@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import EntreprisesContent from "./EntreprisesContent";
 
 export const metadata: Metadata = {
-  title: "Nos Prestations | Traiteur Montpellier - Evenements & Receptions",
+  title: "Nos Prestations - Evenements & Receptions",
   description:
     "Decouvrez les prestations de Traiteur Montpellier : evenements d'entreprise, foires et salons, evenements prives. Cuisine mediterraneenne raffinee et sur mesure a Montpellier.",
   keywords: [
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "traiteur evenement prive montpellier",
     "catering foires salons montpellier",
     "cocktail dinatoire montpellier",
+    "plateaux repas montpellier",
+    "seminaire traiteur montpellier",
   ],
   openGraph: {
     title: "Nos Prestations | Traiteur Montpellier",

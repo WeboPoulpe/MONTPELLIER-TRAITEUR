@@ -6,6 +6,7 @@ import AnimatedLayout from "@/components/AnimatedLayout";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import JsonLd from "@/components/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,30 +20,50 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Traiteur Montpellier | Traiteur d'Exception pour vos Événements",
+  metadataBase: new URL("https://traiteurmontpellier.com"),
+  title: {
+    default: "Traiteur Montpellier | Traiteur d'Exception pour vos Evenements",
+    template: "%s | Traiteur Montpellier",
+  },
   description:
-    "Traiteur Montpellier, votre partenaire culinaire pour des événements d'exception à Montpellier et ses environs. Mariages, entreprises, buffets. Cuisine méditerranéenne raffinée et écoresponsable depuis 2008.",
+    "Traiteur Montpellier, votre partenaire culinaire pour des evenements d'exception a Montpellier et ses environs. Entreprises, cocktails, evenements prives. Cuisine mediterraneenne raffinee et ecoresponsable depuis 2008.",
   keywords: [
     "traiteur montpellier",
-    "traiteur mariage montpellier",
     "traiteur entreprise montpellier",
-    "traiteur événement montpellier",
+    "traiteur evenement montpellier",
+    "cocktail dinatoire montpellier",
     "buffet montpellier",
-    "cocktail montpellier",
-    "traiteur méditerranéen",
+    "traiteur ecoresponsable",
+    "traiteur mediterraneen",
+    "traiteur herault",
+    "plateaux repas montpellier",
+    "catering montpellier",
   ],
   openGraph: {
     title: "Traiteur Montpellier | Traiteur d'Exception",
     description:
-      "Expériences culinaires sur mesure, alliant authenticité, créativité et engagement écoresponsable.",
+      "Experiences culinaires sur mesure pour vos evenements a Montpellier. Cuisine mediterraneenne raffinee et engagement ecoresponsable depuis 2008.",
     url: "https://traiteurmontpellier.com",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Traiteur Montpellier | Traiteur d'Exception",
+    description:
+      "Experiences culinaires sur mesure pour vos evenements a Montpellier depuis 2008.",
+  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "https://traiteurmontpellier.com",
@@ -59,6 +80,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${playfair.variable} font-sans antialiased`}
       >
+        <JsonLd />
         <AnimatedLayout>
           <Header />
           {children}
