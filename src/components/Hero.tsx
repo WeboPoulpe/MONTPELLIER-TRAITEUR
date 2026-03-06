@@ -53,11 +53,12 @@ export default function Hero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
-          Inspirés par les grandes traditions méditerranéennes, enrichies de
+          Inspirés par les grandes traditions méditerranéennes, sublimées par des
           touches caribéennes, nous imaginons des expériences culinaires alliant{" "}
           <span className="text-white">authenticité</span>,{" "}
           <span className="text-white">créativité</span> et{" "}
-          <span className="text-white">engagement écoresponsable</span>.
+          <span className="text-white">engagement écoresponsable</span>, portées
+          par le savoir-faire de notre cheffe formée à l&apos;École Ducasse.
         </motion.p>
 
         <motion.div

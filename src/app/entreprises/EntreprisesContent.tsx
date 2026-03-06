@@ -52,33 +52,33 @@ const prestations = [
     title: "Événement Entreprise",
     subtitle: "Séminaires & Conférences",
     description:
-      "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et a l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
+      "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et à l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
     longDescription:
-      "De la réunion de direction intime au congrès de grande envergure, nous concevons des menus qui reflètent l'image de votre entreprise. Nos chefs sélectionnent des produits de saison auprès de producteurs locaux pour créer des plateaux repas équilibrés, des cocktails dinatoires sophistiqués et des pauses gourmandes qui dynamiseront vos journées professionnelles. Chaque détail logistique est anticipé pour que vous puissiez vous concentrer sur l'essentiel : vos collaborateurs et vos objectifs.",
+      "De la réunion de direction intime au congrès de grande envergure, nous concevons des menus qui reflètent l'image de votre entreprise. Nos chefs sélectionnent des produits de saison auprès de producteurs locaux pour créer des plateaux repas équilibrés, des cocktails dînatoires sophistiqués et des pauses gourmandes qui dynamiseront vos journées professionnelles. Chaque détail logistique est anticipé pour que vous puissiez vous concentrer sur l'essentiel : vos collaborateurs et vos objectifs.",
     image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
-    features: ["Cocktails VIP", "Plateaux déjeuners", "Pack café & thé", "Séminaires", "Inaugurations", "Repas d'affaires"],
+    features: ["Accueil & pause café", "Pack café & thé", "Cocktail déjeunatoire & dînatoire", "Cocktail d'entreprise", "Séminaires & conférences", "Arbre de Noël & fête de fin d'année", "Vœux du nouvel an", "Déjeuner ou dîner d'affaire", "Inauguration & lancement de produit", "Réception institutionnelle", "Soirée networking", "Brunch d'entreprise"],
   },
   {
     icon: UtensilsCrossed,
     title: "Foires & Salons",
     subtitle: "Stands & Expositions",
     description:
-      "Confiez a Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région.",
+      "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région.",
     longDescription:
-      "Packs café, location de matériel et cocktails VIP pour vos événements prestigieux. Nous comprenons les contraintes spécifiques des salons professionnels : timing serré, logistique complexe, besoin de flexibilité. Notre équipe s'adapte a votre planning et livre directement sur votre stand, avec un matériel de présentation élégant qui valorise votre image de marque. Des paniers individuels aux grazing tables spectaculaires, chaque formule est pensée pour impressionner vos visiteurs et renforcer votre présence.",
+      "Packs viennoiserie, location de verrerie et cocktails VIP pour vos événements prestigieux. Nous comprenons les contraintes spécifiques des salons professionnels : timing serré, logistique complexe, besoin de flexibilité. Notre équipe s'adapte à votre planning et livre directement sur votre stand, avec un matériel de présentation élégant qui valorise votre image de marque. Des paniers individuels aux grazing tables spectaculaires, chaque formule est pensée pour impressionner vos visiteurs et renforcer votre présence.",
     image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg",
-    features: ["Paniers repas staff", "Grazing tables", "Logistique complète", "Plateaux chauds/froids", "Boissons bio", "Vins de région"],
+    features: ["Cocktail VIP", "Ateliers culinaires en direct", "Bar à dégustation", "Packs viennoiserie", "Pack soft", "Location de verrerie", "Grazing table", "Plateaux pièces cocktail chaud/froid", "Panier repas staff", "Catering"],
   },
   {
     icon: PartyPopper,
     title: "Événement Privé",
     subtitle: "Célébrations & Réceptions",
     description:
-      "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, ou chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète.",
+      "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, où chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète.",
     longDescription:
-      "Créez des souvenirs gourmands, portés par une approche sincère et soignée. Que ce soit pour un anniversaire intime, une garden-party estivale, un baptême ou toute autre célébration, nous composons un menu qui raconte votre histoire. Notre cuisine d'inspiration méditerranéenne et caribéenne apporte une touche d'originalité a chaque assiette, tandis que notre engagement éco-responsable garantit des événements aussi savoureux que respectueux. Du premier contact au dernier service, nous sommes a vos côtés.",
+      "Possibilité de prestation sur mesure, avec un concept créé spécialement pour l'événement. Que ce soit pour un anniversaire intime, une garden-party estivale, un baptême ou toute autre célébration, nous composons un menu qui raconte votre histoire. Notre cuisine d'inspiration méditerranéenne et caribéenne apporte une touche d'originalité à chaque assiette, tandis que notre engagement éco-responsable garantit des événements aussi savoureux que respectueux. Du premier contact au dernier service, nous sommes à vos côtés.",
     image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
-    features: ["Menu sur mesure", "Décoration culinaire", "Service complet", "Anniversaires", "Baptêmes", "Garden-parties"],
+    features: ["Cocktail dînatoire de fête", "Baptême, anniversaire, fête de famille", "Garden party", "Brunch privé", "Cheffe à domicile", "Cheffe à demeure"],
   },
 ];
 

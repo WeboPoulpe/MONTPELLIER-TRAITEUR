@@ -22,45 +22,45 @@ import FAQ from "@/components/FAQ";
 
 const celebrations = [
   {
-    icon: Cake,
-    title: "Anniversaires",
+    icon: PartyPopper,
+    title: "Cocktail Dînatoire de Fête",
     description:
-      "De l'anniversaire intime entre amis a la grande fete familiale, nous créons des buffets et menus qui marquent le coup. Cocktails colorés, buffets gourmands, pièces montées et mignardises personnalisées.",
+      "Sublimez vos soirées avec un cocktail dînatoire élégant et convivial. Canapés raffinés, verrines gourmandes, mignardises et boissons sélectionnées pour un moment festif inoubliable.",
+    image: "/photos site/cocktail-dinatoire-traiteur-montpellier-1.jpg",
+  },
+  {
+    icon: Cake,
+    title: "Baptême, Anniversaire & Fête de Famille",
+    description:
+      "Célébrez vos moments précieux en famille avec des buffets généreux et personnalisés. Menus adaptés a tous les ages, pièces montées, mignardises et décoration culinaire soignée.",
     image: "/photos site/donut-presentoir-traiteur-montpellier.jpg",
   },
   {
-    icon: Baby,
-    title: "Baptemes & Baby Showers",
-    description:
-      "Célébrez l'arrivée de bébé avec délicatesse. Buffets doux et colorés, canapés fins, boissons fraîches et pâtisseries personnalisées aux couleurs de votre événement.",
-    image: "/photos site/choux-violet-traiteur-montpellier.jpg",
-  },
-  {
     icon: TreePine,
-    title: "Garden-Parties",
+    title: "Garden Party",
     description:
-      "Profitez du climat méditerranéen avec une réception en plein air. Grazing tables, barbecue chic, brochettes gourmet et cocktails rafraîchissants pour un moment convivial.",
+      "Profitez du climat méditerranéen avec une réception en plein air. Grazing tables, brochettes gourmet, cocktails rafraîchissants et buffets champêtres pour un moment convivial en extérieur.",
     image: "/photos site/table-apero-dinatoire-traiteur-montpellier.jpg",
   },
   {
     icon: Heart,
-    title: "Fiançailles & EVJF/EVG",
+    title: "Brunch Privé",
     description:
-      "Marquez ce moment spécial avec une prestation qui reflète votre joie. Cocktail élégant, brunch gourmand ou apéro dinatoire festif, selon vos envies.",
+      "Un brunch gourmand et raffiné pour vos matinées entre proches. Viennoiseries artisanales, fruits frais, œufs brouillés, pancakes, jus pressés et boissons chaudes a volonté.",
     image: "/photos site/apero-dinatoire-or-traiteur-montpellier.jpg",
   },
   {
     icon: Users,
-    title: "Réunions de Famille",
+    title: "Cheffe à Domicile",
     description:
-      "Retrouvailles, fetes de famille, célébrations intergénérationnelles : nous proposons des menus généreux et variés qui plaisent a tous les ages et tous les palais.",
+      "Notre cheffe se déplace chez vous pour créer un menu sur mesure, cuisiner sur place et assurer le service. Une expérience gastronomique exclusive dans le confort de votre foyer.",
     image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
   },
   {
     icon: Sparkles,
-    title: "Événements Sur Mesure",
+    title: "Cheffe à Demeure",
     description:
-      "Pendaison de crémaillère, pot de départ, soirée a theme... Chaque événement mérite une cuisine a la hauteur. Dites-nous votre vision, nous la concrétisons.",
+      "Pour vos séjours prolongés, profitez d'une cheffe a demeure qui compose et prépare vos repas au quotidien. Menus personnalisés, courses incluses et cuisine adaptée a vos envies.",
     image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
   },
 ];

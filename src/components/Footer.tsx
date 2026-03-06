@@ -155,9 +155,9 @@ export default function Footer() {
 
             <h4 className="mt-8 text-xs font-bold tracking-widest text-white uppercase">Horaires</h4>
             <p className="mt-3 text-sm text-white/40">
-              Lun - Sam : 9h - 19h
+              Mar - Sam : 9h - 18h
               <br />
-              Service le week-end sur réservation
+              Prestation sur réservation
             </p>
           </div>
         </div>

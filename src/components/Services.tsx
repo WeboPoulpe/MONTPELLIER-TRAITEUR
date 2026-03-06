@@ -14,7 +14,7 @@ const services = [
     description:
       "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et à l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
     image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
-    features: ["Cocktails VIP", "Plateaux déjeuners", "Pack café & thé"],
+    features: ["Cocktail déjeunatoire & dînatoire", "Séminaires & conférences", "Arbre de Noël"],
     href: "/entreprises",
   },
   {
@@ -22,20 +22,20 @@ const services = [
     title: "Foires & Salons",
     subtitle: "Stands & Expositions",
     description:
-      "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région. Packs café, location de matériel et cocktails VIP pour vos événements prestigieux.",
+      "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région. Packs viennoiserie, location de verrerie et cocktails VIP pour vos événements prestigieux.",
     image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg",
-    features: ["Paniers repas staff", "Grazing tables", "Logistique complète"],
-    href: "/entreprises",
+    features: ["Cocktail VIP", "Grazing table", "Catering sur stand"],
+    href: "/foires-salons",
   },
   {
     icon: PartyPopper,
     title: "Événement Privé",
     subtitle: "Célébrations & Réceptions",
     description:
-      "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, où chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète. Créez des souvenirs gourmands, portés par une approche sincère et soignée.",
+      "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, où chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète. Possibilité de prestation sur mesure, avec un concept créé spécialement pour l'événement.",
     image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
-    features: ["Menu sur mesure", "Décoration culinaire", "Service complet"],
-    href: "/entreprises",
+    features: ["Cheffe à domicile", "Brunch privé", "Garden party"],
+    href: "/evenements-prives",
   },
 ];
 
