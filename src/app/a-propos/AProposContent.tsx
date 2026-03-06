@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 import {
   Leaf,
   MapPin,
@@ -97,21 +97,6 @@ const timeline = [
   { year: "2024", event: "50 000 convives servis, engagement renforcé" },
 ];
 
-const eventTypes = [
-  { value: "entreprise", label: "Événement d'entreprise" },
-  { value: "foire", label: "Foire & Salon" },
-  { value: "prive", label: "Événement privé" },
-  { value: "cocktail", label: "Cocktail" },
-  { value: "autre", label: "Autre" },
-];
-
-const guestRanges = [
-  "10 - 30 personnes",
-  "30 - 50 personnes",
-  "50 - 100 personnes",
-  "100 - 200 personnes",
-  "200+ personnes",
-];
 
 export default function AProposContent() {
   const storyRef = useRef(null);
@@ -123,28 +108,32 @@ export default function AProposContent() {
   const formRef = useRef(null);
   const formInView = useInView(formRef, { once: true, margin: "-100px" });
 
-  const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({
-    eventType: "",
-    guests: "",
-    date: "",
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const totalSteps = 4;
+  useEffect(() => {
+    const scripts = [
+      "https://ines-reception.digifactory.fr/inc/js/jquery.js",
+      "https://ines-reception.digifactory.fr/admin/inc/js/jdigi.js",
+      "https://ines-reception.digifactory.fr/inc/js/site.js",
+      "https://ines-reception.digifactory.fr/admin/inc/js/moment.min.js",
+      "https://ines-reception.digifactory.fr/admin/inc/js/moment-fr.js",
+      "https://ines-reception.digifactory.fr/admin/inc/js/jdigiTraits.js",
+    ];
 
-  const canProceed = () => {
-    switch (step) {
-      case 0: return formData.eventType !== "";
-      case 1: return formData.guests !== "";
-      case 2: return formData.date !== "";
-      case 3: return formData.name !== "" && formData.email !== "" && formData.phone !== "";
-      default: return false;
-    }
-  };
+    let loaded = 0;
+    const loadNext = () => {
+      if (loaded < scripts.length) {
+        const s = document.createElement("script");
+        s.src = scripts[loaded];
+        s.onload = () => { loaded++; loadNext(); };
+        document.body.appendChild(s);
+      } else {
+        const asyncScript = document.createElement("script");
+        asyncScript.src = "https://ines-reception.digifactory.fr/inc/js/extForm.js?f=dmd_devis&id=ines-devis-form";
+        asyncScript.async = true;
+        document.body.appendChild(asyncScript);
+      }
+    };
+    loadNext();
+  }, []);
 
   return (
     <PageTransition>
@@ -435,9 +424,9 @@ export default function AProposContent() {
                   <div>
                     <h4 className="font-bold text-white">Horaires</h4>
                     <p className="mt-1 text-sm text-white/50">
-                      Lun - Sam : 9h - 19h
+                      Mar - Sam : 9h - 18h
                       <br />
-                      Service le week-end sur réservation
+                      Prestation sur réservation
                     </p>
                   </div>
                 </div>
@@ -476,7 +465,7 @@ export default function AProposContent() {
           </div>
         </section>
 
-        {/* Formulaire de devis */}
+        {/* Formulaire de devis Digifactory */}
         <section id="devis" className="relative bg-white py-28 lg:py-36" ref={formRef}>
           <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-purple-muted blur-[150px]" />
 
@@ -504,237 +493,17 @@ export default function AProposContent() {
               </p>
             </motion.div>
 
-            {/* Progress */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={formInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-12"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-12 rounded-3xl border border-neutral-100 bg-white p-8 shadow-xl shadow-black/[0.03] md:p-12"
             >
-              <div className="flex items-center justify-center gap-2">
-                {Array.from({ length: totalSteps }).map((_, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div
-                      className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
-                        i <= step ? "bg-purple text-white" : "bg-neutral-100 text-neutral-400"
-                      }`}
-                    >
-                      {i < step ? <Check className="h-4 w-4" /> : i + 1}
-                    </div>
-                    {i < totalSteps - 1 && (
-                      <div
-                        className={`h-[2px] w-8 transition-all duration-300 sm:w-16 ${
-                          i < step ? "bg-purple" : "bg-neutral-200"
-                        }`}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
+              <div
+                id="ines-devis-form"
+                style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}
+              />
             </motion.div>
-
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mt-12 text-center"
-              >
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-purple/10">
-                  <Check className="h-10 w-10 text-purple" />
-                </div>
-                <h3
-                  className="mt-6 text-3xl font-bold text-black"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  Demande envoyée !
-                </h3>
-                <p className="mt-4 text-neutral-500">
-                  Merci pour votre confiance. Notre équipe vous recontactera sous 24h
-                  pour discuter de votre projet.
-                </p>
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={formInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-12 rounded-3xl border border-neutral-100 bg-white p-8 shadow-xl shadow-black/[0.03] md:p-12"
-              >
-                {/* Step 0: Event Type */}
-                {step === 0 && (
-                  <motion.div
-                    key="step0"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                  >
-                    <div className="flex items-center gap-3 text-neutral-400">
-                      <PartyPopper className="h-5 w-5" />
-                      <span className="text-sm font-medium">
-                        Quel type d&apos;événement organisez-vous ?
-                      </span>
-                    </div>
-                    <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
-                      {eventTypes.map((type) => (
-                        <button
-                          key={type.value}
-                          onClick={() => setFormData({ ...formData, eventType: type.value })}
-                          className={`rounded-xl border-2 p-4 text-left transition-all duration-300 ${
-                            formData.eventType === type.value
-                              ? "border-purple bg-purple/5"
-                              : "border-neutral-100 hover:border-neutral-200"
-                          }`}
-                        >
-                          <p className="text-sm font-medium text-neutral-800">{type.label}</p>
-                        </button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Step 1: Guests */}
-                {step === 1 && (
-                  <motion.div
-                    key="step1"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                  >
-                    <div className="flex items-center gap-3 text-neutral-400">
-                      <Users className="h-5 w-5" />
-                      <span className="text-sm font-medium">
-                        Combien d&apos;invités attendez-vous ?
-                      </span>
-                    </div>
-                    <div className="mt-6 grid gap-3">
-                      {guestRanges.map((range) => (
-                        <button
-                          key={range}
-                          onClick={() => setFormData({ ...formData, guests: range })}
-                          className={`rounded-xl border-2 p-4 text-left transition-all duration-300 ${
-                            formData.guests === range
-                              ? "border-purple bg-purple/5"
-                              : "border-neutral-100 hover:border-neutral-200"
-                          }`}
-                        >
-                          <p className="text-sm font-medium text-neutral-800">{range}</p>
-                        </button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Step 2: Date */}
-                {step === 2 && (
-                  <motion.div
-                    key="step2"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                  >
-                    <div className="flex items-center gap-3 text-neutral-400">
-                      <Calendar className="h-5 w-5" />
-                      <span className="text-sm font-medium">
-                        Quelle est la date prévue ?
-                      </span>
-                    </div>
-                    <div className="mt-6">
-                      <input
-                        type="date"
-                        value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                        className="w-full rounded-xl border-2 border-neutral-100 p-4 text-neutral-800 transition-all focus:border-purple focus:outline-none"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Step 3: Contact */}
-                {step === 3 && (
-                  <motion.div
-                    key="step3"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                  >
-                    <div className="flex items-center gap-3 text-neutral-400">
-                      <MessageSquare className="h-5 w-5" />
-                      <span className="text-sm font-medium">Vos coordonnées</span>
-                    </div>
-                    <div className="mt-6 grid gap-4 md:grid-cols-2">
-                      <input
-                        type="text"
-                        placeholder="Votre nom complet"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="rounded-xl border-2 border-neutral-100 p-4 text-neutral-800 transition-all focus:border-purple focus:outline-none"
-                      />
-                      <input
-                        type="email"
-                        placeholder="Votre email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="rounded-xl border-2 border-neutral-100 p-4 text-neutral-800 transition-all focus:border-purple focus:outline-none"
-                      />
-                      <input
-                        type="tel"
-                        placeholder="Votre téléphone"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="rounded-xl border-2 border-neutral-100 p-4 text-neutral-800 transition-all focus:border-purple focus:outline-none"
-                      />
-                      <textarea
-                        placeholder="Message ou précisions (optionnel)"
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        rows={3}
-                        className="rounded-xl border-2 border-neutral-100 p-4 text-neutral-800 transition-all focus:border-purple focus:outline-none md:col-span-2"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Navigation */}
-                <div className="mt-8 flex items-center justify-between">
-                  {step > 0 ? (
-                    <button
-                      onClick={() => setStep(step - 1)}
-                      className="flex items-center gap-2 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-600"
-                    >
-                      <ArrowLeft className="h-4 w-4" />
-                      Retour
-                    </button>
-                  ) : (
-                    <div />
-                  )}
-
-                  {step < totalSteps - 1 ? (
-                    <button
-                      onClick={() => canProceed() && setStep(step + 1)}
-                      disabled={!canProceed()}
-                      className={`flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold transition-all duration-300 ${
-                        canProceed()
-                          ? "bg-purple text-white hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
-                          : "cursor-not-allowed bg-neutral-100 text-neutral-300"
-                      }`}
-                    >
-                      Suivant
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => canProceed() && setSubmitted(true)}
-                      disabled={!canProceed()}
-                      className={`group relative flex items-center gap-2 overflow-hidden rounded-full px-8 py-3 text-sm font-semibold transition-all duration-300 ${
-                        canProceed()
-                          ? "bg-purple text-white hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
-                          : "cursor-not-allowed bg-neutral-100 text-neutral-300"
-                      }`}
-                    >
-                      <Send className="h-4 w-4" />
-                      <span className="relative z-10">Envoyer ma demande</span>
-                      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                    </button>
-                  )}
-                </div>
-              </motion.div>
-            )}
           </div>
         </section>
 
