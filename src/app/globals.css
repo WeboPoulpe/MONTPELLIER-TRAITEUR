@@ -310,3 +310,86 @@
   padding: 8px 4px;
   vertical-align: top;
 }
+
+/* Accordion sections */
+#ines-devis-form .accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 0;
+  background: #f9fafb;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+#ines-devis-form .accordion-trigger:hover {
+  border-color: #6B7F2D;
+  background: rgba(107, 127, 45, 0.04);
+}
+
+#ines-devis-form .accordion-trigger:not(.collapsed) {
+  border-color: #6B7F2D;
+  background: rgba(107, 127, 45, 0.06);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+}
+
+#ines-devis-form .accordion-trigger::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #6B7F2D;
+  border-bottom: 2px solid #6B7F2D;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+#ines-devis-form .accordion-trigger:not(.collapsed)::after {
+  transform: rotate(-135deg);
+}
+
+#ines-devis-form .accordion-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  border: 2px solid #6B7F2D;
+  border-top: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 0 20px;
+  margin-bottom: 12px;
+  background: #ffffff;
+}
+
+#ines-devis-form .accordion-content:not(.collapsed) {
+  padding: 20px;
+}
+
+#ines-devis-form .accordion-content.collapsed {
+  border-color: transparent;
+  padding: 0 20px;
+}
+
+#ines-devis-form fieldset.accordion-ready {
+  border: none;
+  padding: 0;
+  margin: 0 0 4px 0;
+}
+
+#ines-devis-form fieldset.accordion-ready > legend {
+  float: none;
+  width: 100%;
+  padding-bottom: 0;
+  border-bottom: none;
+}

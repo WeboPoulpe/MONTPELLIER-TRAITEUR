@@ -133,6 +133,114 @@ export default function AProposContent() {
       }
     };
     loadNext();
+
+    // Observer to transform form sections into accordions once the form loads
+    const container = document.getElementById("ines-devis-form");
+    if (!container) return;
+
+    const observer = new MutationObserver(() => {
+      // Find section headers: legends, h3, h4, or standalone text nodes that act as titles
+      const legends = container.querySelectorAll("legend, h3, h4, .section-title, .panel-title, .accordion-toggle");
+      if (legends.length === 0) return;
+
+      // Also target fieldsets directly
+      const fieldsets = container.querySelectorAll("fieldset");
+
+      if (fieldsets.length > 0) {
+        fieldsets.forEach((fieldset, i) => {
+          if (fieldset.classList.contains("accordion-ready")) return;
+          fieldset.classList.add("accordion-ready");
+
+          const legend = fieldset.querySelector("legend");
+          if (!legend) return;
+
+          // Wrap fieldset content (everything except legend) in a collapsible div
+          const content = document.createElement("div");
+          content.className = "accordion-content";
+          // Move all children except legend into content div
+          const children = Array.from(fieldset.children).filter(c => c !== legend);
+          children.forEach(c => content.appendChild(c));
+          fieldset.appendChild(content);
+
+          // Make legend clickable
+          legend.classList.add("accordion-trigger");
+          legend.setAttribute("role", "button");
+          legend.setAttribute("tabindex", "0");
+
+          // First section open by default, others collapsed
+          if (i > 0) {
+            content.classList.add("collapsed");
+            legend.classList.add("collapsed");
+          }
+
+          legend.addEventListener("click", () => {
+            const isCollapsed = content.classList.contains("collapsed");
+            content.classList.toggle("collapsed");
+            legend.classList.toggle("collapsed");
+            if (isCollapsed) {
+              content.style.maxHeight = content.scrollHeight + "px";
+              setTimeout(() => { content.style.maxHeight = "none"; }, 400);
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+              requestAnimationFrame(() => { content.style.maxHeight = "0"; });
+            }
+          });
+
+          // Set initial max-height
+          if (i > 0) {
+            content.style.maxHeight = "0";
+          }
+        });
+      }
+
+      // If no fieldsets but there are other section-like headers, handle them too
+      if (fieldsets.length === 0) {
+        const headers = container.querySelectorAll("h3, h4, .section-title, legend");
+        headers.forEach((header, i) => {
+          if (header.classList.contains("accordion-ready")) return;
+          header.classList.add("accordion-ready", "accordion-trigger");
+          header.setAttribute("role", "button");
+          header.setAttribute("tabindex", "0");
+
+          // Collect siblings until next header or end
+          const content = document.createElement("div");
+          content.className = "accordion-content";
+          let next = header.nextElementSibling;
+          const siblings: Element[] = [];
+          while (next && !next.matches("h3, h4, .section-title, legend")) {
+            siblings.push(next);
+            next = next.nextElementSibling;
+          }
+          siblings.forEach(s => content.appendChild(s));
+          header.after(content);
+
+          if (i > 0) {
+            content.classList.add("collapsed");
+            header.classList.add("collapsed");
+            content.style.maxHeight = "0";
+          }
+
+          header.addEventListener("click", () => {
+            const isCollapsed = content.classList.contains("collapsed");
+            content.classList.toggle("collapsed");
+            header.classList.toggle("collapsed");
+            if (isCollapsed) {
+              content.style.maxHeight = content.scrollHeight + "px";
+              setTimeout(() => { content.style.maxHeight = "none"; }, 400);
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+              requestAnimationFrame(() => { content.style.maxHeight = "0"; });
+            }
+          });
+        });
+      }
+
+      observer.disconnect();
+    });
+
+    observer.observe(container, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
