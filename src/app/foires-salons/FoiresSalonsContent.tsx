@@ -117,7 +117,7 @@ export default function FoiresSalonsContent() {
           title="Catering professionnel"
           titleAccent="pour vos salons"
           description="Faites la différence avec un service culinaire fluide, raffiné et respectueux de votre image de marque. Livraison directe sur stand, matériel inclus."
-          image="/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg"
+          image="/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg"
         />
 
         {/* Intro section */}
@@ -202,7 +202,7 @@ function IntroSection() {
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg"
+                  src="/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg"
                   alt="Grazing table traiteur salon Montpellier"
                   fill
                   className="object-cover"
@@ -319,11 +319,11 @@ function ProcessSection() {
 
 function GalleryStrip() {
   const images = [
-    "/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg",
-    "/photos site/assiette-dressage-salon-traiteur-montpellier-150x150.jpg",
-    "/photos site/cocktail-dinatoire-traiteur-montpellier-1-150x150.jpg",
-    "/photos site/minis-burgers-boeuf-traiteur-montpellier-150x150.jpg",
-    "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg",
+    "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg",
+    "/photos site/assiette-dressage-salon-traiteur-montpellier.jpg",
+    "/photos site/cocktail-dinatoire-traiteur-montpellier-1.jpg",
+    "/photos site/minis-burgers-boeuf-traiteur-montpellier.jpg",
+    "/photos site/canapes-mousse-lavande-traiteur-montpellier.jpg",
   ];
 
   return (

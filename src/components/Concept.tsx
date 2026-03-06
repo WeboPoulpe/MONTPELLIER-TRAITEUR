@@ -100,7 +100,7 @@ export default function Concept() {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
               <Image
-                src="/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg"
+                src="/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg"
                 alt="Plat gastronomique Traiteur Montpellier"
                 fill
                 className="object-cover"

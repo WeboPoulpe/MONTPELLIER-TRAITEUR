@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black">
       {/* Background image with next/image */}
       <Image
-        src="/photos site/cocktail-service-traiteur-montpellier-150x150.jpg"
+        src="/photos site/cocktail-service-traiteur-montpellier.jpg"
         alt="Traiteur Montpellier - Gastronomie sur mesure"
         fill
         className="object-cover"

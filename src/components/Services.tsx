@@ -13,7 +13,7 @@ const services = [
     subtitle: "Séminaires & Conférences",
     description:
       "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et à l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
-    image: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
     features: ["Cocktails VIP", "Plateaux déjeuners", "Pack café & thé"],
     href: "/entreprises",
   },
@@ -23,7 +23,7 @@ const services = [
     subtitle: "Stands & Expositions",
     description:
       "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région. Packs café, location de matériel et cocktails VIP pour vos événements prestigieux.",
-    image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg",
     features: ["Paniers repas staff", "Grazing tables", "Logistique complète"],
     href: "/entreprises",
   },
@@ -33,7 +33,7 @@ const services = [
     subtitle: "Célébrations & Réceptions",
     description:
       "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, où chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète. Créez des souvenirs gourmands, portés par une approche sincère et soignée.",
-    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
     features: ["Menu sur mesure", "Décoration culinaire", "Service complet"],
     href: "/entreprises",
   },

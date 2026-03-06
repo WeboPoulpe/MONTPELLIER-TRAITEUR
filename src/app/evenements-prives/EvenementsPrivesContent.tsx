@@ -26,42 +26,42 @@ const celebrations = [
     title: "Anniversaires",
     description:
       "De l'anniversaire intime entre amis a la grande fete familiale, nous créons des buffets et menus qui marquent le coup. Cocktails colorés, buffets gourmands, pièces montées et mignardises personnalisées.",
-    image: "/photos site/donut-presentoir-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/donut-presentoir-traiteur-montpellier.jpg",
   },
   {
     icon: Baby,
     title: "Baptemes & Baby Showers",
     description:
       "Célébrez l'arrivée de bébé avec délicatesse. Buffets doux et colorés, canapés fins, boissons fraîches et pâtisseries personnalisées aux couleurs de votre événement.",
-    image: "/photos site/choux-violet-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/choux-violet-traiteur-montpellier.jpg",
   },
   {
     icon: TreePine,
     title: "Garden-Parties",
     description:
       "Profitez du climat méditerranéen avec une réception en plein air. Grazing tables, barbecue chic, brochettes gourmet et cocktails rafraîchissants pour un moment convivial.",
-    image: "/photos site/table-apero-dinatoire-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/table-apero-dinatoire-traiteur-montpellier.jpg",
   },
   {
     icon: Heart,
     title: "Fiançailles & EVJF/EVG",
     description:
       "Marquez ce moment spécial avec une prestation qui reflète votre joie. Cocktail élégant, brunch gourmand ou apéro dinatoire festif, selon vos envies.",
-    image: "/photos site/apero-dinatoire-or-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/apero-dinatoire-or-traiteur-montpellier.jpg",
   },
   {
     icon: Users,
     title: "Réunions de Famille",
     description:
       "Retrouvailles, fetes de famille, célébrations intergénérationnelles : nous proposons des menus généreux et variés qui plaisent a tous les ages et tous les palais.",
-    image: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
   },
   {
     icon: Sparkles,
     title: "Événements Sur Mesure",
     description:
       "Pendaison de crémaillère, pot de départ, soirée a theme... Chaque événement mérite une cuisine a la hauteur. Dites-nous votre vision, nous la concrétisons.",
-    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg",
+    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
   },
 ];
 
@@ -110,7 +110,7 @@ export default function EvenementsPrivesContent() {
           title="Célébrez vos"
           titleAccent="moments précieux"
           description="Une cuisine qui conjugue générosité, authenticité et délicatesse. Chaque détail est pensé pour refléter votre sens de l'accueil et votre gout de l'excellence."
-          image="/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg"
+          image="/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"
         />
 
         {/* Intro */}
@@ -193,7 +193,7 @@ function IntroSection() {
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg"
+                  src="/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"
                   alt="Canapés apéro dinatoire Montpellier"
                   fill
                   className="object-cover"
@@ -303,7 +303,7 @@ function WhyUsSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
-                  src="/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg"
+                  src="/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg"
                   alt="Plat haut de gamme"
                   fill
                   className="object-cover"
@@ -312,7 +312,7 @@ function WhyUsSection() {
               </div>
               <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
-                  src="/photos site/macarons-traiteur-montpellier-150x150.jpg"
+                  src="/photos site/macarons-traiteur-montpellier.jpg"
                   alt="Macarons"
                   fill
                   className="object-cover"

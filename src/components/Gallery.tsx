@@ -6,14 +6,14 @@ import Link from "next/link";
 import Carousel from "./Carousel";
 
 const slides = [
-  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1-150x150.jpg", alt: "Cocktail dînatoire" },
-  { src: "/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg", alt: "Plat haut de gamme" },
-  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapés mousse lavande" },
-  { src: "/photos site/macarons-traiteur-montpellier-150x150.jpg", alt: "Macarons" },
-  { src: "/photos site/mise-en-place-traiteur-montpellier-150x150.jpg", alt: "Mise en place" },
-  { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier-150x150.jpg", alt: "Mini burgers boeuf" },
-  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier-150x150.jpg", alt: "Dressage élégant" },
-  { src: "/photos site/choux-creme-traiteur-montpellier-150x150.jpg", alt: "Choux à la crème" },
+  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1.jpg", alt: "Cocktail dînatoire" },
+  { src: "/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg", alt: "Plat haut de gamme" },
+  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier.jpg", alt: "Canapés mousse lavande" },
+  { src: "/photos site/macarons-traiteur-montpellier.jpg", alt: "Macarons" },
+  { src: "/photos site/mise-en-place-traiteur-montpellier.jpg", alt: "Mise en place" },
+  { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier.jpg", alt: "Mini burgers boeuf" },
+  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier.jpg", alt: "Dressage élégant" },
+  { src: "/photos site/choux-creme-traiteur-montpellier.jpg", alt: "Choux à la crème" },
 ];
 
 export default function Gallery() {
