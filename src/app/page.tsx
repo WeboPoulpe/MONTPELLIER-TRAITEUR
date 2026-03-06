@@ -8,6 +8,7 @@ const Services = dynamic(() => import("@/components/Services"));
 const Gallery = dynamic(() => import("@/components/Gallery"));
 const Testimonials = dynamic(() => import("@/components/Testimonials"));
 const QuoteForm = dynamic(() => import("@/components/QuoteForm"));
+const HomeFAQ = dynamic(() => import("@/components/HomeFAQ"));
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Gallery />
         <Testimonials />
         <QuoteForm />
+        <HomeFAQ />
       </main>
     </PageTransition>
   );

@@ -17,6 +17,34 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import PageTransition from "@/components/PageTransition";
 import Carousel from "@/components/Carousel";
+import FAQ from "@/components/FAQ";
+
+const faqItems = [
+  {
+    question: "Quel type d'evenements d'entreprise couvrez-vous ?",
+    answer: "Nous couvrons tous les types d'evenements professionnels : seminaires, conferences, lancements de produit, repas d'affaires, inaugurations, soirees de gala, team buildings et afterworks. Chaque prestation est adaptee a votre format et a votre image de marque.",
+  },
+  {
+    question: "Pouvez-vous adapter les menus aux regimes alimentaires de nos collaborateurs ?",
+    answer: "Absolument. Nous proposons systematiquement des options vegetariennes, vegan, sans gluten et halal. Lors de la commande, indiquez-nous les restrictions alimentaires et nous adapterons chaque plateau en consequence, sans supplement.",
+  },
+  {
+    question: "Quel est le delai de commande pour un evenement professionnel ?",
+    answer: "Nous recommandons un delai de 10 jours ouvres pour les evenements de moins de 50 personnes, et 3 semaines pour les evenements plus importants. En cas d'urgence, contactez-nous directement par telephone.",
+  },
+  {
+    question: "Proposez-vous des forfaits recurrents pour les entreprises ?",
+    answer: "Oui, nous proposons des contrats cadre pour les entreprises ayant des besoins reguliers : pauses dejeuner hebdomadaires, petits dejeuners mensuels, etc. Ces forfaits beneficient de tarifs preferentiels.",
+  },
+  {
+    question: "Le service et le materiel sont-ils inclus dans le prix ?",
+    answer: "Oui, nos prestations incluent la livraison, la mise en place, la vaisselle, les couverts et le debarrassage. Pour les evenements necessitant un service a table, nous mettons a disposition notre equipe de serveurs.",
+  },
+  {
+    question: "Intervenez-vous dans nos locaux ou uniquement dans des lieux de reception ?",
+    answer: "Nous intervenons partout : dans vos bureaux, salles de reunion, espaces de coworking, lieux de reception ou en exterieur. Notre equipe s'adapte a toutes les configurations et contraintes logistiques.",
+  },
+];
 
 const prestations = [
   {
@@ -158,6 +186,9 @@ export default function EntreprisesContent() {
             </motion.div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <FAQ items={faqItems} title="Questions sur nos prestations entreprise" />
       </main>
     </PageTransition>
   );

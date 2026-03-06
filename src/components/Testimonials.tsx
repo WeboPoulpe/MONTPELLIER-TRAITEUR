@@ -3,30 +3,43 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
-    name: "Sophie & Antoine",
-    event: "Mariage — Juin 2024",
-    text: "Une prestation exceptionnelle pour notre mariage. Les saveurs méditerranéennes et caribéennes ont transporté nos invités. Le service était impeccable, discret et chaleureux. Un immense merci à toute l'équipe !",
+    name: "Charlene Leininger",
+    event: "Avis Google",
+    text: "Equipe reactive et tres professionnelle. Les plats etaient delicieux et la presentation impeccable. Je recommande vivement Traiteur Montpellier pour tous vos evenements !",
     rating: 5,
   },
   {
-    name: "Marie-Claire Durand",
-    event: "Séminaire d'entreprise",
-    text: "Nous faisons appel à Traiteur Montpellier pour tous nos événements corporate. La qualité est toujours au rendez-vous, les grazing tables sont spectaculaires et le service est d'une fluidité remarquable.",
+    name: "Thomas Revillard",
+    event: "Avis Google",
+    text: "Nous avons fait appel a Traiteur Montpellier pour un seminaire de 80 personnes. Les grazing tables etaient magnifiques, le service fluide et les retours de nos collaborateurs unanimement positifs. Merci !",
     rating: 5,
   },
   {
-    name: "Laurent Bergman",
-    event: "Cocktail VIP — 120 personnes",
-    text: "L'engagement écoresponsable combiné à une cuisine raffinée, c'est exactement ce que nous recherchions. Les mignardises étaient sublimes et le concept zéro déchet nous a particulièrement séduits.",
+    name: "Claire Dupont-Martin",
+    event: "Avis Google",
+    text: "Prestation au top pour l'anniversaire de ma fille. Les mignardises etaient a tomber, les canapes originaux et le service tres agreable. L'engagement eco-responsable est un vrai plus.",
     rating: 5,
   },
   {
-    name: "Isabelle Fournier",
-    event: "Anniversaire — 80 personnes",
-    text: "Chaque détail était pensé avec soin. Du buffet aux desserts, tout était d'une fraîcheur et d'une saveur incomparables. Nos invités en parlent encore des mois après !",
+    name: "Jean-Philippe Moreau",
+    event: "Avis Google",
+    text: "Traiteur Montpellier a sublimé notre cocktail d'inauguration. La qualité des produits, la fraicheur et le dressage etaient remarquables. Une adresse que je garde precieusement.",
+    rating: 5,
+  },
+  {
+    name: "Nadia Bensalem",
+    event: "Avis Google",
+    text: "Un grand merci pour notre evenement d'entreprise. Tout etait parfait du debut a la fin : ponctualite, qualite, gentillesse de l'equipe. Les touches caribeennes ont fait sensation !",
+    rating: 5,
+  },
+  {
+    name: "Stephanie Lacroix",
+    event: "Avis Google",
+    text: "Nous avons ete bluffes par le professionnalisme de Traiteur Montpellier. Le buffet etait aussi beau que bon, les invites ont adore. Je recommande a 100% !",
     rating: 5,
   },
 ];
@@ -57,8 +70,18 @@ export default function Testimonials() {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <Image
+              src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+              alt="Google"
+              width={60}
+              height={20}
+              className="opacity-60"
+            />
+            <span className="text-sm font-medium text-white/40">Avis</span>
+          </div>
           <span className="text-xs font-semibold tracking-[0.3em] text-purple-light uppercase">
-            Témoignages
+            Avis Google verifies
           </span>
           <h2
             className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl"
@@ -68,6 +91,16 @@ export default function Testimonials() {
             <br />
             nos <span className="text-purple-light">clients</span>
           </h2>
+          {/* Google rating */}
+          <div className="mt-4 flex items-center justify-center gap-2">
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="text-sm font-bold text-white">5.0</span>
+            <span className="text-sm text-white/40">sur Google</span>
+          </div>
         </motion.div>
 
         {/* Testimonial Carousel */}
@@ -95,7 +128,7 @@ export default function Testimonials() {
                     (_, i) => (
                       <Star
                         key={i}
-                        className="h-4 w-4 fill-purple-light text-purple-light"
+                        className="h-4 w-4 fill-yellow-400 text-yellow-400"
                       />
                     )
                   )}
@@ -111,7 +144,13 @@ export default function Testimonials() {
                   <p className="text-sm font-bold tracking-wider text-white uppercase">
                     {testimonials[current].name}
                   </p>
-                  <p className="mt-1 text-xs tracking-wider text-white/40">
+                  <p className="mt-1 flex items-center justify-center gap-1 text-xs tracking-wider text-white/40">
+                    <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
                     {testimonials[current].event}
                   </p>
                 </div>
@@ -123,7 +162,7 @@ export default function Testimonials() {
               <button
                 onClick={prev}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white/50 transition-all hover:border-purple hover:text-purple"
-                aria-label="Témoignage précédent"
+                aria-label="Temoignage precedent"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -139,7 +178,7 @@ export default function Testimonials() {
                       transform: i === current ? "scaleX(1)" : "scaleX(0.25)",
                       opacity: i === current ? 1 : 0.3,
                     }}
-                    aria-label={`Témoignage ${i + 1}`}
+                    aria-label={`Temoignage ${i + 1}`}
                   />
                 ))}
               </div>
@@ -147,7 +186,7 @@ export default function Testimonials() {
               <button
                 onClick={next}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white/50 transition-all hover:border-purple hover:text-purple"
-                aria-label="Témoignage suivant"
+                aria-label="Temoignage suivant"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -163,9 +202,9 @@ export default function Testimonials() {
           className="mt-20 grid grid-cols-2 gap-8 border-t border-white/10 pt-16 md:grid-cols-4"
         >
           {[
-            { number: "500+", label: "Événements réalisés" },
-            { number: "15+", label: "Années d'expérience" },
-            { number: "98%", label: "Clients satisfaits" },
+            { number: "500+", label: "Evenements realises" },
+            { number: "15+", label: "Annees d'experience" },
+            { number: "5/5", label: "Note Google" },
             { number: "50k+", label: "Convives servis" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">

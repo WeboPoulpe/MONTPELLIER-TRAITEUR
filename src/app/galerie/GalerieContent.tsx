@@ -6,6 +6,26 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
+import FAQ from "@/components/FAQ";
+
+const galerieFaq = [
+  {
+    question: "Puis-je voir des photos de realisations similaires a mon evenement ?",
+    answer: "Bien sur ! Lors de notre premier echange, nous vous partageons des exemples de prestations similaires a votre projet. Notre galerie en ligne presente un apercu de notre savoir-faire, mais nous disposons d'un portfolio plus complet sur demande.",
+  },
+  {
+    question: "Realisez-vous des presentations sur mesure pour chaque evenement ?",
+    answer: "Absolument. Chaque evenement beneficie d'une mise en scene culinaire unique, pensee en fonction de votre theme, de vos couleurs et de l'ambiance souhaitee. Nos dressages sont aussi beaux que bons.",
+  },
+  {
+    question: "Proposez-vous des grazing tables comme celles de la galerie ?",
+    answer: "Oui, nos grazing tables sont l'une de nos specialites les plus demandees. Composees de fromages, charcuteries, fruits frais, crudites et pains artisanaux, elles constituent un veritable spectacle visuel et gustatif.",
+  },
+  {
+    question: "Puis-je personnaliser les couleurs et le theme de la presentation culinaire ?",
+    answer: "Tout a fait. Nous adaptons les couleurs des canapes, les contenants, la decoration des plateaux et meme les saveurs pour matcher votre theme evenementiel. N'hesitez pas a nous partager votre moodboard.",
+  },
+];
 
 type Category = "tous" | "cocktails" | "plats" | "canapes" | "desserts" | "dressage";
 
@@ -255,6 +275,9 @@ export default function GalerieContent() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* FAQ */}
+        <FAQ items={galerieFaq} title="Questions sur nos creations" />
       </main>
     </PageTransition>
   );

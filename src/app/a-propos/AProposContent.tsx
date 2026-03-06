@@ -26,6 +26,34 @@ import {
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import PageTransition from "@/components/PageTransition";
+import FAQ from "@/components/FAQ";
+
+const aproposFaq = [
+  {
+    question: "Depuis quand Traiteur Montpellier existe-t-il ?",
+    answer: "Traiteur Montpellier a ete fonde en 2008. Nous cumulons plus de 15 ans d'experience dans la restauration evenementielle a Montpellier et dans tout l'Herault, avec plus de 500 evenements realises et 50 000 convives servis.",
+  },
+  {
+    question: "Quelle est votre zone d'intervention ?",
+    answer: "Nous sommes bases a Montpellier et intervenons dans tout le departement de l'Herault (34). Pour les evenements d'envergure, nous pouvons nous deplacer dans toute la region Occitanie. Contactez-nous pour verifier la faisabilite.",
+  },
+  {
+    question: "Que signifie votre engagement eco-responsable concretement ?",
+    answer: "Notre demarche RSE repose sur trois piliers : le zero dechet (compostage, valorisation des dechets en huiles aromatisees et soupes), les circuits courts (partenariats avec les producteurs locaux) et la solidarite (redistribution des surplus a une association humanitaire de Montpellier).",
+  },
+  {
+    question: "Comment obtenir un devis ?",
+    answer: "Remplissez notre formulaire de devis en ligne en quelques clics, ou appelez-nous directement au 06 60 13 05 96. Nous vous repondons sous 24h avec une proposition personnalisee et sans engagement.",
+  },
+  {
+    question: "Quelle est votre specialite culinaire ?",
+    answer: "Notre cuisine s'inspire des traditions mediterraneennes enrichies de touches caribeennes. Nous proposons une gastronomie metissee, genereuse et raffinee, preparee a partir de produits frais et de saison issus de producteurs locaux.",
+  },
+  {
+    question: "Proposez-vous des degustations avant de finaliser la commande ?",
+    answer: "Oui, pour les evenements de plus de 50 personnes, nous organisons une degustation sur rendez-vous. C'est l'occasion de valider ensemble les saveurs, les presentations et d'ajuster le menu selon vos retours.",
+  },
+];
 
 const values = [
   {
@@ -709,6 +737,9 @@ export default function AProposContent() {
             )}
           </div>
         </section>
+
+        {/* FAQ */}
+        <FAQ items={aproposFaq} title="Questions generales" />
       </main>
     </PageTransition>
   );
