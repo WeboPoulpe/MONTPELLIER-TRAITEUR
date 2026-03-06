@@ -10,7 +10,7 @@ const sections = [
 
 Traiteur Montpellier
 Forme juridique : Micro-entreprise / Entreprise individuelle
-Siege social : Montpellier, France
+Siege social : 81 rue de Padirac, 34070 Montpellier
 Telephone : 06 60 13 05 96
 Email : contact@traiteurmontpellier.com
 Directeur de la publication : Omar — Gerant`,

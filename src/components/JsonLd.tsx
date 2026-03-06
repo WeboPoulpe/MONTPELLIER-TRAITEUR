@@ -13,6 +13,8 @@ export default function JsonLd() {
     servesCuisine: ["Mediterraneenne", "Caribeenne", "Francaise"],
     address: {
       "@type": "PostalAddress",
+      streetAddress: "81 rue de Padirac",
+      postalCode: "34070",
       addressLocality: "Montpellier",
       addressRegion: "Occitanie",
       addressCountry: "FR",

@@ -13,7 +13,7 @@ const sections = [
     content: `Le responsable du traitement des donnees personnelles est :
 
 Traiteur Montpellier
-Adresse : Montpellier, France
+Adresse : 81 rue de Padirac, 34070 Montpellier
 Email : contact@traiteurmontpellier.com
 Telephone : 06 60 13 05 96`,
   },

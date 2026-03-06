@@ -371,7 +371,7 @@ export default function AProposContent() {
                 className="overflow-hidden rounded-2xl lg:col-span-3"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92456.15065498498!2d3.807!3d43.6108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6af0725dd1db1%3A0xad8756742c40250!2sMontpellier!5e0!3m2!1sfr!2sfr!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.5!2d3.8367!3d43.6048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6af0725dd1db1%3A0xad8756742c40250!2s81+Rue+de+Padirac%2C+34070+Montpellier!5e0!3m2!1sfr!2sfr!4v1"
                   width="100%"
                   height="450"
                   style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)" }}
@@ -397,7 +397,7 @@ export default function AProposContent() {
                   <div>
                     <h4 className="font-bold text-white">Adresse</h4>
                     <p className="mt-1 text-sm text-white/50">
-                      Montpellier, France
+                      81 rue de Padirac, 34070 Montpellier
                       <br />
                       Intervention dans tout l&apos;Herault
                     </p>

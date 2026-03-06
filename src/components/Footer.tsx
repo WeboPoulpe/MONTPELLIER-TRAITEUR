@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="overflow-hidden rounded-2xl lg:col-span-2">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92456.15065498498!2d3.807!3d43.6108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6af0725dd1db1%3A0xad8756742c40250!2sMontpellier!5e0!3m2!1sfr!2sfr!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.5!2d3.8367!3d43.6048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6af0725dd1db1%3A0xad8756742c40250!2s81+Rue+de+Padirac%2C+34070+Montpellier!5e0!3m2!1sfr!2sfr!4v1"
                 width="100%"
                 height="280"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2)" }}
@@ -62,7 +62,7 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-purple-light" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Montpellier, France</p>
+                  <p className="text-sm font-semibold text-white">81 rue de Padirac, 34070 Montpellier</p>
                   <p className="text-xs text-white/40">Intervention dans tout l&apos;Herault</p>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3 text-sm text-white/40">
                 <MapPin className="h-4 w-4 shrink-0 text-purple/60" />
-                Montpellier, France
+                81 rue de Padirac, 34070 Montpellier
               </li>
               <li>
                 <a
