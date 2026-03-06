@@ -2,22 +2,22 @@ import type { Metadata } from "next";
 import EvenementsPrivesContent from "./EvenementsPrivesContent";
 
 export const metadata: Metadata = {
-  title: "Traiteur Evenements Prives Montpellier - Anniversaires, Baptemes, Receptions",
+  title: "Traiteur Événements Privés Montpellier - Anniversaires, Baptêmes, Réceptions",
   description:
-    "Traiteur pour vos evenements prives a Montpellier : anniversaires, baptemes, garden-parties, celebrations. Cuisine mediterraneenne sur mesure et eco-responsable.",
+    "Traiteur pour vos événements privés à Montpellier : anniversaires, baptêmes, garden-parties, célébrations. Cuisine méditerranéenne sur mesure et éco-responsable.",
   keywords: [
-    "traiteur evenement prive montpellier",
+    "traiteur événement privé montpellier",
     "traiteur anniversaire montpellier",
-    "traiteur bapteme montpellier",
+    "traiteur baptême montpellier",
     "traiteur garden party montpellier",
-    "traiteur reception privee montpellier",
+    "traiteur réception privée montpellier",
     "buffet anniversaire montpellier",
-    "cocktail prive montpellier",
+    "cocktail privé montpellier",
   ],
   openGraph: {
-    title: "Traiteur Evenements Prives | Traiteur Montpellier",
+    title: "Traiteur Événements Privés | Traiteur Montpellier",
     description:
-      "Celebrez vos moments precieux avec une cuisine sur mesure. Anniversaires, baptemes, garden-parties a Montpellier.",
+      "Célébrez vos moments précieux avec une cuisine sur mesure. Anniversaires, baptêmes, garden-parties à Montpellier.",
     url: "https://traiteurmontpellier.com/evenements-prives",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",

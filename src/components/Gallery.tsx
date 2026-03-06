@@ -6,14 +6,14 @@ import Link from "next/link";
 import Carousel from "./Carousel";
 
 const slides = [
-  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1-150x150.jpg", alt: "Cocktail dinatoire" },
+  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1-150x150.jpg", alt: "Cocktail dînatoire" },
   { src: "/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg", alt: "Plat haut de gamme" },
-  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapes mousse lavande" },
+  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapés mousse lavande" },
   { src: "/photos site/macarons-traiteur-montpellier-150x150.jpg", alt: "Macarons" },
   { src: "/photos site/mise-en-place-traiteur-montpellier-150x150.jpg", alt: "Mise en place" },
   { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier-150x150.jpg", alt: "Mini burgers boeuf" },
-  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier-150x150.jpg", alt: "Dressage elegant" },
-  { src: "/photos site/choux-creme-traiteur-montpellier-150x150.jpg", alt: "Choux a la creme" },
+  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier-150x150.jpg", alt: "Dressage élégant" },
+  { src: "/photos site/choux-creme-traiteur-montpellier-150x150.jpg", alt: "Choux à la crème" },
 ];
 
 export default function Gallery() {
@@ -23,7 +23,6 @@ export default function Gallery() {
   return (
     <section className="bg-white py-28 lg:py-36" ref={ref}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -39,11 +38,10 @@ export default function Gallery() {
           >
             Une cuisine qui
             <br />
-            <span className="text-purple">emerveille</span>
+            <span className="text-purple">émerveille</span>
           </h2>
         </motion.div>
 
-        {/* Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -53,7 +51,6 @@ export default function Gallery() {
           <Carousel slides={slides} autoplayDelay={4000} />
         </motion.div>
 
-        {/* Link to full gallery */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

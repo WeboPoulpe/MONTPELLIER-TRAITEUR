@@ -21,64 +21,64 @@ import FAQ from "@/components/FAQ";
 
 const faqItems = [
   {
-    question: "Quel type d'evenements d'entreprise couvrez-vous ?",
-    answer: "Nous couvrons tous les types d'evenements professionnels : seminaires, conferences, lancements de produit, repas d'affaires, inaugurations, soirees de gala, team buildings et afterworks. Chaque prestation est adaptee a votre format et a votre image de marque.",
+    question: "Quel type d'événements d'entreprise couvrez-vous ?",
+    answer: "Nous couvrons tous les types d'événements professionnels : séminaires, conférences, lancements de produit, repas d'affaires, inaugurations, soirées de gala, team buildings et afterworks. Chaque prestation est adaptée a votre format et a votre image de marque.",
   },
   {
-    question: "Pouvez-vous adapter les menus aux regimes alimentaires de nos collaborateurs ?",
-    answer: "Absolument. Nous proposons systematiquement des options vegetariennes, vegan, sans gluten et halal. Lors de la commande, indiquez-nous les restrictions alimentaires et nous adapterons chaque plateau en consequence, sans supplement.",
+    question: "Pouvez-vous adapter les menus aux régimes alimentaires de nos collaborateurs ?",
+    answer: "Absolument. Nous proposons systématiquement des options végétariennes, vegan, sans gluten et halal. Lors de la commande, indiquez-nous les restrictions alimentaires et nous adapterons chaque plateau en conséquence, sans supplément.",
   },
   {
-    question: "Quel est le delai de commande pour un evenement professionnel ?",
-    answer: "Nous recommandons un delai de 10 jours ouvres pour les evenements de moins de 50 personnes, et 3 semaines pour les evenements plus importants. En cas d'urgence, contactez-nous directement par telephone.",
+    question: "Quel est le délai de commande pour un événement professionnel ?",
+    answer: "Nous recommandons un délai de 10 jours ouvrés pour les événements de moins de 50 personnes, et 3 semaines pour les événements plus importants. En cas d'urgence, contactez-nous directement par téléphone.",
   },
   {
-    question: "Proposez-vous des forfaits recurrents pour les entreprises ?",
-    answer: "Oui, nous proposons des contrats cadre pour les entreprises ayant des besoins reguliers : pauses dejeuner hebdomadaires, petits dejeuners mensuels, etc. Ces forfaits beneficient de tarifs preferentiels.",
+    question: "Proposez-vous des forfaits récurrents pour les entreprises ?",
+    answer: "Oui, nous proposons des contrats cadre pour les entreprises ayant des besoins réguliers : pauses déjeuner hebdomadaires, petits déjeuners mensuels, etc. Ces forfaits bénéficient de tarifs préférentiels.",
   },
   {
-    question: "Le service et le materiel sont-ils inclus dans le prix ?",
-    answer: "Oui, nos prestations incluent la livraison, la mise en place, la vaisselle, les couverts et le debarrassage. Pour les evenements necessitant un service a table, nous mettons a disposition notre equipe de serveurs.",
+    question: "Le service et le matériel sont-ils inclus dans le prix ?",
+    answer: "Oui, nos prestations incluent la livraison, la mise en place, la vaisselle, les couverts et le débarrassage. Pour les événements nécessitant un service a table, nous mettons a disposition notre équipe de serveurs.",
   },
   {
-    question: "Intervenez-vous dans nos locaux ou uniquement dans des lieux de reception ?",
-    answer: "Nous intervenons partout : dans vos bureaux, salles de reunion, espaces de coworking, lieux de reception ou en exterieur. Notre equipe s'adapte a toutes les configurations et contraintes logistiques.",
+    question: "Intervenez-vous dans nos locaux ou uniquement dans des lieux de réception ?",
+    answer: "Nous intervenons partout : dans vos bureaux, salles de réunion, espaces de coworking, lieux de réception ou en extérieur. Notre équipe s'adapte a toutes les configurations et contraintes logistiques.",
   },
 ];
 
 const prestations = [
   {
     icon: Building2,
-    title: "Evenement Entreprise",
-    subtitle: "Seminaires & Conferences",
+    title: "Événement Entreprise",
+    subtitle: "Séminaires & Conférences",
     description:
-      "Organisez vos evenements d'entreprise avec l'assurance d'une prestation culinaire soignee et sur mesure. Traiteur Montpellier accompagne vos seminaires, repas d'affaires, conferences et lancements en apportant une attention toute particuliere aux details et a l'experience gustative. Faites de chaque rencontre professionnelle un moment memorable, empreint de saveurs raffinees et d'elegance naturelle.",
+      "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et a l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
     longDescription:
-      "De la reunion de direction intime au congres de grande envergure, nous concevons des menus qui refletent l'image de votre entreprise. Nos chefs selectionnent des produits de saison aupres de producteurs locaux pour creer des plateaux repas equilibres, des cocktails dinatoires sophistiques et des pauses gourmandes qui dynamiseront vos journees professionnelles. Chaque detail logistique est anticipe pour que vous puissiez vous concentrer sur l'essentiel : vos collaborateurs et vos objectifs.",
+      "De la réunion de direction intime au congrès de grande envergure, nous concevons des menus qui reflètent l'image de votre entreprise. Nos chefs sélectionnent des produits de saison auprès de producteurs locaux pour créer des plateaux repas équilibrés, des cocktails dinatoires sophistiqués et des pauses gourmandes qui dynamiseront vos journées professionnelles. Chaque détail logistique est anticipé pour que vous puissiez vous concentrer sur l'essentiel : vos collaborateurs et vos objectifs.",
     image: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg",
-    features: ["Cocktails VIP", "Plateaux dejeuners", "Pack cafe & the", "Seminaires", "Inaugurations", "Repas d'affaires"],
+    features: ["Cocktails VIP", "Plateaux déjeuners", "Pack café & thé", "Séminaires", "Inaugurations", "Repas d'affaires"],
   },
   {
     icon: UtensilsCrossed,
     title: "Foires & Salons",
     subtitle: "Stands & Expositions",
     description:
-      "Confiez a Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits dejeuners, grazing tables, plateaux sales chauds ou froids, mignardises, boissons softs bio et vins de region.",
+      "Confiez a Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région.",
     longDescription:
-      "Packs cafe, location de materiel et cocktails VIP pour vos evenements prestigieux. Nous comprenons les contraintes specifiques des salons professionnels : timing serre, logistique complexe, besoin de flexibilite. Notre equipe s'adapte a votre planning et livre directement sur votre stand, avec un materiel de presentation elegant qui valorise votre image de marque. Des paniers individuels aux grazing tables spectaculaires, chaque formule est pensee pour impressionner vos visiteurs et renforcer votre presence.",
+      "Packs café, location de matériel et cocktails VIP pour vos événements prestigieux. Nous comprenons les contraintes spécifiques des salons professionnels : timing serré, logistique complexe, besoin de flexibilité. Notre équipe s'adapte a votre planning et livre directement sur votre stand, avec un matériel de présentation élégant qui valorise votre image de marque. Des paniers individuels aux grazing tables spectaculaires, chaque formule est pensée pour impressionner vos visiteurs et renforcer votre présence.",
     image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg",
-    features: ["Paniers repas staff", "Grazing tables", "Logistique complete", "Plateaux chauds/froids", "Boissons bio", "Vins de region"],
+    features: ["Paniers repas staff", "Grazing tables", "Logistique complète", "Plateaux chauds/froids", "Boissons bio", "Vins de région"],
   },
   {
     icon: PartyPopper,
-    title: "Evenement Prive",
-    subtitle: "Celebrations & Receptions",
+    title: "Événement Privé",
+    subtitle: "Célébrations & Réceptions",
     description:
-      "Celebrez vos moments precieux avec une cuisine qui conjugue generosite, authenticite et delicatesse. Traiteur Montpellier imagine pour vos evenements prives des prestations personnalisees, ou chaque detail est pense pour refleter votre sens de l'accueil et votre gout de l'excellence discrete.",
+      "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, ou chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète.",
     longDescription:
-      "Creez des souvenirs gourmands, portes par une approche sincere et soignee. Que ce soit pour un anniversaire intime, une garden-party estivale, un bapteme ou toute autre celebration, nous composons un menu qui raconte votre histoire. Notre cuisine d'inspiration mediterraneenne et caribeenne apporte une touche d'originalite a chaque assiette, tandis que notre engagement eco-responsable garantit des evenements aussi savoureux que respectueux. Du premier contact au dernier service, nous sommes a vos cotes.",
+      "Créez des souvenirs gourmands, portés par une approche sincère et soignée. Que ce soit pour un anniversaire intime, une garden-party estivale, un baptême ou toute autre célébration, nous composons un menu qui raconte votre histoire. Notre cuisine d'inspiration méditerranéenne et caribéenne apporte une touche d'originalité a chaque assiette, tandis que notre engagement éco-responsable garantit des événements aussi savoureux que respectueux. Du premier contact au dernier service, nous sommes a vos côtés.",
     image: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg",
-    features: ["Menu sur mesure", "Decoration culinaire", "Service complet", "Anniversaires", "Baptemes", "Garden-parties"],
+    features: ["Menu sur mesure", "Décoration culinaire", "Service complet", "Anniversaires", "Baptêmes", "Garden-parties"],
   },
 ];
 
@@ -88,7 +88,7 @@ const carouselSlides = [
   { src: "/photos site/assiette-dressage-salon-traiteur-montpellier-150x150.jpg", alt: "Dressage salon" },
   { src: "/photos site/macarons-traiteur-montpellier-150x150.jpg", alt: "Macarons" },
   { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier-150x150.jpg", alt: "Mini burgers boeuf" },
-  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapes mousse lavande" },
+  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapés mousse lavande" },
 ];
 
 const offerings = [
@@ -103,9 +103,9 @@ export default function EntreprisesContent() {
       <main>
         <PageHero
           subtitle="Nos Prestations"
-          title="Des experiences"
+          title="Des expériences"
           titleAccent="culinaires d'exception"
-          description="Sublimez vos receptions grace a notre savoir-faire et a notre passion pour une cuisine genereuse, raffinee et eco-responsable."
+          description="Sublimez vos réceptions grâce a notre savoir-faire et a notre passion pour une cuisine généreuse, raffinée et éco-responsable."
           image="/photos site/cocktail-service-traiteur-montpellier-150x150.jpg"
         />
 
@@ -131,7 +131,7 @@ export default function EntreprisesContent() {
                 className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                Nos <span className="text-purple">realisations</span>
+                Nos <span className="text-purple">réalisations</span>
               </h2>
             </motion.div>
             <Carousel slides={carouselSlides} autoplayDelay={5000} />
@@ -171,10 +171,10 @@ export default function EntreprisesContent() {
                 className="text-3xl font-bold text-white md:text-5xl"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                Un projet ? Une idee ?
+                Un projet ? Une idée ?
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-                Parlez-nous de votre evenement et recevez une proposition personnalisee sous 24h. Devis gratuit et sans engagement.
+                Parlez-nous de votre événement et recevez une proposition personnalisée sous 24h. Devis gratuit et sans engagement.
               </p>
               <Link
                 href="/a-propos#devis"

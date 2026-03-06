@@ -25,7 +25,7 @@ export default function Footer() {
               className="text-3xl font-bold text-white md:text-4xl"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Pret a sublimer votre evenement ?
+              Prêt à sublimer votre événement ?
             </h3>
             <p className="mt-2 text-white/50">
               Contactez-nous pour une proposition sur mesure.
@@ -63,7 +63,7 @@ export default function Footer() {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-purple-light" />
                 <div>
                   <p className="text-sm font-semibold text-white">81 rue de Padirac, 34070 Montpellier</p>
-                  <p className="text-xs text-white/40">Intervention dans tout l&apos;Herault</p>
+                  <p className="text-xs text-white/40">Intervention dans tout l&apos;Hérault</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -98,74 +98,44 @@ export default function Footer() {
                   className="h-10 w-auto brightness-0 invert"
                 />
               </Link>
-              {/* Logo Zero Dechet */}
               <Image
                 src="/photos site/rse-traiteur-montpellier-768x763.jpg"
-                alt="Engagement Zero Dechet - Traiteur Montpellier"
+                alt="Engagement Zéro Déchet - Traiteur Montpellier"
                 width={48}
                 height={48}
                 className="h-12 w-12 rounded-full object-cover ring-2 ring-purple/30"
               />
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/40">
-              Votre partenaire culinaire pour des evenements d&apos;exception a
-              Montpellier et ses environs. Cuisine mediterraneenne raffinee et
-              engagement ecoresponsable depuis 2008.
+              Votre partenaire culinaire pour des événements d&apos;exception à
+              Montpellier et ses environs. Cuisine méditerranéenne raffinée et
+              engagement écoresponsable depuis 2008.
             </p>
             <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-xs text-white/40">
               <span className="inline-block h-2 w-2 rounded-full bg-green-400" />
-              Engage zero dechet &bull; Circuits courts &bull; Solidarite
+              Engagé zéro déchet &bull; Circuits courts &bull; Solidarité
             </div>
             <div className="mt-6 flex gap-4">
-              <a
-                href="https://www.instagram.com/traiteurmontpellier"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/traiteur-montpellier"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="https://www.facebook.com/ines.reception"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
+              <a href="https://www.instagram.com/traiteurmontpellier" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
+              <a href="https://www.linkedin.com/company/traiteur-montpellier" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple" aria-label="LinkedIn"><Linkedin className="h-4 w-4" /></a>
+              <a href="https://www.facebook.com/ines.reception" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple" aria-label="Facebook"><Facebook className="h-4 w-4" /></a>
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-xs font-bold tracking-widest text-white uppercase">
-              Prestations
-            </h4>
+            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Prestations</h4>
             <ul className="mt-4 space-y-3">
               {[
-                { href: "/entreprises", label: "Evenements Entreprise" },
+                { href: "/entreprises", label: "Événements Entreprise" },
                 { href: "/foires-salons", label: "Foires & Salons" },
-                { href: "/evenements-prives", label: "Evenements Prives" },
+                { href: "/evenements-prives", label: "Événements Privés" },
                 { href: "/galerie", label: "Galerie" },
-                { href: "/a-propos", label: "A Propos" },
+                { href: "/a-propos", label: "À Propos" },
                 { href: "/a-propos#devis", label: "Devis gratuit" },
               ].map((link) => (
                 <li key={link.href + link.label}>
-                  <Link
-                    href={link.href}
-                    className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light"
-                  >
+                  <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">
                     {link.label}
                     <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-purple-light transition-all duration-300 group-hover:w-full" />
                   </Link>
@@ -176,41 +146,18 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-bold tracking-widest text-white uppercase">
-              Contact
-            </h4>
+            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Contact</h4>
             <ul className="mt-4 space-y-3">
-              <li className="flex items-center gap-3 text-sm text-white/40">
-                <MapPin className="h-4 w-4 shrink-0 text-purple/60" />
-                81 rue de Padirac, 34070 Montpellier
-              </li>
-              <li>
-                <a
-                  href="tel:+33660130596"
-                  className="flex items-center gap-3 text-sm text-white/40 transition-colors hover:text-purple-light"
-                >
-                  <Phone className="h-4 w-4 shrink-0 text-purple/60" />
-                  +33 (6) 60 13 05 96
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:contact@traiteurmontpellier.com"
-                  className="flex items-center gap-3 text-sm text-white/40 transition-colors hover:text-purple-light"
-                >
-                  <Mail className="h-4 w-4 shrink-0 text-purple/60" />
-                  contact@traiteurmontpellier.com
-                </a>
-              </li>
+              <li className="flex items-center gap-3 text-sm text-white/40"><MapPin className="h-4 w-4 shrink-0 text-purple/60" />81 rue de Padirac, 34070 Montpellier</li>
+              <li><a href="tel:+33660130596" className="flex items-center gap-3 text-sm text-white/40 transition-colors hover:text-purple-light"><Phone className="h-4 w-4 shrink-0 text-purple/60" />+33 (6) 60 13 05 96</a></li>
+              <li><a href="mailto:contact@traiteurmontpellier.com" className="flex items-center gap-3 text-sm text-white/40 transition-colors hover:text-purple-light"><Mail className="h-4 w-4 shrink-0 text-purple/60" />contact@traiteurmontpellier.com</a></li>
             </ul>
 
-            <h4 className="mt-8 text-xs font-bold tracking-widest text-white uppercase">
-              Horaires
-            </h4>
+            <h4 className="mt-8 text-xs font-bold tracking-widest text-white uppercase">Horaires</h4>
             <p className="mt-3 text-sm text-white/40">
               Lun - Sam : 9h - 19h
               <br />
-              Service le week-end sur reservation
+              Service le week-end sur réservation
             </p>
           </div>
         </div>
@@ -219,29 +166,12 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
           <p className="text-xs text-white/30">
             &copy; {new Date().getFullYear()} Traiteur Montpellier. Tous droits
-            reserves. Site cree par{" "}
-            <a
-              href="https://webomax.fr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/50 transition-colors hover:text-purple-light"
-            >
-              Webomax
-            </a>
+            réservés. Site créé par{" "}
+            <a href="https://webomax.fr" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-purple-light">Webomax</a>
           </p>
           <div className="flex gap-6">
-            <Link
-              href="/mentions-legales"
-              className="text-xs text-white/30 transition-colors hover:text-white/50"
-            >
-              Mentions legales
-            </Link>
-            <Link
-              href="/politique-confidentialite"
-              className="text-xs text-white/30 transition-colors hover:text-white/50"
-            >
-              Politique de confidentialite
-            </Link>
+            <Link href="/mentions-legales" className="text-xs text-white/30 transition-colors hover:text-white/50">Mentions légales</Link>
+            <Link href="/politique-confidentialite" className="text-xs text-white/30 transition-colors hover:text-white/50">Politique de confidentialité</Link>
           </div>
         </div>
       </div>

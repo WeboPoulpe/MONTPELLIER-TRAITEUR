@@ -25,79 +25,79 @@ const celebrations = [
     icon: Cake,
     title: "Anniversaires",
     description:
-      "De l'anniversaire intime entre amis a la grande fete familiale, nous creons des buffets et menus qui marquent le coup. Cocktails colores, buffets gourmands, pieces montees et mignardises personnalisees.",
+      "De l'anniversaire intime entre amis a la grande fete familiale, nous créons des buffets et menus qui marquent le coup. Cocktails colorés, buffets gourmands, pièces montées et mignardises personnalisées.",
     image: "/photos site/donut-presentoir-traiteur-montpellier-150x150.jpg",
   },
   {
     icon: Baby,
     title: "Baptemes & Baby Showers",
     description:
-      "Celebrez l'arrivee de bebe avec delicatesse. Buffets doux et colores, canapes fins, boissons fraiches et patisseries personnalisees aux couleurs de votre evenement.",
+      "Célébrez l'arrivée de bébé avec délicatesse. Buffets doux et colorés, canapés fins, boissons fraîches et pâtisseries personnalisées aux couleurs de votre événement.",
     image: "/photos site/choux-violet-traiteur-montpellier-150x150.jpg",
   },
   {
     icon: TreePine,
     title: "Garden-Parties",
     description:
-      "Profitez du climat mediterraneen avec une reception en plein air. Grazing tables, barbecue chic, brochettes gourmet et cocktails rafraichissants pour un moment convivial.",
+      "Profitez du climat méditerranéen avec une réception en plein air. Grazing tables, barbecue chic, brochettes gourmet et cocktails rafraîchissants pour un moment convivial.",
     image: "/photos site/table-apero-dinatoire-traiteur-montpellier-150x150.jpg",
   },
   {
     icon: Heart,
-    title: "Fiancailles & EVJF/EVG",
+    title: "Fiançailles & EVJF/EVG",
     description:
-      "Marquez ce moment special avec une prestation qui reflete votre joie. Cocktail elegant, brunch gourmand ou apero dinatoire festif, selon vos envies.",
+      "Marquez ce moment spécial avec une prestation qui reflète votre joie. Cocktail élégant, brunch gourmand ou apéro dinatoire festif, selon vos envies.",
     image: "/photos site/apero-dinatoire-or-traiteur-montpellier-150x150.jpg",
   },
   {
     icon: Users,
-    title: "Reunions de Famille",
+    title: "Réunions de Famille",
     description:
-      "Retrouvailles, fetes de famille, celebrations intergenerationnelles : nous proposons des menus genereux et varies qui plaisent a tous les ages et tous les palais.",
+      "Retrouvailles, fetes de famille, célébrations intergénérationnelles : nous proposons des menus généreux et variés qui plaisent a tous les ages et tous les palais.",
     image: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg",
   },
   {
     icon: Sparkles,
-    title: "Evenements Sur Mesure",
+    title: "Événements Sur Mesure",
     description:
-      "Pendaison de cremaillere, pot de depart, soiree a theme... Chaque evenement merite une cuisine a la hauteur. Dites-nous votre vision, nous la concretisons.",
+      "Pendaison de crémaillère, pot de départ, soirée a theme... Chaque événement mérite une cuisine a la hauteur. Dites-nous votre vision, nous la concrétisons.",
     image: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg",
   },
 ];
 
 const whyUs = [
-  "Menu 100% personnalise selon vos gouts",
+  "Menu 100% personnalisé selon vos gouts",
   "Produits frais et de saison",
-  "Cuisine mediterraneenne et caribeenne",
-  "Engagement eco-responsable",
+  "Cuisine méditerranéenne et caribéenne",
+  "Engagement éco-responsable",
   "Service discret et professionnel",
   "Livraison et installation incluses",
 ];
 
 const faqItems = [
   {
-    question: "Combien de temps a l'avance dois-je reserver pour un evenement prive ?",
-    answer: "Pour garantir votre date et personnaliser votre menu, nous recommandons de nous contacter au minimum 3 semaines avant votre evenement. Pour les grandes celebrations (100+ convives), prevoyez 1 a 2 mois a l'avance.",
+    question: "Combien de temps a l'avance dois-je réserver pour un événement privé ?",
+    answer: "Pour garantir votre date et personnaliser votre menu, nous recommandons de nous contacter au minimum 3 semaines avant votre événement. Pour les grandes célébrations (100+ convives), prévoyez 1 a 2 mois a l'avance.",
   },
   {
-    question: "Proposez-vous un service de degustation avant l'evenement ?",
-    answer: "Oui, pour les evenements de plus de 50 convives, nous proposons une degustation sur rendez-vous afin que vous puissiez valider les saveurs et l'esthetique des plats avant le jour J.",
+    question: "Proposez-vous un service de dégustation avant l'événement ?",
+    answer: "Oui, pour les événements de plus de 50 convives, nous proposons une dégustation sur rendez-vous afin que vous puissiez valider les saveurs et l'esthétique des plats avant le jour J.",
   },
   {
-    question: "Gerez-vous le service sur place ou uniquement la livraison ?",
-    answer: "Nous proposons les deux formules. La livraison simple avec mise en place, ou le service complet avec notre equipe sur place pour assurer le service, le reapprovisionnement et le debarrassage.",
+    question: "Gérez-vous le service sur place ou uniquement la livraison ?",
+    answer: "Nous proposons les deux formules. La livraison simple avec mise en place, ou le service complet avec notre équipe sur place pour assurer le service, le réapprovisionnement et le débarrassage.",
   },
   {
-    question: "Peut-on mixer plusieurs types de cuisine dans un meme menu ?",
-    answer: "Absolument ! C'est meme notre specialite. Notre cuisine s'inspire des traditions mediterraneennes et caribeennes, ce qui nous permet de creer des menus originaux et metisses qui surprennent agreablement vos convives.",
+    question: "Peut-on mixer plusieurs types de cuisine dans un même menu ?",
+    answer: "Absolument ! C'est même notre spécialité. Notre cuisine s'inspire des traditions méditerranéennes et caribéennes, ce qui nous permet de créer des menus originaux et métissés qui surprennent agréablement vos convives.",
   },
   {
-    question: "Fournissez-vous la decoration de table et la vaisselle ?",
-    answer: "Nous fournissons la vaisselle, les couverts et le materiel de service. Pour la decoration de table (fleurs, bougies, nappes specifiques), nous pouvons vous orienter vers nos partenaires decorateurs de confiance.",
+    question: "Fournissez-vous la décoration de table et la vaisselle ?",
+    answer: "Nous fournissons la vaisselle, les couverts et le matériel de service. Pour la décoration de table (fleurs, bougies, nappes spécifiques), nous pouvons vous orienter vers nos partenaires décorateurs de confiance.",
   },
   {
-    question: "Quel est le nombre minimum de convives pour une prestation privee ?",
-    answer: "Nous intervenons a partir de 10 convives. Pour les petits evenements intimes, nous proposons des formules adaptees : plateaux a partager, coffrets gourmands ou buffets compacts.",
+    question: "Quel est le nombre minimum de convives pour une prestation privée ?",
+    answer: "Nous intervenons a partir de 10 convives. Pour les petits événements intimes, nous proposons des formules adaptées : plateaux a partager, coffrets gourmands ou buffets compacts.",
   },
 ];
 
@@ -106,17 +106,17 @@ export default function EvenementsPrivesContent() {
     <PageTransition>
       <main>
         <PageHero
-          subtitle="Evenements Prives"
-          title="Celebrez vos"
-          titleAccent="moments precieux"
-          description="Une cuisine qui conjugue generosite, authenticite et delicatesse. Chaque detail est pense pour refleter votre sens de l'accueil et votre gout de l'excellence."
+          subtitle="Événements Privés"
+          title="Célébrez vos"
+          titleAccent="moments précieux"
+          description="Une cuisine qui conjugue générosité, authenticité et délicatesse. Chaque détail est pensé pour refléter votre sens de l'accueil et votre gout de l'excellence."
           image="/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg"
         />
 
         {/* Intro */}
         <IntroSection />
 
-        {/* Types de celebrations */}
+        {/* Types de célébrations */}
         <CelebrationsGrid />
 
         {/* Why us */}
@@ -126,7 +126,7 @@ export default function EvenementsPrivesContent() {
         <CTASection />
 
         {/* FAQ */}
-        <FAQ items={faqItems} title="Questions sur les evenements prives" />
+        <FAQ items={faqItems} title="Questions sur les événements privés" />
       </main>
     </PageTransition>
   );
@@ -146,26 +146,26 @@ function IntroSection() {
             transition={{ duration: 0.7 }}
           >
             <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-              Votre evenement, notre passion
+              Votre événement, notre passion
             </span>
             <h2
               className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Creez des souvenirs
+              Créez des souvenirs
               <br />
               <span className="text-purple">gourmands</span>
             </h2>
             <p className="mt-6 text-base leading-relaxed text-neutral-600">
-              Traiteur Montpellier imagine pour vos evenements prives des prestations personnalisees,
-              ou chaque detail est pense pour refleter votre sens de l&apos;accueil et votre gout de
-              l&apos;excellence discrete.
+              Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées,
+              ou chaque détail est pensé pour refléter votre sens de l&apos;accueil et votre gout de
+              l&apos;excellence discrète.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-neutral-500">
               Que ce soit pour un anniversaire intime, une garden-party estivale, un bapteme ou toute
-              autre celebration, nous composons un menu qui raconte votre histoire. Notre cuisine
-              d&apos;inspiration mediterraneenne et caribeenne apporte une touche d&apos;originalite a chaque
-              assiette, tandis que notre engagement eco-responsable garantit des evenements aussi
+              autre célébration, nous composons un menu qui raconte votre histoire. Notre cuisine
+              d&apos;inspiration méditerranéenne et caribéenne apporte une touche d&apos;originalité a chaque
+              assiette, tandis que notre engagement éco-responsable garantit des événements aussi
               savoureux que respectueux.
             </p>
             <motion.div
@@ -194,7 +194,7 @@ function IntroSection() {
               <div className="relative aspect-[4/3]">
                 <Image
                   src="/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg"
-                  alt="Canapes apero dinatoire Montpellier"
+                  alt="Canapés apéro dinatoire Montpellier"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -234,13 +234,13 @@ function CelebrationsGrid() {
           className="text-center"
         >
           <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-            Nos celebrations
+            Nos célébrations
           </span>
           <h2
             className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Chaque moment merite <span className="text-purple">l&apos;exception</span>
+            Chaque moment mérite <span className="text-purple">l&apos;exception</span>
           </h2>
         </motion.div>
 
@@ -328,7 +328,7 @@ function WhyUsSection() {
             transition={{ duration: 0.7, delay: 0.15 }}
           >
             <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-              La difference Traiteur Montpellier
+              La différence Traiteur Montpellier
             </span>
             <h2
               className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl"
@@ -338,7 +338,7 @@ function WhyUsSection() {
             </h2>
             <p className="mt-6 text-base leading-relaxed text-neutral-600">
               Du premier contact au dernier service, nous sommes a vos cotes. Notre approche
-              sincere et soignee fait de chaque celebration un moment unique et inoubliable.
+              sincère et soignée fait de chaque célébration un moment unique et inoubliable.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -378,10 +378,10 @@ function CTASection() {
             className="text-3xl font-bold text-white md:text-5xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Un evenement a celebrer ?
+            Un événement a célébrer ?
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-            Racontez-nous votre projet et recevez une proposition gourmande et personnalisee.
+            Racontez-nous votre projet et recevez une proposition gourmande et personnalisée.
             Devis gratuit et sans engagement sous 24h.
           </p>
           <Link

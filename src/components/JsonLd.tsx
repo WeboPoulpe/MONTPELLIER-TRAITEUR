@@ -4,13 +4,13 @@ export default function JsonLd() {
     "@type": "FoodEstablishment",
     name: "Traiteur Montpellier",
     description:
-      "Traiteur d'exception a Montpellier. Cuisine mediterraneenne raffinee pour vos evenements d'entreprise, cocktails dinatoires et celebrations privees. Engagement ecoresponsable depuis 2008.",
+      "Traiteur d'exception à Montpellier. Cuisine méditerranéenne raffinée pour vos événements d'entreprise, cocktails dînatoires et célébrations privées. Engagement écoresponsable depuis 2008.",
     url: "https://traiteurmontpellier.com",
     telephone: "+33660130596",
     email: "contact@traiteurmontpellier.com",
     foundingDate: "2008",
     priceRange: "$$",
-    servesCuisine: ["Mediterraneenne", "Caribeenne", "Francaise"],
+    servesCuisine: ["Méditerranéenne", "Caribéenne", "Française"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "81 rue de Padirac",
@@ -52,8 +52,8 @@ export default function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Evenement Entreprise",
-            description: "Seminaires, conferences, repas d'affaires, cocktails VIP et lancements.",
+            name: "Événement Entreprise",
+            description: "Séminaires, conférences, repas d'affaires, cocktails VIP et lancements.",
           },
         },
         {
@@ -68,8 +68,8 @@ export default function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Evenement Prive",
-            description: "Anniversaires, baptemes, garden-parties. Menus sur mesure et service complet.",
+            name: "Événement Privé",
+            description: "Anniversaires, baptêmes, garden-parties. Menus sur mesure et service complet.",
           },
         },
       ],

@@ -24,37 +24,37 @@ const services = [
     icon: Utensils,
     title: "Grazing Tables",
     description:
-      "Tables d'abondance spectaculaires composees de fromages, charcuteries, fruits frais, crudites et pains artisanaux. Un visuel impressionnant qui attire et fidélise vos visiteurs sur votre stand.",
+      "Tables d'abondance spectaculaires composées de fromages, charcuteries, fruits frais, crudités et pains artisanaux. Un visuel impressionnant qui attire et fidélise vos visiteurs sur votre stand.",
   },
   {
     icon: Coffee,
-    title: "Packs Cafe & The",
+    title: "Packs Café & Thé",
     description:
-      "Pret de machine a capsules, selection de thes et infusions bio, mignardises d'accompagnement. La pause ideale pour vos equipes et vos clients entre deux conferences.",
+      "Prêt de machine à capsules, sélection de thés et infusions bio, mignardises d'accompagnement. La pause idéale pour vos équipes et vos clients entre deux conférences.",
   },
   {
     icon: Wine,
     title: "Cocktails VIP",
     description:
-      "Cocktails dinatoires haut de gamme avec canapes raffines, mignardises et vins de region. Pour vos soirees inaugurales, vernissages et receptions exclusives sur salon.",
+      "Cocktails dînatoires haut de gamme avec canapés raffinés, mignardises et vins de région. Pour vos soirées inaugurales, vernissages et réceptions exclusives sur salon.",
   },
   {
     icon: Truck,
-    title: "Logistique Complete",
+    title: "Logistique Complète",
     description:
-      "Livraison directe sur stand, installation du materiel de presentation, vaisselle elegante et debarrassage. Nous gerons l'integalite de la logistique pour vous.",
+      "Livraison directe sur stand, installation du matériel de présentation, vaisselle élégante et débarrassage. Nous gérons l'intégralité de la logistique pour vous.",
   },
   {
     icon: UtensilsCrossed,
     title: "Plateaux Repas",
     description:
-      "Plateaux sales chauds ou froids, paniers individuels, formules dejeuner equilibrees. Parfaits pour nourrir vos equipes staff entre les temps forts du salon.",
+      "Plateaux salés chauds ou froids, paniers individuels, formules déjeuner équilibrées. Parfaits pour nourrir vos équipes staff entre les temps forts du salon.",
   },
   {
     icon: Leaf,
     title: "Boissons Bio",
     description:
-      "Selection de boissons softs bio, jus de fruits presses, eaux aromatisees maison et vins de la region. Une offre responsable alignee avec vos valeurs RSE.",
+      "Sélection de boissons softs bio, jus de fruits pressés, eaux aromatisées maison et vins de la région. Une offre responsable alignée avec vos valeurs RSE.",
   },
 ];
 
@@ -62,49 +62,49 @@ const processSteps = [
   {
     step: "01",
     title: "Premier contact",
-    description: "Vous nous decrivez votre salon, le nombre de jours, l'affluence prevue et vos attentes specifiques.",
+    description: "Vous nous décrivez votre salon, le nombre de jours, l'affluence prévue et vos attentes spécifiques.",
   },
   {
     step: "02",
     title: "Proposition sur mesure",
-    description: "Nous elaborons un menu et un planning de livraison adaptes a votre programme et a votre budget.",
+    description: "Nous élaborons un menu et un planning de livraison adaptés à votre programme et à votre budget.",
   },
   {
     step: "03",
     title: "Livraison & Installation",
-    description: "Notre equipe livre et installe directement sur votre stand, avec le materiel de presentation inclus.",
+    description: "Notre équipe livre et installe directement sur votre stand, avec le matériel de présentation inclus.",
   },
   {
     step: "04",
     title: "Jour J & Suivi",
-    description: "Service fluide pendant l'evenement, reapprovisionnement si besoin, et debarrassage complet en fin de journee.",
+    description: "Service fluide pendant l'événement, réapprovisionnement si besoin, et débarrassage complet en fin de journée.",
   },
 ];
 
 const faqItems = [
   {
     question: "Dans quel rayon intervenez-vous pour les foires et salons ?",
-    answer: "Nous intervenons principalement a Montpellier et dans tout le departement de l'Herault (34). Pour les salons d'envergure, nous pouvons nous deplacer dans toute la region Occitanie. Contactez-nous pour discuter de votre evenement specifique.",
+    answer: "Nous intervenons principalement à Montpellier et dans tout le département de l'Hérault (34). Pour les salons d'envergure, nous pouvons nous déplacer dans toute la région Occitanie. Contactez-nous pour discuter de votre événement spécifique.",
   },
   {
-    question: "Quel est le delai minimum pour commander un catering de salon ?",
-    answer: "Nous recommandons de nous contacter au moins 2 semaines avant votre evenement pour garantir la disponibilite et personnaliser votre commande. Pour les grands salons (plus de 100 personnes), un delai de 3 a 4 semaines est preferable.",
+    question: "Quel est le délai minimum pour commander un catering de salon ?",
+    answer: "Nous recommandons de nous contacter au moins 2 semaines avant votre événement pour garantir la disponibilité et personnaliser votre commande. Pour les grands salons (plus de 100 personnes), un délai de 3 à 4 semaines est préférable.",
   },
   {
-    question: "Proposez-vous des options pour les regimes alimentaires specifiques ?",
-    answer: "Absolument. Nous proposons des options vegetariennes, vegan, sans gluten et sans lactose. Signalez-nous toute allergie ou restriction alimentaire lors de votre demande de devis et nous adapterons le menu en consequence.",
+    question: "Proposez-vous des options pour les régimes alimentaires spécifiques ?",
+    answer: "Absolument. Nous proposons des options végétariennes, vegan, sans gluten et sans lactose. Signalez-nous toute allergie ou restriction alimentaire lors de votre demande de devis et nous adapterons le menu en conséquence.",
   },
   {
-    question: "La vaisselle et le materiel sont-ils inclus dans vos prestations ?",
-    answer: "Oui, nous fournissons la vaisselle, les couverts, les nappes et le materiel de presentation necessaire. Tout est inclus dans nos forfaits. Nous proposons egalement la location de materiel supplementaire si besoin (machines a cafe, fontaines, etc.).",
+    question: "La vaisselle et le matériel sont-ils inclus dans vos prestations ?",
+    answer: "Oui, nous fournissons la vaisselle, les couverts, les nappes et le matériel de présentation nécessaire. Tout est inclus dans nos forfaits. Nous proposons également la location de matériel supplémentaire si besoin (machines à café, fontaines, etc.).",
   },
   {
-    question: "Pouvez-vous livrer sur plusieurs jours consecutifs ?",
-    answer: "Bien sur. Pour les salons de plusieurs jours, nous proposons des forfaits multi-journees avec des menus varies pour eviter la repetition. Nous adaptons le planning de livraison a vos horaires d'ouverture.",
+    question: "Pouvez-vous livrer sur plusieurs jours consécutifs ?",
+    answer: "Bien sûr. Pour les salons de plusieurs jours, nous proposons des forfaits multi-journées avec des menus variés pour éviter la répétition. Nous adaptons le planning de livraison à vos horaires d'ouverture.",
   },
   {
     question: "Comment fonctionne la livraison sur un stand de salon ?",
-    answer: "Nous livrons directement sur votre stand aux horaires convenus. Notre equipe installe la presentation, vous briefe sur le contenu et revient pour le debarrassage. Aucune manutention de votre cote.",
+    answer: "Nous livrons directement sur votre stand aux horaires convenus. Notre équipe installe la présentation, vous briefé sur le contenu et revient pour le débarrassage. Aucune manutention de votre côté.",
   },
 ];
 
@@ -116,7 +116,7 @@ export default function FoiresSalonsContent() {
           subtitle="Foires & Salons"
           title="Catering professionnel"
           titleAccent="pour vos salons"
-          description="Faites la difference avec un service culinaire fluide, raffine et respectueux de votre image de marque. Livraison directe sur stand, materiel inclus."
+          description="Faites la différence avec un service culinaire fluide, raffiné et respectueux de votre image de marque. Livraison directe sur stand, matériel inclus."
           image="/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg"
         />
 
@@ -167,18 +167,18 @@ function IntroSection() {
               <span className="text-purple">professionnelles</span>
             </h2>
             <p className="mt-6 text-base leading-relaxed text-neutral-600">
-              Confiez a Traiteur Montpellier le catering de vos foires et salons pour sublimer vos
+              Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos
               participations professionnelles avec une prestation sur mesure. Nous comprenons les
-              contraintes specifiques des salons : timing serre, logistique complexe, besoin de flexibilite.
+              contraintes spécifiques des salons : timing serré, logistique complexe, besoin de flexibilité.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-neutral-500">
-              Notre equipe s&apos;adapte a votre planning et livre directement sur votre stand, avec un materiel
-              de presentation elegant qui valorise votre image de marque. Des paniers individuels aux
-              grazing tables spectaculaires, chaque formule est pensee pour impressionner vos visiteurs.
+              Notre équipe s&apos;adapte à votre planning et livre directement sur votre stand, avec un matériel
+              de présentation élégant qui valorise votre image de marque. Des paniers individuels aux
+              grazing tables spectaculaires, chaque formule est pensée pour impressionner vos visiteurs.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
-              {["Livraison sur stand", "Materiel fourni", "Menus varies", "Eco-responsable"].map((item, i) => (
+              {["Livraison sur stand", "Matériel fourni", "Menus variés", "Éco-responsable"].map((item, i) => (
                 <motion.div
                   key={item}
                   initial={{ opacity: 0, x: 20 }}
@@ -279,7 +279,7 @@ function ProcessSection() {
           className="text-center"
         >
           <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-            Comment ca marche
+            Comment ça marche
           </span>
           <h2
             className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl"
@@ -341,7 +341,7 @@ function GalleryStrip() {
             >
               <Image
                 src={src}
-                alt="Realisation traiteur salon"
+                alt="Réalisation traiteur salon"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 768px) 50vw, 20vw"
@@ -369,10 +369,10 @@ function CTASection() {
             className="text-3xl font-bold text-white md:text-5xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Un salon a venir ?
+            Un salon à venir ?
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-            Parlez-nous de votre participation et recevez une proposition adaptee a votre stand, votre budget et votre programme. Devis gratuit sous 24h.
+            Parlez-nous de votre participation et recevez une proposition adaptée à votre stand, votre budget et votre programme. Devis gratuit sous 24h.
           </p>
           <Link
             href="/a-propos#devis"

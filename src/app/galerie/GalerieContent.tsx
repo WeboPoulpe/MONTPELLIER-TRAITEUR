@@ -10,20 +10,20 @@ import FAQ from "@/components/FAQ";
 
 const galerieFaq = [
   {
-    question: "Puis-je voir des photos de realisations similaires a mon evenement ?",
-    answer: "Bien sur ! Lors de notre premier echange, nous vous partageons des exemples de prestations similaires a votre projet. Notre galerie en ligne presente un apercu de notre savoir-faire, mais nous disposons d'un portfolio plus complet sur demande.",
+    question: "Puis-je voir des photos de réalisations similaires à mon événement ?",
+    answer: "Bien sûr ! Lors de notre premier échange, nous vous partageons des exemples de prestations similaires à votre projet. Notre galerie en ligne présente un aperçu de notre savoir-faire, mais nous disposons d'un portfolio plus complet sur demande.",
   },
   {
-    question: "Realisez-vous des presentations sur mesure pour chaque evenement ?",
-    answer: "Absolument. Chaque evenement beneficie d'une mise en scene culinaire unique, pensee en fonction de votre theme, de vos couleurs et de l'ambiance souhaitee. Nos dressages sont aussi beaux que bons.",
+    question: "Réalisez-vous des présentations sur mesure pour chaque événement ?",
+    answer: "Absolument. Chaque événement bénéficie d'une mise en scène culinaire unique, pensée en fonction de votre thème, de vos couleurs et de l'ambiance souhaitée. Nos dressages sont aussi beaux que bons.",
   },
   {
     question: "Proposez-vous des grazing tables comme celles de la galerie ?",
-    answer: "Oui, nos grazing tables sont l'une de nos specialites les plus demandees. Composees de fromages, charcuteries, fruits frais, crudites et pains artisanaux, elles constituent un veritable spectacle visuel et gustatif.",
+    answer: "Oui, nos grazing tables sont l'une de nos spécialités les plus demandées. Composées de fromages, charcuteries, fruits frais, crudités et pains artisanaux, elles constituent un véritable spectacle visuel et gustatif.",
   },
   {
-    question: "Puis-je personnaliser les couleurs et le theme de la presentation culinaire ?",
-    answer: "Tout a fait. Nous adaptons les couleurs des canapes, les contenants, la decoration des plateaux et meme les saveurs pour matcher votre theme evenementiel. N'hesitez pas a nous partager votre moodboard.",
+    question: "Puis-je personnaliser les couleurs et le thème de la présentation culinaire ?",
+    answer: "Tout à fait. Nous adaptons les couleurs des canapés, les contenants, la décoration des plateaux et même les saveurs pour matcher votre thème événementiel. N'hésitez pas à nous partager votre moodboard.",
   },
 ];
 
@@ -40,32 +40,32 @@ const categories: { key: Category; label: string }[] = [
   { key: "tous", label: "Tous" },
   { key: "cocktails", label: "Cocktails" },
   { key: "plats", label: "Plats" },
-  { key: "canapes", label: "Canapes" },
+  { key: "canapes", label: "Canapés" },
   { key: "desserts", label: "Desserts" },
   { key: "dressage", label: "Dressage" },
 ];
 
 const images: GalleryImage[] = [
-  // Cocktails & Apero
-  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1-150x150.jpg", alt: "Cocktail dinatoire", category: "cocktails" },
+  // Cocktails & Apéro
+  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1-150x150.jpg", alt: "Cocktail dînatoire", category: "cocktails" },
   { src: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg", alt: "Service cocktail", category: "cocktails", tall: true },
-  { src: "/photos site/cocktail-traiteur-montpellier-150x150.jpg", alt: "Cocktail elegance", category: "cocktails" },
-  { src: "/photos site/apero-dinatoire-canape-saumon-traiteur-montpellier-150x150.jpg", alt: "Canape saumon apero", category: "cocktails" },
-  { src: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg", alt: "Canapes apero dinatoire", category: "cocktails", tall: true },
-  { src: "/photos site/apero-dinatoire-or-traiteur-montpellier-150x150.jpg", alt: "Apero dinatoire dore", category: "cocktails" },
-  { src: "/photos site/apero-dinatoire-traiteur-montpellier-150x150.jpg", alt: "Apero dinatoire", category: "cocktails" },
-  { src: "/photos site/table-apero-dinatoire-traiteur-montpellier-150x150.jpg", alt: "Table apero dinatoire", category: "cocktails" },
+  { src: "/photos site/cocktail-traiteur-montpellier-150x150.jpg", alt: "Cocktail élégance", category: "cocktails" },
+  { src: "/photos site/apero-dinatoire-canape-saumon-traiteur-montpellier-150x150.jpg", alt: "Canapé saumon apéro", category: "cocktails" },
+  { src: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg", alt: "Canapés apéro dînatoire", category: "cocktails", tall: true },
+  { src: "/photos site/apero-dinatoire-or-traiteur-montpellier-150x150.jpg", alt: "Apéro dînatoire doré", category: "cocktails" },
+  { src: "/photos site/apero-dinatoire-traiteur-montpellier-150x150.jpg", alt: "Apéro dînatoire", category: "cocktails" },
+  { src: "/photos site/table-apero-dinatoire-traiteur-montpellier-150x150.jpg", alt: "Table apéro dînatoire", category: "cocktails" },
   { src: "/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg", alt: "Table amuse-bouche", category: "cocktails", tall: true },
-  { src: "/photos site/cone-apero-dinatoire-traiteur-montpellier-150x150.jpg", alt: "Cones apero", category: "cocktails" },
-  { src: "/photos site/cones-or-traiteur-montpellier-150x150.jpg", alt: "Cones dores", category: "cocktails" },
+  { src: "/photos site/cone-apero-dinatoire-traiteur-montpellier-150x150.jpg", alt: "Cônes apéro", category: "cocktails" },
+  { src: "/photos site/cones-or-traiteur-montpellier-150x150.jpg", alt: "Cônes dorés", category: "cocktails" },
 
   // Plats
   { src: "/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg", alt: "Plat haut de gamme", category: "plats", tall: true },
-  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier-150x150.jpg", alt: "Dressage elegant", category: "plats" },
+  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier-150x150.jpg", alt: "Dressage élégant", category: "plats" },
   { src: "/photos site/plat-poulet-traiteur-montpellier-150x150.jpg", alt: "Plat de poulet", category: "plats" },
   { src: "/photos site/plat-sauce-traiteur-montpellier-150x150.jpg", alt: "Plat en sauce", category: "plats", tall: true },
   { src: "/photos site/plat-traiteur-montpellier-150x150.jpg", alt: "Plat traiteur", category: "plats" },
-  { src: "/photos site/plat-2-traiteur-montpellier-150x150.jpg", alt: "Creation culinaire", category: "plats" },
+  { src: "/photos site/plat-2-traiteur-montpellier-150x150.jpg", alt: "Création culinaire", category: "plats" },
   { src: "/photos site/plat-3-traiteur-montpellier-150x150.jpg", alt: "Assiette gastronomique", category: "plats" },
   { src: "/photos site/assiette-poisson-traiteur-montpellier-1-150x150.jpg", alt: "Assiette de poisson", category: "plats", tall: true },
   { src: "/photos site/assiette-choux-bruxelle-traiteur-montpellier-150x150.jpg", alt: "Assiette choux de Bruxelles", category: "plats" },
@@ -74,14 +74,14 @@ const images: GalleryImage[] = [
   { src: "/photos site/cromesqui-banane-plantin-traiteur-montpellier-150x150.jpg", alt: "Cromesqui banane plantain", category: "plats" },
   { src: "/photos site/mini-cassolette-traiteur-montpellier-150x150.jpg", alt: "Mini cassolette", category: "plats" },
 
-  // Canapes & Bouchees
-  { src: "/photos site/amuse-bouche-carre-traiteur-montpellier-150x150.jpg", alt: "Amuse-bouche carre", category: "canapes", tall: true },
+  // Canapés & Bouchées
+  { src: "/photos site/amuse-bouche-carre-traiteur-montpellier-150x150.jpg", alt: "Amuse-bouche carré", category: "canapes", tall: true },
   { src: "/photos site/amuse-bouche-traiteur-montpellier-150x150.jpg", alt: "Amuse-bouche", category: "canapes" },
-  { src: "/photos site/canape-concombre-traiteur-montpellier-150x150.jpg", alt: "Canape concombre", category: "canapes" },
-  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapes mousse lavande", category: "canapes", tall: true },
-  { src: "/photos site/bouchee-boeuf-traiteur-montpellier-150x150.jpg", alt: "Bouchee de boeuf", category: "canapes" },
-  { src: "/photos site/bouchee-traiteur-montpellier-150x150.jpg", alt: "Bouchee raffinee", category: "canapes" },
-  { src: "/photos site/bouchees-boeuf-traiteur-montpellier-150x150.jpg", alt: "Bouchees de boeuf", category: "canapes" },
+  { src: "/photos site/canape-concombre-traiteur-montpellier-150x150.jpg", alt: "Canapé concombre", category: "canapes" },
+  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier-150x150.jpg", alt: "Canapés mousse lavande", category: "canapes", tall: true },
+  { src: "/photos site/bouchee-boeuf-traiteur-montpellier-150x150.jpg", alt: "Bouchée de boeuf", category: "canapes" },
+  { src: "/photos site/bouchee-traiteur-montpellier-150x150.jpg", alt: "Bouchée raffinée", category: "canapes" },
+  { src: "/photos site/bouchees-boeuf-traiteur-montpellier-150x150.jpg", alt: "Bouchées de boeuf", category: "canapes" },
   { src: "/photos site/maki-traiteur-montpellier-150x150.jpg", alt: "Maki", category: "canapes", tall: true },
   { src: "/photos site/mini-calzone-traiteur-montpellier-150x150.jpg", alt: "Mini calzone", category: "canapes" },
   { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier-150x150.jpg", alt: "Mini burgers boeuf", category: "canapes" },
@@ -91,20 +91,20 @@ const images: GalleryImage[] = [
   { src: "/photos site/petits-fours-traiteur-montpellier-150x150.jpg", alt: "Petits fours", category: "canapes" },
 
   // Desserts
-  { src: "/photos site/choux-creme-traiteur-montpellier-150x150.jpg", alt: "Choux a la creme", category: "desserts", tall: true },
+  { src: "/photos site/choux-creme-traiteur-montpellier-150x150.jpg", alt: "Choux à la crème", category: "desserts", tall: true },
   { src: "/photos site/choux-violet-traiteur-montpellier-150x150.jpg", alt: "Choux violet", category: "desserts" },
-  { src: "/photos site/donut-presentoir-traiteur-montpellier-150x150.jpg", alt: "Presentoir donuts", category: "desserts" },
+  { src: "/photos site/donut-presentoir-traiteur-montpellier-150x150.jpg", alt: "Présentoir donuts", category: "desserts" },
   { src: "/photos site/macarons-traiteur-montpellier-150x150.jpg", alt: "Macarons", category: "desserts", tall: true },
-  { src: "/photos site/gouter-traiteur-montpellier-150x150.jpg", alt: "Gouter gourmand", category: "desserts" },
+  { src: "/photos site/gouter-traiteur-montpellier-150x150.jpg", alt: "Goûter gourmand", category: "desserts" },
 
   // Dressage & Mise en place
   { src: "/photos site/mise-en-place-traiteur-montpellier-150x150.jpg", alt: "Mise en place", category: "dressage", tall: true },
-  { src: "/photos site/fleurs-traiteur-montpellier-150x150.jpg", alt: "Decoration florale", category: "dressage" },
-  { src: "/photos site/verres-epices-traiteur-montpellier-150x150.jpg", alt: "Verres et epices", category: "dressage" },
+  { src: "/photos site/fleurs-traiteur-montpellier-150x150.jpg", alt: "Décoration florale", category: "dressage" },
+  { src: "/photos site/verres-epices-traiteur-montpellier-150x150.jpg", alt: "Verres et épices", category: "dressage" },
   { src: "/photos site/assiette-dressage-salon-traiteur-montpellier-150x150.jpg", alt: "Dressage salon", category: "dressage", tall: true },
   { src: "/photos site/plateau-sauces-traiteur-montpellier-150x150.jpg", alt: "Plateau de sauces", category: "dressage" },
   { src: "/photos site/huile-olive-traiteur-montpellier-150x150.jpg", alt: "Huile d'olive artisanale", category: "dressage" },
-  { src: "/photos site/huile-traiteur-montpellier-150x150.jpg", alt: "Huile aromatisee", category: "dressage" },
+  { src: "/photos site/huile-traiteur-montpellier-150x150.jpg", alt: "Huile aromatisée", category: "dressage" },
   { src: "/photos site/omar-traiteur-montpellier-150x150.jpg", alt: "Chef Omar", category: "dressage" },
 ];
 
@@ -138,7 +138,7 @@ export default function GalerieContent() {
           subtitle="Notre savoir-faire"
           title="Galerie"
           titleAccent="photo"
-          description="Decouvrez nos creations culinaires en images : cocktails, plats gastronomiques, canapes et mises en place soignees."
+          description="Découvrez nos créations culinaires en images : cocktails, plats gastronomiques, canapés et mises en place soignées."
           image="/photos site/plat-haut-de-gamme-traiteur-montpellier-150x150.jpg"
         />
 
@@ -231,7 +231,7 @@ export default function GalerieContent() {
               <button
                 onClick={(e) => { e.stopPropagation(); navigateLightbox(-1); }}
                 className="absolute left-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20 md:left-8"
-                aria-label="Precedent"
+                aria-label="Précédent"
               >
                 <ChevronLeft className="h-6 w-6" />
               </button>
@@ -277,7 +277,7 @@ export default function GalerieContent() {
         </AnimatePresence>
 
         {/* FAQ */}
-        <FAQ items={galerieFaq} title="Questions sur nos creations" />
+        <FAQ items={galerieFaq} title="Questions sur nos créations" />
       </main>
     </PageTransition>
   );

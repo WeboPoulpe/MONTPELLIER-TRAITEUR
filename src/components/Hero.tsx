@@ -53,11 +53,11 @@ export default function Hero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
-          Inspires par les grandes traditions mediterraneennes, enrichies de
-          touches caribeennes, nous imaginons des experiences culinaires alliant{" "}
-          <span className="text-white">authenticite</span>,{" "}
-          <span className="text-white">creativite</span> et{" "}
-          <span className="text-white">engagement ecoresponsable</span>.
+          Inspirés par les grandes traditions méditerranéennes, enrichies de
+          touches caribéennes, nous imaginons des expériences culinaires alliant{" "}
+          <span className="text-white">authenticité</span>,{" "}
+          <span className="text-white">créativité</span> et{" "}
+          <span className="text-white">engagement écoresponsable</span>.
         </motion.p>
 
         <motion.div
@@ -90,7 +90,7 @@ export default function Hero() {
           className="flex flex-col items-center gap-2"
         >
           <span className="text-xs tracking-widest text-white/40 uppercase">
-            Decouvrir
+            Découvrir
           </span>
           <ArrowDown className="h-4 w-4 text-white/40" />
         </motion.div>

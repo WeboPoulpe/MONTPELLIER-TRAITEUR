@@ -9,37 +9,37 @@ const testimonials = [
   {
     name: "Charlene Leininger",
     event: "Avis Google",
-    text: "Equipe reactive et tres professionnelle. Les plats etaient delicieux et la presentation impeccable. Je recommande vivement Traiteur Montpellier pour tous vos evenements !",
+    text: "Équipe réactive et très professionnelle. Les plats étaient délicieux et la présentation impeccable. Je recommande vivement Traiteur Montpellier pour tous vos événements !",
     rating: 5,
   },
   {
     name: "Thomas Revillard",
     event: "Avis Google",
-    text: "Nous avons fait appel a Traiteur Montpellier pour un seminaire de 80 personnes. Les grazing tables etaient magnifiques, le service fluide et les retours de nos collaborateurs unanimement positifs. Merci !",
+    text: "Nous avons fait appel à Traiteur Montpellier pour un séminaire de 80 personnes. Les grazing tables étaient magnifiques, le service fluide et les retours de nos collaborateurs unanimement positifs. Merci !",
     rating: 5,
   },
   {
     name: "Claire Dupont-Martin",
     event: "Avis Google",
-    text: "Prestation au top pour l'anniversaire de ma fille. Les mignardises etaient a tomber, les canapes originaux et le service tres agreable. L'engagement eco-responsable est un vrai plus.",
+    text: "Prestation au top pour l'anniversaire de ma fille. Les mignardises étaient à tomber, les canapés originaux et le service très agréable. L'engagement éco-responsable est un vrai plus.",
     rating: 5,
   },
   {
     name: "Jean-Philippe Moreau",
     event: "Avis Google",
-    text: "Traiteur Montpellier a sublimé notre cocktail d'inauguration. La qualité des produits, la fraicheur et le dressage etaient remarquables. Une adresse que je garde precieusement.",
+    text: "Traiteur Montpellier a sublimé notre cocktail d'inauguration. La qualité des produits, la fraîcheur et le dressage étaient remarquables. Une adresse que je garde précieusement.",
     rating: 5,
   },
   {
     name: "Nadia Bensalem",
     event: "Avis Google",
-    text: "Un grand merci pour notre evenement d'entreprise. Tout etait parfait du debut a la fin : ponctualite, qualite, gentillesse de l'equipe. Les touches caribeennes ont fait sensation !",
+    text: "Un grand merci pour notre événement d'entreprise. Tout était parfait du début à la fin : ponctualité, qualité, gentillesse de l'équipe. Les touches caribéennes ont fait sensation !",
     rating: 5,
   },
   {
-    name: "Stephanie Lacroix",
+    name: "Stéphanie Lacroix",
     event: "Avis Google",
-    text: "Nous avons ete bluffes par le professionnalisme de Traiteur Montpellier. Le buffet etait aussi beau que bon, les invites ont adore. Je recommande a 100% !",
+    text: "Nous avons été bluffés par le professionnalisme de Traiteur Montpellier. Le buffet était aussi beau que bon, les invités ont adoré. Je recommande à 100% !",
     rating: 5,
   },
 ];
@@ -59,11 +59,9 @@ export default function Testimonials() {
       className="relative overflow-hidden bg-black py-28 lg:py-36"
       ref={ref}
     >
-      {/* Background accent - hidden on mobile for perf */}
       <div className="absolute top-1/2 left-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple/5 blur-[150px] md:block" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -81,7 +79,7 @@ export default function Testimonials() {
             <span className="text-sm font-medium text-white/40">Avis</span>
           </div>
           <span className="text-xs font-semibold tracking-[0.3em] text-purple-light uppercase">
-            Avis Google verifies
+            Avis Google vérifiés
           </span>
           <h2
             className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl"
@@ -91,7 +89,6 @@ export default function Testimonials() {
             <br />
             nos <span className="text-purple-light">clients</span>
           </h2>
-          {/* Google rating */}
           <div className="mt-4 flex items-center justify-center gap-2">
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((s) => (
@@ -103,7 +100,6 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Testimonial Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -122,7 +118,6 @@ export default function Testimonials() {
                 transition={{ duration: 0.4 }}
                 className="text-center"
               >
-                {/* Stars */}
                 <div className="flex items-center justify-center gap-1">
                   {Array.from({ length: testimonials[current].rating }).map(
                     (_, i) => (
@@ -134,12 +129,10 @@ export default function Testimonials() {
                   )}
                 </div>
 
-                {/* Text */}
                 <p className="mt-6 text-xl leading-relaxed font-light italic text-white/80 md:text-2xl">
                   &ldquo;{testimonials[current].text}&rdquo;
                 </p>
 
-                {/* Author */}
                 <div className="mt-8">
                   <p className="text-sm font-bold tracking-wider text-white uppercase">
                     {testimonials[current].name}
@@ -157,17 +150,15 @@ export default function Testimonials() {
               </motion.div>
             </div>
 
-            {/* Navigation */}
             <div className="mt-10 flex items-center justify-center gap-4">
               <button
                 onClick={prev}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white/50 transition-all hover:border-purple hover:text-purple"
-                aria-label="Temoignage precedent"
+                aria-label="Témoignage précédent"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
 
-              {/* Dots */}
               <div className="flex gap-2">
                 {testimonials.map((_, i) => (
                   <button
@@ -178,7 +169,7 @@ export default function Testimonials() {
                       transform: i === current ? "scaleX(1)" : "scaleX(0.25)",
                       opacity: i === current ? 1 : 0.3,
                     }}
-                    aria-label={`Temoignage ${i + 1}`}
+                    aria-label={`Témoignage ${i + 1}`}
                   />
                 ))}
               </div>
@@ -186,7 +177,7 @@ export default function Testimonials() {
               <button
                 onClick={next}
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white/50 transition-all hover:border-purple hover:text-purple"
-                aria-label="Temoignage suivant"
+                aria-label="Témoignage suivant"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -194,7 +185,6 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -202,8 +192,8 @@ export default function Testimonials() {
           className="mt-20 grid grid-cols-2 gap-8 border-t border-white/10 pt-16 md:grid-cols-4"
         >
           {[
-            { number: "500+", label: "Evenements realises" },
-            { number: "15+", label: "Annees d'experience" },
+            { number: "500+", label: "Événements réalisés" },
+            { number: "15+", label: "Années d'expérience" },
             { number: "5/5", label: "Note Google" },
             { number: "50k+", label: "Convives servis" },
           ].map((stat) => (

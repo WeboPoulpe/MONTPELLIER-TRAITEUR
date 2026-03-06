@@ -9,12 +9,12 @@ import Link from "next/link";
 const services = [
   {
     icon: Building2,
-    title: "Evenement Entreprise",
-    subtitle: "Seminaires & Conferences",
+    title: "Événement Entreprise",
+    subtitle: "Séminaires & Conférences",
     description:
-      "Organisez vos evenements d'entreprise avec l'assurance d'une prestation culinaire soignee et sur mesure. Traiteur Montpellier accompagne vos seminaires, repas d'affaires, conferences et lancements en apportant une attention toute particuliere aux details et a l'experience gustative. Faites de chaque rencontre professionnelle un moment memorable, empreint de saveurs raffinees et d'elegance naturelle.",
+      "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et à l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
     image: "/photos site/cocktail-service-traiteur-montpellier-150x150.jpg",
-    features: ["Cocktails VIP", "Plateaux dejeuners", "Pack cafe & the"],
+    features: ["Cocktails VIP", "Plateaux déjeuners", "Pack café & thé"],
     href: "/entreprises",
   },
   {
@@ -22,19 +22,19 @@ const services = [
     title: "Foires & Salons",
     subtitle: "Stands & Expositions",
     description:
-      "Confiez a Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits dejeuners, grazing tables, plateaux sales chauds ou froids, mignardises, boissons softs bio et vins de region. Packs cafe, location de materiel et cocktails VIP pour vos evenements prestigieux.",
+      "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région. Packs café, location de matériel et cocktails VIP pour vos événements prestigieux.",
     image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier-150x150.jpg",
-    features: ["Paniers repas staff", "Grazing tables", "Logistique complete"],
+    features: ["Paniers repas staff", "Grazing tables", "Logistique complète"],
     href: "/entreprises",
   },
   {
     icon: PartyPopper,
-    title: "Evenement Prive",
-    subtitle: "Celebrations & Receptions",
+    title: "Événement Privé",
+    subtitle: "Célébrations & Réceptions",
     description:
-      "Celebrez vos moments precieux avec une cuisine qui conjugue generosite, authenticite et delicatesse. Traiteur Montpellier imagine pour vos evenements prives des prestations personnalisees, ou chaque detail est pense pour refleter votre sens de l'accueil et votre gout de l'excellence discrete. Creez des souvenirs gourmands, portes par une approche sincere et soignee.",
+      "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, où chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète. Créez des souvenirs gourmands, portés par une approche sincère et soignée.",
     image: "/photos site/apero-dinatoire-canape-traiteur-montpellier-150x150.jpg",
-    features: ["Menu sur mesure", "Decoration culinaire", "Service complet"],
+    features: ["Menu sur mesure", "Décoration culinaire", "Service complet"],
     href: "/entreprises",
   },
 ];
@@ -66,13 +66,13 @@ export default function Services() {
             className="mt-4 text-4xl font-bold tracking-tight text-black md:text-5xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Des experiences culinaires
+            Des expériences culinaires
             <br />
             <span className="text-purple">d&apos;exception</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-500">
-            Sublimez vos receptions grace a notre savoir-faire et a notre passion
-            pour une cuisine genereuse et raffinee.
+            Sublimez vos réceptions grâce à notre savoir-faire et à notre passion
+            pour une cuisine généreuse et raffinée.
           </p>
         </motion.div>
 
@@ -86,7 +86,6 @@ export default function Services() {
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               className="group relative overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple/10 hover:ring-1 hover:ring-purple/10"
             >
-              {/* Image - using next/image instead of backgroundImage */}
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={service.image}
@@ -111,7 +110,6 @@ export default function Services() {
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-8">
                 <h3
                   className="text-2xl font-bold text-black"
@@ -138,7 +136,7 @@ export default function Services() {
                   href={service.href}
                   className="mt-6 inline-flex items-center text-sm font-semibold text-purple transition-colors hover:text-purple-dark"
                 >
-                  Decouvrir
+                  Découvrir
                   <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
                     &rarr;
                   </span>
@@ -148,7 +146,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Additional offerings */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

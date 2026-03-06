@@ -6,88 +6,88 @@ import { motion } from "framer-motion";
 const sections = [
   {
     title: "1. Introduction",
-    content: `Traiteur Montpellier s'engage a proteger la vie privee des utilisateurs de son site internet traiteurmontpellier.com. La presente politique de confidentialite explique comment nous collectons, utilisons, stockons et protegeons vos donnees personnelles, conformement au Reglement General sur la Protection des Donnees (RGPD - Reglement UE 2016/679) et a la loi francaise Informatique et Libertes.`,
+    content: `Traiteur Montpellier s'engage à protéger la vie privée des utilisateurs de son site internet traiteurmontpellier.com. La présente politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD - Règlement UE 2016/679) et à la loi française Informatique et Libertés.`,
   },
   {
     title: "2. Responsable du traitement",
-    content: `Le responsable du traitement des donnees personnelles est :
+    content: `Le responsable du traitement des données personnelles est :
 
 Traiteur Montpellier
 Adresse : 81 rue de Padirac, 34070 Montpellier
 Email : contact@traiteurmontpellier.com
-Telephone : 06 60 13 05 96`,
+Téléphone : 06 60 13 05 96`,
   },
   {
-    title: "3. Donnees collectees",
-    content: `Nous collectons les donnees personnelles suivantes uniquement lorsque vous nous les transmettez volontairement via notre formulaire de contact ou de devis :
+    title: "3. Données collectées",
+    content: `Nous collectons les données personnelles suivantes uniquement lorsque vous nous les transmettez volontairement via notre formulaire de contact ou de devis :
 
-- Nom et prenom
+- Nom et prénom
 - Adresse email
-- Numero de telephone
-- Type d'evenement et nombre de convives
-- Toute information complementaire que vous choisissez de nous communiquer
+- Numéro de téléphone
+- Type d'événement et nombre de convives
+- Toute information complémentaire que vous choisissez de nous communiquer
 
-Nous ne collectons aucune donnee de maniere automatique a des fins de profilage ou de publicite ciblee.`,
+Nous ne collectons aucune donnée de manière automatique à des fins de profilage ou de publicité ciblée.`,
   },
   {
-    title: "4. Finalites du traitement",
-    content: `Vos donnees personnelles sont collectees et traitees pour les finalites suivantes :
+    title: "4. Finalités du traitement",
+    content: `Vos données personnelles sont collectées et traitées pour les finalités suivantes :
 
-- Repondre a vos demandes de devis et de renseignements
-- Assurer le suivi de votre evenement et de votre commande
-- Vous contacter par telephone ou email dans le cadre de votre demande
-- Ameliorer nos services et l'experience utilisateur de notre site
+- Répondre à vos demandes de devis et de renseignements
+- Assurer le suivi de votre événement et de votre commande
+- Vous contacter par téléphone ou email dans le cadre de votre demande
+- Améliorer nos services et l'expérience utilisateur de notre site
 
-Base legale : le traitement de vos donnees repose sur votre consentement (article 6.1.a du RGPD) et sur l'execution de mesures precontractuelles (article 6.1.b du RGPD).`,
+Base légale : le traitement de vos données repose sur votre consentement (article 6.1.a du RGPD) et sur l'exécution de mesures précontractuelles (article 6.1.b du RGPD).`,
   },
   {
-    title: "5. Duree de conservation",
-    content: `Vos donnees personnelles sont conservees pendant une duree maximale de 3 ans a compter de votre dernier contact avec nous. Au-dela de cette duree, vos donnees sont supprimees ou anonymisees.
+    title: "5. Durée de conservation",
+    content: `Vos données personnelles sont conservées pendant une durée maximale de 3 ans à compter de votre dernier contact avec nous. Au-delà de cette durée, vos données sont supprimées ou anonymisées.
 
-Les donnees liees a une commande ou une prestation realisee sont conservees conformement aux obligations legales et comptables en vigueur (10 ans pour les pieces comptables).`,
+Les données liées à une commande ou une prestation réalisée sont conservées conformément aux obligations légales et comptables en vigueur (10 ans pour les pièces comptables).`,
   },
   {
-    title: "6. Destinataires des donnees",
-    content: `Vos donnees personnelles sont strictement confidentielles et ne sont en aucun cas vendues, echangees ou louees a des tiers.
+    title: "6. Destinataires des données",
+    content: `Vos données personnelles sont strictement confidentielles et ne sont en aucun cas vendues, échangées ou louées à des tiers.
 
-Seuls les membres de l'equipe Traiteur Montpellier habilites a traiter votre demande ont acces a vos informations. Nos sous-traitants techniques (hebergeur, service email) sont soumis aux memes obligations de protection des donnees.`,
+Seuls les membres de l'équipe Traiteur Montpellier habilités à traiter votre demande ont accès à vos informations. Nos sous-traitants techniques (hébergeur, service email) sont soumis aux mêmes obligations de protection des données.`,
   },
   {
     title: "7. Cookies",
-    content: `Notre site utilise uniquement des cookies strictement necessaires au bon fonctionnement technique du site. Ces cookies ne necessitent pas votre consentement prealable conformement a la reglementation en vigueur.
+    content: `Notre site utilise uniquement des cookies strictement nécessaires au bon fonctionnement technique du site. Ces cookies ne nécessitent pas votre consentement préalable conformément à la réglementation en vigueur.
 
-Nous n'utilisons pas de cookies de mesure d'audience, de cookies publicitaires ou de cookies de reseaux sociaux. Aucun traceur tiers n'est depose sur votre terminal lors de votre navigation.`,
+Nous n'utilisons pas de cookies de mesure d'audience, de cookies publicitaires ou de cookies de réseaux sociaux. Aucun traceur tiers n'est déposé sur votre terminal lors de votre navigation.`,
   },
   {
     title: "8. Vos droits",
-    content: `Conformement au RGPD et a la loi Informatique et Libertes, vous disposez des droits suivants :
+    content: `Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants :
 
-- Droit d'acces : obtenir la confirmation que vos donnees sont traitees et en obtenir une copie
-- Droit de rectification : demander la correction de donnees inexactes ou incompletes
-- Droit a l'effacement : demander la suppression de vos donnees personnelles
-- Droit a la portabilite : recevoir vos donnees dans un format structure et lisible
-- Droit d'opposition : vous opposer a tout moment au traitement de vos donnees
-- Droit a la limitation : demander la limitation du traitement dans certains cas
+- Droit d'accès : obtenir la confirmation que vos données sont traitées et en obtenir une copie
+- Droit de rectification : demander la correction de données inexactes ou incomplètes
+- Droit à l'effacement : demander la suppression de vos données personnelles
+- Droit à la portabilité : recevoir vos données dans un format structuré et lisible
+- Droit d'opposition : vous opposer à tout moment au traitement de vos données
+- Droit à la limitation : demander la limitation du traitement dans certains cas
 
-Pour exercer ces droits, adressez votre demande a : contact@traiteurmontpellier.com
+Pour exercer ces droits, adressez votre demande à : contact@traiteurmontpellier.com
 
-Nous nous engageons a repondre dans un delai maximum de 30 jours.`,
+Nous nous engageons à répondre dans un délai maximum de 30 jours.`,
   },
   {
-    title: "9. Securite des donnees",
-    content: `Traiteur Montpellier met en oeuvre toutes les mesures techniques et organisationnelles appropriees pour assurer la securite et la confidentialite de vos donnees personnelles, et les proteger contre tout acces non autorise, toute perte, alteration ou divulgation.
+    title: "9. Sécurité des données",
+    content: `Traiteur Montpellier met en œuvre toutes les mesures techniques et organisationnelles appropriées pour assurer la sécurité et la confidentialité de vos données personnelles, et les protéger contre tout accès non autorisé, toute perte, altération ou divulgation.
 
-Le site utilise le protocole HTTPS pour securiser les echanges de donnees entre votre navigateur et notre serveur.`,
+Le site utilise le protocole HTTPS pour sécuriser les échanges de données entre votre navigateur et notre serveur.`,
   },
   {
-    title: "10. Reclamation",
-    content: `Si vous estimez que le traitement de vos donnees personnelles constitue une violation du RGPD, vous avez le droit d'introduire une reclamation aupres de la Commission Nationale de l'Informatique et des Libertes (CNIL) :
+    title: "10. Réclamation",
+    content: `Si vous estimez que le traitement de vos données personnelles constitue une violation du RGPD, vous avez le droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :
 
-CNIL - Commission Nationale de l'Informatique et des Libertes
+CNIL - Commission Nationale de l'Informatique et des Libertés
 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07
 Site web : www.cnil.fr
 
-Derniere mise a jour : Mars 2026`,
+Dernière mise à jour : Mars 2026`,
   },
 ];
 
@@ -105,7 +105,7 @@ export default function PolitiqueContent() {
               className="text-4xl font-bold text-white md:text-5xl"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Politique de <span className="text-purple-light">confidentialite</span>
+              Politique de <span className="text-purple-light">confidentialité</span>
             </motion.h1>
           </div>
         </section>

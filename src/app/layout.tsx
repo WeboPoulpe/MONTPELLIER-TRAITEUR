@@ -22,27 +22,27 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://traiteurmontpellier.com"),
   title: {
-    default: "Traiteur Montpellier | Traiteur d'Exception pour vos Evenements",
+    default: "Traiteur Montpellier | Traiteur d'Exception pour vos Événements",
     template: "%s | Traiteur Montpellier",
   },
   description:
-    "Traiteur Montpellier, votre partenaire culinaire pour des evenements d'exception a Montpellier et ses environs. Entreprises, cocktails, evenements prives. Cuisine mediterraneenne raffinee et ecoresponsable depuis 2008.",
+    "Traiteur Montpellier, votre partenaire culinaire pour des événements d'exception à Montpellier et ses environs. Entreprises, cocktails, événements privés. Cuisine méditerranéenne raffinée et écoresponsable depuis 2008.",
   keywords: [
     "traiteur montpellier",
     "traiteur entreprise montpellier",
-    "traiteur evenement montpellier",
-    "cocktail dinatoire montpellier",
+    "traiteur événement montpellier",
+    "cocktail dînatoire montpellier",
     "buffet montpellier",
-    "traiteur ecoresponsable",
-    "traiteur mediterraneen",
-    "traiteur herault",
+    "traiteur écoresponsable",
+    "traiteur méditerranéen",
+    "traiteur hérault",
     "plateaux repas montpellier",
     "catering montpellier",
   ],
   openGraph: {
     title: "Traiteur Montpellier | Traiteur d'Exception",
     description:
-      "Experiences culinaires sur mesure pour vos evenements a Montpellier. Cuisine mediterraneenne raffinee et engagement ecoresponsable depuis 2008.",
+      "Expériences culinaires sur mesure pour vos événements à Montpellier. Cuisine méditerranéenne raffinée et engagement écoresponsable depuis 2008.",
     url: "https://traiteurmontpellier.com",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Traiteur Montpellier | Traiteur d'Exception",
     description:
-      "Experiences culinaires sur mesure pour vos evenements a Montpellier depuis 2008.",
+      "Expériences culinaires sur mesure pour vos événements à Montpellier depuis 2008.",
   },
   robots: {
     index: true,

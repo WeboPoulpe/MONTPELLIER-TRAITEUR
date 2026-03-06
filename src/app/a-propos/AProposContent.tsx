@@ -31,76 +31,76 @@ import FAQ from "@/components/FAQ";
 const aproposFaq = [
   {
     question: "Depuis quand Traiteur Montpellier existe-t-il ?",
-    answer: "Traiteur Montpellier a ete fonde en 2008. Nous cumulons plus de 15 ans d'experience dans la restauration evenementielle a Montpellier et dans tout l'Herault, avec plus de 500 evenements realises et 50 000 convives servis.",
+    answer: "Traiteur Montpellier a été fondé en 2008. Nous cumulons plus de 15 ans d'expérience dans la restauration événementielle à Montpellier et dans tout l'Hérault, avec plus de 500 événements réalisés et 50 000 convives servis.",
   },
   {
     question: "Quelle est votre zone d'intervention ?",
-    answer: "Nous sommes bases a Montpellier et intervenons dans tout le departement de l'Herault (34). Pour les evenements d'envergure, nous pouvons nous deplacer dans toute la region Occitanie. Contactez-nous pour verifier la faisabilite.",
+    answer: "Nous sommes basés à Montpellier et intervenons dans tout le département de l'Hérault (34). Pour les événements d'envergure, nous pouvons nous déplacer dans toute la région Occitanie. Contactez-nous pour vérifier la faisabilité.",
   },
   {
-    question: "Que signifie votre engagement eco-responsable concretement ?",
-    answer: "Notre demarche RSE repose sur trois piliers : le zero dechet (compostage, valorisation des dechets en huiles aromatisees et soupes), les circuits courts (partenariats avec les producteurs locaux) et la solidarite (redistribution des surplus a une association humanitaire de Montpellier).",
+    question: "Que signifie votre engagement éco-responsable concrètement ?",
+    answer: "Notre démarche RSE repose sur trois piliers : le zéro déchet (compostage, valorisation des déchets en huiles aromatisées et soupes), les circuits courts (partenariats avec les producteurs locaux) et la solidarité (redistribution des surplus à une association humanitaire de Montpellier).",
   },
   {
     question: "Comment obtenir un devis ?",
-    answer: "Remplissez notre formulaire de devis en ligne en quelques clics, ou appelez-nous directement au 06 60 13 05 96. Nous vous repondons sous 24h avec une proposition personnalisee et sans engagement.",
+    answer: "Remplissez notre formulaire de devis en ligne en quelques clics, ou appelez-nous directement au 06 60 13 05 96. Nous vous répondons sous 24h avec une proposition personnalisée et sans engagement.",
   },
   {
-    question: "Quelle est votre specialite culinaire ?",
-    answer: "Notre cuisine s'inspire des traditions mediterraneennes enrichies de touches caribeennes. Nous proposons une gastronomie metissee, genereuse et raffinee, preparee a partir de produits frais et de saison issus de producteurs locaux.",
+    question: "Quelle est votre spécialité culinaire ?",
+    answer: "Notre cuisine s'inspire des traditions méditerranéennes enrichies de touches caribéennes. Nous proposons une gastronomie métissée, généreuse et raffinée, préparée à partir de produits frais et de saison issus de producteurs locaux.",
   },
   {
-    question: "Proposez-vous des degustations avant de finaliser la commande ?",
-    answer: "Oui, pour les evenements de plus de 50 personnes, nous organisons une degustation sur rendez-vous. C'est l'occasion de valider ensemble les saveurs, les presentations et d'ajuster le menu selon vos retours.",
+    question: "Proposez-vous des dégustations avant de finaliser la commande ?",
+    answer: "Oui, pour les événements de plus de 50 personnes, nous organisons une dégustation sur rendez-vous. C'est l'occasion de valider ensemble les saveurs, les présentations et d'ajuster le menu selon vos retours.",
   },
 ];
 
 const values = [
   {
     icon: Recycle,
-    title: "Zero Dechet",
+    title: "Zéro Déchet",
     description:
-      "Engages dans une demarche zero dechet, nous mettons en oeuvre des actions concretes : valorisation des dechets par compostage, creation d'huiles aromatisees, de soupes gourmandes et de poudres de decoration issues de matieres premieres recuperees.",
+      "Engagés dans une démarche zéro déchet, nous mettons en oeuvre des actions concrètes : valorisation des déchets par compostage, création d'huiles aromatisées, de soupes gourmandes et de poudres de décoration issues de matières premières récupérées.",
   },
   {
     icon: MapPin,
     title: "Circuits Courts",
     description:
-      "Nous favorisons les circuits courts, en collaborant etroitement avec des producteurs de la region, afin de garantir la fraicheur de nos produits tout en soutenant l'economie locale.",
+      "Nous favorisons les circuits courts, en collaborant étroitement avec des producteurs de la région, afin de garantir la fraîcheur de nos produits tout en soutenant l'économie locale.",
   },
   {
     icon: Heart,
-    title: "Solidarite",
+    title: "Solidarité",
     description:
-      "Les surplus de production sont soigneusement redistribues a une association humanitaire de Montpellier, renforcant ainsi notre engagement solidaire.",
+      "Les surplus de production sont soigneusement redistribués à une association humanitaire de Montpellier, renforçant ainsi notre engagement solidaire.",
   },
   {
     icon: Monitor,
     title: "Interface Minimaliste",
     description:
-      "Une interface epuree pour reduire la consommation d'energie lors de votre navigation. Chaque choix de design est pense pour limiter notre empreinte numerique.",
+      "Une interface épurée pour réduire la consommation d'énergie lors de votre navigation. Chaque choix de design est pensé pour limiter notre empreinte numérique.",
   },
   {
     icon: Palette,
-    title: "Logo Eco-Concu",
+    title: "Logo Éco-Conçu",
     description:
       "Un logo en noir et blanc, pour un chargement plus rapide et une impression plus sobre et respectueuse de l'environnement.",
   },
 ];
 
 const timeline = [
-  { year: "2008", event: "Creation de Traiteur Montpellier" },
-  { year: "2012", event: "Lancement de la demarche zero dechet" },
+  { year: "2008", event: "Création de Traiteur Montpellier" },
+  { year: "2012", event: "Lancement de la démarche zéro déchet" },
   { year: "2015", event: "Partenariat avec les producteurs locaux" },
-  { year: "2018", event: "500eme evenement celebre" },
+  { year: "2018", event: "500ème événement célébré" },
   { year: "2020", event: "Adaptation et innovation pendant la crise" },
-  { year: "2024", event: "50 000 convives servis, engagement renforce" },
+  { year: "2024", event: "50 000 convives servis, engagement renforcé" },
 ];
 
 const eventTypes = [
-  { value: "entreprise", label: "Evenement d'entreprise" },
+  { value: "entreprise", label: "Événement d'entreprise" },
   { value: "foire", label: "Foire & Salon" },
-  { value: "prive", label: "Evenement prive" },
+  { value: "prive", label: "Événement privé" },
   { value: "cocktail", label: "Cocktail" },
   { value: "autre", label: "Autre" },
 ];
@@ -153,7 +153,7 @@ export default function AProposContent() {
           subtitle="Depuis 2008 - Montpellier"
           title="A Propos de"
           titleAccent="Traiteur Montpellier"
-          description="Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui celebre la richesse des cultures mediterraneennes dans leur diversite, tout en y insufflant des inspirations caribeennes delicates."
+          description="Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui célèbre la richesse des cultures méditerranéennes dans leur diversité, tout en y insufflant des inspirations caribéennes délicates."
           image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop"
           ctaLabel="Nous contacter"
           ctaHref="#devis"
@@ -179,21 +179,21 @@ export default function AProposContent() {
                   <br />
                   <span className="text-purple">gastronomique</span>
                   <br />
-                  engagee
+                  engagée
                 </h2>
                 <p className="mt-6 max-w-lg text-lg leading-relaxed text-neutral-600">
-                  Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui celebre
-                  la richesse des cultures mediterraneennes dans leur diversite, tout en y
-                  insufflant des inspirations caribeennes delicates.
+                  Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui célèbre
+                  la richesse des cultures méditerranéennes dans leur diversité, tout en y
+                  insufflant des inspirations caribéennes délicates.
                 </p>
                 <p className="mt-4 max-w-lg text-lg leading-relaxed text-neutral-600">
-                  Chaque creation reflete l&apos;esprit de partage, la generosite et la subtilite
-                  des cuisines du Sud, magnifiees par notre sens du detail et notre exigence de qualite.
+                  Chaque création reflète l&apos;esprit de partage, la générosité et la subtilité
+                  des cuisines du Sud, magnifiées par notre sens du détail et notre exigence de qualité.
                 </p>
                 <p className="mt-4 max-w-lg text-lg leading-relaxed text-neutral-600">
-                  Nos prestations, pensees pour les professionnels et les institutions, sont
-                  faconnees sur mesure pour traduire vos valeurs et votre image a travers une
-                  cuisine aussi elegante qu&apos;engagee.
+                  Nos prestations, pensées pour les professionnels et les institutions, sont
+                  façonnées sur mesure pour traduire vos valeurs et votre image à travers une
+                  cuisine aussi élégante qu&apos;engagée.
                 </p>
               </motion.div>
 
@@ -218,7 +218,7 @@ export default function AProposContent() {
                     15+
                   </p>
                   <p className="mt-1 text-xs font-medium tracking-wider uppercase opacity-80">
-                    Annees d&apos;excellence
+                    Années d&apos;excellence
                   </p>
                 </div>
                 <div className="absolute -top-4 -right-4 -z-10 h-full w-full rounded-2xl border-2 border-purple/20" />
@@ -275,11 +275,11 @@ export default function AProposContent() {
               >
                 L&apos;excellence culinaire dans une
                 <br />
-                <span className="text-purple">demarche ethique</span>
+                <span className="text-purple">démarche éthique</span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-neutral-500">
                 Chez Traiteur Montpellier, l&apos;art de recevoir s&apos;accompagne d&apos;un profond
-                respect pour la planete. Un engagement sincere pour des evenements aussi
+                respect pour la planète. Un engagement sincère pour des événements aussi
                 savoureux que responsables.
               </p>
             </motion.div>
@@ -312,8 +312,8 @@ export default function AProposContent() {
               className="mx-auto mt-16 max-w-3xl"
             >
               <p className="text-center text-sm leading-relaxed text-neutral-500">
-                Que ce soit a travers notre pratique de la cuisine ou par le design de notre
-                identite graphique et de notre site, tout est pense pour repondre a ces valeurs :
+                Que ce soit à travers notre pratique de la cuisine ou par le design de notre
+                identité graphique et de notre site, tout est pensé pour répondre à ces valeurs :
               </p>
               <div className="mt-8 grid gap-6 md:grid-cols-2">
                 {values.slice(3).map((value, i) => (
@@ -356,7 +356,7 @@ export default function AProposContent() {
                 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                Bases a
+                Basés à
                 <br />
                 <span className="text-purple-light">Montpellier</span>
               </h2>
@@ -399,7 +399,7 @@ export default function AProposContent() {
                     <p className="mt-1 text-sm text-white/50">
                       81 rue de Padirac, 34070 Montpellier
                       <br />
-                      Intervention dans tout l&apos;Herault
+                      Intervention dans tout l&apos;Hérault
                     </p>
                   </div>
                 </div>
@@ -409,7 +409,7 @@ export default function AProposContent() {
                     <Phone className="h-5 w-5 text-purple-light" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white">Telephone</h4>
+                    <h4 className="font-bold text-white">Téléphone</h4>
                     <a href="tel:+33660130596" className="mt-1 block text-sm text-white/50 transition-colors hover:text-purple-light">
                       +33 (6) 60 13 05 96
                     </a>
@@ -437,7 +437,7 @@ export default function AProposContent() {
                     <p className="mt-1 text-sm text-white/50">
                       Lun - Sam : 9h - 19h
                       <br />
-                      Service le week-end sur reservation
+                      Service le week-end sur réservation
                     </p>
                   </div>
                 </div>
@@ -499,7 +499,7 @@ export default function AProposContent() {
                 <span className="text-purple">devis gratuit</span>
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-lg text-neutral-500">
-                Decrivez-nous votre evenement et recevez une proposition personnalisee
+                Décrivez-nous votre événement et recevez une proposition personnalisée
                 sous 24 heures.
               </p>
             </motion.div>
@@ -546,10 +546,10 @@ export default function AProposContent() {
                   className="mt-6 text-3xl font-bold text-black"
                   style={{ fontFamily: "var(--font-playfair)" }}
                 >
-                  Demande envoyee !
+                  Demande envoyée !
                 </h3>
                 <p className="mt-4 text-neutral-500">
-                  Merci pour votre confiance. Notre equipe vous recontactera sous 24h
+                  Merci pour votre confiance. Notre équipe vous recontactera sous 24h
                   pour discuter de votre projet.
                 </p>
               </motion.div>
@@ -570,7 +570,7 @@ export default function AProposContent() {
                     <div className="flex items-center gap-3 text-neutral-400">
                       <PartyPopper className="h-5 w-5" />
                       <span className="text-sm font-medium">
-                        Quel type d&apos;evenement organisez-vous ?
+                        Quel type d&apos;événement organisez-vous ?
                       </span>
                     </div>
                     <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3">
@@ -601,7 +601,7 @@ export default function AProposContent() {
                     <div className="flex items-center gap-3 text-neutral-400">
                       <Users className="h-5 w-5" />
                       <span className="text-sm font-medium">
-                        Combien d&apos;invites attendez-vous ?
+                        Combien d&apos;invités attendez-vous ?
                       </span>
                     </div>
                     <div className="mt-6 grid gap-3">
@@ -632,7 +632,7 @@ export default function AProposContent() {
                     <div className="flex items-center gap-3 text-neutral-400">
                       <Calendar className="h-5 w-5" />
                       <span className="text-sm font-medium">
-                        Quelle est la date prevue ?
+                        Quelle est la date prévue ?
                       </span>
                     </div>
                     <div className="mt-6">
@@ -655,7 +655,7 @@ export default function AProposContent() {
                   >
                     <div className="flex items-center gap-3 text-neutral-400">
                       <MessageSquare className="h-5 w-5" />
-                      <span className="text-sm font-medium">Vos coordonnees</span>
+                      <span className="text-sm font-medium">Vos coordonnées</span>
                     </div>
                     <div className="mt-6 grid gap-4 md:grid-cols-2">
                       <input
@@ -674,13 +674,13 @@ export default function AProposContent() {
                       />
                       <input
                         type="tel"
-                        placeholder="Votre telephone"
+                        placeholder="Votre téléphone"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="rounded-xl border-2 border-neutral-100 p-4 text-neutral-800 transition-all focus:border-purple focus:outline-none"
                       />
                       <textarea
-                        placeholder="Message ou precisions (optionnel)"
+                        placeholder="Message ou précisions (optionnel)"
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         rows={3}
@@ -739,7 +739,7 @@ export default function AProposContent() {
         </section>
 
         {/* FAQ */}
-        <FAQ items={aproposFaq} title="Questions generales" />
+        <FAQ items={aproposFaq} title="Questions générales" />
       </main>
     </PageTransition>
   );

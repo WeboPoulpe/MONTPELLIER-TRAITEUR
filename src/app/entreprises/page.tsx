@@ -2,22 +2,22 @@ import type { Metadata } from "next";
 import EntreprisesContent from "./EntreprisesContent";
 
 export const metadata: Metadata = {
-  title: "Nos Prestations - Evenements & Receptions",
+  title: "Nos Prestations - Événements & Réceptions",
   description:
-    "Decouvrez les prestations de Traiteur Montpellier : evenements d'entreprise, foires et salons, evenements prives. Cuisine mediterraneenne raffinee et sur mesure a Montpellier.",
+    "Découvrez les prestations de Traiteur Montpellier : événements d'entreprise, foires et salons, événements privés. Cuisine méditerranéenne raffinée et sur mesure à Montpellier.",
   keywords: [
     "traiteur prestations montpellier",
     "traiteur entreprise montpellier",
-    "traiteur evenement prive montpellier",
+    "traiteur événement privé montpellier",
     "catering foires salons montpellier",
-    "cocktail dinatoire montpellier",
+    "cocktail dînatoire montpellier",
     "plateaux repas montpellier",
-    "seminaire traiteur montpellier",
+    "séminaire traiteur montpellier",
   ],
   openGraph: {
     title: "Nos Prestations | Traiteur Montpellier",
     description:
-      "Evenements d'entreprise, foires et salons, celebrations privees. Des prestations culinaires sur mesure a Montpellier.",
+      "Événements d'entreprise, foires et salons, célébrations privées. Des prestations culinaires sur mesure à Montpellier.",
     url: "https://traiteurmontpellier.com/entreprises",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",

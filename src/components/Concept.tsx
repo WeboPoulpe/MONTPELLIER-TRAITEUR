@@ -8,21 +8,21 @@ import Image from "next/image";
 const values = [
   {
     icon: Leaf,
-    title: "Zero Dechet",
+    title: "Zéro Déchet",
     description:
-      "Valorisation des dechets par compostage, creation d'huiles aromatisees, de soupes gourmandes et de poudres de decoration issues de matieres premieres recuperees.",
+      "Valorisation des déchets par compostage, création d'huiles aromatisées, de soupes gourmandes et de poudres de décoration issues de matières premières récupérées.",
   },
   {
     icon: MapPin,
     title: "Circuits Courts",
     description:
-      "Collaboration etroite avec des producteurs de la region pour garantir la fraicheur de nos produits tout en soutenant l'economie locale.",
+      "Collaboration étroite avec des producteurs de la région pour garantir la fraîcheur de nos produits tout en soutenant l'économie locale.",
   },
   {
     icon: Heart,
-    title: "Solidarite",
+    title: "Solidarité",
     description:
-      "Les surplus de production sont soigneusement redistribues a une association humanitaire de Montpellier.",
+      "Les surplus de production sont soigneusement redistribués à une association humanitaire de Montpellier.",
   },
 ];
 
@@ -53,16 +53,16 @@ export default function Concept() {
               <br />
               <span className="text-purple">gastronomique</span>
               <br />
-              engagee
+              engagée
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-neutral-600">
               Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui
-              celebre la richesse des cultures mediterraneennes dans leur diversite,
-              tout en y insufflant des inspirations caribeennes delicates.
+              célèbre la richesse des cultures méditerranéennes dans leur diversité,
+              tout en y insufflant des inspirations caribéennes délicates.
             </p>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-neutral-500">
               Chez Traiteur Montpellier, l&apos;art de recevoir s&apos;accompagne d&apos;un profond
-              respect pour la planete. Un engagement sincere pour des evenements aussi
+              respect pour la planète. Un engagement sincère pour des événements aussi
               savoureux que responsables.
             </p>
 
@@ -114,7 +114,7 @@ export default function Concept() {
                 15+
               </p>
               <p className="mt-1 text-xs font-medium tracking-wider uppercase opacity-80">
-                Annees d&apos;excellence
+                Années d&apos;excellence
               </p>
             </div>
             <div className="absolute -top-4 -right-4 -z-10 h-full w-full rounded-2xl border-2 border-purple/20" />
