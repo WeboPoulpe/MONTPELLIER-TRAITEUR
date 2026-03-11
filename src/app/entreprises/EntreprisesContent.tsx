@@ -97,20 +97,41 @@ const offerings = [
   { icon: Users, label: "Service & Personnel" },
 ];
 
-export default function EntreprisesContent() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function EntreprisesContent({ data }: { data?: any }) {
+  const d = data || {};
+  const hero = d.hero || {};
+  const dbPrestations = d.prestations as any[] | undefined;
+  const dbFaq = d.faq as { question: string; answer: string }[] | undefined;
+  const cta = d.cta || {};
+
+  // Override prestations text from DB
+  const activePrestations = dbPrestations
+    ? prestations.map((p, i) => ({
+        ...p,
+        title: dbPrestations[i]?.title ?? p.title,
+        subtitle: dbPrestations[i]?.subtitle ?? p.subtitle,
+        description: dbPrestations[i]?.description ?? p.description,
+        longDescription: dbPrestations[i]?.longDescription ?? p.longDescription,
+        features: dbPrestations[i]?.features ?? p.features,
+      }))
+    : prestations;
+
+  const activeFaq = dbFaq || faqItems;
+
   return (
     <PageTransition>
       <main>
         <PageHero
-          subtitle="Nos Prestations"
-          title="Des expériences"
-          titleAccent="culinaires d'exception"
-          description="Sublimez vos réceptions grâce a notre savoir-faire et a notre passion pour une cuisine généreuse, raffinée et éco-responsable."
-          image="/photos site/cocktail-service-traiteur-montpellier.jpg"
+          subtitle={hero.subtitle ?? "Nos Prestations"}
+          title={hero.title ?? "Des expériences"}
+          titleAccent={hero.titleAccent ?? "culinaires d'exception"}
+          description={hero.description ?? "Sublimez vos réceptions grâce a notre savoir-faire et a notre passion pour une cuisine généreuse, raffinée et éco-responsable."}
+          image={hero.image ?? "/photos site/cocktail-service-traiteur-montpellier.jpg"}
         />
 
         {/* Prestations */}
-        {prestations.map((prestation, index) => (
+        {activePrestations.map((prestation, index) => (
           <PrestationSection key={prestation.title} prestation={prestation} index={index} reversed={index % 2 === 1} />
         ))}
 
@@ -171,16 +192,16 @@ export default function EntreprisesContent() {
                 className="text-3xl font-bold text-white md:text-5xl"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                Un projet ? Une idée ?
+                {cta.title ?? "Un projet ? Une idée ?"}
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-                Parlez-nous de votre événement et recevez une proposition personnalisée sous 24h. Devis gratuit et sans engagement.
+                {cta.description ?? "Parlez-nous de votre événement et recevez une proposition personnalisée sous 24h. Devis gratuit et sans engagement."}
               </p>
               <Link
                 href="/a-propos#devis"
                 className="group relative mt-10 inline-block overflow-hidden rounded-full border border-white/30 bg-white/10 px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
               >
-                <span className="relative z-10">Demander un devis gratuit</span>
+                <span className="relative z-10">{cta.buttonText ?? "Demander un devis gratuit"}</span>
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
             </motion.div>
@@ -188,7 +209,7 @@ export default function EntreprisesContent() {
         </section>
 
         {/* FAQ */}
-        <FAQ items={faqItems} title="Questions sur nos prestations entreprise" />
+        <FAQ items={activeFaq} title="Questions sur nos prestations entreprise" />
       </main>
     </PageTransition>
   );

@@ -5,28 +5,24 @@ import { useRef } from "react";
 import { Leaf, MapPin, Heart } from "lucide-react";
 import Image from "next/image";
 
-const values = [
-  {
-    icon: Leaf,
-    title: "Zéro Déchet",
-    description:
-      "Valorisation des déchets par compostage, création d'huiles aromatisées, de soupes gourmandes et de poudres de décoration issues de matières premières récupérées.",
-  },
-  {
-    icon: MapPin,
-    title: "Circuits Courts",
-    description:
-      "Collaboration étroite avec des producteurs de la région pour garantir la fraîcheur de nos produits tout en soutenant l'économie locale.",
-  },
-  {
-    icon: Heart,
-    title: "Solidarité",
-    description:
-      "Les surplus de production sont soigneusement redistribués à une association humanitaire de Montpellier.",
-  },
+const defaultFeatures = [
+  { icon: Leaf, title: "Zéro Déchet", description: "Valorisation des déchets par compostage, création d'huiles aromatisées, de soupes gourmandes et de poudres de décoration issues de matières premières récupérées." },
+  { icon: MapPin, title: "Circuits Courts", description: "Collaboration étroite avec des producteurs de la région pour garantir la fraîcheur de nos produits tout en soutenant l'économie locale." },
+  { icon: Heart, title: "Solidarité", description: "Les surplus de production sont soigneusement redistribués à une association humanitaire de Montpellier." },
 ];
+const iconMap = [Leaf, MapPin, Heart];
 
-export default function Concept() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function Concept({ data }: { data?: any }) {
+  const subtitle = data?.subtitle ?? "Notre engagement";
+  const t1 = data?.titleLine1 ?? "Une vision";
+  const t2 = data?.titleLine2 ?? "gastronomique";
+  const t3 = data?.titleLine3 ?? "engagée";
+  const d1 = data?.description1 ?? "Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui célèbre la richesse des cultures méditerranéennes dans leur diversité, tout en y insufflant des inspirations caribéennes délicates.";
+  const d2 = data?.description2 ?? "";
+  const bn = data?.badgeNumber ?? "15+";
+  const bl = data?.badgeLabel ?? "Années d'excellence";
+  const values = data?.features ? (data.features as any[]).map((f: any, i: number) => ({ icon: iconMap[i] || Leaf, title: f.title, description: f.description })) : defaultFeatures;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -43,28 +39,26 @@ export default function Concept() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-              Notre engagement
+              {subtitle}
             </span>
             <h2
               className="mt-4 text-4xl font-bold tracking-tight text-black md:text-5xl"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              Une vision
+              {t1}
               <br />
-              <span className="text-purple">gastronomique</span>
+              <span className="text-purple">{t2}</span>
               <br />
-              engagée
+              {t3}
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-neutral-600">
-              Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui
-              célèbre la richesse des cultures méditerranéennes dans leur diversité,
-              tout en y insufflant des inspirations caribéennes délicates.
+              {d1}
             </p>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-neutral-500">
-              Chez Traiteur Montpellier, l&apos;art de recevoir s&apos;accompagne d&apos;un profond
-              respect pour la planète. Un engagement sincère pour des événements aussi
-              savoureux que responsables.
-            </p>
+            {d2 && (
+              <p className="mt-4 max-w-lg text-base leading-relaxed text-neutral-500">
+                {d2}
+              </p>
+            )}
 
             <div className="mt-10 space-y-8">
               {values.map((value, index) => (
@@ -111,10 +105,10 @@ export default function Concept() {
             {/* Floating badge */}
             <div className="absolute -bottom-6 -left-6 rounded-2xl bg-purple p-6 text-white shadow-2xl shadow-purple/30">
               <p className="text-3xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
-                15+
+                {bn}
               </p>
               <p className="mt-1 text-xs font-medium tracking-wider uppercase opacity-80">
-                Années d&apos;excellence
+                {bl}
               </p>
             </div>
             <div className="absolute -top-4 -right-4 -z-10 h-full w-full rounded-2xl border-2 border-purple/20" />

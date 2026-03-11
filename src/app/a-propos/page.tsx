@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import AProposContent from "./AProposContent";
+import { getPageData } from "@/lib/pageData";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "À Propos & Contact - Notre Histoire",
@@ -27,6 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AProposPage() {
-  return <AProposContent />;
+export default async function AProposPage() {
+  const pageContent = await getPageData("a-propos", {});
+  return <AProposContent data={pageContent} />;
 }

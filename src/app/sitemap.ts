@@ -1,8 +1,26 @@
 import type { MetadataRoute } from "next";
+import { getPublishedArticles } from "@/lib/articles";
 
 const BASE_URL = "https://traiteurmontpellier.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const articles = await getPublishedArticles();
+
+  const blogEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...articles.map((article) => ({
+      url: `${BASE_URL}/blog/${article.slug}`,
+      lastModified: new Date(article.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+  ];
+
   return [
     {
       url: BASE_URL,
@@ -52,5 +70,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.2,
     },
+    ...blogEntries,
   ];
 }

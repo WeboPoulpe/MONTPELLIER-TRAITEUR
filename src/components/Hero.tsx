@@ -5,12 +5,20 @@ import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Hero() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function Hero({ data }: { data?: any }) {
+  const badge = data?.badge ?? "Depuis 2008 \u2014 Montpellier";
+  const line1 = data?.titleLine1 ?? "L\u2019Art de la";
+  const line2 = data?.titleLine2 ?? "Gastronomie";
+  const line3 = data?.titleLine3 ?? "sur mesure";
+  const desc = data?.description ?? "";
+  const img = data?.image ?? "/photos site/cocktail-service-traiteur-montpellier.jpg";
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black">
       {/* Background image with next/image */}
       <Image
-        src="/photos site/cocktail-service-traiteur-montpellier.jpg"
+        src={img}
         alt="Traiteur Montpellier - Gastronomie sur mesure"
         fill
         className="object-cover"
@@ -28,7 +36,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <div>
           <span className="inline-block border border-white/20 px-6 py-2 text-xs font-semibold tracking-[0.3em] text-white/70 uppercase">
-            Depuis 2008 &mdash; Montpellier
+            {badge}
           </span>
         </div>
 
@@ -36,14 +44,14 @@ export default function Hero() {
           className="mt-8 text-5xl leading-tight font-bold tracking-tight text-white md:text-7xl lg:text-8xl"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
-          L&apos;Art de la
+          {line1}
           <br />
           <span className="bg-gradient-to-r from-white via-purple-light to-white bg-clip-text text-transparent">
-            Gastronomie
+            {line2}
           </span>
           <br />
           <span className="text-4xl font-light italic md:text-5xl lg:text-6xl">
-            sur mesure
+            {line3}
           </span>
         </h1>
 
@@ -53,12 +61,7 @@ export default function Hero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
         >
-          Inspirés par les grandes traditions méditerranéennes, sublimées par des
-          touches caribéennes, nous imaginons des expériences culinaires alliant{" "}
-          <span className="text-white">authenticité</span>,{" "}
-          <span className="text-white">créativité</span> et{" "}
-          <span className="text-white">engagement écoresponsable</span>, portées
-          par le savoir-faire de notre cheffe formée à l&apos;École Ducasse.
+          {desc || "Inspirés par les grandes traditions méditerranéennes, sublimées par des touches caribéennes, nous imaginons des expériences culinaires alliant authenticité, créativité et engagement écoresponsable, portées par le savoir-faire de notre cheffe formée à l\u2019École Ducasse."}
         </motion.p>
 
         <motion.div

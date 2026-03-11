@@ -45,7 +45,25 @@ const offerings = [
   { icon: Users, label: "Service & Personnel" },
 ];
 
-export default function Services() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function Services({ data }: { data?: any }) {
+  const svcSubtitle = data?.subtitle ?? "Nos prestations";
+  const svcT1 = data?.titleLine1 ?? "Des expériences culinaires";
+  const svcT2 = data?.titleLine2 ?? "d'exception";
+  const svcDesc = data?.description ?? "Sublimez vos réceptions grâce à notre savoir-faire et à notre passion pour une cuisine généreuse et raffinée.";
+  // Override card text from DB if present
+  const dbCards = data?.cards as any[] | undefined;
+  const svcIcons = [Building2, UtensilsCrossed, PartyPopper];
+  const svcImages = ["/photos site/cocktail-service-traiteur-montpellier.jpg", "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg", "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"];
+  const svcHrefs = ["/entreprises", "/foires-salons", "/evenements-prives"];
+  const svcCards = dbCards
+    ? dbCards.map((c: any, i: number) => ({ ...services[i], title: c.title, subtitle: c.subtitle, description: c.description, features: c.features ?? services[i].features }))
+    : services;
+  const dbOfferings = data?.offerings as string[] | undefined;
+  const offeringIcons = [GlassWater, Cake, Users];
+  const svcOfferings = dbOfferings
+    ? dbOfferings.map((label: string, i: number) => ({ icon: offeringIcons[i] || GlassWater, label }))
+    : offerings;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -60,25 +78,24 @@ export default function Services() {
           className="text-center"
         >
           <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-            Nos prestations
+            {svcSubtitle}
           </span>
           <h2
             className="mt-4 text-4xl font-bold tracking-tight text-black md:text-5xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Des expériences culinaires
+            {svcT1}
             <br />
-            <span className="text-purple">d&apos;exception</span>
+            <span className="text-purple">{svcT2}</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-500">
-            Sublimez vos réceptions grâce à notre savoir-faire et à notre passion
-            pour une cuisine généreuse et raffinée.
+            {svcDesc}
           </p>
         </motion.div>
 
         {/* Service Cards */}
         <div className="mt-20 grid gap-8 lg:grid-cols-3">
-          {services.map((service, index) => (
+          {svcCards.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
@@ -122,7 +139,7 @@ export default function Services() {
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
+                  {service.features.map((feature: string) => (
                     <span
                       key={feature}
                       className="rounded-full bg-purple/5 px-3 py-1 text-xs font-medium text-purple"
@@ -152,7 +169,7 @@ export default function Services() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-8 lg:gap-16"
         >
-          {offerings.map((item) => (
+          {svcOfferings.map((item) => (
             <div
               key={item.label}
               className="flex items-center gap-3 text-neutral-400"

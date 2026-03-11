@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import FoiresSalonsContent from "./FoiresSalonsContent";
+import { getPageData } from "@/lib/pageData";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Traiteur Foires & Salons Montpellier - Catering Professionnel",
@@ -28,6 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FoiresSalonsPage() {
-  return <FoiresSalonsContent />;
+export default async function FoiresSalonsPage() {
+  const pageContent = await getPageData("foires-salons", {});
+  return <FoiresSalonsContent data={pageContent} />;
 }

@@ -15,6 +15,7 @@ const prestationLinks = [
 
 const navLinks = [
   { href: "/galerie", label: "Galerie" },
+  { href: "/blog", label: "Blog" },
   { href: "/a-propos", label: "À Propos" },
 ];
 
@@ -121,7 +122,11 @@ export default function Header() {
           </Link>
         </div>
 
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden" aria-label="Menu">
+        <div className="flex items-center gap-2 lg:hidden">
+          <a href="tel:+33660130596" className="relative z-50 flex h-10 w-10 items-center justify-center rounded-full bg-purple text-white transition-colors hover:bg-purple-dark" aria-label="Appeler">
+            <Phone className="h-5 w-5" />
+          </a>
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10" aria-label="Menu">
           <AnimatePresence mode="wait">
             {mobileOpen ? (
               <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}><X className="h-6 w-6" /></motion.div>
@@ -130,6 +135,7 @@ export default function Header() {
             )}
           </AnimatePresence>
         </button>
+        </div>
       </nav>
 
       <AnimatePresence>

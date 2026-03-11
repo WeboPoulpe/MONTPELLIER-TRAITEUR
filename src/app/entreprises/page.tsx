@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import EntreprisesContent from "./EntreprisesContent";
+import { getPageData } from "@/lib/pageData";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Nos Prestations - Événements & Réceptions",
@@ -28,6 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EntreprisesPage() {
-  return <EntreprisesContent />;
+export default async function EntreprisesPage() {
+  const pageContent = await getPageData("entreprises", {});
+  return <EntreprisesContent data={pageContent} />;
 }

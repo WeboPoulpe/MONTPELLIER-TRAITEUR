@@ -108,16 +108,25 @@ const faqItems = [
   },
 ];
 
-export default function FoiresSalonsContent() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function FoiresSalonsContent({ data }: { data?: any }) {
+  const d = data || {};
+  const hero = d.hero || {};
+  const intro = d.intro || {};
+  const dbServices = d.services as any[] | undefined;
+  const dbSteps = d.steps as any[] | undefined;
+  const cta = d.cta || {};
+  const dbFaq = d.faq as { question: string; answer: string }[] | undefined;
+
   return (
     <PageTransition>
       <main>
         <PageHero
-          subtitle="Foires & Salons"
-          title="Catering professionnel"
-          titleAccent="pour vos salons"
-          description="Faites la différence avec un service culinaire fluide, raffiné et respectueux de votre image de marque. Livraison directe sur stand, matériel inclus."
-          image="/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg"
+          subtitle={hero.subtitle ?? "Foires & Salons"}
+          title={hero.title ?? "Catering professionnel"}
+          titleAccent={hero.titleAccent ?? "pour vos salons"}
+          description={hero.description ?? "Faites la différence avec un service culinaire fluide, raffiné et respectueux de votre image de marque. Livraison directe sur stand, matériel inclus."}
+          image={hero.image ?? "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg"}
         />
 
         {/* Intro section */}
@@ -133,10 +142,10 @@ export default function FoiresSalonsContent() {
         <GalleryStrip />
 
         {/* CTA */}
-        <CTASection />
+        <CTASection cta={cta} />
 
         {/* FAQ */}
-        <FAQ items={faqItems} title="Questions sur nos prestations salons" />
+        <FAQ items={dbFaq || faqItems} title="Questions sur nos prestations salons" />
       </main>
     </PageTransition>
   );
@@ -355,7 +364,7 @@ function GalleryStrip() {
   );
 }
 
-function CTASection() {
+function CTASection({ cta }: { cta: any }) {
   return (
     <section className="bg-purple-dark py-24">
       <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
@@ -369,16 +378,16 @@ function CTASection() {
             className="text-3xl font-bold text-white md:text-5xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Un salon à venir ?
+            {cta.title ?? "Un salon à venir ?"}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-            Parlez-nous de votre participation et recevez une proposition adaptée à votre stand, votre budget et votre programme. Devis gratuit sous 24h.
+            {cta.description ?? "Parlez-nous de votre participation et recevez une proposition adaptée à votre stand, votre budget et votre programme. Devis gratuit sous 24h."}
           </p>
           <Link
             href="/a-propos#devis"
             className="group relative mt-10 inline-block overflow-hidden rounded-full border border-white/30 bg-white/10 px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
           >
-            <span className="relative z-10">Demander un devis gratuit</span>
+            <span className="relative z-10">{cta.buttonText ?? "Demander un devis gratuit"}</span>
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </Link>
         </motion.div>

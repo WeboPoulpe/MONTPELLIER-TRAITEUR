@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import EvenementsPrivesContent from "./EvenementsPrivesContent";
+import { getPageData } from "@/lib/pageData";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Traiteur Événements Privés Montpellier - Anniversaires, Baptêmes, Réceptions",
@@ -28,6 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function EvenementsPrivesPage() {
-  return <EvenementsPrivesContent />;
+export default async function EvenementsPrivesPage() {
+  const pageContent = await getPageData("evenements-prives", {});
+  return <EvenementsPrivesContent data={pageContent} />;
 }

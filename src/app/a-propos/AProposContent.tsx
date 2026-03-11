@@ -3,27 +3,17 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 import {
-  Leaf,
   MapPin,
-  Heart,
   Phone,
   Mail,
   Clock,
-  Send,
-  Check,
   Instagram,
   Linkedin,
   Facebook,
-  Calendar,
-  Users,
-  PartyPopper,
-  MessageSquare,
-  ArrowRight,
-  ArrowLeft,
   Monitor,
   Palette,
-  Recycle,
 } from "lucide-react";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import PageTransition from "@/components/PageTransition";
 import FAQ from "@/components/FAQ";
@@ -55,25 +45,28 @@ const aproposFaq = [
   },
 ];
 
-const values = [
+const rseLogos = [
   {
-    icon: Recycle,
+    logo: "/logos/zero-dechet.svg",
     title: "Zéro Déchet",
     description:
       "Engagés dans une démarche zéro déchet, nous mettons en oeuvre des actions concrètes : valorisation des déchets par compostage, création d'huiles aromatisées, de soupes gourmandes et de poudres de décoration issues de matières premières récupérées.",
   },
   {
-    icon: MapPin,
+    logo: "/logos/circuit-court.svg",
     title: "Circuits Courts",
     description:
       "Nous favorisons les circuits courts, en collaborant étroitement avec des producteurs de la région, afin de garantir la fraîcheur de nos produits tout en soutenant l'économie locale.",
   },
   {
-    icon: Heart,
-    title: "Solidarité",
+    logo: "/logos/origine-france.svg",
+    title: "Origine France Garantie",
     description:
       "Les surplus de production sont soigneusement redistribués à une association humanitaire de Montpellier, renforçant ainsi notre engagement solidaire.",
   },
+];
+
+const designValues = [
   {
     icon: Monitor,
     title: "Interface Minimaliste",
@@ -89,16 +82,26 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2008", event: "Création de Traiteur Montpellier" },
-  { year: "2012", event: "Lancement de la démarche zéro déchet" },
-  { year: "2015", event: "Partenariat avec les producteurs locaux" },
-  { year: "2018", event: "500ème événement célébré" },
-  { year: "2020", event: "Adaptation et innovation pendant la crise" },
-  { year: "2024", event: "50 000 convives servis, engagement renforcé" },
+  { year: "2008", title: "L'envie de partager l'héritage culinaire", event: "Inès créé son entreprise de cheffe à domicile" },
+  { year: "2010", title: "Premiers Mariages", event: "Début de l'aventure Mariage et organisation de grandes réceptions" },
+  { year: "2018", title: "Retour à une entreprise individuelle", event: "L'entreprise revient à un concept plus familiale et authentique" },
+  { year: "2020", title: "Repositionnement", event: "Produits bio en circuit court, respectueux de l'environnement" },
+  { year: "2023", title: "Diplômée de DUCASSE CAMPUS, Paris", event: "Obtenue avec les félicitations du Jury" },
+  { year: "2024", title: "Prix de l'Innovation numérique et Label 0 Déchets", event: "Obtenu par la CMA de l'Hérault pour son engagement RSE" },
+  { year: "2025", title: "Ines réception devient Traiteur Montpellier", event: "L'entreprise se concentre désormais sur les événements B2B" },
+  { year: "2026", title: "18 ans de savoir-faire", event: "18 ans de passion et d'engagement et de savoir-faire" },
 ];
 
 
-export default function AProposContent() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function AProposContent({ data }: { data?: any }) {
+  const d = data || {};
+  const hero = d.hero || {};
+  const story = d.story || {};
+  const dbTimeline = d.timeline as any[] | undefined;
+  const contact = d.contact || {};
+  const dbFaq = d.faq as { question: string; answer: string }[] | undefined;
+
   const storyRef = useRef(null);
   const storyInView = useInView(storyRef, { once: true, margin: "-100px" });
   const valuesRef = useRef(null);
@@ -247,13 +250,13 @@ export default function AProposContent() {
     <PageTransition>
       <main>
         <PageHero
-          subtitle="Depuis 2008 - Montpellier"
-          title="A Propos de"
-          titleAccent="Traiteur Montpellier"
-          description="Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui célèbre la richesse des cultures méditerranéennes dans leur diversité, tout en y insufflant des inspirations caribéennes délicates."
-          image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop"
-          ctaLabel="Nous contacter"
-          ctaHref="#devis"
+          subtitle={hero.subtitle || "Depuis 2008 - Montpellier"}
+          title={hero.title || "A Propos de"}
+          titleAccent={hero.titleAccent || "Traiteur Montpellier"}
+          description={hero.description || "Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui célèbre la richesse des cultures méditerranéennes dans leur diversité, tout en y insufflant des inspirations caribéennes délicates."}
+          image={hero.image || "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop"}
+          ctaLabel={hero.ctaLabel || "Nous contacter"}
+          ctaHref={hero.ctaHref || "#devis"}
         />
 
         {/* Notre Histoire */}
@@ -329,24 +332,28 @@ export default function AProposContent() {
               transition={{ duration: 0.7, delay: 0.5 }}
               className="mt-24 overflow-x-auto"
             >
-              <div className="flex min-w-max items-center gap-0">
+              <div className="relative mx-auto max-w-2xl">
+                {/* Vertical line */}
+                <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-purple/20 md:left-16" />
+
                 {timeline.map((item, i) => (
-                  <div key={item.year} className="flex items-center">
-                    <div className="flex flex-col items-center">
+                  <div key={item.year} className="relative flex gap-6 pb-10 last:pb-0 md:gap-8">
+                    {/* Year + dot */}
+                    <div className="flex shrink-0 flex-col items-center">
                       <span
-                        className="text-2xl font-bold text-purple"
+                        className="w-16 text-right text-lg font-bold text-purple md:w-32 md:text-2xl"
                         style={{ fontFamily: "var(--font-playfair)" }}
                       >
                         {item.year}
                       </span>
-                      <div className="my-3 h-4 w-4 rounded-full bg-purple" />
-                      <span className="max-w-[140px] text-center text-xs text-neutral-500">
-                        {item.event}
-                      </span>
                     </div>
-                    {i < timeline.length - 1 && (
-                      <div className="mx-2 h-[2px] w-16 bg-purple/20 lg:w-24" />
-                    )}
+                    <div className="relative flex items-start">
+                      <div className="absolute -left-[19px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-purple bg-white md:-left-[23px]" />
+                      <div className="pl-2">
+                        <p className="text-sm font-bold text-black">{item.title}</p>
+                        <p className="mt-0.5 text-xs text-neutral-500">{item.event}</p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -381,21 +388,21 @@ export default function AProposContent() {
               </p>
             </motion.div>
 
-            <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {values.slice(0, 3).map((value, i) => (
+            <div className="mt-20 grid gap-8 md:grid-cols-3">
+              {rseLogos.map((item, i) => (
                 <motion.div
-                  key={value.title}
+                  key={item.title}
                   initial={{ opacity: 0, y: 40 }}
                   animate={valuesInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
                   className="group text-center"
                 >
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-purple/5 transition-all duration-300 group-hover:bg-purple/10 group-hover:shadow-lg group-hover:shadow-purple/10">
-                    <value.icon className="h-8 w-8 text-purple" />
+                  <div className="mx-auto flex h-24 w-24 items-center justify-center">
+                    <Image src={item.logo} alt={item.title} width={96} height={96} className="h-24 w-24 object-contain" />
                   </div>
-                  <h3 className="mt-6 text-lg font-bold text-black">{value.title}</h3>
+                  <h3 className="mt-6 text-lg font-bold text-black">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-500">
-                    {value.description}
+                    {item.description}
                   </p>
                 </motion.div>
               ))}
@@ -413,7 +420,7 @@ export default function AProposContent() {
                 identité graphique et de notre site, tout est pensé pour répondre à ces valeurs :
               </p>
               <div className="mt-8 grid gap-6 md:grid-cols-2">
-                {values.slice(3).map((value, i) => (
+                {designValues.map((value, i) => (
                   <motion.div
                     key={value.title}
                     initial={{ opacity: 0, y: 20 }}
@@ -616,7 +623,7 @@ export default function AProposContent() {
         </section>
 
         {/* FAQ */}
-        <FAQ items={aproposFaq} title="Questions générales" />
+        <FAQ items={dbFaq || aproposFaq} title="Questions générales" />
       </main>
     </PageTransition>
   );
