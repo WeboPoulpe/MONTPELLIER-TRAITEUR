@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AdminPanel from "./AdminPanel";
 
 export const metadata: Metadata = {
-  title: "Admin - Blog",
+  title: "Admin - Traiteur Montpellier",
   robots: "noindex, nofollow",
 };
 

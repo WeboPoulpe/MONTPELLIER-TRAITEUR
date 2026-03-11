@@ -3,10 +3,7 @@ import Script from "next/script";
 import { Geist } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
-import AnimatedLayout from "@/components/AnimatedLayout";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import CookieBanner from "@/components/CookieBanner";
+import LayoutShell from "@/components/LayoutShell";
 import JsonLd from "@/components/JsonLd";
 
 const geistSans = Geist({
@@ -101,12 +98,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         <JsonLd />
-        <AnimatedLayout>
-          <Header />
+        <LayoutShell>
           {children}
-          <Footer />
-          <CookieBanner />
-        </AnimatedLayout>
+        </LayoutShell>
       </body>
     </html>
   );
