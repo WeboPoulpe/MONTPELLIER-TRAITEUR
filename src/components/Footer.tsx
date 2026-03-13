@@ -83,38 +83,43 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Footer Content */}
+      {/* Footer Content - 3 colonnes */}
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-6">
               <Link href="/" className="inline-block">
                 <Image
                   src="/logotype_horizontal2.svg"
-                  alt="Traiteur Montpellier"
+                  alt="Traiteur Montpellier - Traiteur d'exception pour vos événements dans l'Hérault"
                   width={180}
                   height={40}
                   className="h-10 w-auto brightness-0 invert"
                 />
               </Link>
-              <Image
-                src="/photos site/rse-traiteur-montpellier-768x763.jpg"
-                alt="Engagement Zéro Déchet - Traiteur Montpellier"
-                width={48}
-                height={48}
-                className="h-12 w-12 rounded-full object-cover ring-2 ring-purple/30"
-              />
+              <Link href="/a-propos#engagement">
+                <Image
+                  src="/photos site/rse-traiteur-montpellier-768x763.jpg"
+                  alt="Engagement éco-responsable zéro déchet - Traiteur Montpellier"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 rounded-full object-cover ring-2 ring-purple/30 transition-all hover:ring-purple"
+                />
+              </Link>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/40">
               Votre partenaire culinaire pour des événements d&apos;exception à
               Montpellier et ses environs. Cuisine méditerranéenne raffinée et
               engagement écoresponsable depuis 2008.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-xs text-white/40">
+            <Link
+              href="/a-propos#engagement"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-xs text-white/40 transition-colors hover:bg-white/10 hover:text-white/60"
+            >
               <span className="inline-block h-2 w-2 rounded-full bg-green-400" />
               Engagé zéro déchet &bull; Circuits courts &bull; Solidarité
-            </div>
+            </Link>
             <div className="mt-6 flex gap-4">
               <a href="https://www.instagram.com/traiteurmontpellier" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
               <a href="https://www.linkedin.com/company/traiteur-montpellier" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all hover:border-purple hover:text-purple" aria-label="LinkedIn"><Linkedin className="h-4 w-4" /></a>
@@ -122,19 +127,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Colonne 1 : Nos Prestations */}
           <div>
-            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Prestations</h4>
+            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Nos Prestations</h4>
             <ul className="mt-4 space-y-3">
               {[
                 { href: "/entreprises", label: "Événements Entreprise" },
                 { href: "/foires-salons", label: "Foires & Salons" },
                 { href: "/evenements-prives", label: "Événements Privés" },
-                { href: "/galerie", label: "Galerie" },
-                { href: "/a-propos", label: "À Propos" },
-                { href: "/a-propos#devis", label: "Devis gratuit" },
               ].map((link) => (
-                <li key={link.href + link.label}>
+                <li key={link.href}>
                   <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">
                     {link.label}
                     <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-purple-light transition-all duration-300 group-hover:w-full" />
@@ -144,15 +146,44 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Colonne 2 : À Propos */}
           <div>
-            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Contact</h4>
+            <h4 className="text-xs font-bold tracking-widest text-white uppercase">À Propos</h4>
             <ul className="mt-4 space-y-3">
-              <li className="flex items-center gap-3 text-sm text-white/40"><MapPin className="h-4 w-4 shrink-0 text-purple/60" />81 rue de Padirac, 34070 Montpellier</li>
-              <li><a href="tel:+33660130596" className="flex items-center gap-3 text-sm text-white/40 transition-colors hover:text-purple-light"><Phone className="h-4 w-4 shrink-0 text-purple/60" />+33 (6) 60 13 05 96</a></li>
-              <li><a href="mailto:contact@traiteurmontpellier.com" className="flex items-center gap-3 text-sm text-white/40 transition-colors hover:text-purple-light"><Mail className="h-4 w-4 shrink-0 text-purple/60" />contact@traiteurmontpellier.com</a></li>
+              {[
+                { href: "/a-propos", label: "Notre Histoire" },
+                { href: "/a-propos#engagement", label: "Engagement RSE" },
+                { href: "/galerie", label: "Galerie" },
+                { href: "/blog", label: "Blog" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">
+                    {link.label}
+                    <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-purple-light transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
             </ul>
+          </div>
 
+          {/* Colonne 3 : Aide & Contact */}
+          <div>
+            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Aide & Contact</h4>
+            <ul className="mt-4 space-y-3">
+              {[
+                { href: "/#faq", label: "Questions Fréquentes" },
+                { href: "/a-propos#devis", label: "Devis Gratuit" },
+                { href: "/mentions-legales", label: "Mentions Légales" },
+                { href: "/politique-confidentialite", label: "Confidentialité" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">
+                    {link.label}
+                    <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-purple-light transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
             <h4 className="mt-8 text-xs font-bold tracking-widest text-white uppercase">Horaires</h4>
             <p className="mt-3 text-sm text-white/40">
               Mar - Sam : 9h - 18h
@@ -162,17 +193,20 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* SEO Text */}
+        <div className="mt-12 border-t border-white/5 pt-8">
+          <p className="text-center text-sm text-white/30">
+            Traiteur Montpellier : Excellence culinaire et gastronomie éco-responsable pour vos réceptions dans l&apos;Hérault (34).
+          </p>
+        </div>
+
         {/* Bottom */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
           <p className="text-xs text-white/30">
             &copy; {new Date().getFullYear()} Traiteur Montpellier. Tous droits
             réservés. Site créé par{" "}
             <a href="https://webomax.fr" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-purple-light">Webomax</a>
           </p>
-          <div className="flex gap-6">
-            <Link href="/mentions-legales" className="text-xs text-white/30 transition-colors hover:text-white/50">Mentions légales</Link>
-            <Link href="/politique-confidentialite" className="text-xs text-white/30 transition-colors hover:text-white/50">Politique de confidentialité</Link>
-          </div>
         </div>
       </div>
     </footer>

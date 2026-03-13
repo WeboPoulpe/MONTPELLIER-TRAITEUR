@@ -20,7 +20,7 @@ export default function ArticleContent({
     "@type": "BlogPosting",
     headline: article.title,
     description: article.metaDescription || article.excerpt,
-    image: `https://traiteurmontpellier.com${article.featuredImage}`,
+    image: `https://www.traiteurmontpellier.com${article.featuredImage}`,
     datePublished: article.publishedAt,
     author: {
       "@type": "Organization",
@@ -29,7 +29,7 @@ export default function ArticleContent({
     publisher: {
       "@type": "Organization",
       name: "Traiteur Montpellier",
-      url: "https://traiteurmontpellier.com",
+      url: "https://www.traiteurmontpellier.com",
     },
   };
 

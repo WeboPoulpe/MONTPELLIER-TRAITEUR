@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: "À Propos & Contact | Traiteur Montpellier",
     description:
       "Notre histoire, nos valeurs et notre passion pour une gastronomie engagée à Montpellier depuis 2008.",
-    url: "https://traiteurmontpellier.com/a-propos",
+    url: "https://www.traiteurmontpellier.com/a-propos",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
   },
   alternates: {
-    canonical: "https://traiteurmontpellier.com/a-propos",
+    canonical: "https://www.traiteurmontpellier.com/a-propos",
   },
 };
 

@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     title: "Galerie Photo | Traiteur Montpellier",
     description:
       "Parcourez notre galerie de réalisations culinaires : événements d'entreprise, cocktails dînatoires, buffets et prestations sur mesure à Montpellier.",
-    url: "https://traiteurmontpellier.com/galerie",
+    url: "https://www.traiteurmontpellier.com/galerie",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
   },
   alternates: {
-    canonical: "https://traiteurmontpellier.com/galerie",
+    canonical: "https://www.traiteurmontpellier.com/galerie",
   },
 };
 

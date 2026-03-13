@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Politique de Confidentialité | Traiteur Montpellier",
   description: "Politique de confidentialité et protection des données personnelles du site Traiteur Montpellier.",
   robots: { index: false, follow: false },
+  alternates: {
+    canonical: "https://www.traiteurmontpellier.com/politique-confidentialite",
+  },
 };
 
 export default function PolitiquePage() {

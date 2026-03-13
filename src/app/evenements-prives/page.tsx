@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Traiteur Événements Privés | Traiteur Montpellier",
     description:
       "Célébrez vos moments précieux avec une cuisine sur mesure. Anniversaires, baptêmes, garden-parties à Montpellier.",
-    url: "https://traiteurmontpellier.com/evenements-prives",
+    url: "https://www.traiteurmontpellier.com/evenements-prives",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
   },
   alternates: {
-    canonical: "https://traiteurmontpellier.com/evenements-prives",
+    canonical: "https://www.traiteurmontpellier.com/evenements-prives",
   },
 };
 

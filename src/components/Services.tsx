@@ -106,7 +106,7 @@ export default function Services({ data }: { data?: any }) {
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={`${service.title} - Traiteur Montpellier`}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 1024px) 100vw, 33vw"

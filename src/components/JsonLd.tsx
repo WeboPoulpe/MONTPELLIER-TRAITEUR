@@ -5,7 +5,7 @@ export default function JsonLd() {
     name: "Traiteur Montpellier",
     description:
       "Traiteur d'exception à Montpellier. Cuisine méditerranéenne raffinée pour vos événements d'entreprise, cocktails dînatoires et célébrations privées. Engagement écoresponsable depuis 2008.",
-    url: "https://traiteurmontpellier.com",
+    url: "https://www.traiteurmontpellier.com",
     telephone: "+33660130596",
     email: "contact@traiteurmontpellier.com",
     foundingDate: "2008",

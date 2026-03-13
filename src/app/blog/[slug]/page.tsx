@@ -31,6 +31,9 @@ export async function generateMetadata({
       type: "article",
       publishedTime: article.publishedAt.toISOString(),
     },
+    alternates: {
+      canonical: `https://www.traiteurmontpellier.com/blog/${slug}`,
+    },
   };
 }
 

@@ -250,7 +250,7 @@ function PrestationSection({
               <motion.div style={{ y: imageY }} className="relative aspect-[4/3]">
                 <Image
                   src={prestation.image}
-                  alt={prestation.title}
+                  alt={`${prestation.title} - Traiteur entreprise Montpellier`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

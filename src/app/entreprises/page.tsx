@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Nos Prestations | Traiteur Montpellier",
     description:
       "Événements d'entreprise, foires et salons, célébrations privées. Des prestations culinaires sur mesure à Montpellier.",
-    url: "https://traiteurmontpellier.com/entreprises",
+    url: "https://www.traiteurmontpellier.com/entreprises",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
   },
   alternates: {
-    canonical: "https://traiteurmontpellier.com/entreprises",
+    canonical: "https://www.traiteurmontpellier.com/entreprises",
   },
 };
 

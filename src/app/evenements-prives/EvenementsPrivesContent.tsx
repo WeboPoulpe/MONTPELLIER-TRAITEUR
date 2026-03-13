@@ -203,7 +203,7 @@ function IntroSection() {
               <div className="relative aspect-[4/3]">
                 <Image
                   src="/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"
-                  alt="Canapés apéro dinatoire Montpellier"
+                  alt="Canapés apéro dînatoire pour événement privé à Montpellier - Traiteur Montpellier"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -265,7 +265,7 @@ function CelebrationsGrid() {
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} - Événement privé Traiteur Montpellier`}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -313,7 +313,7 @@ function WhyUsSection() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
                   src="/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg"
-                  alt="Plat haut de gamme"
+                  alt="Plat gastronomique haut de gamme pour réception privée - Traiteur Montpellier"
                   fill
                   className="object-cover"
                   sizes="25vw"
@@ -322,7 +322,7 @@ function WhyUsSection() {
               <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
                   src="/photos site/macarons-traiteur-montpellier.jpg"
-                  alt="Macarons"
+                  alt="Macarons artisanaux fait maison pour événement - Traiteur Montpellier"
                   fill
                   className="object-cover"
                   sizes="25vw"

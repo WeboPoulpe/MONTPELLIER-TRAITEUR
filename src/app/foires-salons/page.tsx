@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Traiteur Foires & Salons | Traiteur Montpellier",
     description:
       "Catering professionnel pour foires et salons à Montpellier. Grazing tables, plateaux repas, cocktails VIP.",
-    url: "https://traiteurmontpellier.com/foires-salons",
+    url: "https://www.traiteurmontpellier.com/foires-salons",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
   },
   alternates: {
-    canonical: "https://traiteurmontpellier.com/foires-salons",
+    canonical: "https://www.traiteurmontpellier.com/foires-salons",
   },
 };
 

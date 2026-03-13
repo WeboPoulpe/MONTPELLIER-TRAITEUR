@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Blog | Conseils & Actualités Traiteur",
   description:
     "Découvrez nos articles sur la gastronomie événementielle, les tendances traiteur, notre engagement RSE et nos conseils pour réussir vos événements à Montpellier.",
+  alternates: {
+    canonical: "https://www.traiteurmontpellier.com/blog",
+  },
 };
 
 export const revalidate = 60;

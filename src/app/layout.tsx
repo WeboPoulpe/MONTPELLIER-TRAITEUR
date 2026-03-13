@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://traiteurmontpellier.com"),
+  metadataBase: new URL("https://www.traiteurmontpellier.com"),
   title: {
     default: "Traiteur Montpellier | Traiteur d'Exception pour vos Événements",
     template: "%s | Traiteur Montpellier",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Traiteur Montpellier | Traiteur d'Exception",
     description:
       "Expériences culinaires sur mesure pour vos événements à Montpellier. Cuisine méditerranéenne raffinée et engagement écoresponsable depuis 2008.",
-    url: "https://traiteurmontpellier.com",
+    url: "https://www.traiteurmontpellier.com",
     siteName: "Traiteur Montpellier",
     locale: "fr_FR",
     type: "website",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://traiteurmontpellier.com",
+    canonical: "https://www.traiteurmontpellier.com",
   },
 };
 

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPublishedArticles } from "@/lib/articles";
 
-const BASE_URL = "https://traiteurmontpellier.com";
+const BASE_URL = "https://www.traiteurmontpellier.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getPublishedArticles();
