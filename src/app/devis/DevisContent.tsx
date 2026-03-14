@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
+import Script from "next/script";
 import {
   ArrowLeft,
   ArrowRight,
@@ -340,16 +341,125 @@ export default function DevisContent() {
     formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  /* ─── Soumission Digifactory ─── */
+  const submitToDigifactory = useCallback(() => {
+    try {
+      const container = document.getElementById("digi-hidden-form");
+      if (!container) return;
+
+      // Cherche tous les inputs/selects/textareas du formulaire Digifactory
+      const inputs = container.querySelectorAll("input, select, textarea");
+      const fieldMap: Record<string, string> = {};
+      inputs.forEach((el) => {
+        const name = (el as HTMLInputElement).name?.toLowerCase() || "";
+        const id = (el as HTMLInputElement).id?.toLowerCase() || "";
+        fieldMap[name || id] = name || id;
+      });
+
+      // Fonction helper pour remplir un champ par nom partiel
+      const fill = (keywords: string[], value: string) => {
+        if (!value) return;
+        for (const el of inputs) {
+          const input = el as HTMLInputElement;
+          const n = (input.name || input.id || "").toLowerCase();
+          if (keywords.some((k) => n.includes(k))) {
+            // Simule un changement natif pour déclencher les listeners Digifactory
+            const nativeSet = Object.getOwnPropertyDescriptor(
+              window.HTMLInputElement.prototype, "value"
+            )?.set || Object.getOwnPropertyDescriptor(
+              window.HTMLTextAreaElement.prototype, "value"
+            )?.set;
+            nativeSet?.call(input, value);
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+            return;
+          }
+        }
+      };
+
+      // Mapper les champs du tunnel vers Digifactory
+      const eventLabel = eventTypes.find((t) => t.value === form.eventType)?.label || form.eventType;
+      const serviceLabel = serviceOptions.find((s) => s.value === form.serviceOption)?.label || form.serviceOption;
+
+      fill(["prenom", "firstname", "first_name"], form.firstName);
+      fill(["nom", "lastname", "last_name", "name"], form.lastName);
+      fill(["mail", "email", "courriel"], form.email);
+      fill(["tel", "phone", "telephone"], form.phone);
+      fill(["societe", "company", "entreprise", "society"], form.company);
+      fill(["date", "event_date", "date_event"], form.eventDate);
+      fill(["convive", "guest", "nombre", "nb_pers", "nbpers", "personne"], form.guestCount);
+      fill(["adresse", "address", "lieu", "location"], form.address || "");
+      fill(["cp", "postal", "code_postal", "zip"], form.postalCode);
+      fill(["ville", "city"], form.city);
+      fill(["budget", "montant"], form.budgetAmount);
+
+      // Remplir les champs texte libre / message avec un récap complet
+      const message = [
+        `Type: ${eventLabel}`,
+        `Date: ${form.eventDate}`,
+        `Convives: ${form.guestCount}`,
+        `Service: ${serviceLabel}`,
+        `Boissons: ${form.drinks === "avec" ? "Avec" : form.drinks === "sans" ? "Sans" : "Non précisé"}`,
+        `Budget: ${form.budgetAmount}€ ${form.budgetType === "par-personne" ? "/pers." : "total"}`,
+        form.dietaryNeeds.length > 0 ? `Régimes: ${form.dietaryNeeds.join(", ")}` : "",
+        form.specialRequest ? `Message: ${form.specialRequest}` : "",
+        form.clientType === "professionnel" && form.company ? `Société: ${form.company}` : "",
+        form.address ? `Lieu: ${form.address}, ${form.postalCode} ${form.city}` : "",
+      ].filter(Boolean).join("\n");
+
+      fill(["message", "comment", "remarque", "detail", "description", "demande", "texte", "note"], message);
+
+      // Sélectionner le type d'événement si c'est un select
+      const selects = container.querySelectorAll("select");
+      selects.forEach((sel) => {
+        const n = (sel.name || sel.id || "").toLowerCase();
+        if (n.includes("type") || n.includes("event") || n.includes("prestation")) {
+          const options = Array.from(sel.options);
+          const match = options.find((o) =>
+            o.text.toLowerCase().includes(eventLabel.toLowerCase()) ||
+            o.value.toLowerCase().includes(form.eventType)
+          );
+          if (match) {
+            sel.value = match.value;
+            sel.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+        }
+      });
+
+      // Soumettre le formulaire Digifactory
+      const digiForm = container.querySelector("form");
+      if (digiForm) {
+        // Cherche le bouton submit de Digifactory
+        const submitBtn = digiForm.querySelector('button[type="submit"], input[type="submit"], .btn-submit, .btn_submit') as HTMLElement;
+        if (submitBtn) {
+          submitBtn.click();
+        } else {
+          digiForm.submit();
+        }
+      }
+    } catch (e) {
+      console.warn("Digifactory submit error (non-blocking):", e);
+    }
+  }, [form]);
+
   const submit = async () => {
     setSubmitting(true);
     setShowFireworks(true);
 
+    // Envoi en parallèle : Resend (email) + Digifactory (CRM)
     try {
-      await fetch("/api/devis", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      await Promise.all([
+        fetch("/api/devis", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }),
+        // Soumettre aussi à Digifactory
+        new Promise<void>((resolve) => {
+          submitToDigifactory();
+          resolve();
+        }),
+      ]);
     } catch {
       // Continue anyway — don't block the user
     }
@@ -374,6 +484,25 @@ export default function DevisContent() {
   return (
     <PageTransition>
       {showFireworks && <Fireworks />}
+
+      {/* Formulaire Digifactory caché — alimente le CRM */}
+      <div
+        id="digi-hidden-form"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", top: "-9999px", width: 0, height: 0, overflow: "hidden", opacity: 0, pointerEvents: "none" }}
+      >
+        <div id="ines-devis-form" style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
+          <form action="" method="get" className="reg_form" />
+        </div>
+      </div>
+      <Script src="https://ines-reception.digifactory.fr/inc/js/jquery.js" strategy="lazyOnload" />
+      <Script src="https://ines-reception.digifactory.fr/admin/inc/js/jdigi.js" strategy="lazyOnload" />
+      <Script src="https://ines-reception.digifactory.fr/inc/js/site.js" strategy="lazyOnload" />
+      <Script src="https://ines-reception.digifactory.fr/admin/inc/js/moment.min.js" strategy="lazyOnload" />
+      <Script src="https://ines-reception.digifactory.fr/admin/inc/js/moment-fr.js" strategy="lazyOnload" />
+      <Script src="https://ines-reception.digifactory.fr/admin/inc/js/jdigiTraits.js" strategy="lazyOnload" />
+      <Script src="https://ines-reception.digifactory.fr/inc/js/extForm.js?f=dmd_devis&id=ines-devis-form" strategy="lazyOnload" />
+
       <main className="min-h-screen bg-gradient-to-b from-neutral-50 to-white" ref={formContainerRef}>
         {/* Header */}
         <div className="bg-black py-24 text-center">
