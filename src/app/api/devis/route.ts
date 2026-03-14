@@ -266,6 +266,9 @@ export async function POST(request: Request) {
     if (data.drinks && drinksToDigiBss[data.drinks]) {
       formBody.append("OSpec_BSS", drinksToDigiBss[data.drinks]);
     }
+    // Champs obligatoires Digifactory
+    formBody.append("OpportunityName", `Devis ${eventLabel} — ${data.firstName} ${data.lastName}`);
+    formBody.append("OSpec_TYP", "7"); // Type de lieu: Autre (par défaut)
     formBody.append("OSpec_VNC", "16"); // Via un moteur de recherche
     formBody.append("OSpec_place_address", data.address || "");
     formBody.append("OSpec_place_postal", data.postalCode || "");
