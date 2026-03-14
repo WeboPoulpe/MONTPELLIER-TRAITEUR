@@ -196,34 +196,105 @@ export async function POST(request: Request) {
       replyTo: data.email,
     });
 
-    // Envoi vers Digifactory CRM (formulaire externe)
+    // Envoi vers Digifactory CRM via POST FormData (même format que leur extForm.js)
     const serviceLabel = serviceLabels[data.serviceOption] || data.serviceOption;
-    const message = [
-      `Type: ${eventLabel}`,
-      `Date: ${date}`,
-      `Convives: ${data.guestCount}`,
-      `Service: ${serviceLabel}`,
-      `Boissons: ${data.drinks === "avec" ? "Avec" : data.drinks === "sans" ? "Sans" : "Non précisé"}`,
+
+    // Mapper le type d'événement vers les valeurs Digifactory OpportunityNature
+    const eventToDigiNature: Record<string, string> = {
+      mariage: "10",        // Mariage (esprit convivial)
+      entreprise: "3",      // Événement d'entreprise
+      reception: "4",       // Cocktail d'événement
+      autre: "12",          // Autre
+    };
+
+    // Mapper le service vers les valeurs radio Digifactory OSpec_option_wish
+    const serviceToDigiOption: Record<string, string> = {
+      livraison: "37",
+      emporter: "36",
+      service: "38",
+    };
+
+    // Mapper les régimes vers les valeurs Digifactory OSpec_Reg
+    const dietToDigiReg: Record<string, string> = {
+      "Végétarien": "8",
+      "Vegan": "9",
+      "Sans Gluten": "10",
+      "Sans Lactose": "11",
+      "Halal": "12",
+      "Casher": "14",
+      "Sans Fruits de Mer": "14",
+    };
+
+    // Mapper les boissons vers Digifactory OSpec_BSS
+    const drinksToDigiBss: Record<string, string> = {
+      avec: "22",   // Service au bar inclus
+      sans: "25",   // Boissons prévues par vos soins
+    };
+
+    // Construire la description complète
+    const description = [
       `Budget: ${data.budgetAmount}€ ${data.budgetType === "par-personne" ? "/pers." : "total"}`,
-      data.dietaryNeeds?.length > 0 ? `Régimes: ${data.dietaryNeeds.join(", ")}` : "",
+      `Service: ${serviceLabel}`,
       data.specialRequest ? `Souhait: ${data.specialRequest}` : "",
-      data.address ? `Lieu: ${data.address}, ${data.postalCode} ${data.city}` : "",
-      tracking.length > 0 ? `Tracking: ${tracking.join(" | ")}` : "",
+      tracking.length > 0 ? `\nTracking: ${tracking.join(" | ")}` : "",
+      `\nSource: traiteurmontpellier.com (formulaire tunnel)`,
     ].filter(Boolean).join("\n");
 
-    const digiParams = new URLSearchParams({
-      f: "dmd_devis",
-      prenom: data.firstName || "",
-      nom: data.lastName || "",
-      email: data.email || "",
-      telephone: data.phone || "",
-      societe: data.company || "",
-      message: message,
-    });
+    // Construire le FormData comme le fait extForm.js
+    const formBody = new URLSearchParams();
+    formBody.append("passage", "1");
+    formBody.append("f", "dmd_devis");
+    formBody.append("__referrerUrl", "https://www.traiteurmontpellier.com/devis");
+    formBody.append("withCss", "1");
+    formBody.append("FirstName", data.firstName || "");
+    formBody.append("LastName", data.lastName || "");
+    formBody.append("CompanyOpen", data.company || "");
+    formBody.append("Phone", data.phone || "");
+    formBody.append("Email", data.email || "");
+    formBody.append("OpportunityNature", eventToDigiNature[data.eventType] || "12");
+    formBody.append("OpportunityDeliveryStart", data.eventDate || "");
+    formBody.append("OpportunityNbPax", data.guestCount || "");
+    formBody.append("OpportunityDescription", description);
+    formBody.append("OpportunityBudget", `${data.budgetAmount}€ ${data.budgetType === "par-personne" ? "/pers." : "total"}`);
+    if (data.serviceOption && serviceToDigiOption[data.serviceOption]) {
+      formBody.append("OSpec_option_wish", serviceToDigiOption[data.serviceOption]);
+    }
+    if (data.dietaryNeeds?.length > 0) {
+      const firstDiet = data.dietaryNeeds[0];
+      formBody.append("OSpec_Reg", dietToDigiReg[firstDiet] || "14");
+    }
+    if (data.drinks && drinksToDigiBss[data.drinks]) {
+      formBody.append("OSpec_BSS", drinksToDigiBss[data.drinks]);
+    }
+    formBody.append("OSpec_VNC", "16"); // Via un moteur de recherche
+    formBody.append("OSpec_place_address", data.address || "");
+    formBody.append("OSpec_place_postal", data.postalCode || "");
+    formBody.append("OSpec_place_city", data.city || "");
+    formBody.append("OSpec_place_country", "41"); // France
+    // Facturation
+    if (data.differentBilling && data.billingAddress) {
+      formBody.append("SecAddress", data.billingAddress);
+      formBody.append("SecZip", data.billingPostalCode || "");
+      formBody.append("SecCity", data.billingCity || "");
+      formBody.append("SecCountry", "74"); // France
+    }
+    // Message complémentaire
+    const extraMessage = [
+      data.dietaryNeeds?.length > 1 ? `Régimes: ${data.dietaryNeeds.join(", ")}` : "",
+      data.specialRequest || "",
+    ].filter(Boolean).join("\n");
+    if (extraMessage) {
+      formBody.append("OSpec_Demande", extraMessage);
+    }
 
     const digiPromise = fetch(
-      `https://ines-reception.digifactory.fr/inc/extForm.php?${digiParams.toString()}`,
-      { method: "GET", signal: AbortSignal.timeout(5000) }
+      "https://ines-reception.digifactory.fr/inc/ajax/extForm.php",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formBody.toString(),
+        signal: AbortSignal.timeout(10000),
+      }
     ).catch((e) => {
       console.warn("Digifactory submit failed (non-blocking):", e);
     });
