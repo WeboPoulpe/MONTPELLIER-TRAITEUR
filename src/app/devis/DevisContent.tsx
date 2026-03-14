@@ -253,16 +253,40 @@ export default function DevisContent() {
   const [submitting, setSubmitting] = useState(false);
   const formContainerRef = useRef<HTMLDivElement>(null);
 
-  // Capture UTM params on mount
+  // Capture UTM params: URL first, then sessionStorage fallback
   useEffect(() => {
+    // Check URL params first
+    let utmSource = searchParams.get("utm_source") || "";
+    let utmMedium = searchParams.get("utm_medium") || "";
+    let utmCampaign = searchParams.get("utm_campaign") || "";
+    let utmContent = searchParams.get("utm_content") || "";
+    let utmTerm = searchParams.get("utm_term") || "";
+    let gclid = searchParams.get("gclid") || "";
+
+    // Fallback to sessionStorage if no UTM in URL
+    if (!utmSource && !gclid) {
+      try {
+        const stored = sessionStorage.getItem("lead_utm");
+        if (stored) {
+          const params = JSON.parse(stored);
+          utmSource = params.utm_source || "";
+          utmMedium = params.utm_medium || "";
+          utmCampaign = params.utm_campaign || "";
+          utmContent = params.utm_content || "";
+          utmTerm = params.utm_term || "";
+          gclid = params.gclid || "";
+        }
+      } catch {}
+    }
+
     setForm((prev) => ({
       ...prev,
-      utmSource: searchParams.get("utm_source") || "",
-      utmMedium: searchParams.get("utm_medium") || "",
-      utmCampaign: searchParams.get("utm_campaign") || "",
-      utmContent: searchParams.get("utm_content") || "",
-      utmTerm: searchParams.get("utm_term") || "",
-      gclid: searchParams.get("gclid") || "",
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      utmContent,
+      utmTerm,
+      gclid,
     }));
   }, [searchParams]);
 
