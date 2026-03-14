@@ -2,19 +2,20 @@
 
 import { motion } from "framer-motion";
 import { CalendarCheck, ArrowRight, Star, Home } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import PageTransition from "@/components/PageTransition";
 
 const partners = [
-  "MTT",
-  "Arabesques",
-  "La Tribune",
-  "Ville de Montpellier",
-  "Assurance Maladie",
-  "CMA",
-  "Green Power",
-  "Cycl'eau",
-  "P-TX",
+  { name: "Montpellier Tennis de Table", logo: "/logoPartenaire/Montpellier tennis de table.png" },
+  { name: "Arabesques", logo: "/logoPartenaire/arabesque.png" },
+  { name: "La Tribune", logo: "/logoPartenaire/La tribune.png" },
+  { name: "Montpellier Métropole", logo: "/logoPartenaire/Montpellier métropole.png" },
+  { name: "L'Assurance Maladie", logo: "/logoPartenaire/L'assurance maladie.png" },
+  { name: "Chambres de Métiers et de l'Artisanat", logo: "/logoPartenaire/Chambres de métiers et de l'artisanat.png" },
+  { name: "Green Power", logo: "/logoPartenaire/Green power.png" },
+  { name: "Cycl'eau", logo: "/logoPartenaire/Cycl'eau.png" },
+  { name: "Publi-Topex", logo: "/logoPartenaire/publi -topex.png" },
 ];
 
 const testimonials = [
@@ -105,16 +106,22 @@ export default function MerciContent() {
                 Ils nous font <span className="text-purple-light">confiance</span>
               </h2>
 
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
+              <div className="mt-12 flex flex-wrap items-center justify-center gap-8">
                 {partners.map((partner, i) => (
                   <motion.div
-                    key={partner}
+                    key={partner.name}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 + i * 0.05, duration: 0.3 }}
-                    className="flex h-14 items-center rounded-xl border border-white/10 bg-white/5 px-6 text-sm font-medium text-white/70 transition-colors hover:border-purple/30 hover:bg-purple/5 hover:text-white"
+                    className="flex h-20 w-36 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-3 transition-colors hover:border-purple/30 hover:bg-white/10"
                   >
-                    {partner}
+                    <Image
+                      src={partner.logo}
+                      alt={`Logo ${partner.name} - Partenaire Traiteur Montpellier`}
+                      width={120}
+                      height={60}
+                      className="h-auto max-h-14 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+                    />
                   </motion.div>
                 ))}
               </div>
