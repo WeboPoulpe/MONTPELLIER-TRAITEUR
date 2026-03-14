@@ -384,7 +384,7 @@ function CTASection({ cta }: { cta: any }) {
             {cta.description ?? "Parlez-nous de votre participation et recevez une proposition adaptée à votre stand, votre budget et votre programme. Devis gratuit sous 24h."}
           </p>
           <Link
-            href="/a-propos#devis"
+            href="/devis"
             className="group relative mt-10 inline-block overflow-hidden rounded-full border border-white/30 bg-white/10 px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
           >
             <span className="relative z-10">{cta.buttonText ?? "Demander un devis gratuit"}</span>

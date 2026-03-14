@@ -198,7 +198,7 @@ export default function EntreprisesContent({ data }: { data?: any }) {
                 {cta.description ?? "Parlez-nous de votre événement et recevez une proposition personnalisée sous 24h. Devis gratuit et sans engagement."}
               </p>
               <Link
-                href="/a-propos#devis"
+                href="/devis"
                 className="group relative mt-10 inline-block overflow-hidden rounded-full border border-white/30 bg-white/10 px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
               >
                 <span className="relative z-10">{cta.buttonText ?? "Demander un devis gratuit"}</span>
@@ -316,7 +316,7 @@ function PrestationSection({
               className="mt-8"
             >
               <Link
-                href="/a-propos#devis"
+                href="/devis"
                 className="group inline-flex items-center gap-2 rounded-full bg-purple px-8 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
               >
                 Demander un devis

@@ -36,13 +36,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/devis",
-        destination: "/a-propos#devis",
-        permanent: true,
-      },
-      {
         source: "/devis/",
-        destination: "/a-propos#devis",
+        destination: "/devis",
         permanent: true,
       },
       {

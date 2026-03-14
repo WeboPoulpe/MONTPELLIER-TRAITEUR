@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" fill="none">
+  <!-- Hexagonal shape -->
+  <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" fill="#003399" stroke="#003399" stroke-width="2"/>
+  <polygon points="100,20 170,55 170,145 100,180 30,145 30,55" fill="white" stroke="none"/>
+  <!-- French flag colors - vertical stripes -->
+  <clipPath id="hex">
+    <polygon points="100,25 165,57 165,143 100,175 35,143 35,57"/>
+  </clipPath>
+  <g clip-path="url(#hex)">
+    <rect x="35" y="25" width="43" height="150" fill="#003399"/>
+    <rect x="78" y="25" width="44" height="150" fill="white"/>
+    <rect x="122" y="25" width="43" height="150" fill="#ED2939"/>
+  </g>
+  <!-- Cocarde center -->
+  <circle cx="100" cy="100" r="30" fill="#003399"/>
+  <circle cx="100" cy="100" r="22" fill="white"/>
+  <circle cx="100" cy="100" r="14" fill="#ED2939"/>
+  <!-- Text -->
+  <text x="100" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="#003399">ORIGINE FRANCE</text>
+</svg>

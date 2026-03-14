@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import {
   MapPin,
   Phone,
@@ -108,143 +108,6 @@ export default function AProposContent({ data }: { data?: any }) {
   const valuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
   const mapRef = useRef(null);
   const mapInView = useInView(mapRef, { once: true, margin: "-100px" });
-  const formRef = useRef(null);
-  const formInView = useInView(formRef, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    const scripts = [
-      "https://ines-reception.digifactory.fr/inc/js/jquery.js",
-      "https://ines-reception.digifactory.fr/admin/inc/js/jdigi.js",
-      "https://ines-reception.digifactory.fr/inc/js/site.js",
-      "https://ines-reception.digifactory.fr/admin/inc/js/moment.min.js",
-      "https://ines-reception.digifactory.fr/admin/inc/js/moment-fr.js",
-      "https://ines-reception.digifactory.fr/admin/inc/js/jdigiTraits.js",
-    ];
-
-    let loaded = 0;
-    const loadNext = () => {
-      if (loaded < scripts.length) {
-        const s = document.createElement("script");
-        s.src = scripts[loaded];
-        s.onload = () => { loaded++; loadNext(); };
-        document.body.appendChild(s);
-      } else {
-        const asyncScript = document.createElement("script");
-        asyncScript.src = "https://ines-reception.digifactory.fr/inc/js/extForm.js?f=dmd_devis&id=ines-devis-form";
-        asyncScript.async = true;
-        document.body.appendChild(asyncScript);
-      }
-    };
-    loadNext();
-
-    // Observer to transform form sections into accordions once the form loads
-    const container = document.getElementById("ines-devis-form");
-    if (!container) return;
-
-    const observer = new MutationObserver(() => {
-      // Find section headers: legends, h3, h4, or standalone text nodes that act as titles
-      const legends = container.querySelectorAll("legend, h3, h4, .section-title, .panel-title, .accordion-toggle");
-      if (legends.length === 0) return;
-
-      // Also target fieldsets directly
-      const fieldsets = container.querySelectorAll("fieldset");
-
-      if (fieldsets.length > 0) {
-        fieldsets.forEach((fieldset, i) => {
-          if (fieldset.classList.contains("accordion-ready")) return;
-          fieldset.classList.add("accordion-ready");
-
-          const legend = fieldset.querySelector("legend");
-          if (!legend) return;
-
-          // Wrap fieldset content (everything except legend) in a collapsible div
-          const content = document.createElement("div");
-          content.className = "accordion-content";
-          // Move all children except legend into content div
-          const children = Array.from(fieldset.children).filter(c => c !== legend);
-          children.forEach(c => content.appendChild(c));
-          fieldset.appendChild(content);
-
-          // Make legend clickable
-          legend.classList.add("accordion-trigger");
-          legend.setAttribute("role", "button");
-          legend.setAttribute("tabindex", "0");
-
-          // First section open by default, others collapsed
-          if (i > 0) {
-            content.classList.add("collapsed");
-            legend.classList.add("collapsed");
-          }
-
-          legend.addEventListener("click", () => {
-            const isCollapsed = content.classList.contains("collapsed");
-            content.classList.toggle("collapsed");
-            legend.classList.toggle("collapsed");
-            if (isCollapsed) {
-              content.style.maxHeight = content.scrollHeight + "px";
-              setTimeout(() => { content.style.maxHeight = "none"; }, 400);
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-              requestAnimationFrame(() => { content.style.maxHeight = "0"; });
-            }
-          });
-
-          // Set initial max-height
-          if (i > 0) {
-            content.style.maxHeight = "0";
-          }
-        });
-      }
-
-      // If no fieldsets but there are other section-like headers, handle them too
-      if (fieldsets.length === 0) {
-        const headers = container.querySelectorAll("h3, h4, .section-title, legend");
-        headers.forEach((header, i) => {
-          if (header.classList.contains("accordion-ready")) return;
-          header.classList.add("accordion-ready", "accordion-trigger");
-          header.setAttribute("role", "button");
-          header.setAttribute("tabindex", "0");
-
-          // Collect siblings until next header or end
-          const content = document.createElement("div");
-          content.className = "accordion-content";
-          let next = header.nextElementSibling;
-          const siblings: Element[] = [];
-          while (next && !next.matches("h3, h4, .section-title, legend")) {
-            siblings.push(next);
-            next = next.nextElementSibling;
-          }
-          siblings.forEach(s => content.appendChild(s));
-          header.after(content);
-
-          if (i > 0) {
-            content.classList.add("collapsed");
-            header.classList.add("collapsed");
-            content.style.maxHeight = "0";
-          }
-
-          header.addEventListener("click", () => {
-            const isCollapsed = content.classList.contains("collapsed");
-            content.classList.toggle("collapsed");
-            header.classList.toggle("collapsed");
-            if (isCollapsed) {
-              content.style.maxHeight = content.scrollHeight + "px";
-              setTimeout(() => { content.style.maxHeight = "none"; }, 400);
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-              requestAnimationFrame(() => { content.style.maxHeight = "0"; });
-            }
-          });
-        });
-      }
-
-      observer.disconnect();
-    });
-
-    observer.observe(container, { childList: true, subtree: true });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <PageTransition>
@@ -256,7 +119,7 @@ export default function AProposContent({ data }: { data?: any }) {
           description={hero.description || "Traiteur Montpellier incarne depuis 2008 une vision gastronomique qui célèbre la richesse des cultures méditerranéennes dans leur diversité, tout en y insufflant des inspirations caribéennes délicates."}
           image={hero.image || "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop"}
           ctaLabel={hero.ctaLabel || "Nous contacter"}
-          ctaHref={hero.ctaHref || "#devis"}
+          ctaHref={hero.ctaHref || "/devis"}
         />
 
         {/* Notre Histoire */}
@@ -580,45 +443,29 @@ export default function AProposContent({ data }: { data?: any }) {
           </div>
         </section>
 
-        {/* Formulaire de devis Digifactory */}
-        <section id="devis" className="relative bg-white py-28 lg:py-36" ref={formRef}>
+        {/* CTA Devis */}
+        <section id="devis" className="relative bg-white py-28 lg:py-36">
           <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-purple-muted blur-[150px]" />
-
-          <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={formInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
-              className="text-center"
+          <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
+            <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
+              Votre projet
+            </span>
+            <h2
+              className="mt-4 text-4xl font-bold tracking-tight text-black md:text-5xl"
+              style={{ fontFamily: "var(--font-playfair)" }}
             >
-              <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-                Votre projet
-              </span>
-              <h2
-                className="mt-4 text-4xl font-bold tracking-tight text-black md:text-5xl"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Demandez votre
-                <br />
-                <span className="text-purple">devis gratuit</span>
-              </h2>
-              <p className="mx-auto mt-6 max-w-xl text-lg text-neutral-500">
-                Décrivez-nous votre événement et recevez une proposition personnalisée
-                sous 24 heures.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={formInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-12 rounded-3xl border border-neutral-100 bg-white p-8 shadow-xl shadow-black/[0.03] md:p-12"
+              Demandez votre <span className="text-purple">devis gratuit</span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-neutral-500">
+              Décrivez votre événement en quelques clics et recevez une proposition personnalisée sous 24h.
+            </p>
+            <a
+              href="/devis"
+              className="group relative mt-10 inline-flex items-center gap-2 overflow-hidden rounded-full bg-purple px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase transition-all duration-300 hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
             >
-              <div
-                id="ines-devis-form"
-                style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}
-              />
-            </motion.div>
+              <span className="relative z-10">Commencer mon devis</span>
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+            </a>
           </div>
         </section>
 

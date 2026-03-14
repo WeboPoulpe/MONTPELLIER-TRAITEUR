@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="95" fill="#4CAF50" stroke="#2E7D32" stroke-width="4"/>
+  <text x="100" y="55" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="14" fill="white" letter-spacing="1">ENTREPRISE</text>
+  <text x="100" y="105" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="42" fill="white">ZÉRO</text>
+  <text x="100" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="28" fill="#FDD835">déchet</text>
+  <path d="M60 160 Q70 175 100 180 Q130 175 140 160" stroke="#FDD835" stroke-width="3" fill="none"/>
+</svg>

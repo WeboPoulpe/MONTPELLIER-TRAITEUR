@@ -31,7 +31,7 @@ export default function BlogContent({ articles }: { articles: Article[] }) {
           description="Conseils, tendances et coulisses de la gastronomie événementielle à Montpellier."
           image="/photos site/mise-en-place-traiteur-montpellier.jpg"
           ctaLabel="Demander un devis"
-          ctaHref="/a-propos#devis"
+          ctaHref="/devis"
         />
 
         <section className="bg-white py-20 lg:py-28">

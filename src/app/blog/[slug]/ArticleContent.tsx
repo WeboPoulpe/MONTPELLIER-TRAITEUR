@@ -114,7 +114,7 @@ export default function ArticleContent({
                   Demandez votre devis gratuit et recevez une proposition personnalisée sous 24h.
                 </p>
                 <Link
-                  href="/a-propos#devis"
+                  href="/devis"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-purple px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
                 >
                   Demander un devis

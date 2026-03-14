@@ -21,7 +21,7 @@ export default function PageHero({
   description,
   image,
   ctaLabel = "Demander un devis",
-  ctaHref = "/a-propos#devis",
+  ctaHref = "/devis",
 }: PageHeroProps) {
   return (
     <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-black">

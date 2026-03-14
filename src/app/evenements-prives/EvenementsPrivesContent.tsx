@@ -184,7 +184,7 @@ function IntroSection() {
               className="mt-8"
             >
               <Link
-                href="/a-propos#devis"
+                href="/devis"
                 className="group inline-flex items-center gap-2 rounded-full bg-purple px-8 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
               >
                 Parlez-nous de votre projet
@@ -281,7 +281,7 @@ function CelebrationsGrid() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-500">{item.description}</p>
                 <Link
-                  href="/a-propos#devis"
+                  href="/devis"
                   className="mt-4 inline-flex items-center text-sm font-semibold text-purple transition-colors hover:text-purple-dark"
                 >
                   En savoir plus
@@ -313,7 +313,7 @@ function WhyUsSection() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
                   src="/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg"
-                  alt="Plat gastronomique haut de gamme pour réception privée - Traiteur Montpellier"
+                  alt="Plat gastronomique événement privé - Traiteur Montpellier"
                   fill
                   className="object-cover"
                   sizes="25vw"
@@ -322,7 +322,7 @@ function WhyUsSection() {
               <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
                   src="/photos site/macarons-traiteur-montpellier.jpg"
-                  alt="Macarons artisanaux fait maison pour événement - Traiteur Montpellier"
+                  alt="Macarons artisanaux pour réception privée - Traiteur Montpellier"
                   fill
                   className="object-cover"
                   sizes="25vw"
@@ -393,7 +393,7 @@ function CTASection({ cta }: { cta?: any }) {
             {cta?.description || "Racontez-nous votre projet et recevez une proposition gourmande et personnalisée. Devis gratuit et sans engagement sous 24h."}
           </p>
           <Link
-            href="/a-propos#devis"
+            href="/devis"
             className="group relative mt-10 inline-block overflow-hidden rounded-full border border-white/30 bg-white/10 px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20"
           >
             <span className="relative z-10">{cta?.buttonText || "Demander un devis gratuit"}</span>

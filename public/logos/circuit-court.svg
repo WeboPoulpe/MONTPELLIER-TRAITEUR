@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="95" fill="#558B2F"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#8BC34A" stroke-width="3" stroke-dasharray="8 4"/>
+  <text x="100" y="85" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="30" fill="#FDD835">Circuit</text>
+  <text x="100" y="125" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="30" fill="#FDD835">court</text>
+  <!-- Leaf decorations -->
+  <path d="M50 60 Q60 40 80 50 Q60 55 55 70Z" fill="#8BC34A"/>
+  <path d="M150 60 Q140 40 120 50 Q140 55 145 70Z" fill="#8BC34A"/>
+  <path d="M50 140 Q60 160 80 150 Q60 145 55 130Z" fill="#8BC34A"/>
+  <path d="M150 140 Q140 160 120 150 Q140 145 145 130Z" fill="#8BC34A"/>
+</svg>

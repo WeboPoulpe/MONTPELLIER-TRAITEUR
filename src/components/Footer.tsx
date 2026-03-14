@@ -32,7 +32,7 @@ export default function Footer() {
             </p>
           </div>
           <Link
-            href="/a-propos#devis"
+            href="/devis"
             className="group relative shrink-0 overflow-hidden rounded-full bg-purple px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase transition-all duration-300 hover:bg-purple-dark hover:shadow-lg hover:shadow-purple/20"
           >
             <span className="relative z-10">Demander un devis</span>
@@ -172,7 +172,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {[
                 { href: "/#faq", label: "Questions Fréquentes" },
-                { href: "/a-propos#devis", label: "Devis Gratuit" },
+                { href: "/devis", label: "Devis Gratuit" },
                 { href: "/mentions-legales", label: "Mentions Légales" },
                 { href: "/politique-confidentialite", label: "Confidentialité" },
               ].map((link) => (

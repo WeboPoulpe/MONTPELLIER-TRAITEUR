@@ -116,7 +116,7 @@ export default function Header() {
           <a href="tel:+33660130596" className="flex items-center gap-2 text-sm font-medium text-white/70 transition-colors duration-300 hover:text-white">
             <Phone className="h-4 w-4" />06 60 13 05 96
           </a>
-          <Link href="/a-propos#devis" className="group relative overflow-hidden rounded-full border border-white/30 bg-white/10 px-7 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 hover:border-white/50 hover:bg-white/20">
+          <Link href="/devis" className="group relative overflow-hidden rounded-full border border-white/30 bg-white/10 px-7 py-2.5 text-sm font-semibold tracking-wide text-white uppercase transition-all duration-300 hover:border-white/50 hover:bg-white/20">
             <span className="relative z-10">Obtenir un devis</span>
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </Link>
@@ -180,7 +180,7 @@ export default function Header() {
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4, delay: 0.5 }} className="mt-6">
-                <Link href="/a-propos#devis" className="group inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold tracking-widest text-white uppercase transition-all duration-300 hover:border-white/50 hover:bg-white/20">
+                <Link href="/devis" className="group inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-semibold tracking-widest text-white uppercase transition-all duration-300 hover:border-white/50 hover:bg-white/20">
                   Obtenir un devis
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>

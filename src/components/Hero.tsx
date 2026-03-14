@@ -71,7 +71,7 @@ export default function Hero({ data }: { data?: any }) {
           className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
         >
           <Link
-            href="/a-propos#devis"
+            href="/devis"
             className="group relative overflow-hidden rounded-full bg-purple px-10 py-4 text-sm font-semibold tracking-widest text-white uppercase transition-all duration-500 hover:bg-purple-dark hover:shadow-2xl hover:shadow-purple/30"
           >
             <span className="relative z-10">Demander un devis</span>
