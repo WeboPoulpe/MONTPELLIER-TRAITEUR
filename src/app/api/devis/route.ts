@@ -187,13 +187,49 @@ export async function POST(request: Request) {
 
 </body></html>`;
 
-    await resend.emails.send({
+    // Envoi email via Resend
+    const emailPromise = resend.emails.send({
       from: "Traiteur Montpellier <onboarding@resend.dev>",
       to: ["inesreception@gmail.com"],
       subject: `${eventEmoji} Nouveau devis — ${eventLabel} — ${data.firstName} ${data.lastName} (${data.guestCount} pers.)`,
       html,
       replyTo: data.email,
     });
+
+    // Envoi vers Digifactory CRM (formulaire externe)
+    const serviceLabel = serviceLabels[data.serviceOption] || data.serviceOption;
+    const message = [
+      `Type: ${eventLabel}`,
+      `Date: ${date}`,
+      `Convives: ${data.guestCount}`,
+      `Service: ${serviceLabel}`,
+      `Boissons: ${data.drinks === "avec" ? "Avec" : data.drinks === "sans" ? "Sans" : "Non précisé"}`,
+      `Budget: ${data.budgetAmount}€ ${data.budgetType === "par-personne" ? "/pers." : "total"}`,
+      data.dietaryNeeds?.length > 0 ? `Régimes: ${data.dietaryNeeds.join(", ")}` : "",
+      data.specialRequest ? `Souhait: ${data.specialRequest}` : "",
+      data.address ? `Lieu: ${data.address}, ${data.postalCode} ${data.city}` : "",
+      tracking.length > 0 ? `Tracking: ${tracking.join(" | ")}` : "",
+    ].filter(Boolean).join("\n");
+
+    const digiParams = new URLSearchParams({
+      f: "dmd_devis",
+      prenom: data.firstName || "",
+      nom: data.lastName || "",
+      email: data.email || "",
+      telephone: data.phone || "",
+      societe: data.company || "",
+      message: message,
+    });
+
+    const digiPromise = fetch(
+      `https://ines-reception.digifactory.fr/inc/extForm.php?${digiParams.toString()}`,
+      { method: "GET", signal: AbortSignal.timeout(5000) }
+    ).catch((e) => {
+      console.warn("Digifactory submit failed (non-blocking):", e);
+    });
+
+    // Envoyer les deux en parallèle
+    await Promise.all([emailPromise, digiPromise]);
 
     return NextResponse.json({ success: true });
   } catch (error) {

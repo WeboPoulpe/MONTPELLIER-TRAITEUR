@@ -106,21 +106,21 @@ export default function MerciContent() {
                 Ils nous font <span className="text-purple-light">confiance</span>
               </h2>
 
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-8">
+              <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
                 {partners.map((partner, i) => (
                   <motion.div
                     key={partner.name}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 + i * 0.05, duration: 0.3 }}
-                    className="flex h-20 w-36 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-3 transition-colors hover:border-purple/30 hover:bg-white/10"
+                    className="flex h-24 w-40 items-center justify-center rounded-xl bg-white p-4 transition-transform hover:scale-105"
                   >
                     <Image
                       src={partner.logo}
                       alt={`Logo ${partner.name} - Partenaire Traiteur Montpellier`}
-                      width={120}
-                      height={60}
-                      className="h-auto max-h-14 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+                      width={140}
+                      height={70}
+                      className="h-auto max-h-16 w-auto object-contain"
                     />
                   </motion.div>
                 ))}
