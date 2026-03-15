@@ -231,13 +231,22 @@ export async function POST(request: Request) {
       sans: "25",   // Boissons prévues par vos soins
     };
 
-    // Construire la description complète
+    // Construire le tag UTM pour Digifactory
+    const utmTag = [
+      data.utmSource ? `${data.utmSource}` : "",
+      data.utmMedium ? `${data.utmMedium}` : "",
+    ].filter(Boolean).join("/");
+    const gclidTag = data.gclid ? ` [GCLID: ${data.gclid}]` : "";
+    const utmLine = utmTag || gclidTag ? `[UTM: ${utmTag || "direct"}]${gclidTag}` : "[UTM: direct]";
+
+    // Construire la description complète avec UTM
     const description = [
+      utmLine,
       `Budget: ${data.budgetAmount}€ ${data.budgetType === "par-personne" ? "/pers." : "total"}`,
       `Service: ${serviceLabel}`,
       data.specialRequest ? `Souhait: ${data.specialRequest}` : "",
-      tracking.length > 0 ? `\nTracking: ${tracking.join(" | ")}` : "",
-      `\nSource: traiteurmontpellier.com (formulaire tunnel)`,
+      tracking.length > 0 ? `Tracking complet: ${tracking.join(" | ")}` : "",
+      `Source: traiteurmontpellier.com (formulaire tunnel)`,
     ].filter(Boolean).join("\n");
 
     // Construire le FormData comme le fait extForm.js
@@ -272,7 +281,7 @@ export async function POST(request: Request) {
     formBody.append("OSpec_VNC", "16"); // Via un moteur de recherche
     formBody.append("OSpec_place_address", data.address || "");
     formBody.append("OSpec_place_postal", data.postalCode || "");
-    formBody.append("OSpec_place_city", data.city || "");
+    formBody.append("OSpec_place_city", data.city || "Non précisé");
     formBody.append("OSpec_place_country", "41"); // France
     // Facturation
     if (data.differentBilling && data.billingAddress) {
@@ -290,6 +299,9 @@ export async function POST(request: Request) {
       formBody.append("OSpec_Demande", extraMessage);
     }
 
+    console.log("Tentative envoi CRM Digifactory...");
+    console.log("Digifactory body:", formBody.toString());
+
     const digiPromise = fetch(
       "https://ines-reception.digifactory.fr/inc/ajax/extForm.php",
       {
@@ -298,12 +310,22 @@ export async function POST(request: Request) {
         body: formBody.toString(),
         signal: AbortSignal.timeout(10000),
       }
-    ).catch((e) => {
-      console.warn("Digifactory submit failed (non-blocking):", e);
+    ).then(async (res) => {
+      const text = await res.text();
+      if (text.includes("formOk")) {
+        console.log("Digifactory CRM: OK — lead enregistré");
+      } else if (text.includes("errors")) {
+        console.error("Digifactory CRM: erreur de validation —", text.substring(0, 300));
+      }
+      return res;
+    }).catch((e) => {
+      console.error("Digifactory CRM: erreur réseau —", e);
     });
 
     // Envoyer les deux en parallèle
-    await Promise.all([emailPromise, digiPromise]);
+    const [emailResult, digiResult] = await Promise.all([emailPromise, digiPromise]);
+    console.log("Email result:", JSON.stringify(emailResult));
+    console.log("Digi result:", digiResult ? "OK" : "failed");
 
     return NextResponse.json({ success: true });
   } catch (error) {

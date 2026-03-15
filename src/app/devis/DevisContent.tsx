@@ -369,14 +369,19 @@ export default function DevisContent() {
     setShowFireworks(true);
 
     try {
-      // L'API route gère l'envoi Resend + Digifactory côté serveur
-      await fetch("/api/devis", {
+      console.log("Envoi formulaire devis...", { utmSource: form.utmSource, utmMedium: form.utmMedium, gclid: form.gclid });
+      const res = await fetch("/api/devis", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-    } catch {
-      // Continue anyway — don't block the user
+      const result = await res.json();
+      console.log("Résultat API devis:", result);
+      if (!res.ok) {
+        console.error("Erreur API devis:", res.status, result);
+      }
+    } catch (e) {
+      console.error("Erreur réseau envoi devis:", e);
     }
 
     setTimeout(() => {
