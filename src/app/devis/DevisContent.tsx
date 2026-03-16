@@ -369,19 +369,41 @@ export default function DevisContent() {
     setShowFireworks(true);
 
     try {
-      console.log("Envoi formulaire devis...", { utmSource: form.utmSource, utmMedium: form.utmMedium, gclid: form.gclid });
+      console.log("[DEVIS] Envoi en cours...", {
+        eventType: form.eventType,
+        city: form.city,
+        budgetType: form.budgetType,
+        budgetAmount: form.budgetAmount,
+        serviceOption: form.serviceOption,
+        drinks: form.drinks,
+        dietaryNeeds: form.dietaryNeeds,
+        differentBilling: form.differentBilling,
+        utmSource: form.utmSource,
+        utmMedium: form.utmMedium,
+        gclid: form.gclid,
+      });
+
       const res = await fetch("/api/devis", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       const result = await res.json();
-      console.log("Résultat API devis:", result);
+
+      // Detailed logging
+      console.log(`[DEVIS] debugId: ${result.debugId}`);
+      console.log(`[DEVIS] Email: ${result.successEmail ? "OK" : "FAIL"}`);
+      console.log(`[DEVIS] CRM: ${result.successCRM ? "OK" : "FAIL"} (HTTP ${result.crmStatus})`);
+      if (result.crmError) {
+        console.error(`[DEVIS] CRM Error: ${result.crmError}`);
+      }
+      console.log("[DEVIS] Normalized:", result.normalizedFields);
+
       if (!res.ok) {
-        console.error("Erreur API devis:", res.status, result);
+        console.error("[DEVIS] API Error:", res.status, result);
       }
     } catch (e) {
-      console.error("Erreur réseau envoi devis:", e);
+      console.error("[DEVIS] Network error:", e);
     }
 
     setTimeout(() => {
