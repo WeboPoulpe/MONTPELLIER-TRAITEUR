@@ -12,7 +12,7 @@ export default function Hero({ data }: { data?: any }) {
   const line2 = data?.titleLine2 ?? "Gastronomie";
   const line3 = data?.titleLine3 ?? "sur mesure";
   const desc = data?.description ?? "";
-  const img = data?.image ?? "/photos site/cocktail-service-traiteur-montpellier.jpg";
+  const img = data?.image ?? "/photos site/cocktail-service-traiteur-montpellier.webp";
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black">

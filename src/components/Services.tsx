@@ -13,7 +13,7 @@ const services = [
     subtitle: "Séminaires & Conférences",
     description:
       "Organisez vos événements d'entreprise avec l'assurance d'une prestation culinaire soignée et sur mesure. Traiteur Montpellier accompagne vos séminaires, repas d'affaires, conférences et lancements en apportant une attention toute particulière aux détails et à l'expérience gustative. Faites de chaque rencontre professionnelle un moment mémorable, empreint de saveurs raffinées et d'élégance naturelle.",
-    image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
+    image: "/photos site/cocktail-service-traiteur-montpellier.webp",
     features: ["Cocktail déjeunatoire & dînatoire", "Séminaires & conférences", "Arbre de Noël"],
     href: "/entreprises",
   },
@@ -23,7 +23,7 @@ const services = [
     subtitle: "Stands & Expositions",
     description:
       "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles. Paniers de fruits frais, plateaux petits déjeuners, grazing tables, plateaux salés chauds ou froids, mignardises, boissons softs bio et vins de région. Packs viennoiserie, location de verrerie et cocktails VIP pour vos événements prestigieux.",
-    image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg",
+    image: "/photos site/table-amuse-bouche-apero-traiteur-montpellier.webp",
     features: ["Cocktail VIP", "Grazing table", "Catering sur stand"],
     href: "/foires-salons",
   },
@@ -33,7 +33,7 @@ const services = [
     subtitle: "Célébrations & Réceptions",
     description:
       "Célébrez vos moments précieux avec une cuisine qui conjugue générosité, authenticité et délicatesse. Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées, où chaque détail est pensé pour refléter votre sens de l'accueil et votre goût de l'excellence discrète. Possibilité de prestation sur mesure, avec un concept créé spécialement pour l'événement.",
-    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
+    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.webp",
     features: ["Cheffe à domicile", "Brunch privé", "Garden party"],
     href: "/evenements-prives",
   },
@@ -54,7 +54,7 @@ export default function Services({ data }: { data?: any }) {
   // Override card text from DB if present
   const dbCards = data?.cards as any[] | undefined;
   const svcIcons = [Building2, UtensilsCrossed, PartyPopper];
-  const svcImages = ["/photos site/cocktail-service-traiteur-montpellier.jpg", "/photos site/table-amuse-bouche-apero-traiteur-montpellier.jpg", "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"];
+  const svcImages = ["/photos site/cocktail-service-traiteur-montpellier.webp", "/photos site/table-amuse-bouche-apero-traiteur-montpellier.webp", "/photos site/apero-dinatoire-canape-traiteur-montpellier.webp"];
   const svcHrefs = ["/entreprises", "/foires-salons", "/evenements-prives"];
   const svcCards = dbCards
     ? dbCards.map((c: any, i: number) => ({ ...services[i], title: c.title, subtitle: c.subtitle, description: c.description, features: c.features ?? services[i].features }))

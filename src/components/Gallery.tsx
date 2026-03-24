@@ -6,14 +6,14 @@ import Link from "next/link";
 import Carousel from "./Carousel";
 
 const slides = [
-  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1.jpg", alt: "Cocktail dînatoire gastronomique - Traiteur Montpellier" },
-  { src: "/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg", alt: "Plat gastronomique haut de gamme - Traiteur Montpellier" },
-  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier.jpg", alt: "Canapés mousse lavande produits locaux - Traiteur Montpellier" },
-  { src: "/photos site/macarons-traiteur-montpellier.jpg", alt: "Macarons artisanaux fait maison - Traiteur Montpellier" },
-  { src: "/photos site/mise-en-place-traiteur-montpellier.jpg", alt: "Mise en place élégante pour réception dans l'Hérault - Traiteur Montpellier" },
-  { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier.jpg", alt: "Mini burgers boeuf gourmet - Traiteur Montpellier" },
-  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier.jpg", alt: "Dressage élégant assiette gastronomique - Traiteur Montpellier" },
-  { src: "/photos site/choux-creme-traiteur-montpellier.jpg", alt: "Choux à la crème pâtisserie artisanale - Traiteur Montpellier" },
+  { src: "/photos site/cocktail-dinatoire-traiteur-montpellier-1.webp", alt: "Cocktail dînatoire gastronomique - Traiteur Montpellier" },
+  { src: "/photos site/plat-haut-de-gamme-traiteur-montpellier.webp", alt: "Plat gastronomique haut de gamme - Traiteur Montpellier" },
+  { src: "/photos site/canapes-mousse-lavande-traiteur-montpellier.webp", alt: "Canapés mousse lavande produits locaux - Traiteur Montpellier" },
+  { src: "/photos site/macarons-traiteur-montpellier.webp", alt: "Macarons artisanaux fait maison - Traiteur Montpellier" },
+  { src: "/photos site/mise-en-place-traiteur-montpellier.webp", alt: "Mise en place élégante pour réception dans l'Hérault - Traiteur Montpellier" },
+  { src: "/photos site/minis-burgers-boeuf-traiteur-montpellier.webp", alt: "Mini burgers boeuf gourmet - Traiteur Montpellier" },
+  { src: "/photos site/plat-dressage-elegance-traiteur-montpellier.webp", alt: "Dressage élégant assiette gastronomique - Traiteur Montpellier" },
+  { src: "/photos site/choux-creme-traiteur-montpellier.webp", alt: "Choux à la crème pâtisserie artisanale - Traiteur Montpellier" },
 ];
 
 export default function Gallery() {

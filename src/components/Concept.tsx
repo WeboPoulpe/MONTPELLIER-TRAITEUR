@@ -94,7 +94,7 @@ export default function Concept({ data }: { data?: any }) {
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
               <Image
-                src="/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg"
+                src="/photos site/plat-haut-de-gamme-traiteur-montpellier.webp"
                 alt="Plat gastronomique méditerranéen produits locaux et circuits courts - Traiteur Montpellier"
                 fill
                 className="object-cover"

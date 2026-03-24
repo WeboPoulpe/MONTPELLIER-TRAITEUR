@@ -100,7 +100,7 @@ export default function Footer() {
               </Link>
               <Link href="/a-propos#engagement">
                 <Image
-                  src="/photos site/rse-traiteur-montpellier-768x763.jpg"
+                  src="/photos site/rse-traiteur-montpellier-768x763.webp"
                   alt="Engagement éco-responsable zéro déchet - Traiteur Montpellier"
                   width={48}
                   height={48}

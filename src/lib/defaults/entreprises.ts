@@ -5,7 +5,7 @@ export const entreprisesDefaults = {
     titleAccent: "culinaires d'exception",
     description:
       "Sublimez vos réceptions grâce a notre savoir-faire et a notre passion pour une cuisine généreuse, raffinée et éco-responsable.",
-    image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
+    image: "/photos site/cocktail-service-traiteur-montpellier.webp",
   },
   offerings: [
     "Cocktails & Boissons",

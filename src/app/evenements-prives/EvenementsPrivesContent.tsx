@@ -26,42 +26,42 @@ const celebrations = [
     title: "Cocktail Dînatoire de Fête",
     description:
       "Sublimez vos soirées avec un cocktail dînatoire élégant et convivial. Canapés raffinés, verrines gourmandes, mignardises et boissons sélectionnées pour un moment festif inoubliable.",
-    image: "/photos site/cocktail-dinatoire-traiteur-montpellier-1.jpg",
+    image: "/photos site/cocktail-dinatoire-traiteur-montpellier-1.webp",
   },
   {
     icon: Cake,
     title: "Baptême, Anniversaire & Fête de Famille",
     description:
       "Célébrez vos moments précieux en famille avec des buffets généreux et personnalisés. Menus adaptés a tous les ages, pièces montées, mignardises et décoration culinaire soignée.",
-    image: "/photos site/donut-presentoir-traiteur-montpellier.jpg",
+    image: "/photos site/donut-presentoir-traiteur-montpellier.webp",
   },
   {
     icon: TreePine,
     title: "Garden Party",
     description:
       "Profitez du climat méditerranéen avec une réception en plein air. Grazing tables, brochettes gourmet, cocktails rafraîchissants et buffets champêtres pour un moment convivial en extérieur.",
-    image: "/photos site/table-apero-dinatoire-traiteur-montpellier.jpg",
+    image: "/photos site/table-apero-dinatoire-traiteur-montpellier.webp",
   },
   {
     icon: Heart,
     title: "Brunch Privé",
     description:
       "Un brunch gourmand et raffiné pour vos matinées entre proches. Viennoiseries artisanales, fruits frais, œufs brouillés, pancakes, jus pressés et boissons chaudes a volonté.",
-    image: "/photos site/apero-dinatoire-or-traiteur-montpellier.jpg",
+    image: "/photos site/apero-dinatoire-or-traiteur-montpellier.webp",
   },
   {
     icon: Users,
     title: "Cheffe à Domicile",
     description:
       "Notre cheffe se déplace chez vous pour créer un menu sur mesure, cuisiner sur place et assurer le service. Une expérience gastronomique exclusive dans le confort de votre foyer.",
-    image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
+    image: "/photos site/cocktail-service-traiteur-montpellier.webp",
   },
   {
     icon: Sparkles,
     title: "Cheffe à Demeure",
     description:
       "Pour vos séjours prolongés, profitez d'une cheffe a demeure qui compose et prépare vos repas au quotidien. Menus personnalisés, courses incluses et cuisine adaptée a vos envies.",
-    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg",
+    image: "/photos site/apero-dinatoire-canape-traiteur-montpellier.webp",
   },
 ];
 
@@ -119,7 +119,7 @@ export default function EvenementsPrivesContent({ data }: { data?: any }) {
           title={hero.title || "Célébrez vos"}
           titleAccent={hero.titleAccent || "moments précieux"}
           description={hero.description || "Une cuisine qui conjugue générosité, authenticité et délicatesse. Chaque détail est pensé pour refléter votre sens de l'accueil et votre gout de l'excellence."}
-          image="/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"
+          image="/photos site/apero-dinatoire-canape-traiteur-montpellier.webp"
         />
 
         {/* Intro */}
@@ -202,7 +202,7 @@ function IntroSection() {
             <div className="relative overflow-hidden rounded-2xl">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/photos site/apero-dinatoire-canape-traiteur-montpellier.jpg"
+                  src="/photos site/apero-dinatoire-canape-traiteur-montpellier.webp"
                   alt="Canapés apéro dînatoire pour événement privé à Montpellier - Traiteur Montpellier"
                   fill
                   className="object-cover"
@@ -312,7 +312,7 @@ function WhyUsSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
-                  src="/photos site/plat-haut-de-gamme-traiteur-montpellier.jpg"
+                  src="/photos site/plat-haut-de-gamme-traiteur-montpellier.webp"
                   alt="Plat gastronomique événement privé - Traiteur Montpellier"
                   fill
                   className="object-cover"
@@ -321,7 +321,7 @@ function WhyUsSection() {
               </div>
               <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
-                  src="/photos site/macarons-traiteur-montpellier.jpg"
+                  src="/photos site/macarons-traiteur-montpellier.webp"
                   alt="Macarons artisanaux pour réception privée - Traiteur Montpellier"
                   fill
                   className="object-cover"

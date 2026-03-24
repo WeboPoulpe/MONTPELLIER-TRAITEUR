@@ -6,7 +6,7 @@ export const homeDefaults = {
     titleLine3: "sur mesure",
     description:
       "Inspirés par les grandes traditions méditerranéennes, sublimées par des touches caribéennes, nous imaginons des expériences culinaires alliant authenticité, créativité et engagement écoresponsable, portées par le savoir-faire de notre cheffe formée à l'École Ducasse.",
-    image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
+    image: "/photos site/cocktail-service-traiteur-montpellier.webp",
   },
   concept: {
     subtitle: "Notre engagement",
@@ -36,7 +36,7 @@ export const homeDefaults = {
     ],
     badgeNumber: "15+",
     badgeLabel: "Années d'excellence",
-    image: "/photos site/rse-traiteur-montpellier-768x763.jpg",
+    image: "/photos site/rse-traiteur-montpellier-768x763.webp",
   },
   services: {
     subtitle: "Nos prestations",

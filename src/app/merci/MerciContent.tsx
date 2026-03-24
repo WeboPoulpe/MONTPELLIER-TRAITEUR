@@ -7,15 +7,15 @@ import Link from "next/link";
 import PageTransition from "@/components/PageTransition";
 
 const partners = [
-  { name: "Montpellier Tennis de Table", logo: "/logoPartenaire/mtt.png" },
-  { name: "Arabesques", logo: "/logoPartenaire/arabesque.png" },
-  { name: "La Tribune", logo: "/logoPartenaire/la-tribune.png" },
-  { name: "Montpellier Métropole", logo: "/logoPartenaire/montpellier-metropole.png" },
-  { name: "L'Assurance Maladie", logo: "/logoPartenaire/assurance-maladie.png" },
-  { name: "Chambres de Métiers et de l'Artisanat", logo: "/logoPartenaire/cma.png" },
-  { name: "Green Power", logo: "/logoPartenaire/green-power.png" },
-  { name: "Cycl'eau", logo: "/logoPartenaire/cycleau.png" },
-  { name: "Publi-Topex", logo: "/logoPartenaire/publi-topex.png" },
+  { name: "Montpellier Tennis de Table", logo: "/logoPartenaire/mtt.webp" },
+  { name: "Arabesques", logo: "/logoPartenaire/arabesque.webp" },
+  { name: "La Tribune", logo: "/logoPartenaire/la-tribune.webp" },
+  { name: "Montpellier Métropole", logo: "/logoPartenaire/montpellier-metropole.webp" },
+  { name: "L'Assurance Maladie", logo: "/logoPartenaire/assurance-maladie.webp" },
+  { name: "Chambres de Métiers et de l'Artisanat", logo: "/logoPartenaire/cma.webp" },
+  { name: "Green Power", logo: "/logoPartenaire/green-power.webp" },
+  { name: "Cycl'eau", logo: "/logoPartenaire/cycleau.webp" },
+  { name: "Publi-Topex", logo: "/logoPartenaire/publi-topex.webp" },
 ];
 
 const testimonials = [
