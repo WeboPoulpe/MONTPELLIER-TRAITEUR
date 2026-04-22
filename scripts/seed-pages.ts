@@ -13,7 +13,7 @@ const pages = [
         titleLine2: "Gastronomie",
         titleLine3: "sur mesure",
         description: "Inspirés par les grandes traditions méditerranéennes, sublimées par des touches caribéennes, nous imaginons des expériences culinaires alliant authenticité, créativité et engagement écoresponsable, portées par le savoir-faire de notre cheffe formée à l'École Ducasse.",
-        image: "/photos site/cocktail-service-traiteur-montpellier.jpg",
+        image: "/photos site/cocktail-service-traiteur-montpellier.webp",
       },
       concept: {
         subtitle: "Notre engagement",
@@ -24,7 +24,7 @@ const pages = [
         description2: "Chez Traiteur Montpellier, l'art de recevoir s'accompagne d'un profond respect pour la planète. Un engagement sincère pour des événements aussi savoureux que responsables.",
         badgeNumber: "15+",
         badgeLabel: "Années d'excellence",
-        image: "/photos site/rse-traiteur-montpellier-768x763.jpg",
+        image: "/photos site/rse-traiteur-montpellier-768x763.webp",
         features: [
           { title: "Zéro Déchet", description: "Valorisation des déchets par compostage, création d'huiles aromatisées, de soupes gourmandes et de poudres de décoration issues de matières premières récupérées." },
           { title: "Circuits Courts", description: "Collaboration étroite avec des producteurs de la région pour garantir la fraîcheur de nos produits tout en soutenant l'économie locale." },
@@ -48,7 +48,7 @@ const pages = [
   {
     pageKey: "entreprises",
     data: {
-      hero: { subtitle: "Nos Prestations", title: "Des expériences", titleAccent: "culinaires d'exception", description: "Sublimez vos réceptions grâce a notre savoir-faire et a notre passion pour une cuisine généreuse, raffinée et éco-responsable.", image: "/photos site/cocktail-service-traiteur-montpellier.jpg" },
+      hero: { subtitle: "Nos Prestations", title: "Des expériences", titleAccent: "culinaires d'exception", description: "Sublimez vos réceptions grâce a notre savoir-faire et a notre passion pour une cuisine généreuse, raffinée et éco-responsable.", image: "/photos site/cocktail-service-traiteur-montpellier.webp" },
       offerings: ["Cocktails & Boissons", "Mignardises & Desserts", "Service & Personnel"],
       cta: { title: "Un projet ? Une idée ?", description: "Parlez-nous de votre événement et recevez une proposition personnalisée sous 24h. Devis gratuit et sans engagement.", buttonText: "Demander un devis gratuit" },
       prestations: [
@@ -69,7 +69,7 @@ const pages = [
   {
     pageKey: "foires-salons",
     data: {
-      hero: { subtitle: "Foires & Salons", title: "Catering professionnel", titleAccent: "pour vos salons", description: "Faites la différence avec un service culinaire fluide, raffiné et respectueux de votre image de marque.", image: "/photos site/cocktail-service-traiteur-montpellier.jpg" },
+      hero: { subtitle: "Foires & Salons", title: "Catering professionnel", titleAccent: "pour vos salons", description: "Faites la différence avec un service culinaire fluide, raffiné et respectueux de votre image de marque.", image: "/photos site/cocktail-service-traiteur-montpellier.webp" },
       intro: { subtitle: "Pourquoi nous choisir", titleLine1: "Sublimez vos participations", titleLine2: "professionnelles", description1: "Confiez à Traiteur Montpellier le catering de vos foires et salons pour sublimer vos participations professionnelles avec une prestation sur mesure.", description2: "Notre équipe s'adapte à votre planning et livre directement sur votre stand, avec un matériel de présentation élégant.", checklist: ["Livraison sur stand", "Matériel fourni", "Menus variés", "Éco-responsable"] },
       services: [
         { title: "Grazing Tables", description: "Tables d'abondance spectaculaires composées de fromages, charcuteries, fruits frais, crudités et pains artisanaux." },
@@ -99,7 +99,7 @@ const pages = [
   {
     pageKey: "evenements-prives",
     data: {
-      hero: { subtitle: "Événements Privés", title: "Célébrez vos", titleAccent: "moments précieux", description: "Une cuisine qui conjugue générosité, authenticité et délicatesse.", image: "/photos site/cocktail-service-traiteur-montpellier.jpg" },
+      hero: { subtitle: "Événements Privés", title: "Célébrez vos", titleAccent: "moments précieux", description: "Une cuisine qui conjugue générosité, authenticité et délicatesse.", image: "/photos site/cocktail-service-traiteur-montpellier.webp" },
       intro: { subtitle: "Votre événement, notre passion", titleLine1: "Créez des souvenirs", titleLine2: "gourmands", description1: "Traiteur Montpellier imagine pour vos événements privés des prestations personnalisées.", description2: "Que ce soit pour un anniversaire intime, une garden-party estivale, un baptême ou toute autre célébration, nous composons un menu qui raconte votre histoire." },
       celebrations: [
         { title: "Cocktail Dînatoire de Fête", description: "Sublimez vos soirées avec un cocktail dînatoire élégant et convivial." },

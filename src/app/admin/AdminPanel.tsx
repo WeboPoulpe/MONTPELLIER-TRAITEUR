@@ -253,7 +253,7 @@ export default function AdminPanel() {
               </div>
             </Section>
             <Section title="Image & SEO">
-              <Input label="Image (chemin)" value={editing.featuredImage} onChange={(v) => setEditing({ ...editing, featuredImage: v })} placeholder="/photos site/mon-image.jpg" />
+              <Input label="Image (chemin)" value={editing.featuredImage} onChange={(v) => setEditing({ ...editing, featuredImage: v })} placeholder="/photos site/mon-image.webp" />
               <Input label="Alt image" value={editing.featuredImageAlt} onChange={(v) => setEditing({ ...editing, featuredImageAlt: v })} />
               <Input label="Meta Title" value={editing.metaTitle} onChange={(v) => setEditing({ ...editing, metaTitle: v })} />
               <Textarea label="Meta Description" value={editing.metaDescription} onChange={(v) => setEditing({ ...editing, metaDescription: v })} rows={2} />
