@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import EvenementsPrivesContent from "./EvenementsPrivesContent";
 import { getPageData } from "@/lib/pageData";
 
-export const revalidate = 60;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Traiteur Événements Privés Montpellier - Anniversaires, Baptêmes, Réceptions",

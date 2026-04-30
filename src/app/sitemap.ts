@@ -3,6 +3,8 @@ import { getPublishedArticles } from "@/lib/articles";
 
 const BASE_URL = "https://www.traiteurmontpellier.com";
 
+export const dynamic = "force-static";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getPublishedArticles();
 

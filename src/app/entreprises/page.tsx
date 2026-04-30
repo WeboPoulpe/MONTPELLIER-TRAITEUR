@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import EntreprisesContent from "./EntreprisesContent";
 import { getPageData } from "@/lib/pageData";
 
-export const revalidate = 60;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Nos Prestations - Événements & Réceptions",

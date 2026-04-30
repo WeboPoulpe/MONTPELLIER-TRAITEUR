@@ -5,7 +5,8 @@ import ArticleContent from "./ArticleContent";
 
 type Params = { slug: string };
 
-export const revalidate = 60;
+export const dynamic = "force-static";
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();

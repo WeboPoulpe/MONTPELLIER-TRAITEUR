@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { revalidateTag } from "next/cache";
 import { db } from "@/lib/db";
 import { pageContents } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -23,7 +24,6 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ key:
   const { key } = await params;
   const body = await req.json();
 
-  // Upsert
   const existing = await db
     .select()
     .from(pageContents)
@@ -36,12 +36,16 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ key:
       .set({ data: body.data, updatedAt: new Date() })
       .where(eq(pageContents.pageKey, key))
       .returning();
+    revalidateTag(`page-${key}`, "max");
+    revalidateTag("pages", "max");
     return Response.json(result[0]);
   } else {
     const result = await db
       .insert(pageContents)
       .values({ pageKey: key, data: body.data })
       .returning();
+    revalidateTag(`page-${key}`, "max");
+    revalidateTag("pages", "max");
     return Response.json(result[0], { status: 201 });
   }
 }

@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import Concept from "@/components/Concept";
 import PageTransition from "@/components/PageTransition";
@@ -6,12 +6,12 @@ import RecentArticles from "@/components/RecentArticles";
 import { getRecentArticles } from "@/lib/articles";
 import { getPageData } from "@/lib/pageData";
 
-const Services = dynamic(() => import("@/components/Services"));
-const Gallery = dynamic(() => import("@/components/Gallery"));
-const Testimonials = dynamic(() => import("@/components/Testimonials"));
-const HomeFAQ = dynamic(() => import("@/components/HomeFAQ"));
+const Services = nextDynamic(() => import("@/components/Services"));
+const Gallery = nextDynamic(() => import("@/components/Gallery"));
+const Testimonials = nextDynamic(() => import("@/components/Testimonials"));
+const HomeFAQ = nextDynamic(() => import("@/components/HomeFAQ"));
 
-export const revalidate = 60;
+export const dynamic = "force-static";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export default async function Home() {

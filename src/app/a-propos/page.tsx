@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AProposContent from "./AProposContent";
 import { getPageData } from "@/lib/pageData";
 
-export const revalidate = 60;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "À Propos & Contact - Notre Histoire",

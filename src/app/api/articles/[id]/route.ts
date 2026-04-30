@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { revalidateTag } from "next/cache";
 import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -31,6 +32,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   if (result.length === 0) {
     return Response.json({ error: "Article non trouvé" }, { status: 404 });
   }
+  revalidateTag("articles", "max");
   return Response.json(result[0]);
 }
 
@@ -46,5 +48,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
   if (result.length === 0) {
     return Response.json({ error: "Article non trouvé" }, { status: 404 });
   }
+  revalidateTag("articles", "max");
   return Response.json({ success: true });
 }

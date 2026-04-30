@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 60;
+export const dynamic = "force-static";
 
 export default async function BlogPage() {
   const articles = await getPublishedArticles();

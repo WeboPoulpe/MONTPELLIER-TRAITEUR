@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { revalidateTag } from "next/cache";
 import { db } from "@/lib/db";
 import { articles } from "@/lib/db/schema";
 import { desc } from "drizzle-orm";
@@ -30,5 +31,6 @@ export async function POST(req: NextRequest) {
     })
     .returning();
 
+  revalidateTag("articles", "max");
   return Response.json(result[0], { status: 201 });
 }
