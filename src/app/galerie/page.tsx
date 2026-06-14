@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import GalerieContent from "./GalerieContent";
+import { BreadcrumbJsonLd } from "@/components/SeoJsonLd";
 
 export const metadata: Metadata = {
-  title: "Galerie Photo - Nos Réalisations Culinaires",
+  title: "Galerie Traiteur Montpellier",
   description:
     "Découvrez en images les créations culinaires de Traiteur Montpellier : cocktails dînatoires, plats gastronomiques, canapés raffinés, desserts et mises en place soignées pour vos événements.",
   keywords: [
@@ -27,5 +28,18 @@ export const metadata: Metadata = {
 };
 
 export default function GaleriePage() {
-  return <GalerieContent />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "https://www.traiteurmontpellier.com" },
+          {
+            name: "Galerie",
+            url: "https://www.traiteurmontpellier.com/galerie",
+          },
+        ]}
+      />
+      <GalerieContent />
+    </>
+  );
 }

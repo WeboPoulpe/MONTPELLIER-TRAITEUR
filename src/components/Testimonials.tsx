@@ -2,52 +2,15 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, ExternalLink, Quote } from "lucide-react";
 import Image from "next/image";
+import type { GoogleReviewsData } from "@/lib/google/reviews";
 
-const testimonials = [
-  {
-    name: "Charlene Leininger",
-    event: "Avis Google",
-    text: "Équipe réactive et très professionnelle. Les plats étaient délicieux et la présentation impeccable. Je recommande vivement Traiteur Montpellier pour tous vos événements !",
-    rating: 5,
-  },
-  {
-    name: "Thomas Revillard",
-    event: "Avis Google",
-    text: "Nous avons fait appel à Traiteur Montpellier pour un séminaire de 80 personnes. Les grazing tables étaient magnifiques, le service fluide et les retours de nos collaborateurs unanimement positifs. Merci !",
-    rating: 5,
-  },
-  {
-    name: "Claire Dupont-Martin",
-    event: "Avis Google",
-    text: "Prestation au top pour l'anniversaire de ma fille. Les mignardises étaient à tomber, les canapés originaux et le service très agréable. L'engagement éco-responsable est un vrai plus.",
-    rating: 5,
-  },
-  {
-    name: "Jean-Philippe Moreau",
-    event: "Avis Google",
-    text: "Traiteur Montpellier a sublimé notre cocktail d'inauguration. La qualité des produits, la fraîcheur et le dressage étaient remarquables. Une adresse que je garde précieusement.",
-    rating: 5,
-  },
-  {
-    name: "Nadia Bensalem",
-    event: "Avis Google",
-    text: "Un grand merci pour notre événement d'entreprise. Tout était parfait du début à la fin : ponctualité, qualité, gentillesse de l'équipe. Les touches caribéennes ont fait sensation !",
-    rating: 5,
-  },
-  {
-    name: "Stéphanie Lacroix",
-    event: "Avis Google",
-    text: "Nous avons été bluffés par le professionnalisme de Traiteur Montpellier. Le buffet était aussi beau que bon, les invités ont adoré. Je recommande à 100% !",
-    rating: 5,
-  },
-];
-
-export default function Testimonials() {
+export default function Testimonials({ data }: { data: GoogleReviewsData }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [current, setCurrent] = useState(0);
+  const testimonials = data.reviews;
 
   const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
   const prev = () =>
@@ -95,8 +58,10 @@ export default function Testimonials() {
                 <Star key={s} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-sm font-bold text-white">5.0</span>
-            <span className="text-sm text-white/40">sur Google</span>
+            <span className="text-sm font-bold text-white">{data.rating.toFixed(1)}</span>
+            <span className="text-sm text-white/40">
+              sur Google ({data.totalReviews} avis)
+            </span>
           </div>
         </motion.div>
 
@@ -130,12 +95,12 @@ export default function Testimonials() {
                 </div>
 
                 <p className="mt-6 text-xl leading-relaxed font-light italic text-white/80 md:text-2xl">
-                  &ldquo;{testimonials[current].text}&rdquo;
+                    &ldquo;{testimonials[current].text}&rdquo;
                 </p>
 
                 <div className="mt-8">
                   <p className="text-sm font-bold tracking-wider text-white uppercase">
-                    {testimonials[current].name}
+                    {testimonials[current].authorName}
                   </p>
                   <p className="mt-1 flex items-center justify-center gap-1 text-xs tracking-wider text-white/40">
                     <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none">
@@ -144,8 +109,19 @@ export default function Testimonials() {
                       <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                     </svg>
-                    {testimonials[current].event}
+                    {testimonials[current].relativeTime}
                   </p>
+                  {(testimonials[current].reviewUrl || testimonials[current].authorUrl) && (
+                    <a
+                      href={testimonials[current].reviewUrl || testimonials[current].authorUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 text-xs text-purple-light hover:underline"
+                    >
+                      Voir l&apos;avis sur Google
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -194,7 +170,7 @@ export default function Testimonials() {
           {[
             { number: "500+", label: "Événements réalisés" },
             { number: "15+", label: "Années d'expérience" },
-            { number: "5/5", label: "Note Google" },
+            { number: `${data.rating.toFixed(1)}/5`, label: `${data.totalReviews} avis Google` },
             { number: "50k+", label: "Convives servis" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
@@ -210,6 +186,18 @@ export default function Testimonials() {
             </div>
           ))}
         </motion.div>
+
+        <div className="mt-10 text-center">
+          <a
+            href={data.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-purple-light hover:underline"
+          >
+            Voir tous les avis sur Google
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </section>
   );

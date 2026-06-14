@@ -7,25 +7,14 @@ import AnimatedLayout from "./AnimatedLayout";
 import Header from "./Header";
 import Footer from "./Footer";
 import CookieBanner from "./CookieBanner";
-
-const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
+import TrackingEvents from "./TrackingEvents";
+import { captureAttribution } from "@/lib/tracking";
 
 function UtmCapture() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const params: Record<string, string> = {};
-    let hasUtm = false;
-    UTM_KEYS.forEach((key) => {
-      const val = searchParams.get(key);
-      if (val) {
-        params[key] = val;
-        hasUtm = true;
-      }
-    });
-    if (hasUtm) {
-      sessionStorage.setItem("lead_utm", JSON.stringify(params));
-    }
+    captureAttribution();
   }, [searchParams]);
 
   return null;
@@ -44,6 +33,7 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
       <Suspense fallback={null}>
         <UtmCapture />
       </Suspense>
+      <TrackingEvents />
       <AnimatedLayout>
         <Header />
         {children}

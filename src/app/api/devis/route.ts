@@ -3,7 +3,6 @@ import { Resend } from "resend";
 
 /* ─── Config ─── */
 const DEBUG = process.env.DEBUG_DEVIS === "true";
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 /* ─── Mappings ─── */
 const eventLabels: Record<string, string> = {
@@ -140,6 +139,9 @@ export async function POST(request: Request) {
     const utmContent = safe(data.utmContent);
     const utmTerm = safe(data.utmTerm);
     const gclid = safe(data.gclid);
+    const fbclid = safe(data.fbclid);
+    const referrer = safe(data.referrer);
+    const landingPage = safe(data.landingPage);
 
     // Field validation report
     const fieldReport = {
@@ -161,6 +163,8 @@ export async function POST(request: Request) {
       utmSource: utmSource || "none",
       utmMedium: utmMedium || "none",
       gclid: gclid || "none",
+      fbclid: fbclid || "none",
+      landingPage: landingPage || "none",
     };
     log("NORMALIZED_FIELDS", JSON.stringify(fieldReport));
 
@@ -186,6 +190,9 @@ export async function POST(request: Request) {
     if (utmContent) tracking.push(`Content: ${utmContent}`);
     if (utmTerm) tracking.push(`Term: ${utmTerm}`);
     if (gclid) tracking.push(`GCLID: ${gclid}`);
+    if (fbclid) tracking.push(`FBCLID: ${fbclid}`);
+    if (landingPage) tracking.push(`Landing: ${landingPage}`);
+    if (referrer) tracking.push(`Referrer: ${referrer}`);
 
     /* ══════════════════════════════════════
        3. Build email HTML (unchanged design)
@@ -291,6 +298,10 @@ export async function POST(request: Request) {
     log("EMAIL_ATTEMPT", `to: inesreception@gmail.com, subject: ${eventLabel} ${firstName} ${lastName}`);
     let emailResult: unknown = null;
     try {
+      if (!process.env.RESEND_API_KEY) {
+        throw new Error("RESEND_API_KEY is not configured");
+      }
+      const resend = new Resend(process.env.RESEND_API_KEY);
       emailResult = await resend.emails.send({
         from: "Traiteur Montpellier <onboarding@resend.dev>",
         to: ["inesreception@gmail.com"],
@@ -469,6 +480,9 @@ export async function POST(request: Request) {
         utmSource: utmSource || null,
         utmMedium: utmMedium || null,
         gclid: gclid || null,
+        fbclid: fbclid || null,
+        referrer: referrer || null,
+        landingPage: landingPage || null,
       },
     };
 

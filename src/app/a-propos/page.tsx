@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import AProposContent from "./AProposContent";
 import { getPageData } from "@/lib/pageData";
+import { BreadcrumbJsonLd } from "@/components/SeoJsonLd";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "À Propos & Contact - Notre Histoire",
+  title: "Notre Histoire et Nos Engagements",
   description:
     "Découvrez l'histoire de Traiteur Montpellier depuis 2008, notre engagement écoresponsable et notre passion pour la cuisine méditerranéenne. Contactez-nous pour un devis personnalisé gratuit.",
   keywords: [
@@ -32,5 +33,18 @@ export const metadata: Metadata = {
 
 export default async function AProposPage() {
   const pageContent = await getPageData("a-propos", {});
-  return <AProposContent data={pageContent} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "https://www.traiteurmontpellier.com" },
+          {
+            name: "À propos",
+            url: "https://www.traiteurmontpellier.com/a-propos",
+          },
+        ]}
+      />
+      <AProposContent data={pageContent} />
+    </>
+  );
 }

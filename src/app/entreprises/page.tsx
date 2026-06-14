@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import EntreprisesContent from "./EntreprisesContent";
 import { getPageData } from "@/lib/pageData";
+import {
+  BreadcrumbJsonLd,
+  FaqJsonLd,
+  ServiceJsonLd,
+} from "@/components/SeoJsonLd";
+import { serviceFaqSchemas } from "@/data/seo";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Nos Prestations - Événements & Réceptions",
+  title: "Traiteur Entreprise Montpellier",
   description:
-    "Découvrez les prestations de Traiteur Montpellier : événements d'entreprise, foires et salons, événements privés. Cuisine méditerranéenne raffinée et sur mesure à Montpellier.",
+    "Traiteur entreprise à Montpellier pour séminaires, conférences, cocktails, repas d'affaires et inaugurations. Formules sur mesure et devis sous 24h.",
   keywords: [
     "traiteur prestations montpellier",
     "traiteur entreprise montpellier",
@@ -33,5 +39,26 @@ export const metadata: Metadata = {
 
 export default async function EntreprisesPage() {
   const pageContent = await getPageData("entreprises", {});
-  return <EntreprisesContent data={pageContent} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "https://www.traiteurmontpellier.com" },
+          {
+            name: "Traiteur entreprise",
+            url: "https://www.traiteurmontpellier.com/entreprises",
+          },
+        ]}
+      />
+      <ServiceJsonLd
+        id="entreprises"
+        name="Traiteur entreprise à Montpellier"
+        description="Prestations traiteur pour séminaires, conférences, repas d'affaires, inaugurations et cocktails professionnels."
+        serviceType="Traiteur événementiel d'entreprise"
+        url="https://www.traiteurmontpellier.com/entreprises"
+      />
+      <FaqJsonLd id="entreprises" items={serviceFaqSchemas.entreprises} />
+      <EntreprisesContent data={pageContent} />
+    </>
+  );
 }

@@ -155,6 +155,7 @@ export default function Footer() {
                 { href: "/a-propos#engagement", label: "Engagement RSE" },
                 { href: "/galerie", label: "Galerie" },
                 { href: "/blog", label: "Blog" },
+                { href: "/guide-local", label: "Guide local" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">

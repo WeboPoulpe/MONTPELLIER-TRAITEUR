@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getArticleBySlug, getAllSlugs, getRecentArticles } from "@/lib/articles";
 import ArticleContent from "./ArticleContent";
+import {
+  ArticleJsonLd,
+  BreadcrumbJsonLd,
+} from "@/components/SeoJsonLd";
 
 type Params = { slug: string };
 
@@ -51,6 +55,26 @@ export default async function ArticlePage({
   }
 
   const recentArticles = (await getRecentArticles(4)).filter((a) => a.slug !== article.slug).slice(0, 2);
+  const articleUrl = `https://www.traiteurmontpellier.com/blog/${article.slug}`;
 
-  return <ArticleContent article={article} recentArticles={recentArticles} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "https://www.traiteurmontpellier.com" },
+          { name: "Blog", url: "https://www.traiteurmontpellier.com/blog" },
+          { name: article.title, url: articleUrl },
+        ]}
+      />
+      <ArticleJsonLd
+        title={article.title}
+        description={article.metaDescription || article.excerpt}
+        image={article.featuredImage}
+        url={articleUrl}
+        publishedAt={article.publishedAt.toISOString()}
+        updatedAt={article.updatedAt.toISOString()}
+      />
+      <ArticleContent article={article} recentArticles={recentArticles} />
+    </>
+  );
 }

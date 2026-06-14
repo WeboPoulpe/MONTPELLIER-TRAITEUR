@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import EvenementsPrivesContent from "./EvenementsPrivesContent";
 import { getPageData } from "@/lib/pageData";
+import {
+  BreadcrumbJsonLd,
+  FaqJsonLd,
+  ServiceJsonLd,
+} from "@/components/SeoJsonLd";
+import { serviceFaqSchemas } from "@/data/seo";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Traiteur Événements Privés Montpellier - Anniversaires, Baptêmes, Réceptions",
+  title: "Traiteur Événement Privé Montpellier",
   description:
     "Traiteur pour vos événements privés à Montpellier : anniversaires, baptêmes, garden-parties, célébrations. Cuisine méditerranéenne sur mesure et éco-responsable.",
   keywords: [
@@ -33,5 +39,26 @@ export const metadata: Metadata = {
 
 export default async function EvenementsPrivesPage() {
   const pageContent = await getPageData("evenements-prives", {});
-  return <EvenementsPrivesContent data={pageContent} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "https://www.traiteurmontpellier.com" },
+          {
+            name: "Événements privés",
+            url: "https://www.traiteurmontpellier.com/evenements-prives",
+          },
+        ]}
+      />
+      <ServiceJsonLd
+        id="evenements-prives"
+        name="Traiteur pour événement privé à Montpellier"
+        description="Cocktails, buffets et menus sur mesure pour anniversaires, baptêmes, garden-parties et fêtes de famille."
+        serviceType="Traiteur pour réception privée"
+        url="https://www.traiteurmontpellier.com/evenements-prives"
+      />
+      <FaqJsonLd id="evenements-prives" items={serviceFaqSchemas.prives} />
+      <EvenementsPrivesContent data={pageContent} />
+    </>
+  );
 }

@@ -37,8 +37,11 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setDropdownOpen(false);
+    const frame = requestAnimationFrame(() => {
+      setMobileOpen(false);
+      setDropdownOpen(false);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {

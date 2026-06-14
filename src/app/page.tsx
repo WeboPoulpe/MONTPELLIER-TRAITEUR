@@ -3,12 +3,14 @@ import Hero from "@/components/Hero";
 import Concept from "@/components/Concept";
 import PageTransition from "@/components/PageTransition";
 import RecentArticles from "@/components/RecentArticles";
+import GoogleTestimonials from "@/components/GoogleTestimonials";
+import { FaqJsonLd } from "@/components/SeoJsonLd";
 import { getRecentArticles } from "@/lib/articles";
 import { getPageData } from "@/lib/pageData";
+import { homeFaqSchema } from "@/data/seo";
 
 const Services = nextDynamic(() => import("@/components/Services"));
 const Gallery = nextDynamic(() => import("@/components/Gallery"));
-const Testimonials = nextDynamic(() => import("@/components/Testimonials"));
 const HomeFAQ = nextDynamic(() => import("@/components/HomeFAQ"));
 
 export const dynamic = "force-static";
@@ -23,12 +25,13 @@ export default async function Home() {
 
   return (
     <PageTransition>
+      <FaqJsonLd id="accueil" items={homeFaqSchema} />
       <main>
         <Hero data={d.hero} />
         <Concept data={d.concept} />
         <Services data={d.services} />
         <Gallery />
-        <Testimonials />
+        <GoogleTestimonials />
         <RecentArticles articles={articles} />
         <HomeFAQ />
       </main>

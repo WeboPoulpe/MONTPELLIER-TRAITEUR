@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import FoiresSalonsContent from "./FoiresSalonsContent";
 import { getPageData } from "@/lib/pageData";
+import {
+  BreadcrumbJsonLd,
+  FaqJsonLd,
+  ServiceJsonLd,
+} from "@/components/SeoJsonLd";
+import { serviceFaqSchemas } from "@/data/seo";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Traiteur Foires & Salons Montpellier - Catering Professionnel",
+  title: "Traiteur Foires et Salons Montpellier",
   description:
     "Catering sur mesure pour vos foires et salons à Montpellier. Grazing tables, plateaux repas, cocktails VIP, paniers staff. Traiteur éco-responsable depuis 2008.",
   keywords: [
@@ -33,5 +39,26 @@ export const metadata: Metadata = {
 
 export default async function FoiresSalonsPage() {
   const pageContent = await getPageData("foires-salons", {});
-  return <FoiresSalonsContent data={pageContent} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Accueil", url: "https://www.traiteurmontpellier.com" },
+          {
+            name: "Foires et salons",
+            url: "https://www.traiteurmontpellier.com/foires-salons",
+          },
+        ]}
+      />
+      <ServiceJsonLd
+        id="foires-salons"
+        name="Catering pour foires et salons à Montpellier"
+        description="Livraison sur stand, grazing tables, paniers staff, plateaux repas, packs café et cocktails VIP."
+        serviceType="Catering pour salon professionnel"
+        url="https://www.traiteurmontpellier.com/foires-salons"
+      />
+      <FaqJsonLd id="foires-salons" items={serviceFaqSchemas.salons} />
+      <FoiresSalonsContent data={pageContent} />
+    </>
+  );
 }

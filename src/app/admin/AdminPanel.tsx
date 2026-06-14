@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import {
   Plus, Pencil, Trash2, Eye, LogOut, Save, X, Loader2,
-  FileText, Home, Building2, Store, PartyPopper, Info,
+  BarChart3, FileText, Home, Building2, Store, PartyPopper, Info,
 } from "lucide-react";
+import GoogleAnalyticsDashboard from "@/components/admin/GoogleAnalyticsDashboard";
 
 /* ─── Types ─── */
 interface Article {
@@ -46,6 +47,7 @@ const articleCategories = [
 ];
 
 const tabs = [
+  { key: "analytics", label: "Statistiques", icon: BarChart3 },
   { key: "articles", label: "Articles", icon: FileText },
   { key: "home", label: "Accueil", icon: Home },
   { key: "entreprises", label: "Entreprises", icon: Building2 },
@@ -118,15 +120,14 @@ export default function AdminPanel() {
     setPageData(map);
   }, []);
 
-  useEffect(() => {
-    if (token) { fetchArticles(); fetchPages(); }
-  }, [token, fetchArticles, fetchPages]);
-
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     const res = await fetch("/api/auth", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password }) });
-    if (res.ok) setToken(password);
+    if (res.ok) {
+      setToken(password);
+      await Promise.all([fetchArticles(), fetchPages()]);
+    }
     else setError("Mot de passe incorrect");
   };
 
@@ -253,7 +254,7 @@ export default function AdminPanel() {
               </div>
             </Section>
             <Section title="Image & SEO">
-              <Input label="Image (chemin)" value={editing.featuredImage} onChange={(v) => setEditing({ ...editing, featuredImage: v })} placeholder="/photos site/mon-image.jpg" />
+              <Input label="Image (chemin)" value={editing.featuredImage} onChange={(v) => setEditing({ ...editing, featuredImage: v })} placeholder="/photos site/mon-image.webp" />
               <Input label="Alt image" value={editing.featuredImageAlt} onChange={(v) => setEditing({ ...editing, featuredImageAlt: v })} />
               <Input label="Meta Title" value={editing.metaTitle} onChange={(v) => setEditing({ ...editing, metaTitle: v })} />
               <Textarea label="Meta Description" value={editing.metaDescription} onChange={(v) => setEditing({ ...editing, metaDescription: v })} rows={2} />
@@ -554,6 +555,11 @@ export default function AdminPanel() {
             </div>
           )}
 
+          {/* Analytics tab */}
+          {activeTab === "analytics" && (
+            <GoogleAnalyticsDashboard token={token} />
+          )}
+
           {/* Articles tab */}
           {activeTab === "articles" && (
             <>
@@ -599,7 +605,7 @@ export default function AdminPanel() {
           )}
 
           {/* Page tabs */}
-          {activeTab !== "articles" && (
+          {activeTab !== "articles" && activeTab !== "analytics" && (
             <>
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold">

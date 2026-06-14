@@ -50,13 +50,13 @@ Les données liées à une commande ou une prestation réalisée sont conservée
     title: "6. Destinataires des données",
     content: `Vos données personnelles sont strictement confidentielles et ne sont en aucun cas vendues, échangées ou louées à des tiers.
 
-Seuls les membres de l'équipe Traiteur Montpellier habilités à traiter votre demande ont accès à vos informations. Nos sous-traitants techniques (hébergeur, service email) sont soumis aux mêmes obligations de protection des données.`,
+Seuls les membres de l'équipe Traiteur Montpellier habilités à traiter votre demande ont accès à vos informations. Nos sous-traitants techniques (hébergeur, service email et, avec votre consentement, services de mesure Google) sont soumis à leurs obligations contractuelles et réglementaires de protection des données.`,
   },
   {
     title: "7. Cookies",
-    content: `Notre site utilise uniquement des cookies strictement nécessaires au bon fonctionnement technique du site. Ces cookies ne nécessitent pas votre consentement préalable conformément à la réglementation en vigueur.
+    content: `Notre site utilise des cookies strictement nécessaires à son fonctionnement technique. Ces cookies ne nécessitent pas votre consentement préalable conformément à la réglementation en vigueur.
 
-Nous n'utilisons pas de cookies de mesure d'audience, de cookies publicitaires ou de cookies de réseaux sociaux. Aucun traceur tiers n'est déposé sur votre terminal lors de votre navigation.`,
+Avec votre accord, Google Tag Manager peut également déclencher des cookies de mesure d'audience et de mesure publicitaire afin d'analyser les visites et d'évaluer les performances de nos campagnes Google Ads. Ces cookies optionnels restent désactivés tant que vous ne les avez pas acceptés depuis la bannière de consentement.`,
   },
   {
     title: "8. Vos droits",

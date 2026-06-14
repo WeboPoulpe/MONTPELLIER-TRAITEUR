@@ -21,15 +21,15 @@ export default function JsonLd() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 43.6108,
-      longitude: 3.8767,
+      latitude: 43.6048,
+      longitude: 3.8367,
     },
     areaServed: {
       "@type": "GeoCircle",
       geoMidpoint: {
         "@type": "GeoCoordinates",
-        latitude: 43.6108,
-        longitude: 3.8767,
+        latitude: 43.6048,
+        longitude: 3.8367,
       },
       geoRadius: "50000",
     },

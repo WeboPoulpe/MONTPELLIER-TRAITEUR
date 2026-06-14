@@ -8,7 +8,6 @@ import {
   ArrowRight,
   Check,
   CalendarDays,
-  Users,
   MapPin,
   Euro,
   User,
@@ -16,6 +15,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import { pushTrackingEvent } from "@/lib/tracking";
+import { getAttribution } from "@/lib/tracking";
 
 /* ─── Types ─── */
 interface FormData {
@@ -53,6 +54,9 @@ interface FormData {
   utmContent: string;
   utmTerm: string;
   gclid: string;
+  fbclid: string;
+  referrer: string;
+  landingPage: string;
 }
 
 const initialData: FormData = {
@@ -84,6 +88,9 @@ const initialData: FormData = {
   utmContent: "",
   utmTerm: "",
   gclid: "",
+  fbclid: "",
+  referrer: "",
+  landingPage: "",
 };
 
 const eventTypes = [
@@ -213,11 +220,11 @@ function Fireworks() {
   const colors = ["#7c3aed", "#a855f7", "#c084fc", "#e9d5ff", "#fbbf24", "#f472b6"];
   const particles = Array.from({ length: 40 }, (_, i) => ({
     id: i,
-    x: Math.random() * 300 - 150,
-    y: Math.random() * -300 - 50,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    size: Math.random() * 6 + 3,
-    delay: Math.random() * 0.5,
+    x: ((i * 83) % 301) - 150,
+    y: -(((i * 67) % 301) + 50),
+    color: colors[i % colors.length],
+    size: ((i * 7) % 6) + 3,
+    delay: ((i * 13) % 50) / 100,
   }));
 
   return (
@@ -250,7 +257,9 @@ export default function DevisContent() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showFireworks, setShowFireworks] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const formContainerRef = useRef<HTMLDivElement>(null);
+  const formStartedRef = useRef(false);
 
   // Capture UTM params: URL first, then sessionStorage fallback
   useEffect(() => {
@@ -261,22 +270,20 @@ export default function DevisContent() {
     let utmContent = searchParams.get("utm_content") || "";
     let utmTerm = searchParams.get("utm_term") || "";
     let gclid = searchParams.get("gclid") || "";
+    let fbclid = searchParams.get("fbclid") || "";
+    let referrer = "";
+    let landingPage = "";
 
-    // Fallback to sessionStorage if no UTM in URL
-    if (!utmSource && !gclid) {
-      try {
-        const stored = sessionStorage.getItem("lead_utm");
-        if (stored) {
-          const params = JSON.parse(stored);
-          utmSource = params.utm_source || "";
-          utmMedium = params.utm_medium || "";
-          utmCampaign = params.utm_campaign || "";
-          utmContent = params.utm_content || "";
-          utmTerm = params.utm_term || "";
-          gclid = params.gclid || "";
-        }
-      } catch {}
-    }
+    const stored = getAttribution();
+    utmSource ||= stored.utm_source || "";
+    utmMedium ||= stored.utm_medium || "";
+    utmCampaign ||= stored.utm_campaign || "";
+    utmContent ||= stored.utm_content || "";
+    utmTerm ||= stored.utm_term || "";
+    gclid ||= stored.gclid || "";
+    fbclid ||= stored.fbclid || "";
+    referrer = stored.referrer || "";
+    landingPage = stored.landing_page || "";
 
     setForm((prev) => ({
       ...prev,
@@ -286,6 +293,9 @@ export default function DevisContent() {
       utmContent,
       utmTerm,
       gclid,
+      fbclid,
+      referrer,
+      landingPage,
     }));
   }, [searchParams]);
 
@@ -354,6 +364,17 @@ export default function DevisContent() {
 
   const next = () => {
     if (validateStep()) {
+      if (!formStartedRef.current) {
+        formStartedRef.current = true;
+        pushTrackingEvent("form_start_devis", {
+          event_type: form.eventType,
+          page_path: window.location.pathname,
+        });
+      }
+      pushTrackingEvent("quote_step_completed", {
+        step,
+        event_type: form.eventType,
+      });
       setStep((s) => Math.min(s + 1, 5));
       formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -366,7 +387,7 @@ export default function DevisContent() {
 
   const submit = async () => {
     setSubmitting(true);
-    setShowFireworks(true);
+    setSubmitError("");
 
     try {
       console.log("[DEVIS] Envoi en cours...", {
@@ -399,16 +420,37 @@ export default function DevisContent() {
       }
       console.log("[DEVIS] Normalized:", result.normalizedFields);
 
-      if (!res.ok) {
+      if (!res.ok || !result.successGlobal) {
         console.error("[DEVIS] API Error:", res.status, result);
+        throw new Error(result.error || "La demande n'a pas pu être envoyée.");
       }
+
+      pushTrackingEvent("generate_lead", {
+        lead_type: form.clientType,
+        event_type: form.eventType,
+        event_city: form.city,
+        guest_count: Number(form.guestCount),
+        estimated_value: Number(form.budgetAmount),
+        value_type: form.budgetType,
+        currency: "EUR",
+        lead_id: result.debugId,
+        utm_source: form.utmSource || "direct",
+        utm_medium: form.utmMedium,
+        utm_campaign: form.utmCampaign,
+      });
+
+      setShowFireworks(true);
+      setTimeout(() => {
+        router.push("/merci");
+      }, 1200);
     } catch (e) {
       console.error("[DEVIS] Network error:", e);
+      setSubmitError(
+        "L'envoi a échoué. Réessayez ou appelez-nous directement au 06 60 13 05 96."
+      );
+      setShowFireworks(false);
+      setSubmitting(false);
     }
-
-    setTimeout(() => {
-      router.push("/merci");
-    }, 2000);
   };
 
   const today = new Date().toISOString().split("T")[0];
@@ -989,6 +1031,14 @@ export default function DevisContent() {
                   </button>
                 )}
               </div>
+              {submitError && (
+                <div
+                  role="alert"
+                  className="mt-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                >
+                  {submitError}
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>

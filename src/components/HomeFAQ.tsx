@@ -1,20 +1,10 @@
 "use client";
 
 import FAQ from "@/components/FAQ";
+import { homeFaqSchema } from "@/data/seo";
 
 const homeFaqItems = [
-  {
-    question: "Quels types d'événements prenez-vous en charge ?",
-    answer: "Nous prenons en charge tous types d'événements : séminaires et conférences d'entreprise, foires et salons professionnels, anniversaires, baptêmes, garden-parties, cocktails VIP et toute autre célébration privée. Chaque prestation est conçue sur mesure.",
-  },
-  {
-    question: "Quelle est votre zone d'intervention autour de Montpellier ?",
-    answer: "Nous sommes basés à Montpellier et intervenons dans tout le département de l'Hérault (34). Pour les événements d'envergure, nous pouvons couvrir l'ensemble de la région Occitanie. N'hésitez pas à nous contacter pour vérifier la faisabilité.",
-  },
-  {
-    question: "Comment fonctionne la demande de devis ?",
-    answer: "C'est simple et gratuit : remplissez notre formulaire en ligne en indiquant le type d'événement, le nombre de convives et la date souhaitée. Vous pouvez aussi nous appeler au 06 60 13 05 96. Nous vous répondons sous 24h avec une proposition personnalisée.",
-  },
+  ...homeFaqSchema,
   {
     question: "Vos produits sont-ils locaux et de saison ?",
     answer: "Oui, nous privilégions les circuits courts en collaborant étroitement avec des producteurs de la région montpelliéraine. Nos menus changent au fil des saisons pour garantir fraîcheur et qualité optimales tout au long de l'année.",

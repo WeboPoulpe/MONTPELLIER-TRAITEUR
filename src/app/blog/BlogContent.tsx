@@ -29,7 +29,7 @@ export default function BlogContent({ articles }: { articles: Article[] }) {
           title="Nos"
           titleAccent="articles"
           description="Conseils, tendances et coulisses de la gastronomie événementielle à Montpellier."
-          image="/photos site/mise-en-place-traiteur-montpellier.jpg"
+          image="/photos site/mise-en-place-traiteur-montpellier.webp"
           ctaLabel="Demander un devis"
           ctaHref="/devis"
         />
