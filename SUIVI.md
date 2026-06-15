@@ -17,8 +17,8 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 
 | Fenetre | Sujet | Fichiers ou zones concernes | Statut |
 | --- | --- | --- | --- |
-| Fenetre 1 | Modifications deja presentes dans le worktree : tracking, consentement, navigation et SEO local | `src/app/devis/DevisContent.tsx`, `src/app/layout.tsx`, `src/app/politique-confidentialite/PolitiqueContent.tsx`, `src/app/sitemap.ts`, `src/app/guide-local/`, `src/components/CookieBanner.tsx`, `src/components/Footer.tsx`, `src/components/LayoutShell.tsx`, `src/components/TrackingEvents.tsx`, `src/lib/tracking.ts` | En cours, ne pas ecraser |
-| Fenetre 2 | Vrais avis Google et remontee des donnees GA4, Google Ads et Search Console | `src/components/Testimonials.tsx`, `src/components/GoogleTestimonials.tsx`, `src/components/admin/`, `src/lib/google/`, `src/app/api/google/`, `src/app/admin/AdminPanel.tsx`, `src/app/page.tsx`, `GOOGLE_SETUP.md` | Avis Google valides localement, variables Vercel a ajouter |
+| Claude Code | Marquer generate_lead comme conversion dans GA4 Admin | GA4 Admin > Conversions | A faire manuellement dans GA4 |
+| Claude Code | Ajouter "mariage" en mot-cle negatif dans Google Ads | Campagnes Search + Performance Max | A faire |
 
 ## Termine
 
@@ -29,19 +29,35 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 14 juin 2026 | Fenetre 3 | Optimisation SEO technique, schemas Service/FAQ/Breadcrumb/Article, tracking attribution et tunnel, tableau GSC enrichi | Lint cible, build production et controle HTML local valides |
 | 15 juin 2026 | Fenetre 2 | Connexion de la fiche Google Traiteur Montpellier | Fiche `ChIJ4ys98chUV0ARmWHI_ODHRnU`, note 4,9/5, 354 avis et avis reels verifies localement ; build production valide |
 | 15 juin 2026 | Fenetre 3 | Analyse de l'export GSC avant nouvelles optimisations editoriales | Export du 15 juin analyse ; rapport `ANALYSE_GSC_2026-06-15.md` cree ; aucune modification des contenus SEO |
+| 15 juin 2026 | Claude Code | Commit et deploy de tout le travail Codex (41 fichiers) | Deploye sur www.traiteurmontpellier.com - build OK |
+| 15 juin 2026 | Claude Code | Fix double cookie banner - suppression CookieBanner.tsx (Clickio via GTM conserve) | Deploye et verifie |
+| 15 juin 2026 | Claude Code | Variables Vercel ajoutees : GOOGLE_PLACES_API_KEY, GOOGLE_PLACE_ID, GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET, GOOGLE_OAUTH_REFRESH_TOKEN, GA4_PROPERTY_ID, SEARCH_CONSOLE_SITE_URL, GOOGLE_ADS_DEVELOPER_TOKEN, GOOGLE_ADS_CUSTOMER_ID (6155175246), GOOGLE_ADS_LOGIN_CUSTOMER_ID | Verifies dans Vercel |
+| 15 juin 2026 | Claude Code | Audit complet GA4 + Search Console + Google Ads via API | 419 sessions/mois, 32 leads reels non trackes, 56EUR depenses pour 1 conversion trackee |
+| 15 juin 2026 | Claude Code | GTM : creation conversion Ads + trigger /merci + tag GA4 generate_lead - Version 22 publiee | GTM version 22 live sur GTM-W6786J2W |
+| 15 juin 2026 | Claude Code | Google Ads : creation action de conversion "Demande de devis" (ID: 7648594038, AW-11144726708/qExRCPaQkb8cELSRnMIp) | Conversion creee via API v21 |
+
+## Credentials Google (references uniquement - ne pas modifier)
+
+- OAuth Client ID : `1090757338785-i3g8iptvt8s0idog42rrqc418i954i34.apps.googleusercontent.com`
+- GA4 Property ID : `491115717` (G-NVNV8V3DDT dans GTM)
+- Google Ads Customer ID Traiteur : `6155175246`
+- Google Ads MCC : `4419531309` (El mansouri)
+- Google Ads Developer Token : dans Vercel
+- GTM Account : `6297709538` | Container : `221473496` | Public ID : `GTM-W6786J2W`
+- Google Place ID : `ChIJ4ys98chUV0ARmWHI_ODHRnU` (4.9/5, 354 avis)
+- Conversion Ads "Demande de devis" : `AW-11144726708/qExRCPaQkb8cELSRnMIp`
 
 ## Notes et blocages
 
 - Branche actuelle au moment de la creation : `main`.
-- Dernier commit observe : `efb80f9 Perf: cache DB avec revalidateTag, pages publiques force-static`.
+- Dernier commit observe : `c1a15c5 Fix: supprime le bandeau cookie maison, Clickio via GTM suffit`.
 - Les modifications listees dans "Travail en cours" existaient avant la creation de ce fichier.
-- Les variables Places sont presentes dans `.env.local`, fichier ignore par Git.
-- Ajouter `GOOGLE_PLACES_API_KEY` et `GOOGLE_PLACE_ID` dans Vercel pour la production.
-- L'integration des avis accepte maintenant la meme cle Places que Recacor et
-  recherche automatiquement la fiche Traiteur Montpellier. La variable Places
-  actuelle de Recacor est vide dans Vercel, meme si l'ancien deploiement conserve
-  encore une cle active.
-- Le lint global conserve une erreur anterieure dans `src/components/Header.tsx`; les fichiers de la fenetre 2 passent le lint cible.
+- Les variables Google Places, OAuth, GA4, Search Console et Google Ads sont
+  configurees dans Vercel pour Traiteur Montpellier.
+- Les vrais avis Google sont en production avec la fiche
+  `ChIJ4ys98chUV0ARmWHI_ODHRnU`.
+- Le bandeau cookie maison a ete supprime ; le consentement est gere via Clickio
+  et GTM.
 - L'export GSC couvre effectivement 60 jours, du 14 avril au 12 juin 2026, malgre le filtre affiche "12 derniers mois".
 - Priorite SEO identifiee : page dediee mariage, puis renforcement entreprise et verification de l'URL `/devis` avec UTM Google Business Profile.
 - Un ancien export GSC sans `www` du 9 decembre 2025 au 8 mars 2026 a ete compare. La visibilite recente progresse, mais le CTR et les clics quotidiens reculent.
