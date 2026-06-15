@@ -44,6 +44,54 @@ GOOGLE_OAUTH_REFRESH_TOKEN=
 
 Le compte Google autorise doit avoir acces aux trois proprietes concernees.
 
+### Generer un refresh token plus facilement
+
+Un assistant local commun est disponible sur le Bureau :
+
+```text
+/Users/redouanelmansouri/Desktop/GOOGLE_OAUTH_TOOLS/google-refresh-token.mjs
+```
+
+Depuis ce projet, il est branche sur la commande :
+
+```bash
+npm run google:refresh-token
+```
+
+Avant de l'utiliser, ajouter cette URI de redirection dans le client OAuth
+Google :
+
+```text
+http://127.0.0.1:53682/oauth2callback
+```
+
+Le script ouvre un flux OAuth avec les scopes :
+
+```text
+https://www.googleapis.com/auth/analytics.readonly
+https://www.googleapis.com/auth/webmasters.readonly
+https://www.googleapis.com/auth/adwords
+```
+
+Il affiche ensuite le nouveau `GOOGLE_OAUTH_REFRESH_TOKEN`. Cette etape ne peut
+pas etre totalement automatisee, car Google exige un consentement explicite du
+compte Google connecte. En revanche, une fois le script en place, il suffit de
+relancer cette commande quand un token doit etre regenere.
+
+Le meme outil peut aussi etre utilise depuis Recacor ou un autre projet :
+
+```bash
+cd /Users/redouanelmansouri/Desktop/RECACOR
+node ../GOOGLE_OAUTH_TOOLS/google-refresh-token.mjs
+```
+
+Le script lit les variables OAuth du projet courant (`.env.local` puis
+`.env.production`). Si les secrets sont dans un autre fichier temporaire :
+
+```bash
+node ../GOOGLE_OAUTH_TOOLS/google-refresh-token.mjs --env-file=/private/tmp/google-oauth.env
+```
+
 ## 3. Identifiants des produits
 
 ```env

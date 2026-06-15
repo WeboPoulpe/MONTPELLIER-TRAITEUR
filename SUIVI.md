@@ -41,6 +41,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 15 juin 2026 | Codex | Securisation du formulaire de devis, anonymisation des journaux et suppression des faux avis de la page merci | TypeScript, ESLint cible, `git diff --check`, build production, controle navigateur et tests API local valides |
 | 15 juin 2026 | Codex | Controle GA4 et Google Ads apres deploiement | Propriete GA4 `491115717` verifiee ; `generate_lead` pas encore recu ; objectif Ads "Demande de devis" actif, principal et applique aux 3 campagnes |
 | 16 juin 2026 | Codex | Correction complete endpoint Google Ads `searchStream` | `src/lib/google/ads.ts` deja corrige par `8c94413`; `src/lib/google/analytics.ts` aligne ; ESLint cible OK |
+| 16 juin 2026 | Codex | Creation d'un outil local commun pour regenerer les refresh tokens Google OAuth | Script commun cree dans `/Users/redouanelmansouri/Desktop/GOOGLE_OAUTH_TOOLS`; Traiteur branche via `npm run google:refresh-token`; syntaxe Node verifiee |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
