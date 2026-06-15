@@ -7,6 +7,8 @@ const CAMPAIGN_KEYS = [
   "utm_content",
   "utm_term",
   "gclid",
+  "gbraid",
+  "wbraid",
   "fbclid",
 ] as const;
 
@@ -17,6 +19,8 @@ export interface AttributionData {
   utm_content?: string;
   utm_term?: string;
   gclid?: string;
+  gbraid?: string;
+  wbraid?: string;
   fbclid?: string;
   referrer?: string;
   landing_page?: string;

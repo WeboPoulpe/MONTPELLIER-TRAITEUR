@@ -76,3 +76,53 @@ GOOGLE_ADS_API_VERSION=v22
 
 Les donnees statistiques sont chargees a la demande et ne sont jamais exposees
 par une route publique. Les avis Google sont mis en cache pendant six heures.
+
+## 5. Conversions de leads facturees
+
+Le formulaire conserve maintenant une copie serveur de chaque demande dans la
+table `lead_submissions`, en plus de l'envoi vers Digifactory. Les champs
+conserves comprennent :
+
+- identifiant interne unique `lead_id` ;
+- email et telephone du prospect ;
+- GCLID, GBRAID et WBRAID lorsqu'ils sont presents ;
+- UTM, page d'entree et referent ;
+- type, date, ville et valeur estimee de l'evenement ;
+- resultat de l'envoi vers le CRM et du courriel.
+
+La migration `drizzle/0000_acoustic_ben_grimm.sql` doit etre appliquee avant le
+deploiement de cette fonctionnalite.
+
+Une fois connecte a l'administration, l'export est disponible ici :
+
+```text
+/api/admin/leads?format=csv
+```
+
+Le rapprochement doit etre realise avec les ventes Digifactory marquees
+`Payee`, en priorite par email, puis par telephone. Chaque facture importee dans
+Google Ads doit utiliser une cle stable, par exemple :
+
+```text
+lead_id + reference_facture
+```
+
+Cela evite de compter deux fois une meme facture lors des imports suivants.
+
+Dans Google Ads :
+
+1. Activer les conversions avancees pour prospects et accepter les conditions
+   relatives aux donnees client.
+2. Creer une action de conversion hors ligne `Client facture`.
+3. Utiliser la date de paiement ou, a defaut, la date de validation de la
+   facture comme date de conversion.
+4. Envoyer le montant TTC facture et la devise `EUR`.
+5. Envoyer tous les identifiants disponibles : GCLID/GBRAID/WBRAID et donnees
+   client normalisees puis hachees en SHA-256.
+6. Controler les diagnostics d'import avant d'utiliser cette action comme
+   objectif principal d'encheres.
+
+Pour l'historique anterieur au nouveau stockage, exporter depuis Digifactory les
+opportunites avec leur description complete. Le formulaire y inscrivait deja
+les marqueurs `[GCLID: ...]` et `[UTM: ...]`. Sans ces descriptions ou un
+identifiant publicitaire, l'attribution historique ne peut etre qu'estimee.

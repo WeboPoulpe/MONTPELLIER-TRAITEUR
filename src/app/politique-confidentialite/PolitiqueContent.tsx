@@ -25,9 +25,10 @@ Téléphone : 06 60 13 05 96`,
 - Adresse email
 - Numéro de téléphone
 - Type d'événement et nombre de convives
+- Données d'attribution de la visite (source, campagne, page d'entrée et identifiants publicitaires tels que GCLID, GBRAID ou WBRAID)
 - Toute information complémentaire que vous choisissez de nous communiquer
 
-Nous ne collectons aucune donnée de manière automatique à des fins de profilage ou de publicité ciblée.`,
+Ces données d'attribution servent à mesurer l'efficacité des campagnes et ne sont pas utilisées par Traiteur Montpellier pour établir un profil individuel autonome.`,
   },
   {
     title: "4. Finalités du traitement",
@@ -36,6 +37,7 @@ Nous ne collectons aucune donnée de manière automatique à des fins de profila
 - Répondre à vos demandes de devis et de renseignements
 - Assurer le suivi de votre événement et de votre commande
 - Vous contacter par téléphone ou email dans le cadre de votre demande
+- Rapprocher une demande d'une campagne publicitaire et mesurer les demandes devenues clients
 - Améliorer nos services et l'expérience utilisateur de notre site
 
 Base légale : le traitement de vos données repose sur votre consentement (article 6.1.a du RGPD) et sur l'exécution de mesures précontractuelles (article 6.1.b du RGPD).`,

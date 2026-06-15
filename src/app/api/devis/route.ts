@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { eq } from "drizzle-orm";
+import { db } from "@/lib/db";
+import { leadSubmissions } from "@/lib/db/schema";
 
 /* ─── Config ─── */
 const DEBUG = process.env.DEBUG_DEVIS === "true";
@@ -233,6 +236,8 @@ export async function POST(request: Request) {
     const utmContent = safe(data.utmContent);
     const utmTerm = safe(data.utmTerm);
     const gclid = safe(data.gclid);
+    const gbraid = safe(data.gbraid);
+    const wbraid = safe(data.wbraid);
     const fbclid = safe(data.fbclid);
     const referrer = safe(data.referrer);
     const landingPage = safe(data.landingPage);
@@ -332,6 +337,8 @@ export async function POST(request: Request) {
       utmSource: utmSource || "none",
       utmMedium: utmMedium || "none",
       gclid: gclid || "none",
+      gbraid: gbraid || "none",
+      wbraid: wbraid || "none",
       fbclid: fbclid || "none",
       landingPage: landingPage || "none",
     };
@@ -359,9 +366,42 @@ export async function POST(request: Request) {
     if (utmContent) tracking.push(`Content: ${utmContent}`);
     if (utmTerm) tracking.push(`Term: ${utmTerm}`);
     if (gclid) tracking.push(`GCLID: ${gclid}`);
+    if (gbraid) tracking.push(`GBRAID: ${gbraid}`);
+    if (wbraid) tracking.push(`WBRAID: ${wbraid}`);
     if (fbclid) tracking.push(`FBCLID: ${fbclid}`);
     if (landingPage) tracking.push(`Landing: ${landingPage}`);
     if (referrer) tracking.push(`Referrer: ${referrer}`);
+
+    try {
+      await db.insert(leadSubmissions).values({
+        leadId: debugId,
+        firstName,
+        lastName,
+        company: company || null,
+        email: email.toLowerCase(),
+        phone,
+        eventType,
+        eventDate: eventDate || null,
+        eventCity: city || null,
+        eventPostalCode: postalCode || null,
+        estimatedValue: budgetAmount || null,
+        utmSource: utmSource || null,
+        utmMedium: utmMedium || null,
+        utmCampaign: utmCampaign || null,
+        utmContent: utmContent || null,
+        utmTerm: utmTerm || null,
+        gclid: gclid || null,
+        gbraid: gbraid || null,
+        wbraid: wbraid || null,
+        fbclid: fbclid || null,
+        landingPage: landingPage || null,
+        referrer: referrer || null,
+        formData: data,
+      });
+      log("LEAD_STORAGE", "SUCCESS");
+    } catch (storageError) {
+      logErr("LEAD_STORAGE", "FAILED", storageError);
+    }
 
     /* ══════════════════════════════════════
        3. Build email HTML (unchanged design)
@@ -490,9 +530,13 @@ export async function POST(request: Request) {
 
     // UTM tag for description
     const utmParts = [utmSource, utmMedium].filter(Boolean).join("/");
-    const gclidTag = gclid ? ` [GCLID: ${gclid}]` : "";
-    const utmLine = utmParts || gclid
-      ? `[UTM: ${utmParts || "direct"}]${gclidTag}`
+    const clickIdTags = [
+      gclid ? `GCLID: ${gclid}` : "",
+      gbraid ? `GBRAID: ${gbraid}` : "",
+      wbraid ? `WBRAID: ${wbraid}` : "",
+    ].filter(Boolean);
+    const utmLine = utmParts || clickIdTags.length > 0
+      ? `[UTM: ${utmParts || "direct"}]${clickIdTags.length ? ` [${clickIdTags.join(" | ")}]` : ""}`
       : "[UTM: direct]";
 
     // Description — safe, no undefined/null
@@ -640,6 +684,20 @@ export async function POST(request: Request) {
       crmStatus,
       debugId,
     };
+
+    try {
+      await db
+        .update(leadSubmissions)
+        .set({
+          crmSuccess: successCRM,
+          crmStatus,
+          emailSent: successEmail,
+          updatedAt: new Date(),
+        })
+        .where(eq(leadSubmissions.leadId, debugId));
+    } catch (storageError) {
+      logErr("LEAD_STORAGE_UPDATE", "FAILED", storageError);
+    }
 
     log("FINAL_RESULT", {
       successGlobal: response.successGlobal,

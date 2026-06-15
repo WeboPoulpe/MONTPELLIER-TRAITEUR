@@ -54,6 +54,8 @@ interface FormData {
   utmContent: string;
   utmTerm: string;
   gclid: string;
+  gbraid: string;
+  wbraid: string;
   fbclid: string;
   referrer: string;
   landingPage: string;
@@ -90,6 +92,8 @@ const initialData: FormData = {
   utmContent: "",
   utmTerm: "",
   gclid: "",
+  gbraid: "",
+  wbraid: "",
   fbclid: "",
   referrer: "",
   landingPage: "",
@@ -274,6 +278,8 @@ export default function DevisContent() {
     let utmContent = searchParams.get("utm_content") || "";
     let utmTerm = searchParams.get("utm_term") || "";
     let gclid = searchParams.get("gclid") || "";
+    let gbraid = searchParams.get("gbraid") || "";
+    let wbraid = searchParams.get("wbraid") || "";
     let fbclid = searchParams.get("fbclid") || "";
     let referrer = "";
     let landingPage = "";
@@ -285,6 +291,8 @@ export default function DevisContent() {
     utmContent ||= stored.utm_content || "";
     utmTerm ||= stored.utm_term || "";
     gclid ||= stored.gclid || "";
+    gbraid ||= stored.gbraid || "";
+    wbraid ||= stored.wbraid || "";
     fbclid ||= stored.fbclid || "";
     referrer = stored.referrer || "";
     landingPage = stored.landing_page || "";
@@ -297,6 +305,8 @@ export default function DevisContent() {
       utmContent,
       utmTerm,
       gclid,
+      gbraid,
+      wbraid,
       fbclid,
       referrer,
       landingPage,

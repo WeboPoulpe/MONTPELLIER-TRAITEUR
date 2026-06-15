@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /public/Photo Traiteur Montpellier/
+
+# Exports CRM et analyses contenant des donnees personnelles
+/outputs/private_crm/
