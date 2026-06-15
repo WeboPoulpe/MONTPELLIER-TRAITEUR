@@ -3,9 +3,10 @@
 import { useState, useCallback } from "react";
 import {
   Plus, Pencil, Trash2, Eye, LogOut, Save, X, Loader2,
-  BarChart3, FileText, Home, Building2, Store, PartyPopper, Info,
+  BarChart3, FileText, Home, Building2, Store, PartyPopper, Info, TrendingUp,
 } from "lucide-react";
 import GoogleAnalyticsDashboard from "@/components/admin/GoogleAnalyticsDashboard";
+import GoogleAdsDashboard from "@/components/admin/GoogleAdsDashboard";
 
 /* ─── Types ─── */
 interface Article {
@@ -48,6 +49,7 @@ const articleCategories = [
 
 const tabs = [
   { key: "analytics", label: "Statistiques", icon: BarChart3 },
+  { key: "google-ads", label: "Google Ads", icon: TrendingUp },
   { key: "articles", label: "Articles", icon: FileText },
   { key: "home", label: "Accueil", icon: Home },
   { key: "entreprises", label: "Entreprises", icon: Building2 },
@@ -558,6 +560,11 @@ export default function AdminPanel() {
           {/* Analytics tab */}
           {activeTab === "analytics" && (
             <GoogleAnalyticsDashboard token={token} />
+          )}
+
+          {/* Google Ads tab */}
+          {activeTab === "google-ads" && (
+            <GoogleAdsDashboard token={token} />
           )}
 
           {/* Articles tab */}
