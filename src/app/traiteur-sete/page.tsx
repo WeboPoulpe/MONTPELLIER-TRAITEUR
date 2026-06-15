@@ -220,6 +220,31 @@ export default function TraiteurSetePage() {
           </div>
         </section>
 
+        {/* Maillage villes */}
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <h2 className="text-center text-xl font-bold text-black">
+              Nos autres zones d&apos;intervention
+            </h2>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              {[
+                { href: "/traiteur-nimes", label: "Traiteur Nîmes" },
+                { href: "/traiteur-beziers", label: "Traiteur Béziers" },
+                { href: "/traiteur-lunel", label: "Traiteur Lunel" },
+                { href: "/guide-local", label: "Guide local Montpellier" },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-600 transition-all hover:border-purple hover:text-purple"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="bg-purple-dark py-20 text-center">
           <div className="mx-auto max-w-3xl px-6">
             <h2

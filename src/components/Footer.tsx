@@ -85,7 +85,7 @@ export default function Footer() {
 
       {/* Footer Content - 3 colonnes */}
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-6">
@@ -167,7 +167,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 3 : Aide & Contact */}
+          {/* Colonne 3 : Zones d'intervention */}
+          <div>
+            <h4 className="text-xs font-bold tracking-widest text-white uppercase">Zones d&apos;intervention</h4>
+            <ul className="mt-4 space-y-3">
+              {[
+                { href: "/traiteur-nimes", label: "Traiteur Nîmes" },
+                { href: "/traiteur-sete", label: "Traiteur Sète" },
+                { href: "/traiteur-beziers", label: "Traiteur Béziers" },
+                { href: "/traiteur-lunel", label: "Traiteur Lunel" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">
+                    {link.label}
+                    <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-purple-light transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Colonne 4 : Aide & Contact */}
           <div>
             <h4 className="text-xs font-bold tracking-widest text-white uppercase">Aide & Contact</h4>
             <ul className="mt-4 space-y-3">

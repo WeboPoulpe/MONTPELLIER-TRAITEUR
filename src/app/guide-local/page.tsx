@@ -192,6 +192,37 @@ export default function GuideLocalPage() {
           </div>
         </section>
 
+        {/* Maillage villes */}
+        <section className="bg-neutral-50 py-16">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <h2
+              className="text-center text-2xl font-bold text-black"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Nous intervenons aussi hors Montpellier
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-neutral-600">
+              Notre zone de livraison et de service couvre tout l&apos;Hérault et le Gard voisin.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              {[
+                { href: "/traiteur-nimes", label: "Traiteur Nîmes" },
+                { href: "/traiteur-sete", label: "Traiteur Sète" },
+                { href: "/traiteur-beziers", label: "Traiteur Béziers" },
+                { href: "/traiteur-lunel", label: "Traiteur Lunel" },
+              ].map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="rounded-full border border-neutral-200 bg-white px-5 py-2 text-sm font-medium text-neutral-600 transition-all hover:border-purple hover:text-purple"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="bg-purple-dark py-20 text-center">
           <div className="mx-auto max-w-3xl px-6">
             <h2
