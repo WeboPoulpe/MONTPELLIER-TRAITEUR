@@ -110,13 +110,51 @@ async function adsSearch<T>(
   });
 
   const text = await response.text();
-  const payload = text ? JSON.parse(text) : null;
+  let payload: unknown = null;
+  try {
+    payload = text ? JSON.parse(text) : null;
+  } catch {
+    payload = null;
+  }
   if (!response.ok) {
-    const err = payload as { error?: { message?: string } } | null;
-    throw new Error(err?.error?.message ?? `Google Ads API ${response.status}`);
+    throw new Error(formatGoogleAdsError(response.status, payload, text));
   }
 
   return payload as T;
+}
+
+function formatGoogleAdsError(status: number, payload: unknown, rawText: string) {
+  const error = (payload as {
+    error?: {
+      message?: string;
+      status?: string;
+      details?: Array<{
+        errors?: Array<{
+          errorCode?: Record<string, string>;
+          message?: string;
+        }>;
+        requestId?: string;
+      }>;
+    };
+  } | null)?.error;
+
+  const detail = error?.details?.[0];
+  const googleError = detail?.errors?.[0];
+  const errorCode = googleError?.errorCode
+    ? Object.entries(googleError.errorCode)
+        .map(([key, value]) => `${key}.${value}`)
+        .join(", ")
+    : "";
+
+  return [
+    `Google Ads API ${status}`,
+    error?.status ? `status=${error.status}` : "",
+    errorCode ? `code=${errorCode}` : "",
+    googleError?.message || error?.message || rawText.slice(0, 180),
+    detail?.requestId ? `requestId=${detail.requestId}` : "",
+  ]
+    .filter(Boolean)
+    .join(" — ");
 }
 
 function daysAgo(n: number): string {
