@@ -95,7 +95,7 @@ async function adsSearch<T>(
   query: string
 ): Promise<T> {
   const version = process.env.GOOGLE_ADS_API_VERSION || "v22";
-  const url = `https://googleads.googleapis.com/${version}/customers/${customerId}:searchStream`;
+  const url = `https://googleads.googleapis.com/${version}/customers/${customerId}/googleAds:searchStream`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -110,12 +110,13 @@ async function adsSearch<T>(
   });
 
   const text = await response.text();
+  const payload = text ? JSON.parse(text) : null;
   if (!response.ok) {
-    const err = JSON.parse(text) as { error?: { message?: string } };
-    throw new Error(err.error?.message ?? `Google Ads API ${response.status}`);
+    const err = payload as { error?: { message?: string } } | null;
+    throw new Error(err?.error?.message ?? `Google Ads API ${response.status}`);
   }
 
-  return JSON.parse(text) as T;
+  return payload as T;
 }
 
 function daysAgo(n: number): string {
