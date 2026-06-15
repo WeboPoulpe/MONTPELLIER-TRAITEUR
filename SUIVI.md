@@ -35,6 +35,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 15 juin 2026 | Claude Code | Audit complet GA4 + Search Console + Google Ads via API | 419 sessions/mois, 32 leads reels non trackes, 56EUR depenses pour 1 conversion trackee |
 | 15 juin 2026 | Claude Code | GTM : creation conversion Ads + trigger /merci + tag GA4 generate_lead - Version 22 publiee | GTM version 22 live sur GTM-W6786J2W |
 | 15 juin 2026 | Claude Code | Google Ads : creation action de conversion "Demande de devis" (ID: 7648594038, AW-11144726708/qExRCPaQkb8cELSRnMIp) | Conversion creee via API v21 |
+| 15 juin 2026 | Codex | Securisation du formulaire de devis, anonymisation des journaux et suppression des faux avis de la page merci | TypeScript, ESLint cible, `git diff --check`, build production, controle navigateur et tests API local valides |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 

@@ -57,6 +57,8 @@ interface FormData {
   fbclid: string;
   referrer: string;
   landingPage: string;
+  website: string;
+  formStartedAt: number;
 }
 
 const initialData: FormData = {
@@ -91,6 +93,8 @@ const initialData: FormData = {
   fbclid: "",
   referrer: "",
   landingPage: "",
+  website: "",
+  formStartedAt: 0,
 };
 
 const eventTypes = [
@@ -296,6 +300,7 @@ export default function DevisContent() {
       fbclid,
       referrer,
       landingPage,
+      formStartedAt: prev.formStartedAt || Date.now(),
     }));
   }, [searchParams]);
 
@@ -390,20 +395,6 @@ export default function DevisContent() {
     setSubmitError("");
 
     try {
-      console.log("[DEVIS] Envoi en cours...", {
-        eventType: form.eventType,
-        city: form.city,
-        budgetType: form.budgetType,
-        budgetAmount: form.budgetAmount,
-        serviceOption: form.serviceOption,
-        drinks: form.drinks,
-        dietaryNeeds: form.dietaryNeeds,
-        differentBilling: form.differentBilling,
-        utmSource: form.utmSource,
-        utmMedium: form.utmMedium,
-        gclid: form.gclid,
-      });
-
       const res = await fetch("/api/devis", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -411,17 +402,7 @@ export default function DevisContent() {
       });
       const result = await res.json();
 
-      // Detailed logging
-      console.log(`[DEVIS] debugId: ${result.debugId}`);
-      console.log(`[DEVIS] Email: ${result.successEmail ? "OK" : "FAIL"}`);
-      console.log(`[DEVIS] CRM: ${result.successCRM ? "OK" : "FAIL"} (HTTP ${result.crmStatus})`);
-      if (result.crmError) {
-        console.error(`[DEVIS] CRM Error: ${result.crmError}`);
-      }
-      console.log("[DEVIS] Normalized:", result.normalizedFields);
-
       if (!res.ok || !result.successGlobal) {
-        console.error("[DEVIS] API Error:", res.status, result);
         throw new Error(result.error || "La demande n'a pas pu être envoyée.");
       }
 
@@ -470,6 +451,18 @@ export default function DevisContent() {
       {showFireworks && <Fireworks />}
 
       <main className="min-h-screen bg-gradient-to-b from-neutral-50 to-white" ref={formContainerRef}>
+        <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+          <label htmlFor="website">Site internet</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.website}
+            onChange={(event) => update("website", event.target.value)}
+          />
+        </div>
         {/* Header */}
         <div className="bg-black py-24 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>

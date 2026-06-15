@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CalendarCheck, ArrowRight, Star, Home } from "lucide-react";
+import { CalendarCheck, ArrowRight, Home } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import PageTransition from "@/components/PageTransition";
@@ -16,24 +16,6 @@ const partners = [
   { name: "Green Power", logo: "/logoPartenaire/green-power.webp" },
   { name: "Cycl'eau", logo: "/logoPartenaire/cycleau.webp" },
   { name: "Publi-Topex", logo: "/logoPartenaire/publi-topex.webp" },
-];
-
-const testimonials = [
-  {
-    name: "Marie D.",
-    text: "Un service impeccable pour notre mariage. Les plats étaient raffinés et le personnel adorable. Je recommande à 100% !",
-    rating: 5,
-  },
-  {
-    name: "Jean-Pierre L.",
-    text: "Traiteur Montpellier a sublimé notre séminaire d'entreprise. Cocktail dînatoire parfait, tous nos collaborateurs étaient ravis.",
-    rating: 5,
-  },
-  {
-    name: "Sophie M.",
-    text: "Deuxième fois que nous faisons appel à eux pour un salon professionnel. Toujours aussi excellent, ponctuel et créatif.",
-    rating: 5,
-  },
 ];
 
 export default function MerciContent() {
@@ -122,46 +104,6 @@ export default function MerciContent() {
                       height={70}
                       className="h-auto max-h-16 w-auto object-contain"
                     />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Avis */}
-        <section className="border-t border-white/5 py-20">
-          <div className="mx-auto max-w-5xl px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-            >
-              <h2
-                className="text-center text-2xl font-bold text-white md:text-3xl"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Ce qu&apos;ils en <span className="text-purple-light">disent</span>
-              </h2>
-
-              <div className="mt-12 grid gap-6 md:grid-cols-3">
-                {testimonials.map((t, i) => (
-                  <motion.div
-                    key={t.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 + i * 0.1, duration: 0.4 }}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-6"
-                  >
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: t.rating }).map((_, j) => (
-                        <Star key={j} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="mt-4 text-sm leading-relaxed text-white/70">
-                      &ldquo;{t.text}&rdquo;
-                    </p>
-                    <p className="mt-4 text-sm font-semibold text-white">{t.name}</p>
                   </motion.div>
                 ))}
               </div>

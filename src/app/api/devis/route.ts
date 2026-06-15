@@ -3,6 +3,11 @@ import { Resend } from "resend";
 
 /* ─── Config ─── */
 const DEBUG = process.env.DEBUG_DEVIS === "true";
+const MAX_REQUEST_BYTES = 32_000;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+
+const rateLimitStore = new Map<string, number[]>();
 
 /* ─── Mappings ─── */
 const eventLabels: Record<string, string> = {
@@ -54,10 +59,25 @@ const drinksToDigiBss: Record<string, string> = {
 };
 
 /* ─── Email helpers ─── */
-function row(label: string, value: string, bold = false) {
+function escapeHtml(value: string) {
+  return value.replace(
+    /[&<>"']/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;",
+      })[character] ?? character
+  );
+}
+
+function row(label: string, value: string, bold = false, trustedHtml = false) {
+  const renderedValue = trustedHtml ? value : escapeHtml(value);
   return `<tr>
-    <td style="padding:14px 16px;color:#8b8b8b;font-size:13px;white-space:nowrap;vertical-align:top;">${label}</td>
-    <td style="padding:14px 16px;color:#1a1a1a;font-size:14px;${bold ? "font-weight:700;" : ""}">${value}</td>
+    <td style="padding:14px 16px;color:#8b8b8b;font-size:13px;white-space:nowrap;vertical-align:top;">${escapeHtml(label)}</td>
+    <td style="padding:14px 16px;color:#1a1a1a;font-size:14px;${bold ? "font-weight:700;" : ""}">${renderedValue}</td>
   </tr>`;
 }
 
@@ -72,7 +92,7 @@ function sectionHeader(title: string, emoji: string) {
 }
 
 function badge(text: string) {
-  return `<span style="display:inline-block;padding:4px 12px;background:#f3f0ff;color:#7c3aed;border-radius:20px;font-size:12px;font-weight:600;margin:2px 4px 2px 0;">${text}</span>`;
+  return `<span style="display:inline-block;padding:4px 12px;background:#f3f0ff;color:#7c3aed;border-radius:20px;font-size:12px;font-weight:600;margin:2px 4px 2px 0;">${escapeHtml(text)}</span>`;
 }
 
 /* ─── Safe string helper ─── */
@@ -80,6 +100,40 @@ function safe(val: unknown, fallback = ""): string {
   if (val === undefined || val === null) return fallback;
   const s = String(val).trim();
   return s || fallback;
+}
+
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isValidPhone(value: string) {
+  return /^[+\d\s().-]{8,25}$/.test(value);
+}
+
+function isValidDate(value: string) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T00:00:00`);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return !Number.isNaN(date.getTime()) && date >= today;
+}
+
+function isRateLimited(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const ip = forwardedFor?.split(",")[0]?.trim() || "unknown";
+  const now = Date.now();
+  const recent = (rateLimitStore.get(ip) ?? []).filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS
+  );
+
+  if (recent.length >= RATE_LIMIT_MAX) {
+    rateLimitStore.set(ip, recent);
+    return true;
+  }
+
+  recent.push(now);
+  rateLimitStore.set(ip, recent);
+  return false;
 }
 
 /* ─── Main handler ─── */
@@ -100,11 +154,51 @@ export async function POST(request: Request) {
   let crmResponseSnippet: string | null = null;
 
   try {
+    const contentLength = Number(request.headers.get("content-length") || 0);
+    if (contentLength > MAX_REQUEST_BYTES) {
+      return NextResponse.json(
+        { successGlobal: false, error: "Requête trop volumineuse" },
+        { status: 413 }
+      );
+    }
+
+    if (isRateLimited(request)) {
+      return NextResponse.json(
+        {
+          successGlobal: false,
+          error: "Trop de demandes. Merci de réessayer dans quelques minutes.",
+        },
+        { status: 429 }
+      );
+    }
+
     /* ══════════════════════════════════════
        1. Parse & log raw payload
     ══════════════════════════════════════ */
-    const data = await request.json();
-    log("RAW_PAYLOAD", JSON.stringify(data));
+    const rawBody = await request.text();
+    if (new TextEncoder().encode(rawBody).length > MAX_REQUEST_BYTES) {
+      return NextResponse.json(
+        { successGlobal: false, error: "Requête trop volumineuse." },
+        { status: 413 },
+      );
+    }
+
+    let data: Record<string, unknown>;
+    try {
+      data = JSON.parse(rawBody) as Record<string, unknown>;
+    } catch {
+      return NextResponse.json(
+        { successGlobal: false, error: "Données invalides." },
+        { status: 400 },
+      );
+    }
+    if (DEBUG) {
+      log("PAYLOAD_RECEIVED", {
+        eventType: safe(data.eventType),
+        clientType: safe(data.clientType),
+        hasCampaign: Boolean(data.utmSource || data.gclid),
+      });
+    }
 
     /* ══════════════════════════════════════
        2. Normalize + validate all fields
@@ -142,6 +236,81 @@ export async function POST(request: Request) {
     const fbclid = safe(data.fbclid);
     const referrer = safe(data.referrer);
     const landingPage = safe(data.landingPage);
+    const website = safe(data.website);
+    const formStartedAt = Number(data.formStartedAt);
+
+    if (website) {
+      return NextResponse.json({ successGlobal: true });
+    }
+
+    const formElapsed = Date.now() - formStartedAt;
+    if (
+      !Number.isFinite(formStartedAt) ||
+      formElapsed < 2_000 ||
+      formElapsed > 2 * 60 * 60 * 1000
+    ) {
+      return NextResponse.json(
+        { successGlobal: false, error: "Session de formulaire invalide" },
+        { status: 400 }
+      );
+    }
+
+    const validationErrors: string[] = [];
+    if (!["mariage", "entreprise", "reception", "autre"].includes(eventType)) {
+      validationErrors.push("eventType");
+    }
+    if (!isValidDate(eventDate)) validationErrors.push("eventDate");
+    if (!Number.isInteger(Number(guestCount)) || Number(guestCount) < 1 || Number(guestCount) > 10_000) {
+      validationErrors.push("guestCount");
+    }
+    if (!["livraison", "emporter", "service"].includes(serviceOption)) {
+      validationErrors.push("serviceOption");
+    }
+    if (!["global", "par-personne"].includes(budgetType)) {
+      validationErrors.push("budgetType");
+    }
+    if (!Number.isFinite(Number(budgetAmount)) || Number(budgetAmount) <= 0 || Number(budgetAmount) > 10_000_000) {
+      validationErrors.push("budgetAmount");
+    }
+    if (!["particulier", "professionnel"].includes(clientType)) {
+      validationErrors.push("clientType");
+    }
+    if (!firstName || firstName.length > 100) validationErrors.push("firstName");
+    if (!lastName || lastName.length > 100) validationErrors.push("lastName");
+    if (!isValidEmail(email) || email.length > 254) validationErrors.push("email");
+    if (!isValidPhone(phone)) validationErrors.push("phone");
+    if (clientType === "professionnel" && (!company || company.length > 200)) {
+      validationErrors.push("company");
+    }
+    if (specialRequest.length > 3_000) validationErrors.push("specialRequest");
+    if (address.length > 300 || postalCode.length > 20 || city.length > 150) {
+      validationErrors.push("address");
+    }
+    if (billingAddress.length > 300 || billingPostalCode.length > 20 || billingCity.length > 150) {
+      validationErrors.push("billingAddress");
+    }
+    if (drinks && !["avec", "sans"].includes(drinks)) {
+      validationErrors.push("drinks");
+    }
+    const allowedDiets = new Set(Object.keys(dietToDigiReg));
+    if (
+      dietaryNeeds.length > allowedDiets.size ||
+      dietaryNeeds.some((diet) => !allowedDiets.has(diet))
+    ) {
+      validationErrors.push("dietaryNeeds");
+    }
+
+    if (validationErrors.length > 0) {
+      log("VALIDATION_REJECTED", validationErrors.join(","));
+      return NextResponse.json(
+        {
+          successGlobal: false,
+          error: "Certains champs sont invalides ou incomplets.",
+          fields: validationErrors,
+        },
+        { status: 400 }
+      );
+    }
 
     // Field validation report
     const fieldReport = {
@@ -166,7 +335,7 @@ export async function POST(request: Request) {
       fbclid: fbclid || "none",
       landingPage: landingPage || "none",
     };
-    log("NORMALIZED_FIELDS", JSON.stringify(fieldReport));
+    if (DEBUG) log("NORMALIZED_FIELDS", JSON.stringify(fieldReport));
 
     // Derived values
     const eventEmoji = eventEmojis[eventType] || "\u{1F4CB}";
@@ -239,21 +408,21 @@ export async function POST(request: Request) {
       ${row("Service", serviceLabel, true)}
       ${row("Boissons", drinks === "avec" ? "\u2705 Avec boissons" : drinks === "sans" ? "\u274C Sans boissons" : "Non pr\u00E9cis\u00E9")}
       ${sectionHeader("Pr\u00E9cisions", "\u{1F4DD}")}
-      ${dietBadges ? row("R\u00E9gimes", dietBadges) : ""}
-      ${specialRequest ? row("Message", `<em style="color:#555;">"${specialRequest}"</em>`) : ""}
-      ${!dietBadges && !specialRequest ? row("", "<span style='color:#bbb;'>Aucune pr\u00E9cision</span>") : ""}
+      ${dietBadges ? row("R\u00E9gimes", dietBadges, false, true) : ""}
+      ${specialRequest ? row("Message", specialRequest) : ""}
+      ${!dietBadges && !specialRequest ? row("", "<span style='color:#bbb;'>Aucune pr\u00E9cision</span>", false, true) : ""}
       ${sectionHeader("Contact", "\u{1F464}")}
-      ${row("", `<span style="font-size:18px;font-weight:800;color:#1a1a1a;">${firstName} ${lastName}</span>${company ? `<br/><span style="color:#7c3aed;font-size:13px;font-weight:600;">${company}</span>` : ""}<br/><span style="display:inline-block;margin-top:4px;padding:3px 10px;background:${clientType === "professionnel" ? "#e0f2fe;color:#0369a1" : "#fef3c7;color:#92400e"};border-radius:20px;font-size:11px;font-weight:600;">${clientType === "professionnel" ? "PRO" : "PARTICULIER"}</span>`)}
+      ${row("", `<span style="font-size:18px;font-weight:800;color:#1a1a1a;">${escapeHtml(firstName)} ${escapeHtml(lastName)}</span>${company ? `<br/><span style="color:#7c3aed;font-size:13px;font-weight:600;">${escapeHtml(company)}</span>` : ""}<br/><span style="display:inline-block;margin-top:4px;padding:3px 10px;background:${clientType === "professionnel" ? "#e0f2fe;color:#0369a1" : "#fef3c7;color:#92400e"};border-radius:20px;font-size:11px;font-weight:600;">${clientType === "professionnel" ? "PRO" : "PARTICULIER"}</span>`, false, true)}
     </table>
   </td></tr>
   <tr><td style="background:#ffffff;padding:24px 32px;border-left:1px solid #e8e5e1;border-right:1px solid #e8e5e1;">
     <table width="100%" cellpadding="0" cellspacing="0">
       <tr>
         <td width="50%" style="padding-right:6px;">
-          <a href="mailto:${email}" style="display:block;text-align:center;padding:14px 8px;background:#7c3aed;color:#ffffff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;">\u2709\uFE0F R\u00E9pondre par email</a>
+          <a href="mailto:${encodeURIComponent(email)}" style="display:block;text-align:center;padding:14px 8px;background:#7c3aed;color:#ffffff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;">\u2709\uFE0F R\u00E9pondre par email</a>
         </td>
         <td width="50%" style="padding-left:6px;">
-          <a href="tel:${phone}" style="display:block;text-align:center;padding:14px 8px;background:#0f0f0f;color:#ffffff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;">\u{1F4DE} Appeler ${firstName}</a>
+          <a href="tel:${encodeURIComponent(phone)}" style="display:block;text-align:center;padding:14px 8px;background:#0f0f0f;color:#ffffff;text-decoration:none;border-radius:10px;font-size:13px;font-weight:700;">\u{1F4DE} Appeler ${escapeHtml(firstName)}</a>
         </td>
       </tr>
     </table>
@@ -261,10 +430,10 @@ export async function POST(request: Request) {
       <tr>
         <td style="text-align:center;padding:10px;background:#f8f7f5;border-radius:8px;">
           <span style="color:#8b8b8b;font-size:12px;">\u{1F4E7}</span>
-          <a href="mailto:${email}" style="color:#1a1a1a;font-size:13px;text-decoration:none;font-weight:500;margin-left:4px;">${email}</a>
+          <a href="mailto:${encodeURIComponent(email)}" style="color:#1a1a1a;font-size:13px;text-decoration:none;font-weight:500;margin-left:4px;">${escapeHtml(email)}</a>
           <span style="color:#ddd;margin:0 8px;">|</span>
           <span style="color:#8b8b8b;font-size:12px;">\u{1F4F1}</span>
-          <a href="tel:${phone}" style="color:#1a1a1a;font-size:13px;text-decoration:none;font-weight:500;margin-left:4px;">${phone}</a>
+          <a href="tel:${encodeURIComponent(phone)}" style="color:#1a1a1a;font-size:13px;text-decoration:none;font-weight:500;margin-left:4px;">${escapeHtml(phone)}</a>
         </td>
       </tr>
     </table>
@@ -273,14 +442,14 @@ export async function POST(request: Request) {
   <tr><td style="background:#ffffff;padding:16px 32px;border-left:1px solid #e8e5e1;border-right:1px solid #e8e5e1;">
     <div style="padding:16px;background:#fef3c7;border-radius:10px;border:1px solid #fde68a;">
       <div style="font-size:12px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:1px;">\u{1F4C4} Adresse de facturation</div>
-      <div style="font-size:14px;color:#1a1a1a;margin-top:8px;">${billingAddress}, ${billingPostalCode} ${billingCity}</div>
+      <div style="font-size:14px;color:#1a1a1a;margin-top:8px;">${escapeHtml(billingAddress)}, ${escapeHtml(billingPostalCode)} ${escapeHtml(billingCity)}</div>
     </div>
   </td></tr>
   ` : ""}
   ${tracking.length > 0 ? `
   <tr><td style="background:#ffffff;padding:16px 32px;border-left:1px solid #e8e5e1;border-right:1px solid #e8e5e1;">
     <div style="padding:12px 16px;background:#f8f7f5;border-radius:8px;font-size:11px;color:#aaa;">
-      \u{1F517} ${tracking.join(" &nbsp;\u2022&nbsp; ")}
+      \u{1F517} ${tracking.map(escapeHtml).join(" &nbsp;\u2022&nbsp; ")}
     </div>
   </td></tr>
   ` : ""}
@@ -295,7 +464,7 @@ export async function POST(request: Request) {
     /* ══════════════════════════════════════
        4. Send email via Resend
     ══════════════════════════════════════ */
-    log("EMAIL_ATTEMPT", `to: inesreception@gmail.com, subject: ${eventLabel} ${firstName} ${lastName}`);
+    log("EMAIL_ATTEMPT", { eventType, guestCount });
     let emailResult: unknown = null;
     try {
       if (!process.env.RESEND_API_KEY) {
@@ -411,7 +580,9 @@ export async function POST(request: Request) {
     }
 
     log("CRM_VALIDATION", validationIssues.length > 0 ? validationIssues.join("; ") : "ALL_OK");
-    log("CRM_PAYLOAD_FIELDS", JSON.stringify(digiFields));
+    if (DEBUG) {
+      log("CRM_PAYLOAD_KEYS", Object.keys(digiFields));
+    }
     if (DEBUG) {
       log("CRM_PAYLOAD_ENCODED", formBody.toString());
     }
@@ -437,7 +608,7 @@ export async function POST(request: Request) {
       crmResponseSnippet = digiBody.substring(0, 500);
 
       log("CRM_HTTP_STATUS", digiResponse.status, digiResponse.statusText);
-      log("CRM_RESPONSE_BODY", crmResponseSnippet);
+      if (DEBUG) log("CRM_RESPONSE_BODY", crmResponseSnippet);
 
       if (digiBody.includes("formOk")) {
         successCRM = true;
@@ -467,26 +638,15 @@ export async function POST(request: Request) {
       successEmail,
       successCRM,
       crmStatus,
-      crmError,
       debugId,
-      normalizedFields: {
-        budgetType,
-        budgetValue: budgetAmount,
-        city,
-        serviceOption: serviceOption || null,
-        drinks: drinks || null,
-        billingAddressDifferent: differentBilling,
-        dietaryNeeds: dietaryNeeds.length > 0 ? dietaryNeeds : null,
-        utmSource: utmSource || null,
-        utmMedium: utmMedium || null,
-        gclid: gclid || null,
-        fbclid: fbclid || null,
-        referrer: referrer || null,
-        landingPage: landingPage || null,
-      },
     };
 
-    log("FINAL_RESULT", JSON.stringify(response));
+    log("FINAL_RESULT", {
+      successGlobal: response.successGlobal,
+      successEmail,
+      successCRM,
+      crmStatus,
+    });
 
     return NextResponse.json(response);
   } catch (error) {
