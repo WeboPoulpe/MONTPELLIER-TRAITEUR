@@ -6,7 +6,6 @@ import { ReactNode } from "react";
 import AnimatedLayout from "./AnimatedLayout";
 import Header from "./Header";
 import Footer from "./Footer";
-import CookieBanner from "./CookieBanner";
 import TrackingEvents from "./TrackingEvents";
 import { captureAttribution } from "@/lib/tracking";
 
@@ -38,7 +37,7 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
         <Header />
         {children}
         <Footer />
-        <CookieBanner />
+
       </AnimatedLayout>
     </>
   );
