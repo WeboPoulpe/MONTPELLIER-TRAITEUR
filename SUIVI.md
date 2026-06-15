@@ -18,7 +18,8 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | Fenetre | Sujet | Fichiers ou zones concernes | Statut |
 | --- | --- | --- | --- |
 | Claude Code | Marquer `generate_lead` comme evenement cle dans GA4 | GA4 Admin > Evenements | En attente du premier evenement reel : absent des evenements recents au 15 juin 2026 |
-| Claude Code | Ajouter "mariage" en mot-cle negatif dans Google Ads | Campagnes Search + Performance Max | A faire |
+| Claude Code | Google Ads : ajouter mots-cles negatifs + passer "traiteur montpellier" en correspondance Expression | Campagnes Search + PMax | A faire - liste identifiee le 16 juin 2026 |
+| Claude Code | Google Ads : mettre a jour GOOGLE_OAUTH_REFRESH_TOKEN dans Vercel | Vercel env | A faire - nouveau token avec scope adwords genere le 16 juin |
 
 ## Termine
 
@@ -39,6 +40,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 15 juin 2026 | Claude Code | Google Ads : creation action de conversion "Demande de devis" (ID: 7648594038, AW-11144726708/qExRCPaQkb8cELSRnMIp) | Conversion creee via API v21 |
 | 15 juin 2026 | Codex | Securisation du formulaire de devis, anonymisation des journaux et suppression des faux avis de la page merci | TypeScript, ESLint cible, `git diff --check`, build production, controle navigateur et tests API local valides |
 | 15 juin 2026 | Codex | Controle GA4 et Google Ads apres deploiement | Propriete GA4 `491115717` verifiee ; `generate_lead` pas encore recu ; objectif Ads "Demande de devis" actif, principal et applique aux 3 campagnes |
+| 16 juin 2026 | Codex | Correction complete endpoint Google Ads `searchStream` | `src/lib/google/ads.ts` deja corrige par `8c94413`; `src/lib/google/analytics.ts` aligne ; ESLint cible OK |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -50,6 +52,30 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 - GTM Account : `6297709538` | Container : `221473496` | Public ID : `GTM-W6786J2W`
 - Google Place ID : `ChIJ4ys98chUV0ARmWHI_ODHRnU` (4.9/5, 354 avis)
 - Conversion Ads "Demande de devis" : `AW-11144726708/qExRCPaQkb8cELSRnMIp`
+
+## Google Ads — Audit 16 juin 2026
+
+### Campagnes actives (30 derniers jours)
+- PMax : 4 876 impr / 118 clics / 31,90 EUR / **2 conversions trackees** (15,95 EUR/conv)
+- Search 1 : 2 006 impr / 108 clics / 26,83 EUR / 0 conversions trackees (sous-compte reel non remonte)
+- Search 2 : PAUSEE
+
+### Mots-cles qui tournent vraiment (Search)
+- `traiteur montpellier` (Large) : 1 145 impr / 66 clics / 16,59 EUR
+- `traiteur entreprise` (Large) : 435 impr / 22 clics / 6,60 EUR
+- 100+ autres mots-cles en Large : 0 impression (inutiles, a nettoyer)
+
+### Mots-cles negatifs a ajouter
+Concurrents : cabiron, chef jean, germain traiteur, table de cana, baldassarre, croq gourmet, agapes traiteur
+Mauvaise intention : restaurant, a emporter, food truck
+Cuisine non proposee : libanais, italien, paella
+
+### Actions decidees
+1. Ajouter les negatifs ci-dessus (Search + PMax)
+2. Passer `traiteur montpellier` de Large en Expression
+3. Mettre a jour le refresh token OAuth dans Vercel (nouveau token avec scope adwords genere le 16 juin)
+4. Corriger l URL dans le code : `:searchStream` -> `/googleAds:searchStream` (fait dans `src/lib/google/ads.ts` et `src/lib/google/analytics.ts`)
+5. "mariage" : **ne pas ajouter en negatif** (le site vend les prestations mariage)
 
 ## Notes et blocages
 

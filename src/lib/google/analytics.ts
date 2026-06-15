@@ -290,7 +290,7 @@ async function fetchGoogleAds(
         }>;
       }>
     >(
-      `https://googleads.googleapis.com/${version}/customers/${customerId}:searchStream`,
+      `https://googleads.googleapis.com/${version}/customers/${customerId}/googleAds:searchStream`,
       accessToken,
       {
         method: "POST",
