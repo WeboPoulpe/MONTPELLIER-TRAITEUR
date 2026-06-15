@@ -192,6 +192,52 @@ export default function GuideLocalPage() {
           </div>
         </section>
 
+        {/* Partenaire RECACOR */}
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <h2
+              className="text-center text-2xl font-bold text-black md:text-3xl"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Notre partenaire logistique
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-center text-sm text-neutral-600">
+              Derrière chaque livraison, une flotte entretenue avec soin.
+            </p>
+            <div className="mx-auto mt-10 max-w-2xl">
+              <a
+                href="https://www.recacor.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-6 rounded-2xl border border-neutral-100 p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-purple/20 hover:shadow-xl sm:flex-row"
+              >
+                <div className="relative h-16 w-40 shrink-0">
+                  <Image
+                    src="/partenaires/logo-recacor.webp"
+                    alt="Recacor — Garage pneus et entretien véhicules Le Crès Montpellier"
+                    fill
+                    className="object-contain"
+                    sizes="160px"
+                  />
+                </div>
+                <div className="text-center sm:text-left">
+                  <h3 className="text-base font-bold text-black">Recacor — Garage pneus &amp; entretien, Le Crès</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                    Recacor est notre partenaire de confiance pour la gestion et l&apos;entretien
+                    de notre flotte de véhicules de livraison. Spécialiste pneus et mécanique
+                    à Le Crès (34), ils garantissent que nos équipes arrivent à l&apos;heure
+                    sur chaque événement.
+                  </p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-purple transition-all group-hover:gap-2">
+                    Visiter recacor.fr
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Maillage villes */}
         <section className="bg-neutral-50 py-16">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
