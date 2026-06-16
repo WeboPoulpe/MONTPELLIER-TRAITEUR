@@ -1,6 +1,10 @@
 # Traiteur Montpellier — Traiteur d'Exception
 URL: https://www.traiteurmontpellier.com
 Mis à jour: 2026-06
+Geo: 43.6117, 3.8777
+Adresse: Montpellier, Hérault (34), Occitanie, France
+Zone: Montpellier et agglomération — Hérault (34), Gard (30), Aude (11)
+Villes couvertes: Montpellier, Béziers, Nîmes, Lunel, Sète, Palavas, Lattes, Pérols, Mauguio, Saint-Jean-de-Védas
 
 ---
 

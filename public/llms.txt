@@ -19,6 +19,21 @@ Traiteur Montpellier propose des prestations culinaires sur mesure pour tout typ
 - [Traiteur Lunel](https://www.traiteurmontpellier.com/traiteur-lunel)
 - [Traiteur Sète](https://www.traiteurmontpellier.com/traiteur-sete)
 
+## Géolocalisation
+
+Base principale :
+- Ville : Montpellier
+- Département : Hérault (34)
+- Région : Occitanie
+- Pays : France
+- Latitude : 43.6117
+- Longitude : 3.8777
+
+Zone d'intervention principale : Montpellier et agglomération (rayon ~50 km)
+Villes couvertes : Montpellier, Béziers, Nîmes, Lunel, Sète, Palavas-les-Flots, Lattes, Pérols, Mauguio, Castelnau-le-Lez, Clapiers, Grabels, Vendargues, Saint-Jean-de-Védas, Frontignan
+
+Départements desservis : Hérault (34), Gard (30), Aude (11), Hérault (34)
+
 ## Informations pratiques
 
 - [Contact](https://www.traiteurmontpellier.com/contact) : Demande de devis en ligne
