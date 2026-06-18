@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { CalendarCheck, ArrowRight, Home } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import PageTransition from "@/components/PageTransition";
+import { pushConfirmedLeadOnce } from "@/lib/tracking";
 
 const partners = [
   { name: "Montpellier Tennis de Table", logo: "/logoPartenaire/mtt.webp" },
@@ -19,6 +21,10 @@ const partners = [
 ];
 
 export default function MerciContent() {
+  useEffect(() => {
+    pushConfirmedLeadOnce();
+  }, []);
+
   return (
     <PageTransition>
       <main className="min-h-screen bg-gradient-to-b from-black to-neutral-900">

@@ -15,7 +15,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
-import { pushTrackingEvent } from "@/lib/tracking";
+import { pushTrackingEvent, storeConfirmedLeadTracking } from "@/lib/tracking";
 import { getAttribution } from "@/lib/tracking";
 
 /* ─── Types ─── */
@@ -416,7 +416,7 @@ export default function DevisContent() {
         throw new Error(result.error || "La demande n'a pas pu être envoyée.");
       }
 
-      pushTrackingEvent("generate_lead", {
+      storeConfirmedLeadTracking({
         lead_type: form.clientType,
         event_type: form.eventType,
         event_city: form.city,
@@ -428,6 +428,11 @@ export default function DevisContent() {
         utm_source: form.utmSource || "direct",
         utm_medium: form.utmMedium,
         utm_campaign: form.utmCampaign,
+      });
+      pushTrackingEvent("lead_form_submitted", {
+        lead_id: result.debugId,
+        lead_type: form.clientType,
+        event_type: form.eventType,
       });
 
       setShowFireworks(true);

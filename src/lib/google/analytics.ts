@@ -15,6 +15,11 @@ export interface GoogleAnalyticsSnapshot {
     users: number;
     keyEvents: number;
     events: number;
+    topEvents: Array<{
+      eventName: string;
+      eventCount: number;
+      keyEvents: number;
+    }>;
   }>;
   googleAds: GoogleSource<{
     impressions: number;
@@ -134,25 +139,52 @@ async function fetchGa4(
   }
 
   try {
-    const report = await googleJson<{
-      rows?: Array<{ metricValues?: Array<{ value?: string }> }>;
-    }>(
-      `https://analyticsdata.googleapis.com/v1beta/properties/${encodeURIComponent(propertyId)}:runReport`,
-      accessToken,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          dateRanges: [{ startDate, endDate }],
-          metrics: [
-            { name: "sessions" },
-            { name: "totalUsers" },
-            { name: "keyEvents" },
-            { name: "eventCount" },
-          ],
-        }),
-      }
-    );
-    const row = report.rows?.[0];
+    const [summaryReport, eventsReport] = await Promise.all([
+      googleJson<{
+        rows?: Array<{ metricValues?: Array<{ value?: string }> }>;
+      }>(
+        `https://analyticsdata.googleapis.com/v1beta/properties/${encodeURIComponent(propertyId)}:runReport`,
+        accessToken,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            dateRanges: [{ startDate, endDate }],
+            metrics: [
+              { name: "sessions" },
+              { name: "totalUsers" },
+              { name: "keyEvents" },
+              { name: "eventCount" },
+            ],
+          }),
+        }
+      ),
+      googleJson<{
+        rows?: Array<{
+          dimensionValues?: Array<{ value?: string }>;
+          metricValues?: Array<{ value?: string }>;
+        }>;
+      }>(
+        `https://analyticsdata.googleapis.com/v1beta/properties/${encodeURIComponent(propertyId)}:runReport`,
+        accessToken,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            dateRanges: [{ startDate, endDate }],
+            dimensions: [{ name: "eventName" }],
+            metrics: [{ name: "eventCount" }, { name: "keyEvents" }],
+            orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+            limit: 20,
+          }),
+        }
+      ),
+    ]);
+    const row = summaryReport.rows?.[0];
+    const topEvents = (eventsReport.rows ?? []).map((eventRow) => ({
+      eventName: eventRow.dimensionValues?.[0]?.value ?? "",
+      eventCount: metricValue(eventRow, 0),
+      keyEvents: metricValue(eventRow, 1),
+    }));
+
     return {
       status: "connected",
       data: {
@@ -160,6 +192,7 @@ async function fetchGa4(
         users: metricValue(row, 1),
         keyEvents: metricValue(row, 2),
         events: metricValue(row, 3),
+        topEvents,
       },
     };
   } catch (error) {

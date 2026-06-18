@@ -160,12 +160,36 @@ export default function GoogleAnalyticsDashboard({ token }: { token: string }) {
           <section className="rounded-2xl bg-white p-5 shadow-sm">
             <SourceHeader title="Google Analytics 4" source={snapshot.ga4} />
             {snapshot.ga4.data && (
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                <Metric label="Sessions" value={formatNumber(snapshot.ga4.data.sessions)} />
-                <Metric label="Utilisateurs" value={formatNumber(snapshot.ga4.data.users)} />
-                <Metric label="Événements clés" value={formatNumber(snapshot.ga4.data.keyEvents)} />
-                <Metric label="Événements" value={formatNumber(snapshot.ga4.data.events)} />
-              </div>
+              <>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <Metric label="Sessions" value={formatNumber(snapshot.ga4.data.sessions)} />
+                  <Metric label="Utilisateurs" value={formatNumber(snapshot.ga4.data.users)} />
+                  <Metric label="Événements clés" value={formatNumber(snapshot.ga4.data.keyEvents)} />
+                  <Metric label="Événements" value={formatNumber(snapshot.ga4.data.events)} />
+                </div>
+                {snapshot.ga4.data.topEvents.length > 0 && (
+                  <div className="mt-5 overflow-hidden rounded-xl border border-neutral-100">
+                    <table className="min-w-full divide-y divide-neutral-100 text-sm">
+                      <thead className="bg-neutral-50 text-left text-xs uppercase tracking-wider text-neutral-400">
+                        <tr>
+                          <th className="px-4 py-2.5">Événement GA4</th>
+                          <th className="px-4 py-2.5">Événements</th>
+                          <th className="px-4 py-2.5">Clés</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-neutral-100">
+                        {snapshot.ga4.data.topEvents.map((event) => (
+                          <tr key={event.eventName}>
+                            <td className="px-4 py-2.5 font-medium text-neutral-900">{event.eventName}</td>
+                            <td className="px-4 py-2.5">{formatNumber(event.eventCount)}</td>
+                            <td className="px-4 py-2.5">{formatNumber(event.keyEvents)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </>
             )}
           </section>
 
