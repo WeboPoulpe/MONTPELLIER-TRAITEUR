@@ -196,8 +196,10 @@ export async function getGoogleAdsReport(): Promise<AdsReport> {
     const start = daysAgo(30);
     const end = daysAgo(0);
 
+    type SearchStreamChunk = { results?: AdsRow[] };
+
     const [campaignRows, searchTermRows, keywordRows] = await Promise.all([
-      adsSearch<AdsRow[][]>(accessToken, customerId, developerToken, loginCustomerId, `
+      adsSearch<SearchStreamChunk[]>(accessToken, customerId, developerToken, loginCustomerId, `
         SELECT
           campaign.id,
           campaign.name,
@@ -213,7 +215,7 @@ export async function getGoogleAdsReport(): Promise<AdsReport> {
           AND campaign.status != 'REMOVED'
         ORDER BY metrics.cost_micros DESC
       `),
-      adsSearch<AdsRow[][]>(accessToken, customerId, developerToken, loginCustomerId, `
+      adsSearch<SearchStreamChunk[]>(accessToken, customerId, developerToken, loginCustomerId, `
         SELECT
           search_term_view.search_term,
           search_term_view.status,
@@ -231,7 +233,7 @@ export async function getGoogleAdsReport(): Promise<AdsReport> {
         ORDER BY metrics.cost_micros DESC
         LIMIT 100
       `),
-      adsSearch<AdsRow[][]>(accessToken, customerId, developerToken, loginCustomerId, `
+      adsSearch<SearchStreamChunk[]>(accessToken, customerId, developerToken, loginCustomerId, `
         SELECT
           ad_group_criterion.keyword.text,
           ad_group_criterion.keyword.match_type,
@@ -251,9 +253,9 @@ export async function getGoogleAdsReport(): Promise<AdsReport> {
       `),
     ]);
 
-    const allCampaignRows = campaignRows.flatMap((chunk) => chunk);
-    const allSearchTermRows = searchTermRows.flatMap((chunk) => chunk);
-    const allKeywordRows = keywordRows.flatMap((chunk) => chunk);
+    const allCampaignRows = campaignRows.flatMap((chunk) => chunk.results ?? []);
+    const allSearchTermRows = searchTermRows.flatMap((chunk) => chunk.results ?? []);
+    const allKeywordRows = keywordRows.flatMap((chunk) => chunk.results ?? []);
 
     const campaigns: Campaign[] = allCampaignRows.map((row) => ({
       id: row.campaign?.id ?? "",
