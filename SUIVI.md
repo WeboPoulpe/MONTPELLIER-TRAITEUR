@@ -17,7 +17,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 
 | Fenetre | Sujet | Fichiers ou zones concernes | Statut |
 | --- | --- | --- | --- |
-| Codex | Google Places : renouveler la cle API | Google Cloud / Vercel env / `.env.local` | Bloque : toutes les cles trouvees localement sont invalides ou vides ; production affiche encore les avis probablement via cache |
+| Codex | Surveiller prochain vrai devis | GA4 / Google Ads / CRM | Confirmer que `generate_lead` remonte bien comme evenement cle et que la conversion Ads correspond au lead CRM |
 
 ## Termine
 
@@ -51,6 +51,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 18 juin 2026 | Codex | Admin Ads : correction du parsing `searchStream` | `/api/admin/ads` affiche les vrais chiffres au lieu de lignes vides a 0 |
 | 18 juin 2026 | Codex | Tracking GA4 : fiabilisation de `generate_lead` | Le formulaire stocke le lead confirme ; `/merci` declenche `generate_lead` une seule fois par `lead_id`; build et lint OK |
 | 18 juin 2026 | Codex | GA4 : verification evenement cle `generate_lead` | API Admin GA4 confirme `generate_lead` deja cree comme key event depuis le 15 juin 2026 a 13:07 |
+| 18 juin 2026 | Codex | Google Places : nouvelle cle API Traiteur creee et injectee | Projet Google Cloud `traiteur-montpellier`; Places API activee ; cle restreinte a `places.googleapis.com`; Vercel production et `.env.local` mis a jour ; build local et deploy prod OK |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -96,9 +97,9 @@ Cuisine non proposee : libanais, italien, paella
   configurees dans Vercel pour Traiteur Montpellier.
 - Les vrais avis Google sont en production avec la fiche
   `ChIJ4ys98chUV0ARmWHI_ODHRnU`.
-- Google Places : la cle Traiteur locale renvoie `API_KEY_INVALID`; les cles
-  Recacor inspectees sont vides. Une nouvelle cle Places valide doit etre creee
-  ou renouvelee puis injectee dans Vercel et `.env.local`.
+- Google Places : nouvelle cle Traiteur valide creee le 18 juin 2026 dans le
+  projet Google Cloud `traiteur-montpellier`, restreinte a `places.googleapis.com`.
+  Les avis Google sont verifies en production : note 4,9 et 354 avis.
 - Le compte parent de la propriete GA4 Traiteur Montpellier est `356859681`.
 - Ne pas generer une fausse conversion en ouvrant directement `/merci` :
   attendre un vrai devis, puis marquer `generate_lead` comme evenement cle.
