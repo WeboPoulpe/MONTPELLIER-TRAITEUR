@@ -3,11 +3,51 @@
 L'integration utilise uniquement des appels serveur. Les secrets ne doivent jamais
 etre prefixes par `NEXT_PUBLIC_`.
 
+## 0. Google Cloud CLI partage
+
+Google Cloud CLI est installe sur ce Mac dans :
+
+```text
+/Users/redouanelmansouri/Desktop/GOOGLE_CLOUD_CLI/google-cloud-sdk
+```
+
+Le profil shell `~/.zprofile` expose maintenant `gcloud` a tous les projets
+locaux avec la meme session connectee :
+
+```bash
+gcloud auth list
+gcloud projects list
+```
+
+Compte connecte : `redouanelmansouri34@gmail.com`.
+
+Projets Google Cloud visibles le 18 juin 2026 :
+
+```text
+traiteur-montpellier        Traiteur Montpellier
+modular-impulse-497722-t9   Recacor
+gen-lang-client-0050957694  Default Gemini Project
+gen-lang-client-0084711477  Gemini Project
+tranquil-gasket-437710-t1   My First Project
+```
+
+Pour travailler sur un projet sans changer la configuration globale :
+
+```bash
+gcloud --project=traiteur-montpellier services list
+gcloud --project=modular-impulse-497722-t9 services list
+```
+
+Regle recommandee : creer une cle Google Places separee par site/projet, la
+restreindre a `places.googleapis.com`, puis l'injecter seulement dans le Vercel
+et le `.env.local` du site concerne. Ne pas reutiliser la cle Traiteur sur
+Recacor, PMC, Pillat/Yanna ou un autre site.
+
 ## 1. Avis Google
 
-L'integration est compatible avec la cle Google Places deja utilisee par
-Recacor. Elle peut rechercher automatiquement la fiche Traiteur Montpellier par
-son nom et son adresse, selon le meme principe que Recacor.
+L'integration utilise une cle Google Places cote serveur. Elle peut rechercher
+automatiquement la fiche Traiteur Montpellier par son nom et son adresse, selon
+le meme principe que Recacor.
 
 ```env
 GOOGLE_PLACES_API_KEY=

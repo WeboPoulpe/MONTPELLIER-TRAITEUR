@@ -52,6 +52,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 18 juin 2026 | Codex | Tracking GA4 : fiabilisation de `generate_lead` | Le formulaire stocke le lead confirme ; `/merci` declenche `generate_lead` une seule fois par `lead_id`; build et lint OK |
 | 18 juin 2026 | Codex | GA4 : verification evenement cle `generate_lead` | API Admin GA4 confirme `generate_lead` deja cree comme key event depuis le 15 juin 2026 a 13:07 |
 | 18 juin 2026 | Codex | Google Places : nouvelle cle API Traiteur creee et injectee | Projet Google Cloud `traiteur-montpellier`; Places API activee ; cle restreinte a `places.googleapis.com`; Vercel production et `.env.local` mis a jour ; build local et deploy prod OK |
+| 18 juin 2026 | Codex | Google Cloud CLI partage entre projets locaux | `gcloud` ajoute au profil shell `~/.zprofile`; session connectee `redouanelmansouri34@gmail.com`; projets Traiteur et Recacor visibles ; procedure documentee dans `GOOGLE_SETUP.md` |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -100,6 +101,9 @@ Cuisine non proposee : libanais, italien, paella
 - Google Places : nouvelle cle Traiteur valide creee le 18 juin 2026 dans le
   projet Google Cloud `traiteur-montpellier`, restreinte a `places.googleapis.com`.
   Les avis Google sont verifies en production : note 4,9 et 354 avis.
+- Google Cloud CLI est disponible globalement via `~/.zprofile` et reutilisable
+  depuis les autres dossiers projets. Utiliser `gcloud --project=...` pour cibler
+  explicitement le bon projet et creer une cle Places separee par site.
 - Le compte parent de la propriete GA4 Traiteur Montpellier est `356859681`.
 - Ne pas generer une fausse conversion en ouvrant directement `/merci` :
   attendre un vrai devis, puis marquer `generate_lead` comme evenement cle.
