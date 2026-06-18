@@ -43,3 +43,4 @@ next-env.d.ts
 
 # Exports CRM et analyses contenant des donnees personnelles
 /outputs/private_crm/
+/scripts/budget-auto-log.json

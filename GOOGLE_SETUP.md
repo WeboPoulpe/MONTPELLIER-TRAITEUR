@@ -174,3 +174,41 @@ Pour l'historique anterieur au nouveau stockage, exporter depuis Digifactory les
 opportunites avec leur description complete. Le formulaire y inscrivait deja
 les marqueurs `[GCLID: ...]` et `[UTM: ...]`. Sans ces descriptions ou un
 identifiant publicitaire, l'attribution historique ne peut etre qu'estimee.
+
+## 6. Budget automatique Google Ads
+
+Le projet contient une regle de budget progressive inspiree de Recacor :
+
+```bash
+npm run ads:budget-auto
+npm run ads:budget-auto -- --apply
+```
+
+Par defaut, le script simule sans modifier Google Ads. Avec `--apply`, il peut
+modifier le budget des deux campagnes actives uniquement :
+
+- `Website traffic-Performance Max-1`
+- `Website traffic-Search-1`
+
+La campagne `Website traffic-Search-2` est explicitement exclue et ne doit pas
+etre relancee par l'automatisation.
+
+Regles principales :
+
+- budget minimum : 5 EUR/jour ;
+- budget maximum : 30 EUR/jour ;
+- hausse progressive : +15 %, avec un maximum de +2 EUR par passage ;
+- baisse : -20 %, sans descendre sous 5 EUR ;
+- hausse seulement si le CPA 7 jours est bon ou si Search perd des impressions
+  par budget avec un CPA acceptable ;
+- baisse ou maintien si la campagne depense sans conversion.
+
+Le meme moteur est disponible cote production via une route admin protegee :
+
+```text
+POST /api/admin/ads/budget-auto
+POST /api/admin/ads/budget-auto?apply=1
+```
+
+Sans `apply=1`, la route renvoie uniquement une simulation. Avec `apply=1`, elle
+applique les budgets calcules avec les variables Google Ads de Vercel.
