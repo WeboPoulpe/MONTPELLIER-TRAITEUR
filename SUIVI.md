@@ -1,6 +1,6 @@
 # Suivi du projet Traiteur Montpellier
 
-Derniere mise a jour : 15 juin 2026
+Derniere mise a jour : 18 juin 2026
 
 Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 
@@ -17,9 +17,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 
 | Fenetre | Sujet | Fichiers ou zones concernes | Statut |
 | --- | --- | --- | --- |
-| Claude Code | Marquer `generate_lead` comme evenement cle dans GA4 | GA4 Admin > Evenements | En attente du premier evenement reel : absent des evenements recents au 15 juin 2026 |
-| Claude Code | Google Ads : ajouter mots-cles negatifs + passer "traiteur montpellier" en correspondance Expression | Campagnes Search + PMax | A faire - liste identifiee le 16 juin 2026 |
-| Claude Code | Google Ads : mettre a jour GOOGLE_OAUTH_REFRESH_TOKEN dans Vercel | Vercel env | A faire - nouveau token avec scope adwords genere le 16 juin |
+| Codex | Google Places : renouveler la cle API | Google Cloud / Vercel env / `.env.local` | Bloque : toutes les cles trouvees localement sont invalides ou vides ; production affiche encore les avis probablement via cache |
 
 ## Termine
 
@@ -42,6 +40,17 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 15 juin 2026 | Codex | Controle GA4 et Google Ads apres deploiement | Propriete GA4 `491115717` verifiee ; `generate_lead` pas encore recu ; objectif Ads "Demande de devis" actif, principal et applique aux 3 campagnes |
 | 16 juin 2026 | Codex | Correction complete endpoint Google Ads `searchStream` | `src/lib/google/ads.ts` deja corrige par `8c94413`; `src/lib/google/analytics.ts` aligne ; ESLint cible OK |
 | 16 juin 2026 | Codex | Creation d'un outil local commun pour regenerer les refresh tokens Google OAuth | Script commun cree dans `/Users/redouanelmansouri/Desktop/GOOGLE_OAUTH_TOOLS`; Traiteur branche via `npm run google:refresh-token`; syntaxe Node verifiee |
+| 16 juin 2026 | Claude Code | Google Ads : nouveau refresh token OAuth (scope adwords) injecte dans Vercel + redeploi | Token `1//047J...` genere via OAuth Playground et pousse en production |
+| 16 juin 2026 | Claude Code | Google Ads : 14 mots-cles negatifs ajoutes sur Search-1 (concurrents, restaurant, a emporter, food truck, libanais, italien, paella) | Via API v22 campaignCriteria:mutate |
+| 16 juin 2026 | Claude Code | Google Ads : "traiteur montpellier" passe de Large en Expression sur Search-1 | Ancien critere supprime + nouveau PHRASE cree via adGroupCriteria:mutate |
+| 16 juin 2026 | Claude Code | Google Ads : plages horaires 6h-23h activees sur les 2 campagnes actives | Search-1 : 7 schedules created ; PMax : 7 anciens 6h-24h supprimes et recrees 6h-23h via campaignCriteria:mutate |
+| 16 juin 2026 | Claude Code | Google Ads : "traiteur domicile" pause sur Search-1 | adGroupCriteria/165310269040~76657128 status=PAUSED |
+| 16 juin 2026 | Claude Code | Google Ads : sitelink "Traiteur entreprise" ajoute sur Search-1 | Asset 373111835362 attache a la campagne 21322235649 ; Search-1 compte desormais 5 sitelinks |
+| 18 juin 2026 | Codex | Google Ads : automatisation budget progressive type Recacor adaptee Traiteur | `scripts/budget-auto.mjs` + `/api/admin/ads/budget-auto`; min 5 EUR, max 30 EUR, Search-2 exclue ; simulation production OK, aucune hausse declenchee |
+| 18 juin 2026 | Codex | Google Ads : resserrage petit budget applique | Search-1 : 14 mots-cles larges pauses, 6 mots-cles intention locale ajoutes/actives, negatifs `parguel`, `dufour`, `halles castellane`, `mechoui` ajoutes |
+| 18 juin 2026 | Codex | Admin Ads : correction du parsing `searchStream` | `/api/admin/ads` affiche les vrais chiffres au lieu de lignes vides a 0 |
+| 18 juin 2026 | Codex | Tracking GA4 : fiabilisation de `generate_lead` | Le formulaire stocke le lead confirme ; `/merci` declenche `generate_lead` une seule fois par `lead_id`; build et lint OK |
+| 18 juin 2026 | Codex | GA4 : verification evenement cle `generate_lead` | API Admin GA4 confirme `generate_lead` deja cree comme key event depuis le 15 juin 2026 a 13:07 |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -87,6 +96,9 @@ Cuisine non proposee : libanais, italien, paella
   configurees dans Vercel pour Traiteur Montpellier.
 - Les vrais avis Google sont en production avec la fiche
   `ChIJ4ys98chUV0ARmWHI_ODHRnU`.
+- Google Places : la cle Traiteur locale renvoie `API_KEY_INVALID`; les cles
+  Recacor inspectees sont vides. Une nouvelle cle Places valide doit etre creee
+  ou renouvelee puis injectee dans Vercel et `.env.local`.
 - Le compte parent de la propriete GA4 Traiteur Montpellier est `356859681`.
 - Ne pas generer une fausse conversion en ouvrant directement `/merci` :
   attendre un vrai devis, puis marquer `generate_lead` comme evenement cle.
