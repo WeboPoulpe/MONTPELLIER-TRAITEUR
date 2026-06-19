@@ -18,6 +18,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | Fenetre | Sujet | Fichiers ou zones concernes | Statut |
 | --- | --- | --- | --- |
 | Codex | Surveiller prochain vrai devis | GA4 / Google Ads / CRM | Confirmer que `generate_lead` remonte bien comme evenement cle et que la conversion Ads correspond au lead CRM |
+| Codex | App Lovable cockpit conversions | Lovable / `LOVABLE_APP.md` / leads site | App creee ; prochaine etape : appliquer le prompt V1 dans Lovable puis choisir import CSV ou API dediee |
 
 ## Termine
 
@@ -53,6 +54,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 18 juin 2026 | Codex | GA4 : verification evenement cle `generate_lead` | API Admin GA4 confirme `generate_lead` deja cree comme key event depuis le 15 juin 2026 a 13:07 |
 | 18 juin 2026 | Codex | Google Places : nouvelle cle API Traiteur creee et injectee | Projet Google Cloud `traiteur-montpellier`; Places API activee ; cle restreinte a `places.googleapis.com`; Vercel production et `.env.local` mis a jour ; build local et deploy prod OK |
 | 18 juin 2026 | Codex | Google Cloud CLI partage entre projets locaux | `gcloud` ajoute au profil shell `~/.zprofile`; session connectee `redouanelmansouri34@gmail.com`; projets Traiteur et Recacor visibles ; procedure documentee dans `GOOGLE_SETUP.md` |
+| 19 juin 2026 | Codex | App Lovable Traiteur Montpellier creee | Projet `9a0ab3b2-b0a0-40e1-8240-b216fd56a0d0` pret ; fiche d'integration `LOVABLE_APP.md` ajoutee |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -104,6 +106,10 @@ Cuisine non proposee : libanais, italien, paella
 - Google Cloud CLI est disponible globalement via `~/.zprofile` et reutilisable
   depuis les autres dossiers projets. Utiliser `gcloud --project=...` pour cibler
   explicitement le bon projet et creer une cle Places separee par site.
+- App Lovable cockpit conversions :
+  `https://lovable.dev/projects/9a0ab3b2-b0a0-40e1-8240-b216fd56a0d0`.
+  L'app ne remplace pas Digifactory ; elle doit suivre les demandes, qualifier
+  les prospects, suivre les appels Google Ads et preparer les conversions.
 - Le compte parent de la propriete GA4 Traiteur Montpellier est `356859681`.
 - Ne pas generer une fausse conversion en ouvrant directement `/merci` :
   attendre un vrai devis, puis marquer `generate_lead` comme evenement cle.
