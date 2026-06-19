@@ -62,6 +62,41 @@ Export admin existant :
 
 Cet export est protege par l'auth admin du site.
 
+API dediee pour Lovable :
+
+```text
+GET /api/integrations/lovable/leads
+Authorization: Bearer <LOVABLE_LEADS_API_TOKEN>
+```
+
+Parametres disponibles :
+
+```text
+limit=100
+offset=0
+since=2026-06-19
+until=2026-06-30
+status=lead
+source=google
+campaign=nom-campagne
+has_click_id=true
+```
+
+La route renvoie du JSON pagine avec :
+
+- les champs du lead ;
+- `click_id_available` ;
+- un objet `conversion` pret pour la conversion `Demande de devis` ;
+- `pagination.next_offset` si d'autres lignes sont disponibles.
+
+Variable serveur a ajouter dans Vercel avant usage :
+
+```env
+LOVABLE_LEADS_API_TOKEN=
+```
+
+Cette variable ne doit pas etre prefixee par `NEXT_PUBLIC_`.
+
 ## Pipeline recommande
 
 Statuts internes :
@@ -197,10 +232,39 @@ secret affiche.
 ## Prochaines etapes techniques
 
 1. Verifier visuellement l'app Lovable et appliquer le prompt d'amelioration.
-2. Decider si Lovable consomme les leads par import CSV manuel ou par API
-   separee.
-3. Si API separee : creer une route export dediee avec token serveur, pagination
-   et filtrage date.
+2. Ajouter `LOVABLE_LEADS_API_TOKEN` dans Vercel et dans l'app Lovable.
+3. Connecter Lovable a `/api/integrations/lovable/leads` avec le token serveur.
 4. Activer le call tracking Google Ads pour les appels.
 5. Surveiller les vrais leads recents pour confirmer `generate_lead` dans GA4 et
    Google Ads.
+
+## Prompt Lovable pour connecter la source site
+
+```text
+Ajoute une source de donnees "Site Traiteur Montpellier".
+
+Elle doit consommer une API JSON securisee :
+GET https://www.traiteurmontpellier.com/api/integrations/lovable/leads
+
+Authentification :
+Authorization: Bearer <token>
+Le token doit etre configure dans les secrets de l'application, jamais affiche
+dans l'interface.
+
+Parametres a supporter dans l'interface :
+limit, offset, since, until, status, source, campaign, has_click_id.
+
+La reponse contient :
+data[] avec les champs de lead, pagination.next_offset, filters.
+
+Quand un lead contient click_id_available=true, creer ou afficher une conversion
+"Demande de devis" avec statut "a_envoyer".
+Quand click_id_available=false, garder le lead dans les demandes mais mettre la
+conversion en statut "ignore" avec la raison fournie par l'API.
+
+Ajouter un bouton "Synchroniser les demandes du site" dans la page Import et un
+statut de derniere synchronisation.
+
+Conserver aussi l'import CSV manuel comme secours.
+Ne connecte pas encore Gmail, Digifactory ou l'API Google Ads.
+```
