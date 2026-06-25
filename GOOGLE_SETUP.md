@@ -215,40 +215,18 @@ opportunites avec leur description complete. Le formulaire y inscrivait deja
 les marqueurs `[GCLID: ...]` et `[UTM: ...]`. Sans ces descriptions ou un
 identifiant publicitaire, l'attribution historique ne peut etre qu'estimee.
 
-## 6. Budget automatique Google Ads
+## 6. Budget Google Ads
 
-Le projet contient une regle de budget progressive inspiree de Recacor :
+Le budget Google Ads est gere manuellement dans Google Ads.
 
-```bash
-npm run ads:budget-auto
-npm run ads:budget-auto -- --apply
-```
+L'automatisation de budget progressive inspiree de Recacor a ete arretee le
+25 juin 2026 apres le passage des campagnes a 1 EUR/jour. Le script local
+`scripts/budget-auto.mjs`, la commande npm `ads:budget-auto` et la route admin
+`/api/admin/ads/budget-auto` ont ete supprimes.
 
-Par defaut, le script simule sans modifier Google Ads. Avec `--apply`, il peut
-modifier le budget des deux campagnes actives uniquement :
+Regles actuelles :
 
-- `Website traffic-Performance Max-1`
-- `Website traffic-Search-1`
-
-La campagne `Website traffic-Search-2` est explicitement exclue et ne doit pas
-etre relancee par l'automatisation.
-
-Regles principales :
-
-- budget minimum : 5 EUR/jour ;
-- budget maximum : 30 EUR/jour ;
-- hausse progressive : +15 %, avec un maximum de +2 EUR par passage ;
-- baisse : -20 %, sans descendre sous 5 EUR ;
-- hausse seulement si le CPA 7 jours est bon ou si Search perd des impressions
-  par budget avec un CPA acceptable ;
-- baisse ou maintien si la campagne depense sans conversion.
-
-Le meme moteur est disponible cote production via une route admin protegee :
-
-```text
-POST /api/admin/ads/budget-auto
-POST /api/admin/ads/budget-auto?apply=1
-```
-
-Sans `apply=1`, la route renvoie uniquement une simulation. Avec `apply=1`, elle
-applique les budgets calcules avec les variables Google Ads de Vercel.
+- ne pas modifier automatiquement les budgets depuis le site ;
+- ne pas relancer la campagne `Website traffic-Search-2` ;
+- faire les changements de budget directement dans Google Ads ;
+- surveiller les demandes de devis et les conversions avant toute hausse.

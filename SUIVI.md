@@ -56,6 +56,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 18 juin 2026 | Codex | Google Cloud CLI partage entre projets locaux | `gcloud` ajoute au profil shell `~/.zprofile`; session connectee `redouanelmansouri34@gmail.com`; projets Traiteur et Recacor visibles ; procedure documentee dans `GOOGLE_SETUP.md` |
 | 19 juin 2026 | Codex | App Lovable Traiteur Montpellier creee | Projet `9a0ab3b2-b0a0-40e1-8240-b216fd56a0d0` pret ; fiche d'integration `LOVABLE_APP.md` ajoutee |
 | 19 juin 2026 | Codex | API leads pour Lovable | Route `/api/integrations/lovable/leads` ajoutee avec token serveur, filtres, pagination et preparation conversion `Demande de devis` |
+| 25 juin 2026 | Codex | Google Ads : arret de l'automatisation budget | Suppression de `scripts/budget-auto.mjs`, de la commande `ads:budget-auto` et de la route `/api/admin/ads/budget-auto`; budgets geres manuellement dans Google Ads |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -114,6 +115,9 @@ Cuisine non proposee : libanais, italien, paella
 - Connexion Lovable recommandee : source principale via
   `/api/integrations/lovable/leads` protegee par `LOVABLE_LEADS_API_TOKEN`.
   Gmail doit rester un secours/historique, pas la source de verite principale.
+- Google Ads : les campagnes ont ete mises a 1 EUR/jour manuellement le
+  25 juin 2026. L'automatisation budget cote site est arretee et ne doit pas
+  etre relancee sans decision explicite.
 - Le compte parent de la propriete GA4 Traiteur Montpellier est `356859681`.
 - Ne pas generer une fausse conversion en ouvrant directement `/merci` :
   attendre un vrai devis, puis marquer `generate_lead` comme evenement cle.

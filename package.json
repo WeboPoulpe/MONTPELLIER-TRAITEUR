@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ads:budget-auto": "node scripts/budget-auto.mjs",
     "google:refresh-token": "node ../GOOGLE_OAUTH_TOOLS/google-refresh-token.mjs",
     "lint": "eslint"
   },
