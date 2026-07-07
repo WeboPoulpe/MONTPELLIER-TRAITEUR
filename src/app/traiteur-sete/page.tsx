@@ -197,11 +197,12 @@ export default function TraiteurSetePage() {
             >
               Nos prestations pour Sète
             </h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[
                 { href: "/entreprises", label: "Événements d'entreprise", desc: "Cocktails pro, séminaires, repas d'affaires et inaugurations à Sète." },
                 { href: "/foires-salons", label: "Foires et salons", desc: "Stand traiteur, plateau repas et animation sur les salons du littoral." },
                 { href: "/evenements-prives", label: "Réceptions privées", desc: "Mariage, vin d'honneur, anniversaire entre mer et étang de Thau." },
+                { href: "/mariage", label: "Mariage et vin d'honneur", desc: "Cocktail, buffet et réception de mariage à Sète et sur le littoral." },
               ].map((p) => (
                 <Link
                   key={p.href}

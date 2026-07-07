@@ -44,11 +44,6 @@ export const metadata: Metadata = {
     "cocktail mariage montpellier",
     "brunch mariage montpellier",
   ],
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-  },
   openGraph: {
     title: "Traiteur Mariage Montpellier | Traiteur Montpellier",
     description:

@@ -166,6 +166,21 @@ export default function Services({ data }: { data?: any }) {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="mt-10 text-center"
+        >
+          <Link
+            href="/mariage"
+            className="inline-flex items-center rounded-full border border-purple/20 bg-white px-5 py-2 text-sm font-semibold text-purple transition-all hover:border-purple hover:shadow-lg hover:shadow-purple/10"
+          >
+            Voir aussi nos prestations mariage et vin d&apos;honneur
+            <span className="ml-2">&rarr;</span>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-8 lg:gap-16"
         >

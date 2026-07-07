@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, ArrowRight, ChevronDown, Building2, UtensilsCrossed, PartyPopper } from "lucide-react";
+import { Menu, X, Phone, ArrowRight, ChevronDown, Building2, UtensilsCrossed, PartyPopper, Heart } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -11,6 +11,7 @@ const prestationLinks = [
   { href: "/entreprises", label: "Événements Entreprise", icon: Building2, description: "Séminaires, conférences, repas d'affaires" },
   { href: "/foires-salons", label: "Foires & Salons", icon: UtensilsCrossed, description: "Catering stands, grazing tables, cocktails VIP" },
   { href: "/evenements-prives", label: "Événements Privés", icon: PartyPopper, description: "Anniversaires, baptêmes, garden-parties" },
+  { href: "/mariage", label: "Mariages & Vins d'honneur", icon: Heart, description: "Cocktail, buffet, brunch du lendemain" },
 ];
 
 const navLinks = [

@@ -177,6 +177,14 @@ function IntroSection() {
               assiette, tandis que notre engagement éco-responsable garantit des événements aussi
               savoureux que respectueux.
             </p>
+            <p className="mt-4 text-sm leading-relaxed text-neutral-500">
+              Pour une demande plus précise autour d&apos;un vin d&apos;honneur, d&apos;un cocktail ou d&apos;un brunch,
+              consultez notre page dédiée au{" "}
+              <Link href="/mariage" className="font-semibold text-purple underline-offset-4 hover:underline">
+                traiteur mariage à Montpellier
+              </Link>
+              .
+            </p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

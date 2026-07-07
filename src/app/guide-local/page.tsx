@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Building2,
+  Heart,
   MapPin,
   PartyPopper,
   UtensilsCrossed,
@@ -68,6 +69,12 @@ const formats = [
     title: "Réception privée",
     text: "Anniversaire, baptême ou garden-party avec menu sur mesure, livraison ou service complet.",
     href: "/evenements-prives",
+  },
+  {
+    icon: Heart,
+    title: "Mariage et vin d'honneur",
+    text: "Cocktail, buffet, repas convivial ou brunch du lendemain pour une réception de mariage à Montpellier.",
+    href: "/mariage",
   },
 ];
 
@@ -172,7 +179,7 @@ export default function GuideLocalPage() {
             >
               Choisir le bon format
             </h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {formats.map((format) => (
                 <Link
                   key={format.title}

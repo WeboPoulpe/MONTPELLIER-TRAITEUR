@@ -196,11 +196,12 @@ export default function TraiteurLunelPage() {
             >
               Nos prestations pour Lunel
             </h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[
                 { href: "/entreprises", label: "Événements d'entreprise", desc: "Cocktails pro, repas d'affaires et inaugurations à Lunel et dans le Lunellois." },
                 { href: "/foires-salons", label: "Stands et salons", desc: "Livraison sur stand et plateau repas pour les événements de la région." },
                 { href: "/evenements-prives", label: "Réceptions privées", desc: "Anniversaire, vin d'honneur et garden-party dans le bassin lunellois." },
+                { href: "/mariage", label: "Mariage et vin d'honneur", desc: "Traiteur mariage, cocktail et brunch du lendemain à Lunel et alentours." },
               ].map((p) => (
                 <Link
                   key={p.href}

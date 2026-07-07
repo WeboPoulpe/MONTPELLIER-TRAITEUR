@@ -19,7 +19,6 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | --- | --- | --- | --- |
 | Codex | Surveiller prochain vrai devis | GA4 / Google Ads / CRM | Confirmer que `generate_lead` remonte bien comme evenement cle et que la conversion Ads correspond au lead CRM |
 | Codex | App Lovable cockpit conversions | Lovable / `LOVABLE_APP.md` / leads site | App creee ; API site dediee ajoutee ; prochaine etape : ajouter `LOVABLE_LEADS_API_TOKEN` dans Vercel et connecter Lovable |
-| Codex | Page mariage brouillon | `/mariage`, robots, sitemap, menu | Construire la page sans publication : noindex, hors sitemap, hors menu ; validation avant push/deploiement |
 
 ## Termine
 
@@ -61,6 +60,7 @@ Ce fichier sert a coordonner le travail effectue dans plusieurs fenetres Codex.
 | 4 juillet 2026 | Codex | Recherche mots-cles mariage via Google Ads API | Methode Recacor `generateKeywordIdeas` reutilisee ; signal principal `traiteur mariage montpellier` autour de 210 recherches/mois ; decision : page SEO oui, Ads mariage non |
 | 7 juillet 2026 | Codex | Google Ads : nettoyage avant hausse budget | 33 mots-cles negatifs ajoutes sur les 2 campagnes actives ; `traiteur mariage montpellier` pause sur Search-1 ; Search-2 reste PAUSEE |
 | 7 juillet 2026 | Codex | Google Ads : budgets augmentes a 10 EUR/jour | PMax active et Search-1 active passees de 5 a 10 EUR/jour ; Search-2 reste PAUSEE et non modifiee |
+| 7 juillet 2026 | Codex | Page mariage publiee et maillage interne | `/mariage` indexable, ajoutee au sitemap, menu, footer, accueil, guide local, galerie, evenements prives et pages villes |
 
 ## Credentials Google (references uniquement - ne pas modifier)
 
@@ -124,14 +124,14 @@ Cuisine non proposee : libanais, italien, paella
   10 EUR/jour apres nettoyage des termes. Search-2 reste PAUSEE et ne doit pas
   etre relancee sans decision explicite. L'automatisation budget cote site est
   arretee et ne doit pas etre relancee sans decision explicite.
-- Mariage : a traiter comme levier SEO/site, pas comme axe Google Ads. Page
-  brouillon `/mariage` non publiee tant que non validee : pas dans le menu, pas
-  dans le sitemap, `noindex` et disallow robots.
+- Mariage : a traiter comme levier SEO/site, pas comme axe Google Ads. La page
+  `/mariage` est publiee cote SEO depuis le 7 juillet 2026 : indexable, dans le
+  sitemap, menu/footer et reliee aux pages services, villes, galerie et guide local.
 - Le compte parent de la propriete GA4 Traiteur Montpellier est `356859681`.
 - Ne pas generer une fausse conversion en ouvrant directement `/merci` :
   attendre un vrai devis, puis marquer `generate_lead` comme evenement cle.
 - `mariage` est volontairement exclu des annonces Google Ads. La demande mariage
-  reste travaillee sur le site en SEO, avec la page brouillon `/mariage`.
+  reste travaillee sur le site en SEO via la page `/mariage`.
 - Le bandeau cookie maison a ete supprime ; le consentement est gere via Clickio
   et GTM.
 - L'export GSC couvre effectivement 60 jours, du 14 avril au 12 juin 2026, malgre le filtre affiche "12 derniers mois".

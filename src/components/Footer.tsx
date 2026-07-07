@@ -135,6 +135,7 @@ export default function Footer() {
                 { href: "/entreprises", label: "Événements Entreprise" },
                 { href: "/foires-salons", label: "Foires & Salons" },
                 { href: "/evenements-prives", label: "Événements Privés" },
+                { href: "/mariage", label: "Mariages & vins d’honneur" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="group relative inline-block text-sm text-white/40 transition-colors hover:text-purple-light">

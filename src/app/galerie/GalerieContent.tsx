@@ -3,7 +3,8 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import FAQ from "@/components/FAQ";
@@ -204,6 +205,26 @@ export default function GalerieContent() {
                 ))}
               </AnimatePresence>
             </motion.div>
+
+            <div className="mt-14 rounded-3xl bg-neutral-50 p-8 text-center">
+              <h2
+                className="text-2xl font-bold text-black md:text-3xl"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Une mise en place pour votre mariage ?
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-neutral-600">
+                Les dressages, buffets et cocktails présentés ici peuvent inspirer un vin d&apos;honneur,
+                un buffet de mariage ou un brunch du lendemain à Montpellier.
+              </p>
+              <Link
+                href="/mariage"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-purple px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-purple-dark"
+              >
+                Voir nos prestations mariage
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </section>
 

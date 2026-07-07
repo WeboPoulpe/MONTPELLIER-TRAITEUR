@@ -196,11 +196,12 @@ export default function TraiteurBeziersPage() {
             >
               Nos prestations pour Béziers
             </h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[
                 { href: "/entreprises", label: "Événements d'entreprise", desc: "Séminaires, cocktails pro, repas d'affaires et inaugurations à Béziers." },
                 { href: "/foires-salons", label: "Foires et salons", desc: "Livraison sur stand, animation culinaire et plateau repas à Béziers Expo." },
                 { href: "/evenements-prives", label: "Réceptions privées", desc: "Anniversaire, mariage et garden-party dans les domaines de l'ouest Hérault." },
+                { href: "/mariage", label: "Mariage et vin d'honneur", desc: "Buffet, cocktail et réception de mariage à Béziers et dans l'ouest Hérault." },
               ].map((p) => (
                 <Link
                   key={p.href}

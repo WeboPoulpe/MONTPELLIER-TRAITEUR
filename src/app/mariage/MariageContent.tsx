@@ -178,8 +178,8 @@ function OffersSection() {
             Une offre mariage centree sur <span className="text-purple">la reception</span>
           </h2>
           <p className="mt-5 text-neutral-600">
-            La page doit vendre les formats que l&apos;equipe peut traiter efficacement, sans attirer
-            des demandes qui sortent du metier traiteur.
+            Choisissez le format qui correspond le mieux à votre réception : accueil debout,
+            buffet à partager, repas convivial ou brunch du lendemain.
           </p>
         </motion.div>
 
@@ -219,27 +219,27 @@ function QualificationSection() {
           className="mx-auto max-w-3xl text-center"
         >
           <span className="text-xs font-semibold tracking-[0.3em] text-purple uppercase">
-            Qualifier avant de vendre
+            Bien préparer votre demande
           </span>
           <h2
             className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            Attirer les bonnes demandes,
+            Un projet clair,
             <br />
-            <span className="text-purple">filtrer les mauvaises</span>
+            <span className="text-purple">une réponse plus précise</span>
           </h2>
         </motion.div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           <CheckList
-            title="Demandes a encourager"
+            title="Informations utiles"
             icon={Check}
             items={fitItems}
             tone="positive"
           />
           <CheckList
-            title="Demandes a eviter"
+            title="À préciser en amont"
             icon={Sparkles}
             items={avoidItems}
             tone="neutral"
@@ -307,8 +307,8 @@ function ProcessSection() {
               Une demande claire donne un devis utile.
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-white/60">
-              Cette page doit aider le prospect a formuler une demande exploitable, pas seulement
-              generer du volume. C&apos;est ce qui permettra ensuite de mesurer les leads vendables.
+              Plus votre demande est détaillée, plus notre réponse peut être juste : format,
+              logistique, service, timing et budget sont cadrés dès le premier échange.
             </p>
           </div>
 
@@ -351,6 +351,21 @@ function CtaSection() {
           Demander un devis
           <ArrowRight className="h-4 w-4" />
         </Link>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {[
+            { href: "/evenements-prives", label: "Réceptions privées" },
+            { href: "/guide-local", label: "Guide local événementiel" },
+            { href: "/galerie", label: "Voir la galerie" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-neutral-200 px-5 py-2 text-sm font-medium text-neutral-600 transition-all hover:border-purple hover:text-purple"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
