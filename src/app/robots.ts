@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/admin", "/merci"],
+      disallow: ["/api/", "/admin", "/merci", "/mariage"],
     },
     sitemap: "https://www.traiteurmontpellier.com/sitemap.xml",
   };
