@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "google:refresh-token": "node ../GOOGLE_OAUTH_TOOLS/google-refresh-token.mjs",
+    "ads:offline-conversions": "node scripts/upload-offline-conversions.mjs",
     "lint": "eslint"
   },
   "dependencies": {

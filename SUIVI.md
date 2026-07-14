@@ -141,3 +141,29 @@ Cuisine non proposee : libanais, italien, paella
 - CRM : 154 560,40 EUR de ventes enregistrees, dont 74 164,90 EUR marquees payees. Les paiements partiels totalisent 48 034,70 EUR de ventes, mais l'export ne fournit pas le montant effectivement encaisse.
 - Les villes sont absentes pour 48 clients sur 64 ; ne pas choisir les pages villes uniquement avec cet export sans enrichir les adresses de facturation ou de livraison.
 - Le formulaire inscrivait deja GCLID et UTM dans la description Digifactory, mais le site ne conservait pas de copie serveur. Le nouveau registre corrige ce point pour les prochaines demandes.
+
+## Google Ads — remontées de conversions offline (14 juillet 2026)
+
+- Objectif : remonter les demandes de devis stockees côté site vers Google Ads
+  quand un `gclid`, `gbraid` ou `wbraid` est present.
+- Action Google Ads creee pour Traiteur Montpellier :
+  `Demande de devis - import leads site`, type `UPLOAD_CLICKS`, id `7684722442`.
+- Ancienne methode Google Ads API `UploadClickConversions` testee en
+  `validateOnly` : bloquee par Google pour les nouvelles integrations depuis
+  juin 2026 (`CUSTOMER_NOT_ALLOWLISTED_FOR_THIS_FEATURE`). Il faut utiliser
+  Data Manager API.
+- Data Manager API est cablee dans le code via
+  `/api/admin/ads/offline-conversions`.
+  - `GET` ou `POST` avec `validateOnly: true` = previsualisation/test.
+  - `POST` avec `validateOnly: false` = envoi reel et marquage en base.
+- La base Neon contient maintenant les colonnes de suivi :
+  `google_ads_conversion_status`, `google_ads_conversion_uploaded_at`,
+  `google_ads_conversion_action`, `google_ads_conversion_error`.
+- Test local du 14 juillet : la route lit bien les leads et cible l'action
+  Traiteur, mais Data Manager renvoie encore une erreur de validation sur
+  l'action d'import. A retester apres propagation de l'action Google Ads et
+  apres verification des variables Vercel :
+  `GOOGLE_ADS_CUSTOMER_ID=6155175246`,
+  `GOOGLE_ADS_LOGIN_CUSTOMER_ID=4419531309`,
+  `GOOGLE_ADS_OFFLINE_CONVERSION_ACTION_ID=7684722442`,
+  OAuth avec scope Data Manager.

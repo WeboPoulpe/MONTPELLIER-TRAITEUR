@@ -60,6 +60,14 @@ export const leadSubmissions = pgTable("lead_submissions", {
   crmStatus: integer("crm_status"),
   emailSent: boolean("email_sent").notNull().default(false),
   status: text("status").notNull().default("lead"),
+  googleAdsConversionStatus: text("google_ads_conversion_status")
+    .notNull()
+    .default("pending"),
+  googleAdsConversionUploadedAt: timestamp("google_ads_conversion_uploaded_at", {
+    withTimezone: true,
+  }),
+  googleAdsConversionAction: text("google_ads_conversion_action"),
+  googleAdsConversionError: text("google_ads_conversion_error"),
   formData: jsonb("form_data").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
